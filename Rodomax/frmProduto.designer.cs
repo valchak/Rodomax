@@ -191,6 +191,7 @@
             this.txtMultiplicador.Name = "txtMultiplicador";
             this.txtMultiplicador.Size = new System.Drawing.Size(100, 20);
             this.txtMultiplicador.TabIndex = 10;
+            this.txtMultiplicador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMultiplicador_KeyPress);
             // 
             // label5
             // 
@@ -391,6 +392,8 @@
             this.txtCustoMedio.Name = "txtCustoMedio";
             this.txtCustoMedio.Size = new System.Drawing.Size(100, 20);
             this.txtCustoMedio.TabIndex = 21;
+            this.txtCustoMedio.TextChanged += new System.EventHandler(this.txtCustoMedio_TextChanged);
+            this.txtCustoMedio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustoMedio_KeyPress);
             // 
             // groupBox1
             // 

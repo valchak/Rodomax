@@ -54,9 +54,9 @@
     <Compile Include="EmpresaApp.cs" />
     <Compile Include="FilialApp.cs" />
     <Compile Include="FornecedorApp.cs" />
+    <Compile Include="ProdutoApp.cs" />
     <Compile Include="ProdutoGrupoApp.cs" />
     <Compile Include="_IRepository.cs" />
-    <Compile Include="ProdutoApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

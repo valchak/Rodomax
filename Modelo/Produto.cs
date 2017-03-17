@@ -10,7 +10,10 @@ namespace Modelo
         public int Id { get; set; }
         [StringLength(255)]
         public string Nome { get; set; }
+
         public ProdutoGrupo ProdutoGrupo { get; set; }
+
+
         public double CustoMedio { get; set; }
         public int Multiplicador { get; set; }
         [StringLength(1)]

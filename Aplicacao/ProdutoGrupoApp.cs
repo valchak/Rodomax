@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using Modelo;
 using System.Linq;
 using Repositorio;
@@ -40,7 +41,7 @@ namespace Aplicacao
         }
         public void Adicionar(ProdutoGrupo obj)
         {
-            Banco.Set<ProdutoGrupo>().Add(obj);
+            Banco.Set<ProdutoGrupo>().AddOrUpdate(obj);
         }
         public void Excluir(Func<ProdutoGrupo, bool> predicate)
         {

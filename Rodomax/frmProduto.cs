@@ -12,6 +12,7 @@ namespace UI
     {
         Singleton instancia = Singleton.GetInstance;
         private ProdutoApp app;
+
         private Produto produto;
         private ProdutoGrupo grupo;
         private Fornecedor ultimoFornecedor;
@@ -25,13 +26,8 @@ namespace UI
 
         private void limparCampos()
         {
-            this.AlteraBotoes(1);
-            this.operacao = "";
             produto = new Produto();
             app = new ProdutoApp();
-
-            grupo = null;
-            ultimoFornecedor = null;
 
             txtId.Clear();
             txtNome.Clear();
@@ -51,6 +47,16 @@ namespace UI
             rdUsadoNao.Checked = true;
             rdSituacaoAtivo.Checked = true;
 
+            grupo = null;
+            ultimoFornecedor = null;
+
+            this.AlteraBotoes(1);
+            this.operacao = "";
+
+           
+
+            
+
         }
 
         private void btnNovo_Click(object sender, System.EventArgs e)
@@ -64,11 +70,6 @@ namespace UI
         {
             try
             {
-                if (!this.operacao.Equals("NOVO"))
-                {
-                    produto = app.Find(produto.Id);
-                }
-
                 produto.Nome = txtNome.Text;
                 string custo = txtCustoMedio.Text.Replace(".", "").Trim();
                 produto.CustoMedio = double.Parse(custo.Replace(",", "."));
@@ -165,13 +166,15 @@ namespace UI
             {
                 produto = instancia.produto;
                 instancia.produto = null;
+
                 grupo = produto.ProdutoGrupo;
                 ultimoFornecedor = produto.UltimoFornecedor;
+
                 txtNome.Text = produto.Nome;
                 txtId.Text = produto.Id.ToString();
                 txtGrupo.Text = grupo.Nome;
-                txtCustoMedio.Text = String.Format(CultureInfo.InvariantCulture, "{0:0.0,0}", produto.CustoMedio);
-                txtMultiplicador.Text = String.Format(CultureInfo.InvariantCulture, "{0:0.0}", produto.Multiplicador);
+                txtCustoMedio.Text = Formatacao.DoubleToString(produto.CustoMedio);//String.Format(CultureInfo.InvariantCulture, "{0:0.0,0}", produto.CustoMedio);
+                txtMultiplicador.Text = Formatacao.IntToString(produto.Multiplicador);
                 txtObservacao.Text = produto.Observacao;
                 if (produto.EstoqueFilial.Equals("S"))
                 {
@@ -211,6 +214,21 @@ namespace UI
             }
 
             
+        }
+
+        private void txtCustoMedio_TextChanged(object sender, EventArgs e)
+        {
+            Formatacao.MoedaCampo(ref txtCustoMedio);
+        }
+
+        private void txtCustoMedio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Formatacao.SoNumero(e);
+        }
+
+        private void txtMultiplicador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Formatacao.SoNumero(e);
         }
     }
 }

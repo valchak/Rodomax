@@ -9,10 +9,11 @@ namespace UI
     public partial class frmFilial : UI.ModelForm
     {
         Singleton instancia = Singleton.GetInstance;
-        private Filial filial;
-
-        private Cidade cidade;
         private FilialApp app;
+
+        private Filial filial;
+        private Cidade cidade;
+       
         public frmFilial()
         {
             InitializeComponent();
@@ -108,10 +109,7 @@ namespace UI
             try
             {
                 EmpresaApp empApp = new EmpresaApp();
-                if (!this.operacao.Equals("NOVO"))
-                {
-                    filial = app.Find(filial.Id);
-                }
+                
                 filial.Nome = txtNome.Text.Trim();
                 filial.Cep = txtCep.Text.Trim();
                 filial.Bairro = txtBairro.Text.Trim();

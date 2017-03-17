@@ -57,7 +57,7 @@ namespace Ferramenta
 
         public static string IntToString(int valor)
         {
-            return String.Format(CultureInfo.InvariantCulture, "{0:0.0}", valor);
+            return String.Format(CultureInfo.InvariantCulture, "{0:0}", valor);
         }
     }
 }

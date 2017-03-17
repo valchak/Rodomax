@@ -17,13 +17,29 @@ namespace Aplicacao
 
         public void Adicionar(Filial obj)
         {
+            obj.Empresa = Banco.Empresas.Find(obj.Empresa.Id);
+            obj.Cidade = Banco.Cidades.Find(obj.Cidade.Id);
+
             Banco.Set<Filial>().Add(obj);
             SalvarTodos();
         }
 
         public void Atualizar(Filial obj)
         {
-            Banco.Entry(obj).State = EntityState.Modified;
+            Filial dbObj = new Filial();
+            dbObj = Find(obj.Id);
+            dbObj.Empresa = Banco.Empresas.Where(x => x.Id == obj.Empresa.Id).First();
+            dbObj.Cidade = Banco.Cidades.Where(x => x.Id == obj.Cidade.Id).First();
+
+            dbObj.Nome = obj.Nome;
+            dbObj.Cep = obj.Cep;
+            dbObj.Bairro = obj.Bairro;
+            dbObj.Complemento = obj.Complemento;
+            dbObj.Endereco = obj.Endereco;
+            dbObj.Email = obj.Email;
+            dbObj.Telefone = obj.Telefone;
+
+            Banco.Entry(dbObj).State = EntityState.Modified;
             SalvarTodos();
         }
 
