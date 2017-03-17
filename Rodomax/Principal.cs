@@ -27,12 +27,16 @@ namespace Rodomax
 
         private void cadFilialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        
+            frmFilial tela = new frmFilial();
+            tela.ShowDialog();
+            tela.Dispose();
         }
 
         private void cadProdutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmProduto tela = new frmProduto();
+            tela.ShowDialog();
+            tela.Dispose();
         }
     }
 }

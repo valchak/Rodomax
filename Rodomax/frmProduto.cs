@@ -1,0 +1,216 @@
+﻿using System;
+using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
+using Aplicacao;
+using Ferramenta;
+using Modelo;
+
+namespace UI
+{
+    public partial class frmProduto : UI.ModelForm
+    {
+        Singleton instancia = Singleton.GetInstance;
+        private ProdutoApp app;
+        private Produto produto;
+        private ProdutoGrupo grupo;
+        private Fornecedor ultimoFornecedor;
+
+        public frmProduto()
+        {
+            InitializeComponent();
+           
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            this.AlteraBotoes(1);
+            this.operacao = "";
+            produto = new Produto();
+            app = new ProdutoApp();
+
+            grupo = null;
+            ultimoFornecedor = null;
+
+            txtId.Clear();
+            txtNome.Clear();
+            txtGrupo.Clear();
+            txtObservacao.Clear();
+            txtCustoMedio.Text = "0,00";
+            txtMultiplicador.Text = "1";
+            txtUltimoFornecedor.Text = "";
+            txtUltimaData.Text = "";
+            txtUltimaNota.Text = "";
+            txtUltimoValor.Text = "";
+
+            produto.EstoqueFilial = "N";
+            produto.EstoqueUsado = "N";
+            produto.Situacao = "A";
+            rdEstoqueFilialNao.Checked = true;
+            rdUsadoNao.Checked = true;
+            rdSituacaoAtivo.Checked = true;
+
+        }
+
+        private void btnNovo_Click(object sender, System.EventArgs e)
+        {
+            this.operacao = "NOVO";
+            this.AlteraBotoes(2);
+            //txtNome.Focus();
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!this.operacao.Equals("NOVO"))
+                {
+                    produto = app.Find(produto.Id);
+                }
+
+                produto.Nome = txtNome.Text;
+                string custo = txtCustoMedio.Text.Replace(".", "").Trim();
+                produto.CustoMedio = double.Parse(custo.Replace(",", "."));
+                produto.ProdutoGrupo = grupo;
+                produto.Multiplicador = int.Parse(txtMultiplicador.Text);
+                produto.Observacao = txtObservacao.Text;
+                if (rdEstoqueFilialSim.Checked)
+                {
+                    produto.EstoqueFilial = "S";
+                }
+                else
+                {
+                    produto.EstoqueFilial = "N";
+                }
+                if (rdUsadoSim.Checked)
+                {
+                    produto.EstoqueUsado = "S";
+                }
+                else
+                {
+                    produto.EstoqueUsado = "N";
+                }
+                if (rdSituacaoInativo.Checked)
+                {
+                    produto.Situacao = "I";
+                }
+                else
+                {
+                    produto.Situacao = "A";
+                }
+                if (this.operacao.Equals("NOVO"))
+                {
+                    app.Adicionar(produto);
+                    MessageBox.Show("Cadastro efetuado com sucesso: Código " + produto.Id);
+                }
+                else
+                {
+                    app.Atualizar(produto);
+                    MessageBox.Show("Cadastro " + produto.Id + " alterado com sucesso.");
+                }
+                this.limparCampos();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro Salvar: " + erro.Message);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.limparCampos();
+            this.Focus();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (produto != null)
+                {
+                    app.Excluir(x => x.Id == produto.Id);
+                    MessageBox.Show("Cadastro " + produto.Id + " excluido com sucesso.");
+                    this.limparCampos();
+                }
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show("Erro ao Excluir: " + erro.Message);
+            }
+        }
+
+        private void btnBuscarGrupo_Click(object sender, EventArgs e)
+        {
+            frmProdutoGrupoPesquisa tela = new frmProdutoGrupoPesquisa();
+            tela.ShowDialog();
+            tela.Dispose();
+
+            if (instancia.produtoGrupo != null)
+            {
+                grupo = instancia.produtoGrupo;
+                instancia.produtoGrupo = null;
+                txtGrupo.Text = grupo.Nome;
+            }
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+
+            frmProdutoPesquisa tela = new frmProdutoPesquisa();
+            tela.ShowDialog();
+            tela.Dispose();
+
+            if (instancia.produto != null)
+            {
+                produto = instancia.produto;
+                instancia.produto = null;
+                grupo = produto.ProdutoGrupo;
+                ultimoFornecedor = produto.UltimoFornecedor;
+                txtNome.Text = produto.Nome;
+                txtId.Text = produto.Id.ToString();
+                txtGrupo.Text = grupo.Nome;
+                txtCustoMedio.Text = String.Format(CultureInfo.InvariantCulture, "{0:0.0,0}", produto.CustoMedio);
+                txtMultiplicador.Text = String.Format(CultureInfo.InvariantCulture, "{0:0.0}", produto.Multiplicador);
+                txtObservacao.Text = produto.Observacao;
+                if (produto.EstoqueFilial.Equals("S"))
+                {
+                    rdEstoqueFilialSim.Enabled = true;
+                }
+                else
+                {
+                    rdEstoqueFilialNao.Enabled = true;
+                }
+                if (produto.EstoqueUsado.Equals("S"))
+                {
+                    rdUsadoSim.Enabled = true;
+                }
+                else
+                {
+                    rdUsadoNao.Enabled = true;
+                }
+                if (produto.Situacao.Equals("S"))
+                {
+                    rdSituacaoAtivo.Enabled = true;
+                }
+                else
+                {
+                    rdSituacaoInativo.Enabled = true;
+                }
+                // Ultima compra
+                if (ultimoFornecedor != null)
+                {
+                    txtUltimoFornecedor.Text = ultimoFornecedor.RazaoSocial;
+                    txtUltimaData.Text = produto.UltimaDataCompra.ToString("d");
+                    txtUltimaNota.Text = produto.UltimaNotaCompra;
+                    txtUltimoValor.Text = String.Format(CultureInfo.InvariantCulture, "{0:0.0}", produto.Multiplicador);
+                }
+
+                this.AlteraBotoes(3);
+                this.operacao = "ALTERAR";
+            }
+
+            
+        }
+    }
+}

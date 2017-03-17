@@ -41,10 +41,12 @@ namespace Aplicacao
         public void Adicionar(Cidade obj)
         {
             Banco.Set<Cidade>().Add(obj);
+            SalvarTodos();
         }
         public void Excluir(Func<Cidade, bool> predicate)
         {
             Banco.Set<Cidade>().Where(predicate).ToList().ForEach(del => Banco.Set<Cidade>().Remove(del));
+            SalvarTodos();
         }
         public void Dispose()
         {

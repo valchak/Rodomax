@@ -7,30 +7,30 @@ using Repositorio;
 
 namespace Aplicacao
 {
-    public class ProdutoApp : App<Produto>
+    public class FornecedorApp : App<Fornecedor>
     {
         
         public ContextoDB Banco { get; set; }
 
-        public ProdutoApp()
+        public FornecedorApp()
         {
             Banco = new ContextoDB();
         }
 
-        public IQueryable<Produto> GetAll()
+        public IQueryable<Fornecedor> GetAll()
         {
-            return Banco.Set<Produto>().Include(x => x.ProdutoGrupo).Include(x => x.UltimoFornecedor);
+            return Banco.Set<Fornecedor>().Include(x => x.Cidade);
         }
-        public IQueryable<Produto> Get(Func<Produto, bool> predicate)
+        public IQueryable<Fornecedor> Get(Func<Fornecedor, bool> predicate)
         {
             return GetAll().Where(predicate).AsQueryable();
             //exemplo: IEnumerable<NotaEntrada> listaNF = app.Get(x => x.Fornecedor.Id == nf.Id && x.Documento == nf.Documento && x.Serie == nf.Serie);
         }
-        public Produto Find(params object[] key)
+        public Fornecedor Find(params object[] key)
         {
-            return Banco.Set<Produto>().Find(key);
+            return Banco.Set<Fornecedor>().Find(key);
         }
-        public void Atualizar(Produto obj)
+        public void Atualizar(Fornecedor obj)
         {
             Banco.Entry(obj).State = EntityState.Modified;
         }
@@ -38,13 +38,13 @@ namespace Aplicacao
         {
             Banco.SaveChanges();
         }
-        public void Adicionar(Produto obj)
+        public void Adicionar(Fornecedor obj)
         {
-            Banco.Set<Produto>().Add(obj);
+            Banco.Set<Fornecedor>().Add(obj);
         }
-        public void Excluir(Func<Produto, bool> predicate)
+        public void Excluir(Func<Fornecedor, bool> predicate)
         {
-            Banco.Set<Produto>().Where(predicate).ToList().ForEach(del => Banco.Set<Produto>().Remove(del));
+            Banco.Set<Fornecedor>().Where(predicate).ToList().ForEach(del => Banco.Set<Fornecedor>().Remove(del));
         }
         public void Dispose()
         {

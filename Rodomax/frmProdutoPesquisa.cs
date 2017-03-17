@@ -27,7 +27,6 @@ namespace UI
 
         private void btnFiltrar_Click(object sender, System.EventArgs e)
         {
-            
             var th = new Thread(new ThreadStart(this.BuscarNoBanco));
             th.Start();
 
@@ -99,34 +98,30 @@ namespace UI
 
         private void btnCriarNovo_Click(object sender, System.EventArgs e)
         {
- //           frmProduto tela = new frmProduto();
- //           tela.ShowDialog();
- //           tela.Dispose();
+            frmProduto tela = new frmProduto();
+            tela.ShowDialog();
+            tela.Dispose();
         }
 
         private void gridPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (gridPesquisa.Rows.Count > 0)
             {
-                try
-                {
- //                   instancia.produto = app.BuscarPorId(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
-  //                  this.Close();
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show("Erro: " + exception.Message);
-                }
-
+                SelecionarObjeto();
             }
         }
 
         private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
         {
+            SelecionarObjeto();
+        }
+
+        private void SelecionarObjeto()
+        {
             try
             {
-//                instancia.produto = app.BuscarPorId(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
-//                this.Close();
+                instancia.produto = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
+                this.Close();
             }
             catch (Exception exception)
             {

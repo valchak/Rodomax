@@ -59,11 +59,47 @@
     <Compile Include="frmCidadePesquisa.designer.cs">
       <DependentUpon>frmCidadePesquisa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFilial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilial.designer.cs">
+      <DependentUpon>frmFilial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFilialPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilialPesquisa.designer.cs">
+      <DependentUpon>frmFilialPesquisa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFornecedorPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFornecedorPesquisa.designer.cs">
+      <DependentUpon>frmFornecedorPesquisa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduto.designer.cs">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProdutoGrupoPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProdutoGrupoPesquisa.designer.cs">
+      <DependentUpon>frmProdutoGrupoPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProdutoPesquisa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmProdutoPesquisa.designer.cs">
       <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frnCidadePesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frnCidadePesquisa.designer.cs">
+      <DependentUpon>frnCidadePesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelConsulta.cs">
       <SubType>Form</SubType>
@@ -92,8 +128,26 @@
     <EmbeddedResource Include="frmCidadePesquisa.resx">
       <DependentUpon>frmCidadePesquisa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFilial.resx">
+      <DependentUpon>frmFilial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFilialPesquisa.resx">
+      <DependentUpon>frmFilialPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFornecedorPesquisa.resx">
+      <DependentUpon>frmFornecedorPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProduto.resx">
+      <DependentUpon>frmProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProdutoGrupoPesquisa.resx">
+      <DependentUpon>frmProdutoGrupoPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProdutoPesquisa.resx">
       <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frnCidadePesquisa.resx">
+      <DependentUpon>frnCidadePesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelConsulta.resx">
       <DependentUpon>ModelConsulta.cs</DependentUpon>

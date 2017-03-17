@@ -7,30 +7,30 @@ using Repositorio;
 
 namespace Aplicacao
 {
-    public class ProdutoApp : App<Produto>
+    public class ProdutoGrupoApp : App<ProdutoGrupo>
     {
         
         public ContextoDB Banco { get; set; }
 
-        public ProdutoApp()
+        public ProdutoGrupoApp()
         {
             Banco = new ContextoDB();
         }
 
-        public IQueryable<Produto> GetAll()
+        public IQueryable<ProdutoGrupo> GetAll()
         {
-            return Banco.Set<Produto>().Include(x => x.ProdutoGrupo).Include(x => x.UltimoFornecedor);
+            return Banco.Set<ProdutoGrupo>();
         }
-        public IQueryable<Produto> Get(Func<Produto, bool> predicate)
+        public IQueryable<ProdutoGrupo> Get(Func<ProdutoGrupo, bool> predicate)
         {
             return GetAll().Where(predicate).AsQueryable();
             //exemplo: IEnumerable<NotaEntrada> listaNF = app.Get(x => x.Fornecedor.Id == nf.Id && x.Documento == nf.Documento && x.Serie == nf.Serie);
         }
-        public Produto Find(params object[] key)
+        public ProdutoGrupo Find(params object[] key)
         {
-            return Banco.Set<Produto>().Find(key);
+            return Banco.Set<ProdutoGrupo>().Find(key);
         }
-        public void Atualizar(Produto obj)
+        public void Atualizar(ProdutoGrupo obj)
         {
             Banco.Entry(obj).State = EntityState.Modified;
         }
@@ -38,13 +38,13 @@ namespace Aplicacao
         {
             Banco.SaveChanges();
         }
-        public void Adicionar(Produto obj)
+        public void Adicionar(ProdutoGrupo obj)
         {
-            Banco.Set<Produto>().Add(obj);
+            Banco.Set<ProdutoGrupo>().Add(obj);
         }
-        public void Excluir(Func<Produto, bool> predicate)
+        public void Excluir(Func<ProdutoGrupo, bool> predicate)
         {
-            Banco.Set<Produto>().Where(predicate).ToList().ForEach(del => Banco.Set<Produto>().Remove(del));
+            Banco.Set<ProdutoGrupo>().Where(predicate).ToList().ForEach(del => Banco.Set<ProdutoGrupo>().Remove(del));
         }
         public void Dispose()
         {
