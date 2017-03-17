@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="App2.cs" />
     <Compile Include="CidadeApp.cs" />
     <Compile Include="_IRepository.cs" />
     <Compile Include="ProdutoApp.cs" />

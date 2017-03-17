@@ -20,9 +20,19 @@ namespace Rodomax
 
         private void cadCidadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProdutoPesquisa tela = new frmProdutoPesquisa();
+            frmCidade tela = new frmCidade();
             tela.ShowDialog();
             tela.Dispose();
+        }
+
+        private void cadFilialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void cadProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

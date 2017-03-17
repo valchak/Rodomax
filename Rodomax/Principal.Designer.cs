@@ -31,13 +31,17 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadCidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrosToolStripMenuItem});
+            this.cadastrosToolStripMenuItem,
+            this.operaçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(957, 24);
@@ -47,7 +51,9 @@
             // cadastrosToolStripMenuItem
             // 
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadCidadeToolStripMenuItem});
+            this.cadCidadeToolStripMenuItem,
+            this.cadFilialToolStripMenuItem,
+            this.cadProdutoToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -56,8 +62,28 @@
             // 
             this.cadCidadeToolStripMenuItem.Name = "cadCidadeToolStripMenuItem";
             this.cadCidadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cadCidadeToolStripMenuItem.Text = "Cad Cidade";
+            this.cadCidadeToolStripMenuItem.Text = "Cad. Cidade";
             this.cadCidadeToolStripMenuItem.Click += new System.EventHandler(this.cadCidadeToolStripMenuItem_Click);
+            // 
+            // cadFilialToolStripMenuItem
+            // 
+            this.cadFilialToolStripMenuItem.Name = "cadFilialToolStripMenuItem";
+            this.cadFilialToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cadFilialToolStripMenuItem.Text = "Cad. Filial";
+            this.cadFilialToolStripMenuItem.Click += new System.EventHandler(this.cadFilialToolStripMenuItem_Click);
+            // 
+            // cadProdutoToolStripMenuItem
+            // 
+            this.cadProdutoToolStripMenuItem.Name = "cadProdutoToolStripMenuItem";
+            this.cadProdutoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cadProdutoToolStripMenuItem.Text = "Cad. Produto";
+            this.cadProdutoToolStripMenuItem.Click += new System.EventHandler(this.cadProdutoToolStripMenuItem_Click);
+            // 
+            // operaçõesToolStripMenuItem
+            // 
+            this.operaçõesToolStripMenuItem.Name = "operaçõesToolStripMenuItem";
+            this.operaçõesToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.operaçõesToolStripMenuItem.Text = "Operações";
             // 
             // Principal
             // 
@@ -80,6 +106,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadCidadeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadFilialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadProdutoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operaçõesToolStripMenuItem;
     }
 }
 

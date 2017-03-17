@@ -7,7 +7,7 @@ using Repositorio;
 
 namespace Aplicacao
 {
-    public class ProdutoApp : App2<Produto>
+    public class ProdutoApp : App<Produto>
     {
         
         public ContextoDB Banco { get; set; }

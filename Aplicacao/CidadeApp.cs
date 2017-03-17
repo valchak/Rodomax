@@ -32,6 +32,7 @@ namespace Aplicacao
         public void Atualizar(Cidade obj)
         {
             Banco.Entry(obj).State = EntityState.Modified;
+            SalvarTodos();
         }
         public void SalvarTodos()
         {
