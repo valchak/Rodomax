@@ -5,6 +5,7 @@ using Repositorio;
 
 namespace Aplicacao
 {
+    /*
     interface IRepository<TEntity>   where TEntity : class
     {
         IQueryable<TEntity> GetAll();
@@ -21,11 +22,12 @@ namespace Aplicacao
 
         void Excluir(Func<TEntity, bool> predicate);
     }
-
+    
     
     public abstract class Banco<TEntity> : IDisposable, IRepository<TEntity> where TEntity : class
     {
         ContextoDB ctx = new ContextoDB();
+        
         public IQueryable<TEntity> GetAll()
         {
             return ctx.Set<TEntity>();
@@ -60,5 +62,5 @@ namespace Aplicacao
             ctx.Dispose();
         }
         
-    }
+    } */
 }

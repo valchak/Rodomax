@@ -2,11 +2,12 @@
 using Repositorio;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Aplicacao
 {
-    public class CidadeApp
+    public class CidadeApp : App<Cidade>
     {
         public ContextoDB Banco { get; set; }
 
@@ -14,6 +15,42 @@ namespace Aplicacao
         {
             Banco = new ContextoDB();
         }
+
+        public IQueryable<Cidade> GetAll()
+        {
+            return Banco.Set<Cidade>();
+        }
+        public IQueryable<Cidade> Get(Func<Cidade, bool> predicate)
+        {
+            return GetAll().Where(predicate).AsQueryable();
+            //exemplo: IEnumerable<NotaEntrada> listaNF = app.Get(x => x.Fornecedor.Id == nf.Id && x.Documento == nf.Documento && x.Serie == nf.Serie);
+        }
+        public Cidade Find(params object[] key)
+        {
+            return Banco.Set<Cidade>().Find(key);
+        }
+        public void Atualizar(Cidade obj)
+        {
+            Banco.Entry(obj).State = EntityState.Modified;
+        }
+        public void SalvarTodos()
+        {
+            Banco.SaveChanges();
+        }
+        public void Adicionar(Cidade obj)
+        {
+            Banco.Set<Cidade>().Add(obj);
+        }
+        public void Excluir(Func<Cidade, bool> predicate)
+        {
+            Banco.Set<Cidade>().Where(predicate).ToList().ForEach(del => Banco.Set<Cidade>().Remove(del));
+        }
+        public void Dispose()
+        {
+            Banco.Dispose();
+        }
+
+
         /*
         public void Adicionar(Cidade obj)
         {

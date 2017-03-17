@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using Modelo;
 
 namespace Repositorio
@@ -46,5 +47,6 @@ namespace Repositorio
         public DbSet<TonerManutencao> TonersManutencao { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<UsuarioFilial> UsuariosFilial { get; set; }
+        
     }
 }

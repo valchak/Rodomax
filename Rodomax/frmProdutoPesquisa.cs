@@ -36,7 +36,7 @@ namespace UI
         
         public void BuscarNoBanco()
         {
-           /* 
+           
             Produto produto = new Produto();
 
             if (rdAtivo.Checked)
@@ -52,7 +52,10 @@ namespace UI
                 produto.Situacao = "";
             }
             produto.Nome = txtPesquisa.Text.Trim();
-            IEnumerable<Produto> lista = app.BuscarTodos(x => x.Nome == produto.Nome);
+
+            
+            IEnumerable<Produto> lista = app.Get(x => x.Nome.Contains(produto.Nome) && x.Situacao.Contains(produto.Situacao));
+
 
             Invoke(new Action(() =>
             {
@@ -91,7 +94,7 @@ namespace UI
                 }
             }));
  
-            */
+    
         }
 
         private void btnCriarNovo_Click(object sender, System.EventArgs e)
