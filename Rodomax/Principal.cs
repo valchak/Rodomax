@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UI;
 
 namespace Rodomax
 {
@@ -15,6 +16,13 @@ namespace Rodomax
         public Principal()
         {
             InitializeComponent();
+        }
+
+        private void cadCidadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProdutoPesquisa tela = new frmProdutoPesquisa();
+            tela.ShowDialog();
+            tela.Dispose();
         }
     }
 }

@@ -46,6 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formatacao.cs" />
+    <Compile Include="frmProdutoPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProdutoPesquisa.designer.cs">
+      <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelConsulta.designer.cs">
+      <DependentUpon>ModelConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelForm.designer.cs">
+      <DependentUpon>ModelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +73,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton.cs" />
+    <EmbeddedResource Include="frmProdutoPesquisa.resx">
+      <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelConsulta.resx">
+      <DependentUpon>ModelConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelForm.resx">
+      <DependentUpon>ModelForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +107,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aplicacao\Aplicacao.csproj">
+      <Project>{351c6187-2530-4222-970d-279be395f54e}</Project>
+      <Name>Aplicacao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{4665627d-4fbd-44d8-a6da-08c6b7d036e2}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Alterar.png" />
+    <Content Include="Resources\Cancelar.png" />
+    <Content Include="Resources\Cancelar1.png" />
+    <Content Include="Resources\Excluir.png" />
+    <Content Include="Resources\localizar.fw.png" />
+    <Content Include="Resources\localizar2.png" />
+    <Content Include="Resources\Novo.png" />
+    <Content Include="Resources\Salvar1.fw.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
