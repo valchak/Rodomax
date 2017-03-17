@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +41,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CentroCusto.cs" />
+    <Compile Include="Cidade.cs" />
+    <Compile Include="Cotacao.cs" />
+    <Compile Include="CotacaoFornecedor.cs" />
+    <Compile Include="CotacaoProduto.cs" />
+    <Compile Include="CotacaoValor.cs" />
+    <Compile Include="Despesa.cs" />
+    <Compile Include="DespesaDetalhes.cs" />
+    <Compile Include="DespesaTipo.cs" />
+    <Compile Include="Empresa.cs" />
+    <Compile Include="Estoque.cs" />
+    <Compile Include="EstoqueMovimento.cs" />
+    <Compile Include="Filial.cs" />
+    <Compile Include="FilialAtua.cs" />
+    <Compile Include="FilialCentroCusto.cs" />
+    <Compile Include="FinanceiroPendencia.cs" />
+    <Compile Include="FinanceiroTitulo.cs" />
+    <Compile Include="FormaPagamento.cs" />
+    <Compile Include="Fornecedor.cs" />
+    <Compile Include="Funcionario.cs" />
+    <Compile Include="Malote.cs" />
+    <Compile Include="MaloteDetalhe.cs" />
+    <Compile Include="MaterialSaida.cs" />
+    <Compile Include="MaterialSaidaProdutos.cs" />
+    <Compile Include="MaterialSolicitacao.cs" />
+    <Compile Include="NotaEntrada.cs" />
+    <Compile Include="NotaEntradaItens.cs" />
+    <Compile Include="OrdemCompra.cs" />
+    <Compile Include="OrdemCompraDetalhes.cs" />
+    <Compile Include="Patrimonio.cs" />
+    <Compile Include="PatrimonioGrupo.cs" />
+    <Compile Include="PatrimonioHistorico.cs" />
+    <Compile Include="Produto.cs" />
+    <Compile Include="ProdutoGrupo.cs" />
+    <Compile Include="ProdutoGrupoUsuario.cs" />
+    <Compile Include="ProdutoTipo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TelefoneCobranca.cs" />
+    <Compile Include="TelefoneLinha.cs" />
+    <Compile Include="TonerManutencao.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="UsuarioFilial.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Repositorio\Repositorio.csproj">
+      <Project>{6201bb57-f414-4f2a-8773-2efda0d6e695}</Project>
+      <Name>Repositorio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
