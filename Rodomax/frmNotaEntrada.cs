@@ -33,14 +33,47 @@ namespace UI
  //           Teste();
         }
 
+        private void LimparCampos()
+        {
+            numeroItens = 0;
+            nota = new NotaEntrada();
+            fornecedor = new Fornecedor();
+            filial = new Filial();
+            this.operacao = "NOVO";
+            listaItem = new Dictionary<int, NotaEntradaItens>();
+            listaExcluir = new List<NotaEntradaItens>();
+            this.AlteraBotoes(2);
+            txtValorDocumento.Clear();
+            txtAcresDesc.Clear();
+            txtValorTotalDocumento.Clear();
+            txtDataEmissao.Value = DateTime.Now;
+            txtDataFaturamento.Value = DateTime.Now;
+            
+            LimparItem();
+        }
+
+        private void LimparItem()
+        {
+            produto = null;
+            item = null;
+            txtItemDescricao.Clear();
+            txtItemMultiplicador.Clear();
+            txtItemValorTotal.Clear();
+            txtItemVlUnitario.Clear();
+            btnItemEditar.Enabled = false;
+            btnItemExcluir.Enabled = false;
+            btnItemAdd.Enabled = true;
+
+            PopulaGrid();
+        }
+
         private void Salvar()
         {
             try
             {
-                
-                
                 nota.Documento = txtDocumento.Text.Trim();
                 nota.Serie = txtSerie.Text.Trim();
+                nota.Fornecedor = fornecedor;
                 if (cbFinanceiro.Items.Equals("Sim"))
                 {
                     nota.Faturado = "S";
@@ -58,12 +91,11 @@ namespace UI
 
                 foreach (var item in listaItem)
                 {
-                    nota.NotaEntradaItens.Add(item.Value);
+                //    nota.NotaEntradaItens.Add(item.Value);
                 }
 
                 if (this.operacao.Equals("NOVO"))
                 {
-                    nota.Fornecedor = fornecedor;
                     app.Adicionar(nota);
                     MessageBox.Show("Nota salva com sucesso: Código " + nota.Id);
                 }
@@ -81,29 +113,7 @@ namespace UI
             }
         }
 
-        private void LimparCampos()
-        {
-            numeroItens = 0;
-            nota = new NotaEntrada();
-            this.operacao = "NOVO";
-            listaItem = new Dictionary<int, NotaEntradaItens>();
-            this.AlteraBotoes(2);
-            }
-
-        private void LimparItem()
-        {
-            produto = null;
-            itemNF = null;
-            txtItemDescricao.Clear();
-            txtItemQuantidade.Text = "1";
-            txtItemVlUnitario.Text = "0,00";
-            txtItemValorTotal.Text = "0,00";
-            txtItemMultiplicador.Text = "1";
-            btnItemEditar.Enabled = false;
-            btnItemExcluir.Enabled = false;
-            btnItemAdd.Enabled = true;
-
-        }
+       
         private void BuscaNotaEntrada()
         {
             if (!txtDocumento.Text.Equals("") && !txtSerie.Text.Equals(""))
@@ -165,33 +175,30 @@ namespace UI
 
         private void PopulaGrid()
         {
- //           Invoke(new Action(() =>
- //           {
-                gridItens.DataSource = null;
-                gridItens.ResetBindings();
-                gridItens.Rows.Clear();
+            gridItens.DataSource = null;
+            gridItens.ResetBindings();
+            gridItens.Rows.Clear();
 
-                double total = 0;
+            double total = 0;
 
-                foreach (var item in listaItem)
+            foreach (var item in listaItem)
+            {
+                int n = this.gridItens.Rows.Add();
+                gridItens.Rows[n].Cells[0].Value = item.Key;
+                if (item.Value.Produto != null)
                 {
-                    int n = this.gridItens.Rows.Add();
-                    gridItens.Rows[n].Cells[0].Value = item.Key;
-                    if (item.Value.Produto != null)
-                    {
-                        gridItens.Rows[n].Cells[1].Value = item.Value.Produto.Id;
-                    }
-                    gridItens.Rows[n].Cells[2].Value = item.Value.Descricao;
-                    gridItens.Rows[n].Cells[3].Value = item.Value.QuantidadeNota;
-                    gridItens.Rows[n].Cells[4].Value = item.Value.ValorUnitario;
-                    gridItens.Rows[n].Cells[5].Value = item.Value.QuantidadeEstoque;
-                    gridItens.Rows[n].Cells[6].Value = item.Value.ValorUnitarioEstoque;
-                    gridItens.Rows[n].Cells[7].Value = item.Value.ValorTotal;
-                    total = total + item.Value.ValorTotal;
+                    gridItens.Rows[n].Cells[1].Value = item.Value.Produto.Id;
                 }
-                gridItens.Refresh();
-                SomaTotais(total);
-//            }));
+                gridItens.Rows[n].Cells[2].Value = item.Value.Descricao;
+                gridItens.Rows[n].Cells[3].Value = item.Value.QuantidadeNota;
+                gridItens.Rows[n].Cells[4].Value = item.Value.ValorUnitario;
+                gridItens.Rows[n].Cells[5].Value = item.Value.QuantidadeEstoque;
+                gridItens.Rows[n].Cells[6].Value = item.Value.ValorUnitarioEstoque;
+                gridItens.Rows[n].Cells[7].Value = item.Value.ValorTotal;
+                total = total + item.Value.ValorTotal;
+            }
+            gridItens.Refresh();
+            SomaTotais(total);
         }
 
         private void SomaTotais(double TotalItens)
@@ -322,9 +329,9 @@ namespace UI
         private void btnItemAdd_Click(object sender, EventArgs e)
         {
 
-            if (itemNF == null)
+            if (item == null)
             {
-                itemNF = new NotaEntradaItens();
+                item = new NotaEntradaItens();
             }
             if (filial == null)
             {
@@ -333,17 +340,17 @@ namespace UI
             }
             else
             {
-                itemNF.Produto = produto;
-                itemNF.Filial = filial;
-                itemNF.Descricao = txtItemDescricao.Text;
-                itemNF.QuantidadeNota = int.Parse(txtItemQuantidade.Text);
-                itemNF.ValorUnitario = double.Parse(txtItemVlUnitario.Text);
-                itemNF.ValorTotal = double.Parse(txtItemValorTotal.Text);
-                itemNF.ValorUnitarioEstoque = itemNF.ValorUnitario / int.Parse(txtItemMultiplicador.Text);
-                itemNF.QuantidadeEstoque = itemNF.QuantidadeNota * int.Parse(txtItemMultiplicador.Text);
-                itemNF.EstoqueMovimento = new EstoqueMovimento();
-                itemNF.Multiplicador = int.Parse(txtItemMultiplicador.Text);
-                listaItem.Add(++numeroItens,itemNF);
+                item.Produto = produto;
+                item.Filial = filial;
+                item.Descricao = txtItemDescricao.Text;
+                item.QuantidadeNota = int.Parse(txtItemQuantidade.Text);
+                item.ValorUnitario = double.Parse(txtItemVlUnitario.Text);
+                item.ValorTotal = double.Parse(txtItemValorTotal.Text);
+                item.ValorUnitarioEstoque = item.ValorUnitario / int.Parse(txtItemMultiplicador.Text);
+                item.QuantidadeEstoque = item.QuantidadeNota * int.Parse(txtItemMultiplicador.Text);
+                item.EstoqueMovimento = new EstoqueMovimento();
+                item.Multiplicador = int.Parse(txtItemMultiplicador.Text);
+                listaItem.Add(++numeroItens,item);
                 LimparItem();
             }
             PopulaGrid();
@@ -371,12 +378,10 @@ namespace UI
         {
             try
             {
-                itemNF = listaItem[Convert.ToInt32(gridItens.SelectedRows[0].Cells[0].Value.ToString())];
-                produto = itemNF.Produto;
-                filial = itemNF.Filial;
-                txtItemQuantidade.Text = itemNF.QuantidadeNota.ToString();
-                
-
+                item = listaItem[Convert.ToInt32(gridItens.SelectedRows[0].Cells[0].Value.ToString())];
+                produto = item.Produto;
+                filial = item.Filial;
+                txtItemQuantidade.Text = item.QuantidadeNota.ToString();
             }
             catch (Exception exception)
             {
