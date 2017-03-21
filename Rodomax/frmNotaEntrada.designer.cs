@@ -140,6 +140,10 @@
             // 
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // btnPesquisar
             // 
             this.btnPesquisar.Enabled = false;
@@ -155,6 +159,7 @@
             // 
             // txtFornecedor
             // 
+            this.txtFornecedor.Enabled = false;
             this.txtFornecedor.Location = new System.Drawing.Point(11, 18);
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.Size = new System.Drawing.Size(342, 20);
@@ -167,6 +172,7 @@
             this.txtOdemCompra.Name = "txtOdemCompra";
             this.txtOdemCompra.Size = new System.Drawing.Size(117, 20);
             this.txtOdemCompra.TabIndex = 3;
+            this.txtOdemCompra.Visible = false;
             // 
             // label2
             // 
@@ -177,6 +183,7 @@
             this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Ordem de Compra";
+            this.label2.Visible = false;
             // 
             // btnBuscaFornecedor
             // 
@@ -197,6 +204,7 @@
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "A Faturar";
+            this.label3.Visible = false;
             // 
             // cbFinanceiro
             // 
@@ -209,6 +217,7 @@
             this.cbFinanceiro.Name = "cbFinanceiro";
             this.cbFinanceiro.Size = new System.Drawing.Size(121, 21);
             this.cbFinanceiro.TabIndex = 6;
+            this.cbFinanceiro.Visible = false;
             // 
             // btnContasPagar
             // 
@@ -219,13 +228,14 @@
             this.btnContasPagar.TabIndex = 7;
             this.btnContasPagar.Text = "Contas a Pagar";
             this.btnContasPagar.UseVisualStyleBackColor = true;
+            this.btnContasPagar.Visible = false;
             // 
             // txtDocumento
             // 
             this.txtDocumento.Location = new System.Drawing.Point(11, 52);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(342, 20);
-            this.txtDocumento.TabIndex = 9;
+            this.txtDocumento.TabIndex = 2;
             this.txtDocumento.TextChanged += new System.EventHandler(this.txtDocumento_TextChanged);
             // 
             // label4
@@ -242,7 +252,7 @@
             this.txtSerie.Location = new System.Drawing.Point(362, 53);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(75, 20);
-            this.txtSerie.TabIndex = 11;
+            this.txtSerie.TabIndex = 3;
             this.txtSerie.TextChanged += new System.EventHandler(this.txtSerie_TextChanged);
             // 
             // label5
@@ -273,7 +283,7 @@
             this.txtDataEmissao.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.txtDataEmissao.Name = "txtDataEmissao";
             this.txtDataEmissao.Size = new System.Drawing.Size(117, 20);
-            this.txtDataEmissao.TabIndex = 14;
+            this.txtDataEmissao.TabIndex = 7;
             this.txtDataEmissao.Value = new System.DateTime(2017, 3, 10, 11, 34, 28, 0);
             // 
             // txtDataFaturamento
@@ -285,7 +295,7 @@
             this.txtDataFaturamento.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.txtDataFaturamento.Name = "txtDataFaturamento";
             this.txtDataFaturamento.Size = new System.Drawing.Size(121, 20);
-            this.txtDataFaturamento.TabIndex = 16;
+            this.txtDataFaturamento.TabIndex = 8;
             this.txtDataFaturamento.Value = new System.DateTime(2017, 3, 10, 11, 34, 28, 0);
             // 
             // label7
@@ -303,7 +313,7 @@
             this.txtValorDocumento.Location = new System.Drawing.Point(11, 88);
             this.txtValorDocumento.Name = "txtValorDocumento";
             this.txtValorDocumento.Size = new System.Drawing.Size(96, 20);
-            this.txtValorDocumento.TabIndex = 19;
+            this.txtValorDocumento.TabIndex = 4;
             this.txtValorDocumento.Text = "0,00";
             this.txtValorDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorDocumento.TextChanged += new System.EventHandler(this.txtValorDocumento_TextChanged);
@@ -323,7 +333,7 @@
             this.txtAcresDesc.Location = new System.Drawing.Point(178, 88);
             this.txtAcresDesc.Name = "txtAcresDesc";
             this.txtAcresDesc.Size = new System.Drawing.Size(96, 20);
-            this.txtAcresDesc.TabIndex = 21;
+            this.txtAcresDesc.TabIndex = 5;
             this.txtAcresDesc.Text = "0,00";
             this.txtAcresDesc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAcresDesc.TextChanged += new System.EventHandler(this.txtAcresDesc_TextChanged);
@@ -343,7 +353,7 @@
             this.txtValorTotalDocumento.Location = new System.Drawing.Point(341, 88);
             this.txtValorTotalDocumento.Name = "txtValorTotalDocumento";
             this.txtValorTotalDocumento.Size = new System.Drawing.Size(96, 20);
-            this.txtValorTotalDocumento.TabIndex = 23;
+            this.txtValorTotalDocumento.TabIndex = 6;
             this.txtValorTotalDocumento.Text = "0,00";
             this.txtValorTotalDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValorTotalDocumento.TextChanged += new System.EventHandler(this.txtValorTotalDocumento_TextChanged);
@@ -394,7 +404,7 @@
             this.btnItemAdd.Location = new System.Drawing.Point(624, 67);
             this.btnItemAdd.Name = "btnItemAdd";
             this.btnItemAdd.Size = new System.Drawing.Size(82, 23);
-            this.btnItemAdd.TabIndex = 37;
+            this.btnItemAdd.TabIndex = 16;
             this.btnItemAdd.Text = "Adicionar";
             this.btnItemAdd.UseVisualStyleBackColor = true;
             this.btnItemAdd.Click += new System.EventHandler(this.btnItemAdd_Click);
@@ -405,7 +415,7 @@
             this.btnItemExcluir.Location = new System.Drawing.Point(800, 67);
             this.btnItemExcluir.Name = "btnItemExcluir";
             this.btnItemExcluir.Size = new System.Drawing.Size(82, 23);
-            this.btnItemExcluir.TabIndex = 36;
+            this.btnItemExcluir.TabIndex = 18;
             this.btnItemExcluir.Text = "Excluir";
             this.btnItemExcluir.UseVisualStyleBackColor = true;
             this.btnItemExcluir.Click += new System.EventHandler(this.btnItemExcluir_Click);
@@ -416,7 +426,7 @@
             this.btnItemEditar.Location = new System.Drawing.Point(712, 67);
             this.btnItemEditar.Name = "btnItemEditar";
             this.btnItemEditar.Size = new System.Drawing.Size(82, 23);
-            this.btnItemEditar.TabIndex = 25;
+            this.btnItemEditar.TabIndex = 17;
             this.btnItemEditar.Text = "Editar";
             this.btnItemEditar.UseVisualStyleBackColor = true;
             this.btnItemEditar.Click += new System.EventHandler(this.btnItemEditar_Click);
@@ -428,7 +438,7 @@
             this.txtItemMultiplicador.Name = "txtItemMultiplicador";
             this.txtItemMultiplicador.Size = new System.Drawing.Size(96, 20);
             this.txtItemMultiplicador.TabIndex = 35;
-            this.txtItemMultiplicador.Text = "1";
+            this.txtItemMultiplicador.Text = "15";
             this.txtItemMultiplicador.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemMultiplicador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemMultiplicador_KeyPress);
             // 
@@ -447,7 +457,7 @@
             this.txtItemValorTotal.Location = new System.Drawing.Point(253, 67);
             this.txtItemValorTotal.Name = "txtItemValorTotal";
             this.txtItemValorTotal.Size = new System.Drawing.Size(96, 20);
-            this.txtItemValorTotal.TabIndex = 33;
+            this.txtItemValorTotal.TabIndex = 13;
             this.txtItemValorTotal.Text = "0,00";
             this.txtItemValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemValorTotal.TextChanged += new System.EventHandler(this.txtItemValorTotal_TextChanged);
@@ -467,7 +477,7 @@
             this.txtItemVlUnitario.Location = new System.Drawing.Point(128, 67);
             this.txtItemVlUnitario.Name = "txtItemVlUnitario";
             this.txtItemVlUnitario.Size = new System.Drawing.Size(96, 20);
-            this.txtItemVlUnitario.TabIndex = 31;
+            this.txtItemVlUnitario.TabIndex = 12;
             this.txtItemVlUnitario.Text = "0,00";
             this.txtItemVlUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemVlUnitario.TextChanged += new System.EventHandler(this.txtItemVlUnitario_TextChanged);
@@ -487,7 +497,7 @@
             this.txtItemQuantidade.Location = new System.Drawing.Point(7, 67);
             this.txtItemQuantidade.Name = "txtItemQuantidade";
             this.txtItemQuantidade.Size = new System.Drawing.Size(96, 20);
-            this.txtItemQuantidade.TabIndex = 26;
+            this.txtItemQuantidade.TabIndex = 11;
             this.txtItemQuantidade.Text = "0";
             this.txtItemQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemQuantidade_KeyPress);
@@ -508,7 +518,7 @@
             this.button3.Location = new System.Drawing.Point(798, 27);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(83, 23);
-            this.button3.TabIndex = 27;
+            this.button3.TabIndex = 14;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -519,7 +529,7 @@
             this.txtItemFilial.Location = new System.Drawing.Point(499, 29);
             this.txtItemFilial.Name = "txtItemFilial";
             this.txtItemFilial.Size = new System.Drawing.Size(297, 20);
-            this.txtItemFilial.TabIndex = 29;
+            this.txtItemFilial.TabIndex = 142;
             // 
             // label12
             // 
@@ -537,7 +547,7 @@
             this.button2.Location = new System.Drawing.Point(358, 28);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 25;
+            this.button2.TabIndex = 10;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -546,7 +556,7 @@
             this.txtItemDescricao.Location = new System.Drawing.Point(7, 30);
             this.txtItemDescricao.Name = "txtItemDescricao";
             this.txtItemDescricao.Size = new System.Drawing.Size(342, 20);
-            this.txtItemDescricao.TabIndex = 26;
+            this.txtItemDescricao.TabIndex = 9;
             // 
             // label11
             // 

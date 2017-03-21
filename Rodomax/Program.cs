@@ -17,7 +17,10 @@ namespace Rodomax
         [STAThread]
         static void Main()
         {
-           ContextoDB Banco = new ContextoDB();
+
+            /*
+           
+            ContextoDB Banco = new ContextoDB();
 
             NotaEntradaApp app= new NotaEntradaApp();
             NotaEntrada nota = new NotaEntrada();
@@ -73,12 +76,12 @@ namespace Rodomax
 
 
 
-
-            /*
+            */
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmNotaEntrada());
-            */
+            
         }
     }
 }

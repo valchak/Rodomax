@@ -15,13 +15,14 @@ namespace UI
         private NotaEntrada nota;
         private Fornecedor fornecedor;
         private OrdemCompra ordemCompra;
-
         private IDictionary<int, NotaEntradaItens> listaItem;
+        private List<NotaEntradaItens> listaExcluir;
+
         private int numeroItens = 0;
         
         private Produto produto;
         private Filial filial;
-        private NotaEntradaItens itemNF;
+        private NotaEntradaItens item;
 
         public frmNotaEntrada()
         {
@@ -411,5 +412,9 @@ namespace UI
 
         }
 
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
