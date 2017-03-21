@@ -110,7 +110,6 @@ namespace Aplicacao
 
                     if (dbItem.EstoqueMovimento != null)
                     {
-                      //  dbItem.EstoqueMovimento = Banco.EstoqueMovimentos.Find(item.EstoqueMovimento.Id);
                         if (item.Produto != null)
                         {
                             dbItem.Produto = Banco.Produtos.Find(item.Produto.Id);
@@ -126,7 +125,7 @@ namespace Aplicacao
                         if (item.Produto != null)
                         {
                             dbItem.Produto = Banco.Produtos.Find(item.Produto.Id);
-                            dbItem.EstoqueMovimento = AtualizarEstoque(item, EstoqueAcao.INSERT);
+                            dbItem.EstoqueMovimento = AtualizarEstoque(dbItem, EstoqueAcao.INSERT);
                         }
                     }
 
@@ -140,6 +139,21 @@ namespace Aplicacao
                     }
                     
                 }
+
+
+                if (obj.listaExcluir != null)
+                {
+                    foreach (var item in obj.listaExcluir)
+                    {
+                        var dbItem = Banco.NotaEntradaItens.Find(item.Id);
+                        if (dbItem.Produto != null)
+                        {
+                            AtualizarEstoque(dbItem, EstoqueAcao.DELETE);
+                        }
+                        Banco.NotaEntradaItens.Remove(dbItem);
+                    }
+                }
+
                 SalvarTodos();
             }
 
@@ -147,7 +161,26 @@ namespace Aplicacao
 
         public void Excluir(Func<NotaEntrada, bool> predicate)
         {
-            throw new NotImplementedException();
+            try
+            {
+                IEnumerable<NotaEntradaItens> lista = Banco.NotasEntrada.Include(x => x.NotaEntradaItens).Where(predicate).First().NotaEntradaItens;
+                
+                foreach (var item in lista)
+                {
+                    if (item.EstoqueMovimento != null)
+                    {
+                        AtualizarEstoque(item, EstoqueAcao.DELETE);
+                    }
+                }
+                Banco.Set<NotaEntrada>().Include(x => x.Fornecedor).Include(x => x.OrdemCompra).Include(x => x.NotaEntradaItens).Where(predicate).ToList().ForEach(del => Banco.Set<NotaEntrada>().Remove(del));
+                SalvarTodos();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao excluir Nota: "+e.Message);
+            }
+            
+          
         }
 
         public void SalvarTodos()
@@ -158,8 +191,7 @@ namespace Aplicacao
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                throw new Exception("Erro ao excluir Nota: " + e.Message);
             }
             
         }
