@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Modelo;
 using Repositorio;
 
@@ -41,7 +39,6 @@ namespace Aplicacao
         {
             if (ValidarCampos(obj))
             {
-                
                 obj.Fornecedor = Banco.Fornecedores.Find(obj.Fornecedor.Id);
                 if (obj.OrdemCompra != null)
                 {
@@ -50,7 +47,6 @@ namespace Aplicacao
                 IEnumerable<NotaEntradaItens> lista = obj.NotaEntradaItens;
                 obj.NotaEntradaItens = null;
                 Banco.NotasEntrada.Add(obj);
-                              
                 foreach (var item in lista)
                 {
                     item.NotaEntrada = obj;
@@ -62,7 +58,6 @@ namespace Aplicacao
                     }
                     Banco.NotaEntradaItens.Add(item);
                 }
-               
                 SalvarTodos();
             }
         }
@@ -71,42 +66,82 @@ namespace Aplicacao
         {
             if (ValidarCampos(obj))
             {
-                
-                NotaEntrada dbObj = Banco.NotasEntrada.Where(x => x.Id == obj.Id).First();
-                
-                if (dbObj != null)
+                NotaEntrada dbObj = new NotaEntrada();
+                dbObj = Banco.NotasEntrada.Include(x => x.Fornecedor).Include(x => x.OrdemCompra).Where(x => x.Id == obj.Id).First();
+                dbObj.DataEmissao = obj.DataEmissao;
+                dbObj.DataRecebimento = obj.DataRecebimento;
+
+                dbObj.Fornecedor = Banco.Fornecedores.Find(obj.Fornecedor.Id);
+
+                if (obj.OrdemCompra != null)
                 {
-                    dbObj.Fornecedor = Banco.Fornecedores.Find(dbObj.Fornecedor.Id);
-                    dbObj.OrdemCompra = null;
-                    dbObj.ValorDocumento = obj.ValorDocumento;
-                    dbObj.ValorDocumentoTotal = obj.ValorDocumentoTotal;
-                    dbObj.AcresDesc = obj.AcresDesc;
-                    dbObj.NotaEntradaItens = obj.NotaEntradaItens;
-                    Banco.Entry(dbObj).State = EntityState.Modified;
+                    dbObj.OrdemCompra = Banco.OrdensCompra.Find(obj.OrdemCompra.Id);
                 }
-                SalvarTodos();
-/*
-                NotaEntradaItemApp app = new NotaEntradaItemApp();
+                dbObj.ValorDocumento = obj.ValorDocumento;
+                dbObj.ValorDocumentoTotal = obj.ValorDocumentoTotal;
+                dbObj.AcresDesc = obj.AcresDesc;
+                dbObj.Faturado = dbObj.Faturado;
                 IEnumerable<NotaEntradaItens> lista = obj.NotaEntradaItens;
+                dbObj.NotaEntradaItens = null;
+                Banco.Entry(dbObj).State = EntityState.Modified;
+                
                 foreach (var item in lista)
                 {
-                    item.NotaEntrada = obj;
-                    if (item.EstoqueMovimento != null)
+                    var dbItem = new NotaEntradaItens();
+
+                    if (item.Id > 0)
                     {
-                        app.Atualizar(item);
+                        dbItem = Banco.NotaEntradaItens.Include(x => x.Produto)
+                                .Include(x => x.Filial)
+                                .Include(x => x.EstoqueMovimento)
+                                .Where(x => x.Id == item.Id)
+                                .First();
+                    }
+
+                    dbItem.NotaEntrada = dbObj;
+                    dbItem.Filial = Banco.Filiais.Find(item.Filial.Id);
+                    dbItem.Descricao = item.Descricao;
+                    dbItem.QuantidadeNota = item.QuantidadeNota;
+                    dbItem.Multiplicador = item.Multiplicador;
+                    dbItem.ValorUnitario = item.ValorUnitario;
+                    dbItem.ValorTotal = item.ValorTotal;
+                    dbItem.QuantidadeEstoque = item.QuantidadeEstoque;
+                    dbItem.ValorUnitarioEstoque = item.ValorUnitarioEstoque;
+
+                    if (dbItem.EstoqueMovimento != null)
+                    {
+                      //  dbItem.EstoqueMovimento = Banco.EstoqueMovimentos.Find(item.EstoqueMovimento.Id);
+                        if (item.Produto != null)
+                        {
+                            dbItem.Produto = Banco.Produtos.Find(item.Produto.Id);
+                            dbItem.EstoqueMovimento = AtualizarEstoque(dbItem, EstoqueAcao.UPDATE);
+                        }
+                        else
+                        {
+                            dbItem.EstoqueMovimento = AtualizarEstoque(dbItem, EstoqueAcao.DELETE);
+                        }
                     }
                     else
                     {
-                        app.Adicionar(item);
+                        if (item.Produto != null)
+                        {
+                            dbItem.Produto = Banco.Produtos.Find(item.Produto.Id);
+                            dbItem.EstoqueMovimento = AtualizarEstoque(item, EstoqueAcao.INSERT);
+                        }
                     }
+
+                    if (item.Id > 0)
+                    {
+                        Banco.Entry(dbItem).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        Banco.NotaEntradaItens.Add(dbItem);
+                    }
+                    
                 }
-                
-                foreach (var item in obj.listaExcluir)
-                {
-                    app.Excluir(x => x.Id == item.Id);
-                }
-                */
-            } 
+                SalvarTodos();
+            }
 
         }
 
