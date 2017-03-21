@@ -25,4 +25,11 @@ namespace Aplicacao
         void Excluir(Func<T, bool> predicate);
         void SalvarTodos();
     }
+
+    enum EstoqueAcao
+    {
+        INSERT,
+        UPDATE,
+        DELETE
+    };
 }

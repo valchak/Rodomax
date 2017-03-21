@@ -26,7 +26,8 @@ namespace UI
 
         private void btnFiltrar_Click(object sender, System.EventArgs e)
         {
-           BuscarNoBanco();
+            var th = new Thread(new ThreadStart(this.BuscarNoBanco));
+            th.Start();
         }
 
         private void btnSelecionarPesquisa_Click(object sender, System.EventArgs e)
@@ -55,28 +56,34 @@ namespace UI
 
             Fornecedor fornecedor = new Fornecedor();
             IEnumerable<Fornecedor> lista;
-           
-           fornecedor.NomeFantasia = txtPesquisa.Text.Trim();
-           fornecedor.RazaoSocial = txtPesquisa.Text.Trim();
-           lista = app.Get(x => x.RazaoSocial.Contains(fornecedor.RazaoSocial) || x.NomeFantasia.Contains(fornecedor.NomeFantasia));
-           
-            
-            if (lista.Count() > 0)
+
+            fornecedor.NomeFantasia = txtPesquisa.Text.Trim();
+            fornecedor.RazaoSocial = txtPesquisa.Text.Trim();
+            lista =
+                app.Get(
+                    x =>
+                        x.RazaoSocial.Contains(fornecedor.RazaoSocial) ||
+                        x.NomeFantasia.Contains(fornecedor.NomeFantasia));
+            Invoke(new Action(() =>
             {
-                foreach (var p in lista)
+
+                if (lista.Count() > 0)
                 {
-                    int n = this.gridPesquisa.Rows.Add();
-                    gridPesquisa.Rows[n].Cells[0].Value = p.Id;
-                    gridPesquisa.Rows[n].Cells[1].Value = p.RazaoSocial;
-                    gridPesquisa.Rows[n].Cells[2].Value = p.NomeFantasia;
-                    gridPesquisa.Rows[n].Cells[3].Value = p.Telefone;
-                    gridPesquisa.Refresh();
+                    foreach (var p in lista)
+                    {
+                        int n = this.gridPesquisa.Rows.Add();
+                        gridPesquisa.Rows[n].Cells[0].Value = p.Id;
+                        gridPesquisa.Rows[n].Cells[1].Value = p.RazaoSocial;
+                        gridPesquisa.Rows[n].Cells[2].Value = p.NomeFantasia;
+                        gridPesquisa.Rows[n].Cells[3].Value = p.Telefone;
+                        gridPesquisa.Refresh();
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Nenhum item encontrado.");
-            }
+                else
+                {
+                    MessageBox.Show("Nenhum item encontrado.");
+                }
+            }));
         }
 
         private void SelecionarObjeto()

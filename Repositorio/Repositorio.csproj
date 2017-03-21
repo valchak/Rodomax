@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextoDB.cs" />
-    <Compile Include="Migrations\201703171746314_01.cs" />
-    <Compile Include="Migrations\201703171746314_01.Designer.cs">
-      <DependentUpon>201703171746314_01.cs</DependentUpon>
+    <Compile Include="Migrations\201703211707485_First.cs" />
+    <Compile Include="Migrations\201703211707485_First.Designer.cs">
+      <DependentUpon>201703211707485_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,8 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703171746314_01.resx">
-      <DependentUpon>201703171746314_01.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703211707485_First.resx">
+      <DependentUpon>201703211707485_First.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,9 +8,12 @@ namespace Modelo
     {
         public int Id { get; set; }
 
-        public NotaEntrada NotaEntrada { get; set; }
-        public Produto Produto { get; set; }
-        public Filial FilialEstoque { get; set; }
+        public int NotaEntradaId { get; set; }
+        public virtual NotaEntrada NotaEntrada { get; set; }
+        public int FilialId { get; set; }
+        public virtual Filial Filial { get; set; }
+        public virtual Produto Produto { get; set; }
+        public virtual EstoqueMovimento EstoqueMovimento { get; set; }
 
         [StringLength(255)]
         public string Descricao { get; set; }
@@ -20,10 +23,7 @@ namespace Modelo
         public double ValorTotal { get; set; }
         public int QuantidadeEstoque { get; set; }
         public double ValorUnitarioEstoque { get; set; }
-
-        public EstoqueMovimento EstoqueMovimento { get; set; }
-
-        //        [NotMapped]
+        
 
     }
 }

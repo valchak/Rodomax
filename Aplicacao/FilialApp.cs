@@ -26,8 +26,7 @@ namespace Aplicacao
 
         public void Atualizar(Filial obj)
         {
-            Filial dbObj = new Filial();
-            dbObj = Find(obj.Id);
+            Filial dbObj = Find(obj.Id);
             dbObj.Empresa = Banco.Empresas.Where(x => x.Id == obj.Empresa.Id).First();
             dbObj.Cidade = Banco.Cidades.Where(x => x.Id == obj.Cidade.Id).First();
 

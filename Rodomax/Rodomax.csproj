@@ -33,7 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -77,6 +86,12 @@
     <Compile Include="frmFornecedorPesquisa.designer.cs">
       <DependentUpon>frmFornecedorPesquisa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNotaEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotaEntrada.designer.cs">
+      <DependentUpon>frmNotaEntrada.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,12 +109,6 @@
     </Compile>
     <Compile Include="frmProdutoPesquisa.designer.cs">
       <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frnCidadePesquisa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frnCidadePesquisa.designer.cs">
-      <DependentUpon>frnCidadePesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelConsulta.cs">
       <SubType>Form</SubType>
@@ -137,6 +146,9 @@
     <EmbeddedResource Include="frmFornecedorPesquisa.resx">
       <DependentUpon>frmFornecedorPesquisa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNotaEntrada.resx">
+      <DependentUpon>frmNotaEntrada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,9 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProdutoPesquisa.resx">
       <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frnCidadePesquisa.resx">
-      <DependentUpon>frnCidadePesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelConsulta.resx">
       <DependentUpon>ModelConsulta.cs</DependentUpon>
@@ -167,6 +176,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -188,6 +198,10 @@
     <ProjectReference Include="..\Modelo\Modelo.csproj">
       <Project>{4665627d-4fbd-44d8-a6da-08c6b7d036e2}</Project>
       <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositorio\Repositorio.csproj">
+      <Project>{6201bb57-f414-4f2a-8773-2efda0d6e695}</Project>
+      <Name>Repositorio</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

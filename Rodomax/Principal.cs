@@ -38,5 +38,12 @@ namespace Rodomax
             tela.ShowDialog();
             tela.Dispose();
         }
+
+        private void notaDeEntradaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNotaEntrada tela = new frmNotaEntrada();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
     }
 }

@@ -10,8 +10,10 @@ namespace Modelo
     {
         public int Id { get; set; }
 
-        public Fornecedor Fornecedor { get; set; }
-        public OrdemCompra OrdemCompra { get; set; }
+        public int FornecedorId { get; set; }
+        public virtual Fornecedor Fornecedor { get; set; }
+        public virtual OrdemCompra OrdemCompra { get; set; }
+
         [StringLength(100)]
         public string Documento { get; set; }
         [StringLength(10)]
@@ -24,8 +26,8 @@ namespace Modelo
         [StringLength(1)]
         public string Faturado { get; set; }
 
-
         public virtual ICollection<NotaEntradaItens> NotaEntradaItens { get; set; }
+        
         [NotMapped]
         public List<NotaEntradaItens> listaExcluir { get; set; }
 
