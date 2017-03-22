@@ -441,6 +441,7 @@
             this.txtItemMultiplicador.Text = "15";
             this.txtItemMultiplicador.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemMultiplicador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemMultiplicador_KeyPress);
+            this.txtItemMultiplicador.Leave += new System.EventHandler(this.txtItemMultiplicador_Leave);
             // 
             // label16
             // 
@@ -501,6 +502,7 @@
             this.txtItemQuantidade.Text = "0";
             this.txtItemQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemQuantidade_KeyPress);
+            this.txtItemQuantidade.Leave += new System.EventHandler(this.txtItemQuantidade_Leave);
             // 
             // label13
             // 

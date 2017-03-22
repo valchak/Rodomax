@@ -3,7 +3,7 @@ namespace Repositorio.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class First : DbMigration
+    public partial class _01 : DbMigration
     {
         public override void Up()
         {
@@ -424,7 +424,6 @@ namespace Repositorio.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        FornecedorId = c.Int(nullable: false),
                         Documento = c.String(maxLength: 100, storeType: "nvarchar"),
                         Serie = c.String(maxLength: 10, storeType: "nvarchar"),
                         DataEmissao = c.DateTime(nullable: false, precision: 0),
@@ -433,12 +432,13 @@ namespace Repositorio.Migrations
                         AcresDesc = c.Double(nullable: false),
                         ValorDocumentoTotal = c.Double(nullable: false),
                         Faturado = c.String(maxLength: 1, storeType: "nvarchar"),
+                        Fornecedor_Id = c.Int(),
                         OrdemCompra_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.fornecedor", t => t.FornecedorId, cascadeDelete: true)
+                .ForeignKey("dbo.fornecedor", t => t.Fornecedor_Id)
                 .ForeignKey("dbo.ordem_compra", t => t.OrdemCompra_Id)
-                .Index(t => t.FornecedorId)
+                .Index(t => t.Fornecedor_Id)
                 .Index(t => t.OrdemCompra_Id);
             
             CreateTable(
@@ -747,7 +747,7 @@ namespace Repositorio.Migrations
             DropForeignKey("dbo.nota_entrada_itens", "NotaEntradaId", "dbo.nota_entrada");
             DropForeignKey("dbo.nota_entrada_itens", "FilialId", "dbo.filial");
             DropForeignKey("dbo.nota_entrada_itens", "EstoqueMovimento_Id", "dbo.estoque_movimento");
-            DropForeignKey("dbo.nota_entrada", "FornecedorId", "dbo.fornecedor");
+            DropForeignKey("dbo.nota_entrada", "Fornecedor_Id", "dbo.fornecedor");
             DropForeignKey("dbo.financeiro_pendencia", "Despesa_Id", "dbo.despesa");
             DropForeignKey("dbo.filial_atua", "Filial_Id", "dbo.filial");
             DropForeignKey("dbo.estoque", "Produto_Id", "dbo.produto");
@@ -824,7 +824,7 @@ namespace Repositorio.Migrations
             DropIndex("dbo.nota_entrada_itens", new[] { "FilialId" });
             DropIndex("dbo.nota_entrada_itens", new[] { "NotaEntradaId" });
             DropIndex("dbo.nota_entrada", new[] { "OrdemCompra_Id" });
-            DropIndex("dbo.nota_entrada", new[] { "FornecedorId" });
+            DropIndex("dbo.nota_entrada", new[] { "Fornecedor_Id" });
             DropIndex("dbo.financeiro_pendencia", new[] { "Titulo_Fornecedor_Id", "Titulo_Documento", "Titulo_Parcela" });
             DropIndex("dbo.financeiro_pendencia", new[] { "NotaEntrada_Id" });
             DropIndex("dbo.financeiro_pendencia", new[] { "Despesa_Id" });

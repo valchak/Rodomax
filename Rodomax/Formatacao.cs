@@ -38,7 +38,7 @@ namespace Ferramenta
 
         public static void SoNumero(KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)
             {
                 e.Handled = true;
             }

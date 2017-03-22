@@ -7,7 +7,6 @@ namespace Modelo
     [Table("filial")]
     public class Filial
     {
-
         public int Id { get; set; }
         public Empresa Empresa { get; set; }
         public Cidade Cidade { get; set; }

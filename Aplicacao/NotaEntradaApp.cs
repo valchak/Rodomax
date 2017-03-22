@@ -51,10 +51,17 @@ namespace Aplicacao
                 {
                     item.NotaEntrada = obj;
                     item.Filial = Banco.Filiais.Find(item.Filial.Id);
+                    item.QuantidadeEstoque = item.QuantidadeNota * item.Multiplicador;
+                    item.ValorUnitarioEstoque = item.ValorUnitario / (item.Multiplicador * item.QuantidadeNota);
+                    
                     if (item.Produto != null)
                     {
                         item.Produto = Banco.Produtos.Find(item.Produto.Id);
                         item.EstoqueMovimento = AtualizarEstoque(item, EstoqueAcao.INSERT);
+                    }
+                    else
+                    {
+                        item.EstoqueMovimento = null;
                     }
                     Banco.NotaEntradaItens.Add(item);
                 }
@@ -105,8 +112,8 @@ namespace Aplicacao
                     dbItem.Multiplicador = item.Multiplicador;
                     dbItem.ValorUnitario = item.ValorUnitario;
                     dbItem.ValorTotal = item.ValorTotal;
-                    dbItem.QuantidadeEstoque = item.QuantidadeEstoque;
-                    dbItem.ValorUnitarioEstoque = item.ValorUnitarioEstoque;
+                    dbItem.QuantidadeEstoque = item.QuantidadeNota * item.Multiplicador;
+                    dbItem.ValorUnitarioEstoque = item.ValorUnitario / (item.Multiplicador * item.QuantidadeNota);
 
                     if (dbItem.EstoqueMovimento != null)
                     {
@@ -191,7 +198,7 @@ namespace Aplicacao
             }
             catch (Exception e)
             {
-                throw new Exception("Erro ao excluir Nota: " + e.Message);
+                throw new Exception("Erro ao Salvar no Banco Nota Entrada: " + e.Message+" /n "+ e.InnerException);
             }
             
         }

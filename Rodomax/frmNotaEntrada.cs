@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.EntitySql;
 using System.Linq;
 using System.Windows.Forms;
 using Aplicacao;
@@ -19,7 +20,7 @@ namespace UI
         private List<NotaEntradaItens> listaExcluir;
 
         private int numeroItens = 0;
-        
+
         private Produto produto;
         private Filial filial;
         private NotaEntradaItens item;
@@ -30,98 +31,70 @@ namespace UI
             app = new NotaEntradaApp();
             gridItens.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             LimparCampos();
- //           Teste();
+            //           Teste();
         }
 
-        private void LimparCampos()
-        {
-            numeroItens = 0;
-            nota = new NotaEntrada();
-            fornecedor = new Fornecedor();
-            filial = new Filial();
-            this.operacao = "NOVO";
-            listaItem = new Dictionary<int, NotaEntradaItens>();
-            listaExcluir = new List<NotaEntradaItens>();
-            this.AlteraBotoes(2);
-            txtValorDocumento.Clear();
-            txtAcresDesc.Clear();
-            txtValorTotalDocumento.Clear();
-            txtDataEmissao.Value = DateTime.Now;
-            txtDataFaturamento.Value = DateTime.Now;
-            
-            LimparItem();
-        }
 
-        private void LimparItem()
-        {
-            produto = null;
-            item = null;
-            txtItemDescricao.Clear();
-            txtItemMultiplicador.Clear();
-            txtItemValorTotal.Clear();
-            txtItemVlUnitario.Clear();
-            btnItemEditar.Enabled = false;
-            btnItemExcluir.Enabled = false;
-            btnItemAdd.Enabled = true;
-
-            PopulaGrid();
-        }
 
         private void Salvar()
         {
-            try
+            nota.Fornecedor = fornecedor;
+            nota.Documento = txtDocumento.Text.Trim();
+            nota.Serie = txtSerie.Text.Trim();
+            if (cbFinanceiro.Items.Equals("Sim"))
+                nota.Faturado = "S";
+            else
+                nota.Faturado = "N";
+            
+            nota.DataEmissao = txtDataEmissao.Value;
+            nota.DataRecebimento = txtDataFaturamento.Value;
+            nota.ValorDocumento = Formatacao.StringToDouble(txtValorDocumento.Text);
+            nota.ValorDocumentoTotal = Formatacao.StringToDouble(txtValorTotalDocumento.Text);
+            nota.AcresDesc = Formatacao.StringToDouble(txtAcresDesc.Text);
+
+            nota.NotaEntradaItens = new List<NotaEntradaItens>();
+            foreach (var dado in listaItem)
             {
-                nota.Documento = txtDocumento.Text.Trim();
-                nota.Serie = txtSerie.Text.Trim();
-                nota.Fornecedor = fornecedor;
-                if (cbFinanceiro.Items.Equals("Sim"))
-                {
-                    nota.Faturado = "S";
-                }
-                else
-                {
-                    nota.Faturado = "N";
-                }
-                nota.DataEmissao = txtDataEmissao.Value;
-                nota.DataRecebimento = txtDataFaturamento.Value;
-                nota.ValorDocumento = Formatacao.StringToDouble(txtValorDocumento.Text);
-                nota.ValorDocumentoTotal = Formatacao.StringToDouble(txtValorTotalDocumento.Text);
-                nota.AcresDesc = Formatacao.StringToDouble(txtValorTotalDocumento.Text) - Formatacao.StringToDouble(txtValorDocumento.Text);
-                nota.NotaEntradaItens = new List<NotaEntradaItens>();
+                nota.NotaEntradaItens.Add(dado.Value);
+            }
 
-                foreach (var item in listaItem)
-                {
-                //    nota.NotaEntradaItens.Add(item.Value);
-                }
 
-                if (this.operacao.Equals("NOVO"))
+            if (ValidaNota())
+            {
+                try
                 {
-                    app.Adicionar(nota);
-                    MessageBox.Show("Nota salva com sucesso: Código " + nota.Id);
+                    
+                    if (nota.Id == 0)
+                    {
+                        app.Adicionar(nota);
+                        MessageBox.Show("Nota salva com sucesso: Código " + nota.Id);
+                        MessageBox.Show() == DialogResult.Yes
+                    }
+                    else
+                    {
+                        app.Atualizar(nota);
+                        MessageBox.Show("Nota alterada com sucesso.");
+                    }
+                    LimparCampos();
+
                 }
-                else
+                catch (Exception erro)
                 {
-                    app.Atualizar(nota);
-                    MessageBox.Show("Nota alterada com sucesso.");
+                    MessageBox.Show("Erro Salvar: " + erro.Message);
                 }
-                this.LimparCampos();
 
             }
-            catch (Exception erro)
-            {
-                MessageBox.Show("Erro Salvar: " + erro.Message);
-            }
+   
         }
 
-       
+
         private void BuscaNotaEntrada()
         {
-            if (!txtDocumento.Text.Equals("") && !txtSerie.Text.Equals(""))
+            if (fornecedor != null && !txtDocumento.Text.Equals("") && !txtSerie.Text.Equals(""))
             {
-                
                 IEnumerable<NotaEntrada> lista = app.Get(x => x.Fornecedor.Id == fornecedor.Id && x.Documento == txtDocumento.Text.Trim() && x.Serie == txtSerie.Text.Trim());
 
-                if (lista.Count() > 0)
+                if (lista.Any())
                 {
                     nota = lista.First();
                     PopulaCampos(nota);
@@ -134,7 +107,7 @@ namespace UI
                     LimparCampos();
                 }
             }
-            
+
         }
 
         private void PopulaCampos(NotaEntrada nf)
@@ -145,15 +118,15 @@ namespace UI
             }
             txtDataEmissao.Value = nf.DataEmissao;
             txtDataFaturamento.Value = nf.DataRecebimento;
-            txtValorDocumento.Text = (nf.ValorDocumento*100).ToString();
+            txtValorDocumento.Text = (nf.ValorDocumento * 100).ToString();
             txtValorDocumento.Text = Formatacao.DoubleToString(nf.ValorDocumento);
             txtValorTotalDocumento.Text = Formatacao.DoubleToString(nf.ValorDocumentoTotal);
             txtAcresDesc.Text = Formatacao.DoubleToString(nf.AcresDesc);
 
             fornecedor = nf.Fornecedor;
-            
+
             NotaEntradaItemApp itemNfApp = new NotaEntradaItemApp();
-            
+
 
             foreach (var item in nf.NotaEntradaItens)
             {
@@ -167,9 +140,9 @@ namespace UI
                     Console.WriteLine(e);
                     throw;
                 }
-                
+
             }
-            
+
             PopulaGrid();
         }
 
@@ -201,11 +174,7 @@ namespace UI
             SomaTotais(total);
         }
 
-        private void SomaTotais(double TotalItens)
-        {
-            txtSomaItens.Text = Formatacao.DoubleToString(TotalItens);
-            txtDiferencaItensNota.Text = Formatacao.DoubleToString(double.Parse(txtValorTotalDocumento.Text) - TotalItens);
-        }
+
 
         private void btnBuscaFornecedor_Click(object sender, EventArgs e)
         {
@@ -220,7 +189,7 @@ namespace UI
             }
         }
 
-        
+
         private void txtValorDocumento_KeyPress(object sender, KeyPressEventArgs e)
         {
             Formatacao.SoNumero(e);
@@ -263,27 +232,17 @@ namespace UI
 
         private void txtItemVlUnitario_TextChanged(object sender, EventArgs e)
         {
-            Formatacao.MoedaCampo(ref txtValorDocumento);
+            Formatacao.MoedaCampo(ref txtItemVlUnitario);
         }
 
         private void txtItemValorTotal_TextChanged(object sender, EventArgs e)
         {
-            Formatacao.MoedaCampo(ref txtValorDocumento);
+            Formatacao.MoedaCampo(ref txtItemValorTotal);
         }
 
         private void txtValorDocumento_TextChanged(object sender, EventArgs e)
         {
             Formatacao.MoedaCampo(ref txtValorDocumento);
-        }
-
-        private void txtDocumento_TextChanged(object sender, EventArgs e)
-        {
-            BuscaNotaEntrada();
-        }
-
-        private void txtSerie_TextChanged(object sender, EventArgs e)
-        {
-            BuscaNotaEntrada();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -328,40 +287,25 @@ namespace UI
 
         private void btnItemAdd_Click(object sender, EventArgs e)
         {
-
-            if (item == null)
-            {
-                item = new NotaEntradaItens();
-            }
-            if (filial == null)
-            {
-                MessageBox.Show("Deve ser informado a filial do item;");
-                
-            }
-            else
+            if (ValidaItem())
             {
                 item.Produto = produto;
                 item.Filial = filial;
                 item.Descricao = txtItemDescricao.Text;
                 item.QuantidadeNota = int.Parse(txtItemQuantidade.Text);
+                item.Multiplicador = int.Parse(txtItemMultiplicador.Text);
                 item.ValorUnitario = double.Parse(txtItemVlUnitario.Text);
                 item.ValorTotal = double.Parse(txtItemValorTotal.Text);
-                item.ValorUnitarioEstoque = item.ValorUnitario / int.Parse(txtItemMultiplicador.Text);
-                item.QuantidadeEstoque = item.QuantidadeNota * int.Parse(txtItemMultiplicador.Text);
-                item.EstoqueMovimento = new EstoqueMovimento();
-                item.Multiplicador = int.Parse(txtItemMultiplicador.Text);
-                listaItem.Add(++numeroItens,item);
+                listaItem.Add(++numeroItens, item);
                 LimparItem();
             }
-            PopulaGrid();
-
         }
 
         private void btnItemEditar_Click(object sender, EventArgs e)
         {
-
+            
         }
-
+        
         private void btnItemExcluir_Click(object sender, EventArgs e)
         {
 
@@ -374,6 +318,7 @@ namespace UI
                 SelecionarObjeto();
             }
         }
+
         private void SelecionarObjeto()
         {
             try
@@ -420,6 +365,152 @@ namespace UI
         private void btnExcluir_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtItemQuantidade_Leave(object sender, EventArgs e)
+        {
+            ValidaQuantidadeMultiplicador(txtItemQuantidade);
+        }
+
+        private void txtItemMultiplicador_Leave(object sender, EventArgs e)
+        {
+            ValidaQuantidadeMultiplicador(txtItemQuantidade);
+        }
+
+
+        private void txtSerie_TextChanged(object sender, EventArgs e)
+        {
+            BuscaNotaEntrada();
+        }
+
+        private void txtDocumento_TextChanged(object sender, EventArgs e)
+        {
+            BuscaNotaEntrada();
+        }
+
+
+        /*
+            Validações dos campos no formulário 
+        */
+
+
+
+        public bool ValidaNota()
+        {
+
+            if (nota.Fornecedor == null)
+                return false;
+            foreach (var obj in nota.NotaEntradaItens)
+            {
+                if (obj.Filial == null)
+                    return false;
+                if (obj.QuantidadeNota <= 0)
+                    return false;
+                if (obj.Multiplicador <= 0)
+                    return false;
+                if (obj.ValorUnitario <= 0)
+                    return false;
+                if (obj.ValorTotal <= 0)
+                    return false;
+            }
+            return true;
+        }
+   
+
+
+
+
+    // Valida os campos do item da nota
+        public bool ValidaItem()
+        {
+            if (txtItemDescricao.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Descrição informada inválida");
+                return false;
+            }
+            if (filial == null)
+            {
+                MessageBox.Show("Deve ser informado a filial do item;");
+                return false;
+            }
+            if (Formatacao.StringToDouble(txtItemQuantidade.Text.Trim()) <= 0)
+            {
+                MessageBox.Show("Quantidade Inválida;");
+                return false;
+            }
+            if (Formatacao.StringToDouble(txtItemVlUnitario.Text.Trim()) <= 0)
+            {
+                MessageBox.Show("Valor Uitário Inválido;");
+                return false;
+            }
+            if (Formatacao.StringToDouble(txtItemValorTotal.Text.Trim()) <= 0)
+            {
+                MessageBox.Show("Valor Total Inválido;");
+                return false;
+            }
+            if (item == null)
+            {
+                item = new NotaEntradaItens();
+            }
+            return true;
+        }
+
+        // Se os campos Quantidade Multiplicador forem apagados, adicona a quantidade de 1 nos campos.
+        public void ValidaQuantidadeMultiplicador(TextBox txt)
+        {
+            if (txt.Text.Trim().Equals(""))
+            {
+                txt.Text = "1";
+            }
+        }
+
+        // Soma o total dos itens da nota e apresenta no final do formulário
+        private void SomaTotais(double TotalItens)
+        {
+            txtSomaItens.Text = Formatacao.DoubleToString(TotalItens);
+            txtDiferencaItensNota.Text = Formatacao.DoubleToString(double.Parse(txtValorTotalDocumento.Text) - TotalItens);
+        }
+
+        // Limpa Cabeçalho
+        private void LimparCampos()
+        {
+            numeroItens = 0;
+            nota = new NotaEntrada();
+            nota.Id = 0;
+            fornecedor = new Fornecedor();
+            filial = new Filial();
+            this.operacao = "NOVO";
+            listaItem = new Dictionary<int, NotaEntradaItens>();
+            listaExcluir = new List<NotaEntradaItens>();
+            this.AlteraBotoes(2);
+            txtValorDocumento.Clear();
+            txtAcresDesc.Clear();
+            txtValorTotalDocumento.Clear();
+            txtDataEmissao.Value = DateTime.Now;
+            txtDataFaturamento.Value = DateTime.Now;
+
+            LimparItem();
+        }
+
+        // Limpa campos itens da nota
+        private void LimparItem()
+        {
+            item = null;
+            produto = null;
+            txtItemDescricao.Clear();
+            txtItemMultiplicador.Text = "1";
+            txtItemValorTotal.Text = "0,00";
+            txtItemVlUnitario.Text = "0,00";
+            btnItemEditar.Enabled = false;
+            btnItemExcluir.Enabled = false;
+            btnItemAdd.Enabled = true;
+            PopulaGrid();
+        }
+
+
+        public DialogResult MensagemInserir()
+        {
+            return MessageBox.Show("Deseja realmente salvar esse item?", "Confirmação", MessageBoxButtons.YesNoCancel);
         }
     }
 }

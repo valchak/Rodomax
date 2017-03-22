@@ -10,7 +10,6 @@ namespace Modelo
     {
         public int Id { get; set; }
 
-        public int FornecedorId { get; set; }
         public virtual Fornecedor Fornecedor { get; set; }
         public virtual OrdemCompra OrdemCompra { get; set; }
 
