@@ -7,7 +7,7 @@ namespace Modelo
     public class Fornecedor
     {
         public int Id { get; set; }
-        public Cidade Cidade { get; set; }
+        public virtual Cidade Cidade { get; set; }
         [StringLength(255)]
         public string RazaoSocial { get; set; }
         [StringLength(255)]

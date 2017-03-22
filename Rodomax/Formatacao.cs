@@ -59,5 +59,10 @@ namespace Ferramenta
         {
             return String.Format(CultureInfo.InvariantCulture, "{0:0}", valor);
         }
+
+        public static DialogResult MensagemInserir()
+        {
+            return MessageBox.Show("Deseja realmente salvar esse item?", "Confirmação", MessageBoxButtons.YesNo);
+        }
     }
 }

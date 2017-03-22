@@ -20,8 +20,8 @@ namespace Aplicacao
             return
                 Banco.Set<NotaEntradaItens>()
                     .Include(x => x.EstoqueMovimento)
-//                    .Include(x => x.FilialEstoque)
-//                    .Include(x => x.NotaEntrada)
+                    .Include(x => x.Filial)
+                    .Include(x => x.NotaEntrada)
                     .Include(x => x.Produto);
         }
 

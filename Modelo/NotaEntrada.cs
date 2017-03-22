@@ -10,7 +10,7 @@ namespace Modelo
     {
         public int Id { get; set; }
 
-        public virtual Fornecedor Fornecedor { get; set; }
+        public Fornecedor Fornecedor { get; set; }
         public virtual OrdemCompra OrdemCompra { get; set; }
 
         [StringLength(100)]

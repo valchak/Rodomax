@@ -18,10 +18,9 @@ namespace Aplicacao
 
         public IQueryable<NotaEntrada> GetAll()
         {
-            NotaEntradaItens app = new NotaEntradaItens();
-            return
-                Banco.Set<NotaEntrada>()
+            return Banco.Set<NotaEntrada>()
                     .Include(x => x.NotaEntradaItens)
+                    .Include(x => x.OrdemCompra)
                     .Include(x => x.Fornecedor);
         }
 
@@ -73,12 +72,14 @@ namespace Aplicacao
         {
             if (ValidarCampos(obj))
             {
+                IEnumerable<NotaEntradaItens> lista = obj.NotaEntradaItens;
                 NotaEntrada dbObj = new NotaEntrada();
-                dbObj = Banco.NotasEntrada.Include(x => x.Fornecedor).Include(x => x.OrdemCompra).Where(x => x.Id == obj.Id).First();
+                dbObj = Banco.NotasEntrada.Where(x => x.Id == obj.Id).First();
+                dbObj.NotaEntradaItens = null;
+                dbObj.Fornecedor = Banco.Fornecedores.Find(obj.Fornecedor.Id);
                 dbObj.DataEmissao = obj.DataEmissao;
                 dbObj.DataRecebimento = obj.DataRecebimento;
-
-                dbObj.Fornecedor = Banco.Fornecedores.Find(obj.Fornecedor.Id);
+                
 
                 if (obj.OrdemCompra != null)
                 {
@@ -88,8 +89,6 @@ namespace Aplicacao
                 dbObj.ValorDocumentoTotal = obj.ValorDocumentoTotal;
                 dbObj.AcresDesc = obj.AcresDesc;
                 dbObj.Faturado = dbObj.Faturado;
-                IEnumerable<NotaEntradaItens> lista = obj.NotaEntradaItens;
-                dbObj.NotaEntradaItens = null;
                 Banco.Entry(dbObj).State = EntityState.Modified;
                 
                 foreach (var item in lista)
@@ -152,8 +151,8 @@ namespace Aplicacao
                 {
                     foreach (var item in obj.listaExcluir)
                     {
-                        var dbItem = Banco.NotaEntradaItens.Find(item.Id);
-                        if (dbItem.Produto != null)
+                        var dbItem = Banco.NotaEntradaItens.Include(x => x.EstoqueMovimento).Where(x => x.Id ==item.Id).First();
+                        if (dbItem.EstoqueMovimento != null)
                         {
                             AtualizarEstoque(dbItem, EstoqueAcao.DELETE);
                         }
@@ -203,7 +202,7 @@ namespace Aplicacao
             
         }
 
-        private bool ValidarCampos(NotaEntrada obj)
+        public bool ValidarCampos(NotaEntrada obj)
         {
             if (obj.Fornecedor == null)
             {
@@ -225,6 +224,20 @@ namespace Aplicacao
             {
                 throw new Exception("Valor Total Inválido");
             }
+            foreach (var item in obj.NotaEntradaItens)
+            {
+                if (item.Filial == null)
+                    throw new Exception("Filial não pode ser nula = Item: "+item.Descricao);
+                if (item.QuantidadeNota <= 0)
+                    throw new Exception("Quantidade inváida = Item: " + item.Descricao);
+                if (item.Multiplicador <= 0)
+                    throw new Exception("Multiplicador inváida = Item: " + item.Descricao);
+                if (item.ValorUnitario <= 0)
+                    throw new Exception("Valor Unitário inváido = Item: " + item.Descricao);
+                if (item.ValorTotal <= 0)
+                    throw new Exception("Valor Unitário inváido = Item: " + item.Descricao);
+            }
+
             return true;
         }
 

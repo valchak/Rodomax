@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Common.EntitySql;
 using System.Linq;
@@ -30,8 +31,7 @@ namespace UI
             InitializeComponent();
             app = new NotaEntradaApp();
             gridItens.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            LimparCampos();
-            //           Teste();
+            LimpaNovo();
         }
 
 
@@ -52,31 +52,32 @@ namespace UI
             nota.ValorDocumentoTotal = Formatacao.StringToDouble(txtValorTotalDocumento.Text);
             nota.AcresDesc = Formatacao.StringToDouble(txtAcresDesc.Text);
 
-            nota.NotaEntradaItens = new List<NotaEntradaItens>();
-            foreach (var dado in listaItem)
-            {
-                nota.NotaEntradaItens.Add(dado.Value);
-            }
-
+            nota.NotaEntradaItens = listaItem.Values.ToList();
+            nota.listaExcluir = listaExcluir;
 
             if (ValidaNota())
             {
                 try
                 {
-                    
-                    if (nota.Id == 0)
+                    switch (Formatacao.MensagemInserir())
                     {
-                        app.Adicionar(nota);
-                        MessageBox.Show("Nota salva com sucesso: Código " + nota.Id);
-                        MessageBox.Show() == DialogResult.Yes
-                    }
-                    else
-                    {
-                        app.Atualizar(nota);
-                        MessageBox.Show("Nota alterada com sucesso.");
-                    }
-                    LimparCampos();
+                        case DialogResult.Yes:
+                            if (nota.Id == 0)
+                            {
+                                app.Adicionar(nota);
+                                MessageBox.Show("Nota salva com sucesso: Código " + nota.Id);
 
+                            }
+                            else
+                            {
+                                app.Atualizar(nota);
+                                MessageBox.Show("Nota alterada com sucesso.");
+                            }
+                            LimparCabecalho();
+                            break;
+                        case DialogResult.No:
+                            break;
+                    }
                 }
                 catch (Exception erro)
                 {
@@ -92,6 +93,7 @@ namespace UI
         {
             if (fornecedor != null && !txtDocumento.Text.Equals("") && !txtSerie.Text.Equals(""))
             {
+                
                 IEnumerable<NotaEntrada> lista = app.Get(x => x.Fornecedor.Id == fornecedor.Id && x.Documento == txtDocumento.Text.Trim() && x.Serie == txtSerie.Text.Trim());
 
                 if (lista.Any())
@@ -104,7 +106,7 @@ namespace UI
                 }
                 else
                 {
-                    LimparCampos();
+                    LimparCabecalho();
                 }
             }
 
@@ -118,7 +120,6 @@ namespace UI
             }
             txtDataEmissao.Value = nf.DataEmissao;
             txtDataFaturamento.Value = nf.DataRecebimento;
-            txtValorDocumento.Text = (nf.ValorDocumento * 100).ToString();
             txtValorDocumento.Text = Formatacao.DoubleToString(nf.ValorDocumento);
             txtValorTotalDocumento.Text = Formatacao.DoubleToString(nf.ValorDocumentoTotal);
             txtAcresDesc.Text = Formatacao.DoubleToString(nf.AcresDesc);
@@ -131,6 +132,7 @@ namespace UI
             foreach (var item in nf.NotaEntradaItens)
             {
                 NotaEntradaItens novo = itemNfApp.Get(x => x.Id == item.Id).First();
+
                 try
                 {
                     listaItem.Add(++numeroItens, novo);
@@ -247,8 +249,7 @@ namespace UI
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.AlteraBotoes(2);
-            this.operacao = "NOVO";
+           LimpaNovo();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -392,26 +393,72 @@ namespace UI
         /*
             Validações dos campos no formulário 
         */
-
-
-
         public bool ValidaNota()
         {
-
-            if (nota.Fornecedor == null)
-                return false;
-            foreach (var obj in nota.NotaEntradaItens)
+            if (nota.Fornecedor.Id <= 0)
             {
-                if (obj.Filial == null)
+                MessageBox.Show("Fornecedor inválido aaa");
+                return false;
+            }
+
+            if (nota.Documento.Equals(""))
+            {
+                MessageBox.Show("Documento Inválido ");
+                return false;
+            }
+
+            if (nota.Serie.Equals(""))
+            {   MessageBox.Show("Série Inválida");
+                return false;
+            }   
+            if (nota.ValorDocumento == 0.00)
+            {
+                MessageBox.Show("Valor do documento inválido");
+                return false;
+            }
+                
+            if (nota.ValorDocumentoTotal == 0.00)
+            {
+                MessageBox.Show("Valor Total Inválido");
+                return false;
+            }
+            if (!nota.NotaEntradaItens.Any())
+            {
+                MessageBox.Show("Nenhum Item na Nota: ");
+                return false;
+            }
+                
+            foreach (var item in nota.NotaEntradaItens)
+            {
+                if (item.Filial == null)
+                {
+                    MessageBox.Show("Filial não pode ser nula = Item: " + item.Descricao);
                     return false;
-                if (obj.QuantidadeNota <= 0)
+                }
+
+                if (item.QuantidadeNota <= 0)
+                {
+                    MessageBox.Show("Quantidade inváida = Item: " + item.Descricao);
                     return false;
-                if (obj.Multiplicador <= 0)
+                }
+                    
+                if (item.Multiplicador <= 0)
+                {
+                    MessageBox.Show("Multiplicador inváida = Item: " + item.Descricao);
                     return false;
-                if (obj.ValorUnitario <= 0)
+                }
+                    
+                if (item.ValorUnitario <= 0)
+                {
+                    MessageBox.Show("Valor Unitário inváido = Item: " + item.Descricao);
                     return false;
-                if (obj.ValorTotal <= 0)
+                }   
+                if (item.ValorTotal <= 0)
+                {
+                    MessageBox.Show("Valor Total inváido = Item: " + item.Descricao);
                     return false;
+                }
+                    
             }
             return true;
         }
@@ -428,7 +475,7 @@ namespace UI
                 MessageBox.Show("Descrição informada inválida");
                 return false;
             }
-            if (filial == null)
+            if (filial == null || filial.Id <= 0)
             {
                 MessageBox.Show("Deve ser informado a filial do item;");
                 return false;
@@ -471,13 +518,21 @@ namespace UI
             txtDiferencaItensNota.Text = Formatacao.DoubleToString(double.Parse(txtValorTotalDocumento.Text) - TotalItens);
         }
 
+        public void LimpaNovo()
+        {
+            fornecedor = new Fornecedor();
+            txtFornecedor.Clear();
+            txtDocumento.Clear();
+            txtSerie.Clear();
+            LimparCabecalho();
+        }
+
         // Limpa Cabeçalho
-        private void LimparCampos()
+        private void LimparCabecalho()
         {
             numeroItens = 0;
             nota = new NotaEntrada();
             nota.Id = 0;
-            fornecedor = new Fornecedor();
             filial = new Filial();
             this.operacao = "NOVO";
             listaItem = new Dictionary<int, NotaEntradaItens>();
@@ -506,11 +561,6 @@ namespace UI
             btnItemAdd.Enabled = true;
             PopulaGrid();
         }
-
-
-        public DialogResult MensagemInserir()
-        {
-            return MessageBox.Show("Deseja realmente salvar esse item?", "Confirmação", MessageBoxButtons.YesNoCancel);
-        }
+        
     }
 }
