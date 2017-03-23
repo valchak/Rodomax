@@ -32,11 +32,11 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grpSituacao = new System.Windows.Forms.GroupBox();
-            this.rdTodos = new System.Windows.Forms.RadioButton();
-            this.rdInativo = new System.Windows.Forms.RadioButton();
-            this.rdAtivo = new System.Windows.Forms.RadioButton();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.rdAtivo = new System.Windows.Forms.RadioButton();
+            this.rdInativo = new System.Windows.Forms.RadioButton();
+            this.rdTodos = new System.Windows.Forms.RadioButton();
+            this.grpSituacao = new System.Windows.Forms.GroupBox();
             this.pnlPesquisaResultado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).BeginInit();
             this.grpSituacao.SuspendLayout();
@@ -98,28 +98,16 @@
             this.Column5.ReadOnly = true;
             this.Column5.Width = 50;
             // 
-            // grpSituacao
+            // rdAtivo
             // 
-            this.grpSituacao.Controls.Add(this.rdTodos);
-            this.grpSituacao.Controls.Add(this.rdInativo);
-            this.grpSituacao.Controls.Add(this.rdAtivo);
-            this.grpSituacao.Location = new System.Drawing.Point(15, 48);
-            this.grpSituacao.Name = "grpSituacao";
-            this.grpSituacao.Size = new System.Drawing.Size(327, 31);
-            this.grpSituacao.TabIndex = 7;
-            this.grpSituacao.TabStop = false;
-            this.grpSituacao.Text = "Situacao";
-            // 
-            // rdTodos
-            // 
-            this.rdTodos.AutoSize = true;
-            this.rdTodos.Location = new System.Drawing.Point(174, 11);
-            this.rdTodos.Name = "rdTodos";
-            this.rdTodos.Size = new System.Drawing.Size(55, 17);
-            this.rdTodos.TabIndex = 2;
-            this.rdTodos.TabStop = true;
-            this.rdTodos.Text = "Todos";
-            this.rdTodos.UseVisualStyleBackColor = true;
+            this.rdAtivo.AutoSize = true;
+            this.rdAtivo.Location = new System.Drawing.Point(7, 11);
+            this.rdAtivo.Name = "rdAtivo";
+            this.rdAtivo.Size = new System.Drawing.Size(49, 17);
+            this.rdAtivo.TabIndex = 0;
+            this.rdAtivo.TabStop = true;
+            this.rdAtivo.Text = "Ativo";
+            this.rdAtivo.UseVisualStyleBackColor = true;
             // 
             // rdInativo
             // 
@@ -132,16 +120,28 @@
             this.rdInativo.Text = "Inativo";
             this.rdInativo.UseVisualStyleBackColor = true;
             // 
-            // rdAtivo
+            // rdTodos
             // 
-            this.rdAtivo.AutoSize = true;
-            this.rdAtivo.Location = new System.Drawing.Point(7, 11);
-            this.rdAtivo.Name = "rdAtivo";
-            this.rdAtivo.Size = new System.Drawing.Size(49, 17);
-            this.rdAtivo.TabIndex = 0;
-            this.rdAtivo.TabStop = true;
-            this.rdAtivo.Text = "Ativo";
-            this.rdAtivo.UseVisualStyleBackColor = true;
+            this.rdTodos.AutoSize = true;
+            this.rdTodos.Location = new System.Drawing.Point(174, 11);
+            this.rdTodos.Name = "rdTodos";
+            this.rdTodos.Size = new System.Drawing.Size(55, 17);
+            this.rdTodos.TabIndex = 2;
+            this.rdTodos.TabStop = true;
+            this.rdTodos.Text = "Todos";
+            this.rdTodos.UseVisualStyleBackColor = true;
+            // 
+            // grpSituacao
+            // 
+            this.grpSituacao.Controls.Add(this.rdTodos);
+            this.grpSituacao.Controls.Add(this.rdInativo);
+            this.grpSituacao.Controls.Add(this.rdAtivo);
+            this.grpSituacao.Location = new System.Drawing.Point(15, 48);
+            this.grpSituacao.Name = "grpSituacao";
+            this.grpSituacao.Size = new System.Drawing.Size(327, 31);
+            this.grpSituacao.TabIndex = 7;
+            this.grpSituacao.TabStop = false;
+            this.grpSituacao.Text = "Situacao";
             // 
             // frmProdutoPesquisa
             // 
@@ -169,13 +169,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView gridPesquisa;
-        private System.Windows.Forms.GroupBox grpSituacao;
-        private System.Windows.Forms.RadioButton rdTodos;
-        private System.Windows.Forms.RadioButton rdInativo;
-        private System.Windows.Forms.RadioButton rdAtivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.RadioButton rdAtivo;
+        private System.Windows.Forms.RadioButton rdInativo;
+        private System.Windows.Forms.RadioButton rdTodos;
+        private System.Windows.Forms.GroupBox grpSituacao;
     }
 }

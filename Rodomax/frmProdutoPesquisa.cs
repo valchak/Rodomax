@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Aplicacao;
 using Modelo;
 using Ferramenta;
+using MMLib.Extensions;
 
 
 namespace UI
@@ -50,7 +51,7 @@ namespace UI
             {
                 produto.Situacao = "";
             }
-            produto.Nome = txtPesquisa.Text.Trim();
+            produto.Nome = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
 
             
             IEnumerable<Produto> lista = app.Get(x => x.Nome.Contains(produto.Nome) && x.Situacao.Contains(produto.Situacao));

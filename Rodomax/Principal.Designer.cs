@@ -35,6 +35,8 @@
             this.cadProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaDeEntradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saídaDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             this.operaçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(957, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1203, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -83,7 +85,9 @@
             // operaçõesToolStripMenuItem
             // 
             this.operaçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.notaDeEntradaToolStripMenuItem});
+            this.notaDeEntradaToolStripMenuItem,
+            this.saídaDeEstoqueToolStripMenuItem,
+            this.estoqueToolStripMenuItem});
             this.operaçõesToolStripMenuItem.Name = "operaçõesToolStripMenuItem";
             this.operaçõesToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.operaçõesToolStripMenuItem.Text = "Operações";
@@ -91,15 +95,29 @@
             // notaDeEntradaToolStripMenuItem
             // 
             this.notaDeEntradaToolStripMenuItem.Name = "notaDeEntradaToolStripMenuItem";
-            this.notaDeEntradaToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.notaDeEntradaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.notaDeEntradaToolStripMenuItem.Text = "Nota de Entrada";
             this.notaDeEntradaToolStripMenuItem.Click += new System.EventHandler(this.notaDeEntradaToolStripMenuItem_Click);
+            // 
+            // saídaDeEstoqueToolStripMenuItem
+            // 
+            this.saídaDeEstoqueToolStripMenuItem.Name = "saídaDeEstoqueToolStripMenuItem";
+            this.saídaDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.saídaDeEstoqueToolStripMenuItem.Text = "Saída de Estoque";
+            this.saídaDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.saídaDeEstoqueToolStripMenuItem_Click);
+            // 
+            // estoqueToolStripMenuItem
+            // 
+            this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
+            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.estoqueToolStripMenuItem.Text = "Estoque";
+            this.estoqueToolStripMenuItem.Click += new System.EventHandler(this.estoqueToolStripMenuItem_Click);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 284);
+            this.ClientSize = new System.Drawing.Size(1203, 577);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Principal";
@@ -120,6 +138,8 @@
         private System.Windows.Forms.ToolStripMenuItem cadProdutoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operaçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notaDeEntradaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saídaDeEstoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
     }
 }
 

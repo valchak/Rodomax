@@ -4,6 +4,7 @@ using Modelo;
 using System;
 using Aplicacao;
 using Ferramenta;
+using MMLib.Extensions;
 
 namespace UI
 {
@@ -24,7 +25,7 @@ namespace UI
             gridPesquisa.ResetBindings();
             gridPesquisa.Rows.Clear();
             ProdutoGrupo grupo = new ProdutoGrupo();
-            grupo.Nome = txtPesquisa.Text.Trim();
+            grupo.Nome = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
             IEnumerable<ProdutoGrupo> lista = app.Get(x => x.Nome.Contains(grupo.Nome));
             foreach (var g in lista)
             {

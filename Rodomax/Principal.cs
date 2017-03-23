@@ -45,5 +45,17 @@ namespace Rodomax
             tela.ShowDialog();
             tela.Dispose();
         }
+
+        private void saídaDeEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void estoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEstoque tela = new frmEstoque();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
     }
 }

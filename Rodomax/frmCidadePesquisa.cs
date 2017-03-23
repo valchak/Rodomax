@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Aplicacao;
 using Ferramenta;
 using Modelo;
+using MMLib.Extensions;
 
 namespace UI
 {
@@ -22,7 +23,7 @@ namespace UI
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
            
-            IEnumerable<Cidade> lista = app.Get(x => x.Nome.Contains(txtPesquisa.Text.Trim()));
+            IEnumerable<Cidade> lista = app.Get(x => x.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()));
 
             gridPesquisa.DataSource = null;
             gridPesquisa.ResetBindings();

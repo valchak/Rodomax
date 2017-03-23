@@ -74,6 +74,12 @@
     <Compile Include="frmCidadePesquisa.designer.cs">
       <DependentUpon>frmCidadePesquisa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEstoque.Designer.cs">
+      <DependentUpon>frmEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFilial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCidadePesquisa.resx">
       <DependentUpon>frmCidadePesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEstoque.resx">
+      <DependentUpon>frmEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFilial.resx">
       <DependentUpon>frmFilial.cs</DependentUpon>

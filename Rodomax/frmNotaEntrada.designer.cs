@@ -440,7 +440,7 @@
             this.txtItemMultiplicador.Name = "txtItemMultiplicador";
             this.txtItemMultiplicador.Size = new System.Drawing.Size(75, 20);
             this.txtItemMultiplicador.TabIndex = 35;
-            this.txtItemMultiplicador.Text = "15";
+            this.txtItemMultiplicador.Text = "1";
             this.txtItemMultiplicador.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemMultiplicador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemMultiplicador_KeyPress);
             this.txtItemMultiplicador.Leave += new System.EventHandler(this.txtItemMultiplicador_Leave);
@@ -501,7 +501,7 @@
             this.txtItemQuantidade.Name = "txtItemQuantidade";
             this.txtItemQuantidade.Size = new System.Drawing.Size(96, 20);
             this.txtItemQuantidade.TabIndex = 11;
-            this.txtItemQuantidade.Text = "0";
+            this.txtItemQuantidade.Text = "1";
             this.txtItemQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemQuantidade_KeyPress);
             this.txtItemQuantidade.Leave += new System.EventHandler(this.txtItemQuantidade_Leave);

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Aplicacao;
 using Ferramenta;
 using Modelo;
+using MMLib.Extensions;
 
 namespace UI
 {
@@ -27,7 +28,7 @@ namespace UI
        
         public void Buscar()
         {
-            IEnumerable<Filial> lista = app.Get(x => x.Nome.Contains(txtPesquisa.Text.Trim()));
+            IEnumerable<Filial> lista = app.Get(x => x.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()));
 
             gridPesquisa.DataSource = null;
             gridPesquisa.ResetBindings();

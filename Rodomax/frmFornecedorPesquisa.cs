@@ -7,6 +7,7 @@ using Aplicacao;
 using Modelo;
 using System;
 using Ferramenta;
+using MMLib.Extensions;
 
 namespace UI
 {
@@ -57,8 +58,8 @@ namespace UI
             Fornecedor fornecedor = new Fornecedor();
             IEnumerable<Fornecedor> lista;
 
-            fornecedor.NomeFantasia = txtPesquisa.Text.Trim();
-            fornecedor.RazaoSocial = txtPesquisa.Text.Trim();
+            fornecedor.NomeFantasia = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
+            fornecedor.RazaoSocial = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
             lista =
                 app.Get(
                     x =>
