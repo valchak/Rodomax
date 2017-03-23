@@ -64,5 +64,10 @@ namespace Ferramenta
         {
             return MessageBox.Show("Deseja realmente salvar esse item?", "Confirmação", MessageBoxButtons.YesNo);
         }
+
+        public static DialogResult MensagemExcluir()
+        {
+            return MessageBox.Show("Deseja realmente exlcuir esse item?", "Excluir Item", MessageBoxButtons.YesNo);
+        }
     }
 }

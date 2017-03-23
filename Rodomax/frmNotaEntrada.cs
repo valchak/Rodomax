@@ -21,6 +21,7 @@ namespace UI
         private List<NotaEntradaItens> listaExcluir;
 
         private int numeroItens = 0;
+        private int numeroEditar = 0;
 
         private Produto produto;
         private Filial filial;
@@ -160,6 +161,8 @@ namespace UI
             {
                 int n = this.gridItens.Rows.Add();
                 gridItens.Rows[n].Cells[0].Value = item.Key;
+                item.Value.QuantidadeEstoque = item.Value.Multiplicador * item.Value.QuantidadeNota;
+                item.Value.ValorUnitarioEstoque = item.Value.ValorTotal / item.Value.QuantidadeEstoque;
                 if (item.Value.Produto != null)
                 {
                     gridItens.Rows[n].Cells[1].Value = item.Value.Produto.Id;
@@ -304,12 +307,44 @@ namespace UI
 
         private void btnItemEditar_Click(object sender, EventArgs e)
         {
-            
+            if (ValidaItem())
+            {
+                item.Produto = produto;
+                item.Filial = filial;
+                item.Descricao = txtItemDescricao.Text;
+                item.QuantidadeNota = int.Parse(txtItemQuantidade.Text);
+                item.Multiplicador = int.Parse(txtItemMultiplicador.Text);
+                item.ValorUnitario = double.Parse(txtItemVlUnitario.Text);
+                item.ValorTotal = double.Parse(txtItemValorTotal.Text);
+                //listaItem.Add(numeroEditar, item);
+                listaItem[numeroEditar] = item;
+                LimparItem();
+            }
         }
         
         private void btnItemExcluir_Click(object sender, EventArgs e)
         {
 
+            switch (Formatacao.MensagemExcluir())
+            {
+                case DialogResult.Yes:
+                    if (nota.Id == 0)
+                    {
+                        app.Adicionar(nota);
+                        MessageBox.Show("Nota salva com sucesso: Código " + nota.Id);
+
+                    }
+                    else
+                    {
+                        app.Atualizar(nota);
+                        MessageBox.Show("Nota alterada com sucesso.");
+                    }
+                    LimparCabecalho();
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+            
         }
 
         private void gridItens_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -365,7 +400,16 @@ namespace UI
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-
+            switch (Formatacao.MensagemExcluir())
+            {
+                case DialogResult.Yes:
+                    app.Excluir(x => x.Id == nota.Id);
+                    MessageBox.Show("Item Excuido com sucesso:");
+                    LimparCabecalho();
+                    break;
+                case DialogResult.No:
+                    break;
+            }
         }
 
         private void txtItemQuantidade_Leave(object sender, EventArgs e)
@@ -554,6 +598,7 @@ namespace UI
             produto = null;
             txtItemDescricao.Clear();
             txtItemMultiplicador.Text = "1";
+            txtItemQuantidade.Text = "1";
             txtItemValorTotal.Text = "0,00";
             txtItemVlUnitario.Text = "0,00";
             btnItemEditar.Enabled = false;
@@ -561,6 +606,40 @@ namespace UI
             btnItemAdd.Enabled = true;
             PopulaGrid();
         }
-        
+
+        private void gridItens_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (gridItens.Rows.Count > 0)
+            {
+                try
+                {
+                    numeroEditar = Convert.ToInt32(gridItens.SelectedRows[0].Cells[0].Value.ToString());
+                    item = listaItem[numeroEditar];
+                    filial = item.Filial;
+                    txtItemFilial.Text = filial.Nome;
+                    produto = item.Produto;
+                    txtItemDescricao.Text = item.Descricao;
+                    txtItemQuantidade.Text = item.QuantidadeNota.ToString();
+                    txtItemMultiplicador.Text = item.Multiplicador.ToString();
+                    txtItemVlUnitario.Text = Formatacao.DoubleToString(item.ValorUnitario);
+                    txtItemVlUnitario.Text = Formatacao.DoubleToString(item.ValorUnitario);
+                    txtItemValorTotal.Text = Formatacao.DoubleToString(item.ValorTotal);
+
+                    btnItemEditar.Enabled = true;
+                    btnItemExcluir.Enabled = true;
+                    btnItemAdd.Enabled = false;
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Erro: " + exception.Message);
+                }
+
+            }
+        }
+
+        private void btnItemLimpar_Click(object sender, EventArgs e)
+        {
+            LimparItem();
+        }
     }
 }

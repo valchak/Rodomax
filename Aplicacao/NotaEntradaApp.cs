@@ -51,7 +51,7 @@ namespace Aplicacao
                     item.NotaEntrada = obj;
                     item.Filial = Banco.Filiais.Find(item.Filial.Id);
                     item.QuantidadeEstoque = item.QuantidadeNota * item.Multiplicador;
-                    item.ValorUnitarioEstoque = item.ValorUnitario / (item.Multiplicador * item.QuantidadeNota);
+                    item.ValorUnitarioEstoque = item.ValorTotal / item.QuantidadeEstoque;
                     
                     if (item.Produto != null)
                     {
@@ -73,6 +73,7 @@ namespace Aplicacao
             if (ValidarCampos(obj))
             {
                 IEnumerable<NotaEntradaItens> lista = obj.NotaEntradaItens;
+                List<NotaEntradaItens> excluir = obj.listaExcluir;
                 NotaEntrada dbObj = new NotaEntrada();
                 dbObj = Banco.NotasEntrada.Where(x => x.Id == obj.Id).First();
                 dbObj.NotaEntradaItens = null;
@@ -112,7 +113,7 @@ namespace Aplicacao
                     dbItem.ValorUnitario = item.ValorUnitario;
                     dbItem.ValorTotal = item.ValorTotal;
                     dbItem.QuantidadeEstoque = item.QuantidadeNota * item.Multiplicador;
-                    dbItem.ValorUnitarioEstoque = item.ValorUnitario / (item.Multiplicador * item.QuantidadeNota);
+                    dbItem.ValorUnitarioEstoque = item.ValorTotal / item.QuantidadeEstoque;
 
                     if (dbItem.EstoqueMovimento != null)
                     {
@@ -152,11 +153,16 @@ namespace Aplicacao
                     foreach (var item in obj.listaExcluir)
                     {
                         var dbItem = Banco.NotaEntradaItens.Include(x => x.EstoqueMovimento).Where(x => x.Id ==item.Id).First();
+                        
                         if (dbItem.EstoqueMovimento != null)
                         {
-                            AtualizarEstoque(dbItem, EstoqueAcao.DELETE);
+                            Banco.NotaEntradaItens.Remove(dbItem);
+                            AtualizarEstoque(item, EstoqueAcao.DELETE);
                         }
-                        Banco.NotaEntradaItens.Remove(dbItem);
+                        else
+                        {
+                            Banco.NotaEntradaItens.Remove(dbItem);
+                        }
                     }
                 }
 
@@ -170,15 +176,22 @@ namespace Aplicacao
             try
             {
                 IEnumerable<NotaEntradaItens> lista = Banco.NotasEntrada.Include(x => x.NotaEntradaItens).Where(predicate).First().NotaEntradaItens;
-                
+                List<EstoqueMovimento> excluir = new List<EstoqueMovimento>();
                 foreach (var item in lista)
                 {
                     if (item.EstoqueMovimento != null)
                     {
-                        AtualizarEstoque(item, EstoqueAcao.DELETE);
+                        EstoqueMovimento movimento = new EstoqueMovimento();
+                        movimento = item.EstoqueMovimento;
+                        excluir.Add(movimento);
                     }
                 }
-                Banco.Set<NotaEntrada>().Include(x => x.Fornecedor).Include(x => x.OrdemCompra).Include(x => x.NotaEntradaItens).Where(predicate).ToList().ForEach(del => Banco.Set<NotaEntrada>().Remove(del));
+
+                Banco.Set<NotaEntrada>().Include(x => x.Fornecedor).Include(x => x.OrdemCompra).Include(x => x.NotaEntradaItens).Where(predicate).ToList().ForEach(del => Banco.Set<NotaEntrada>().Remove(del));                
+                foreach (var item in excluir)
+                {
+                    Banco.EstoqueMovimentos.Remove(item);
+                }
                 SalvarTodos();
             }
             catch (Exception e)

@@ -82,6 +82,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtDiferencaItensNota = new System.Windows.Forms.Label();
             this.txtSomaItens = new System.Windows.Forms.Label();
+            this.btnItemLimpar = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -373,6 +374,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnItemLimpar);
             this.groupBox1.Controls.Add(this.btnItemAdd);
             this.groupBox1.Controls.Add(this.btnItemExcluir);
             this.groupBox1.Controls.Add(this.btnItemEditar);
@@ -391,7 +393,7 @@
             this.groupBox1.Controls.Add(this.txtItemDescricao);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.gridItens);
-            this.groupBox1.Location = new System.Drawing.Point(4, 115);
+            this.groupBox1.Location = new System.Drawing.Point(4, 113);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(888, 367);
             this.groupBox1.TabIndex = 24;
@@ -401,9 +403,9 @@
             // btnItemAdd
             // 
             this.btnItemAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnItemAdd.Location = new System.Drawing.Point(624, 67);
+            this.btnItemAdd.Location = new System.Drawing.Point(499, 68);
             this.btnItemAdd.Name = "btnItemAdd";
-            this.btnItemAdd.Size = new System.Drawing.Size(82, 23);
+            this.btnItemAdd.Size = new System.Drawing.Size(86, 23);
             this.btnItemAdd.TabIndex = 16;
             this.btnItemAdd.Text = "Adicionar";
             this.btnItemAdd.UseVisualStyleBackColor = true;
@@ -412,9 +414,9 @@
             // btnItemExcluir
             // 
             this.btnItemExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnItemExcluir.Location = new System.Drawing.Point(800, 67);
+            this.btnItemExcluir.Location = new System.Drawing.Point(699, 67);
             this.btnItemExcluir.Name = "btnItemExcluir";
-            this.btnItemExcluir.Size = new System.Drawing.Size(82, 23);
+            this.btnItemExcluir.Size = new System.Drawing.Size(76, 23);
             this.btnItemExcluir.TabIndex = 18;
             this.btnItemExcluir.Text = "Excluir";
             this.btnItemExcluir.UseVisualStyleBackColor = true;
@@ -423,9 +425,9 @@
             // btnItemEditar
             // 
             this.btnItemEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnItemEditar.Location = new System.Drawing.Point(712, 67);
+            this.btnItemEditar.Location = new System.Drawing.Point(600, 68);
             this.btnItemEditar.Name = "btnItemEditar";
-            this.btnItemEditar.Size = new System.Drawing.Size(82, 23);
+            this.btnItemEditar.Size = new System.Drawing.Size(86, 23);
             this.btnItemEditar.TabIndex = 17;
             this.btnItemEditar.Text = "Editar";
             this.btnItemEditar.UseVisualStyleBackColor = true;
@@ -434,9 +436,9 @@
             // txtItemMultiplicador
             // 
             this.txtItemMultiplicador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemMultiplicador.Location = new System.Drawing.Point(499, 67);
+            this.txtItemMultiplicador.Location = new System.Drawing.Point(358, 68);
             this.txtItemMultiplicador.Name = "txtItemMultiplicador";
-            this.txtItemMultiplicador.Size = new System.Drawing.Size(96, 20);
+            this.txtItemMultiplicador.Size = new System.Drawing.Size(75, 20);
             this.txtItemMultiplicador.TabIndex = 35;
             this.txtItemMultiplicador.Text = "15";
             this.txtItemMultiplicador.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -447,7 +449,7 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(499, 55);
+            this.label16.Location = new System.Drawing.Point(358, 55);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(66, 13);
             this.label16.TabIndex = 34;
@@ -455,7 +457,7 @@
             // 
             // txtItemValorTotal
             // 
-            this.txtItemValorTotal.Location = new System.Drawing.Point(253, 67);
+            this.txtItemValorTotal.Location = new System.Drawing.Point(238, 68);
             this.txtItemValorTotal.Name = "txtItemValorTotal";
             this.txtItemValorTotal.Size = new System.Drawing.Size(96, 20);
             this.txtItemValorTotal.TabIndex = 13;
@@ -467,7 +469,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(253, 54);
+            this.label15.Location = new System.Drawing.Point(235, 55);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(81, 13);
             this.label15.TabIndex = 32;
@@ -475,7 +477,7 @@
             // 
             // txtItemVlUnitario
             // 
-            this.txtItemVlUnitario.Location = new System.Drawing.Point(128, 67);
+            this.txtItemVlUnitario.Location = new System.Drawing.Point(125, 67);
             this.txtItemVlUnitario.Name = "txtItemVlUnitario";
             this.txtItemVlUnitario.Size = new System.Drawing.Size(96, 20);
             this.txtItemVlUnitario.TabIndex = 12;
@@ -487,7 +489,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(128, 54);
+            this.label14.Location = new System.Drawing.Point(125, 54);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(70, 13);
             this.label14.TabIndex = 30;
@@ -517,9 +519,9 @@
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(798, 27);
+            this.button3.Location = new System.Drawing.Point(791, 26);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 23);
+            this.button3.Size = new System.Drawing.Size(86, 23);
             this.button3.TabIndex = 14;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -530,7 +532,7 @@
             this.txtItemFilial.Enabled = false;
             this.txtItemFilial.Location = new System.Drawing.Point(499, 29);
             this.txtItemFilial.Name = "txtItemFilial";
-            this.txtItemFilial.Size = new System.Drawing.Size(297, 20);
+            this.txtItemFilial.Size = new System.Drawing.Size(276, 20);
             this.txtItemFilial.TabIndex = 142;
             // 
             // label12
@@ -591,6 +593,7 @@
             this.gridItens.ReadOnly = true;
             this.gridItens.Size = new System.Drawing.Size(876, 267);
             this.gridItens.TabIndex = 0;
+            this.gridItens.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItens_CellDoubleClick);
             this.gridItens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridItens_MouseDoubleClick);
             // 
             // Column1
@@ -690,6 +693,17 @@
             this.txtSomaItens.Text = "0,00";
             this.txtSomaItens.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // btnItemLimpar
+            // 
+            this.btnItemLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnItemLimpar.Location = new System.Drawing.Point(791, 67);
+            this.btnItemLimpar.Name = "btnItemLimpar";
+            this.btnItemLimpar.Size = new System.Drawing.Size(86, 23);
+            this.btnItemLimpar.TabIndex = 143;
+            this.btnItemLimpar.Text = "Limpar";
+            this.btnItemLimpar.UseVisualStyleBackColor = true;
+            this.btnItemLimpar.Click += new System.EventHandler(this.btnItemLimpar_Click);
+            // 
             // frmNotaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -761,5 +775,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.Button btnItemLimpar;
     }
 }
