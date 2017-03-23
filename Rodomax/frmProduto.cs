@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Aplicacao;
 using Ferramenta;
 using Modelo;
+using MMLib.Extensions;
 
 namespace UI
 {
@@ -70,12 +71,12 @@ namespace UI
         {
             try
             {
-                produto.Nome = txtNome.Text;
+                produto.Nome = txtNome.Text.RemoveDiacritics().ToUpper();
                 string custo = txtCustoMedio.Text.Replace(".", "").Trim();
                 produto.CustoMedio = double.Parse(custo.Replace(",", "."));
                 produto.ProdutoGrupo = grupo;
                 produto.Multiplicador = int.Parse(txtMultiplicador.Text);
-                produto.Observacao = txtObservacao.Text;
+                produto.Observacao = txtObservacao.Text.RemoveDiacritics();
                 if (rdEstoqueFilialSim.Checked)
                 {
                     produto.EstoqueFilial = "S";

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Aplicacao;
 using Ferramenta;
 using Modelo;
+using MMLib.Extensions;
 
 namespace UI
 {
@@ -52,7 +53,7 @@ namespace UI
             try
             {
               
-                city.Nome = txtCidadeNome.Text.Trim();
+                city.Nome = txtCidadeNome.Text.Trim().RemoveDiacritics().ToUpper();
                 
                 if (this.operacao.Equals("NOVO"))
                 {

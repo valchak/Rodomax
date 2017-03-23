@@ -3,6 +3,8 @@ using Modelo;
 using System;
 using System.Windows.Forms;
 using Ferramenta;
+using MMLib.Extensions;
+
 
 namespace UI
 {
@@ -109,14 +111,13 @@ namespace UI
             try
             {
                 EmpresaApp empApp = new EmpresaApp();
-                
-                filial.Nome = txtNome.Text.Trim();
-                filial.Cep = txtCep.Text.Trim();
-                filial.Bairro = txtBairro.Text.Trim();
+                filial.Nome = txtNome.Text.Trim().RemoveDiacritics().ToUpper();
+                filial.Cep = txtCep.Text.Trim().RemoveDiacritics().ToUpper();
+                filial.Bairro = txtBairro.Text.Trim().RemoveDiacritics().ToUpper();
                 filial.Cidade = cidade;
-                filial.Complemento = txtComplemento.Text.Trim();
-                filial.Endereco = txtEndereco.Text.Trim();
-                filial.Email = txtEmail.Text.Trim();
+                filial.Complemento = txtComplemento.Text.Trim().RemoveDiacritics().ToUpper();
+                filial.Endereco = txtEndereco.Text.Trim().RemoveDiacritics().ToUpper();
+                filial.Email = txtEmail.Text.Trim().RemoveDiacritics();
                 filial.Telefone = txtTelefone.Text.Trim();
                 filial.FilialCentroCustos = null;
                 if (cbEmpresa.Text.Equals("Rodomax"))

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProduto));
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtGrupo = new System.Windows.Forms.TextBox();
@@ -153,6 +154,7 @@
             // 
             // btnBuscarGrupo
             // 
+            this.btnBuscarGrupo.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarGrupo.Image")));
             this.btnBuscarGrupo.Location = new System.Drawing.Point(470, 92);
             this.btnBuscarGrupo.Name = "btnBuscarGrupo";
             this.btnBuscarGrupo.Size = new System.Drawing.Size(75, 23);

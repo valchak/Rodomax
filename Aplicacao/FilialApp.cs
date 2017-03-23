@@ -19,7 +19,7 @@ namespace Aplicacao
         {
             obj.Empresa = Banco.Empresas.Find(obj.Empresa.Id);
             obj.Cidade = Banco.Cidades.Find(obj.Cidade.Id);
-
+            
             Banco.Set<Filial>().Add(obj);
             SalvarTodos();
         }

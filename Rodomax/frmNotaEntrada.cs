@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Common.EntitySql;
 using System.Linq;
 using System.Windows.Forms;
 using Aplicacao;
 using Ferramenta;
 using Modelo;
+using MMLib.Extensions;
 
 namespace UI
 {
@@ -40,8 +39,8 @@ namespace UI
         private void Salvar()
         {
             nota.Fornecedor = fornecedor;
-            nota.Documento = txtDocumento.Text.Trim();
-            nota.Serie = txtSerie.Text.Trim();
+            nota.Documento = txtDocumento.Text.Trim().RemoveDiacritics().ToUpper(); ;
+            nota.Serie = txtSerie.Text.Trim().RemoveDiacritics().ToUpper(); ;
             if (cbFinanceiro.Items.Equals("Sim"))
                 nota.Faturado = "S";
             else
@@ -95,7 +94,7 @@ namespace UI
             if (fornecedor != null && !txtDocumento.Text.Equals("") && !txtSerie.Text.Equals(""))
             {
                 
-                IEnumerable<NotaEntrada> lista = app.Get(x => x.Fornecedor.Id == fornecedor.Id && x.Documento == txtDocumento.Text.Trim() && x.Serie == txtSerie.Text.Trim());
+                IEnumerable<NotaEntrada> lista = app.Get(x => x.Fornecedor.Id == fornecedor.Id && x.Documento == txtDocumento.Text.Trim().RemoveDiacritics().ToUpper() && x.Serie == txtSerie.Text.Trim().RemoveDiacritics().ToUpper());
 
                 if (lista.Any())
                 {
@@ -295,7 +294,7 @@ namespace UI
             {
                 item.Produto = produto;
                 item.Filial = filial;
-                item.Descricao = txtItemDescricao.Text;
+                item.Descricao = txtItemDescricao.Text.RemoveDiacritics().ToUpper();
                 item.QuantidadeNota = int.Parse(txtItemQuantidade.Text);
                 item.Multiplicador = int.Parse(txtItemMultiplicador.Text);
                 item.ValorUnitario = double.Parse(txtItemVlUnitario.Text);
@@ -311,7 +310,7 @@ namespace UI
             {
                 item.Produto = produto;
                 item.Filial = filial;
-                item.Descricao = txtItemDescricao.Text;
+                item.Descricao = txtItemDescricao.Text.RemoveDiacritics().ToUpper();
                 item.QuantidadeNota = int.Parse(txtItemQuantidade.Text);
                 item.Multiplicador = int.Parse(txtItemMultiplicador.Text);
                 item.ValorUnitario = double.Parse(txtItemVlUnitario.Text);
