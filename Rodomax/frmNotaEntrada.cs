@@ -327,18 +327,12 @@ namespace UI
             switch (Formatacao.MensagemExcluir())
             {
                 case DialogResult.Yes:
-                    if (nota.Id == 0)
+                    listaItem.Remove(numeroEditar);
+                    if (item.Id > 0)
                     {
-                        app.Adicionar(nota);
-                        MessageBox.Show("Nota salva com sucesso: Código " + nota.Id);
-
+                        listaExcluir.Add(item);
                     }
-                    else
-                    {
-                        app.Atualizar(nota);
-                        MessageBox.Show("Nota alterada com sucesso.");
-                    }
-                    LimparCabecalho();
+                    LimparItem();
                     break;
                 case DialogResult.No:
                     break;
@@ -440,7 +434,7 @@ namespace UI
         {
             if (nota.Fornecedor.Id <= 0)
             {
-                MessageBox.Show("Fornecedor inválido aaa");
+                MessageBox.Show("Fornecedor inválido");
                 return false;
             }
 
@@ -563,6 +557,7 @@ namespace UI
 
         public void LimpaNovo()
         {
+            nota = new NotaEntrada();
             fornecedor = new Fornecedor();
             txtFornecedor.Clear();
             txtDocumento.Clear();
@@ -574,7 +569,6 @@ namespace UI
         private void LimparCabecalho()
         {
             numeroItens = 0;
-            nota = new NotaEntrada();
             nota.Id = 0;
             filial = new Filial();
             this.operacao = "NOVO";
@@ -586,7 +580,7 @@ namespace UI
             txtValorTotalDocumento.Clear();
             txtDataEmissao.Value = DateTime.Now;
             txtDataFaturamento.Value = DateTime.Now;
-
+            txtItemFilial.Clear();
             LimparItem();
         }
 
@@ -632,7 +626,6 @@ namespace UI
                 {
                     MessageBox.Show("Erro: " + exception.Message);
                 }
-
             }
         }
 

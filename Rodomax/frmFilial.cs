@@ -1,6 +1,7 @@
 ﻿using Aplicacao;
 using Modelo;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using Ferramenta;
 using MMLib.Extensions;
@@ -120,7 +121,7 @@ namespace UI
                 filial.Email = txtEmail.Text.Trim().RemoveDiacritics();
                 filial.Telefone = txtTelefone.Text.Trim();
                 filial.FilialCentroCustos = null;
-                if (cbEmpresa.Text.Equals("Rodomax"))
+                if (cbEmpresa.Text.Equals("RODOMAX"))
                 {
                     filial.Empresa = empApp.Find(1);
                 }

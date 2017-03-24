@@ -554,14 +554,17 @@ namespace Repositorio.Migrations
                         FilialEntrada_Id = c.Int(),
                         FilialSaida_Id = c.Int(),
                         ResponsavelRecebimento_Id = c.Int(),
+                        Solicitacao_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.filial", t => t.FilialEntrada_Id)
                 .ForeignKey("dbo.filial", t => t.FilialSaida_Id)
                 .ForeignKey("dbo.funcionario", t => t.ResponsavelRecebimento_Id)
+                .ForeignKey("dbo.material_solicitacao", t => t.Solicitacao_Id)
                 .Index(t => t.FilialEntrada_Id)
                 .Index(t => t.FilialSaida_Id)
-                .Index(t => t.ResponsavelRecebimento_Id);
+                .Index(t => t.ResponsavelRecebimento_Id)
+                .Index(t => t.Solicitacao_Id);
             
             CreateTable(
                 "dbo.material_saida_produtos",
@@ -579,6 +582,27 @@ namespace Repositorio.Migrations
                 .ForeignKey("dbo.produto", t => t.Produto_Id)
                 .Index(t => t.CentroCusto_Id)
                 .Index(t => t.MaterialSaida_Id)
+                .Index(t => t.Produto_Id);
+            
+            CreateTable(
+                "dbo.material_solicitacao",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DataSolicitacao = c.DateTime(nullable: false, precision: 0),
+                        Descricao = c.String(maxLength: 255, storeType: "nvarchar"),
+                        Quantidade = c.String(unicode: false),
+                        Situacao = c.String(maxLength: 1, storeType: "nvarchar"),
+                        Filial_Id = c.Int(),
+                        Funcionario_Id = c.Int(),
+                        Produto_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.filial", t => t.Filial_Id)
+                .ForeignKey("dbo.funcionario", t => t.Funcionario_Id)
+                .ForeignKey("dbo.produto", t => t.Produto_Id)
+                .Index(t => t.Filial_Id)
+                .Index(t => t.Funcionario_Id)
                 .Index(t => t.Produto_Id);
             
             CreateTable(
@@ -600,30 +624,6 @@ namespace Repositorio.Migrations
                 .Index(t => t.FilialDestino_Id)
                 .Index(t => t.FilialOrigem_Id)
                 .Index(t => t.Transportadora_Id);
-            
-            CreateTable(
-                "dbo.material_solicitacao",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        DataSolicitacao = c.DateTime(nullable: false, precision: 0),
-                        Descricao = c.String(maxLength: 255, storeType: "nvarchar"),
-                        Quantidade = c.String(unicode: false),
-                        Situacao = c.String(maxLength: 1, storeType: "nvarchar"),
-                        Filial_Id = c.Int(),
-                        Funcionario_Id = c.Int(),
-                        MaterialSaida_Id = c.Int(),
-                        Produto_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.filial", t => t.Filial_Id)
-                .ForeignKey("dbo.funcionario", t => t.Funcionario_Id)
-                .ForeignKey("dbo.material_saida", t => t.MaterialSaida_Id)
-                .ForeignKey("dbo.produto", t => t.Produto_Id)
-                .Index(t => t.Filial_Id)
-                .Index(t => t.Funcionario_Id)
-                .Index(t => t.MaterialSaida_Id)
-                .Index(t => t.Produto_Id);
             
             CreateTable(
                 "dbo.patrimo_grupo",
@@ -717,15 +717,15 @@ namespace Repositorio.Migrations
             DropForeignKey("dbo.patrimonio", "Funcionario_Id", "dbo.funcionario");
             DropForeignKey("dbo.patrimonio", "Filial_Id", "dbo.filial");
             DropForeignKey("dbo.patrimonio", "CentroCusto_Id", "dbo.centro_de_custo");
-            DropForeignKey("dbo.material_solicitacao", "Produto_Id", "dbo.produto");
-            DropForeignKey("dbo.material_solicitacao", "MaterialSaida_Id", "dbo.material_saida");
-            DropForeignKey("dbo.material_solicitacao", "Funcionario_Id", "dbo.funcionario");
-            DropForeignKey("dbo.material_solicitacao", "Filial_Id", "dbo.filial");
             DropForeignKey("dbo.malote", "Transportadora_Id", "dbo.fornecedor");
             DropForeignKey("dbo.MaloteDetalhes", "Malote_Id", "dbo.malote");
             DropForeignKey("dbo.malote", "FilialOrigem_Id", "dbo.filial");
             DropForeignKey("dbo.malote", "FilialDestino_Id", "dbo.filial");
             DropForeignKey("dbo.MaloteDetalhes", "MaterialSaida_Id", "dbo.material_saida");
+            DropForeignKey("dbo.material_saida", "Solicitacao_Id", "dbo.material_solicitacao");
+            DropForeignKey("dbo.material_solicitacao", "Produto_Id", "dbo.produto");
+            DropForeignKey("dbo.material_solicitacao", "Funcionario_Id", "dbo.funcionario");
+            DropForeignKey("dbo.material_solicitacao", "Filial_Id", "dbo.filial");
             DropForeignKey("dbo.material_saida", "ResponsavelRecebimento_Id", "dbo.funcionario");
             DropForeignKey("dbo.material_saida_produtos", "Produto_Id", "dbo.produto");
             DropForeignKey("dbo.material_saida_produtos", "MaterialSaida_Id", "dbo.material_saida");
@@ -796,16 +796,16 @@ namespace Repositorio.Migrations
             DropIndex("dbo.patrimonio", new[] { "Funcionario_Id" });
             DropIndex("dbo.patrimonio", new[] { "Filial_Id" });
             DropIndex("dbo.patrimonio", new[] { "CentroCusto_Id" });
-            DropIndex("dbo.material_solicitacao", new[] { "Produto_Id" });
-            DropIndex("dbo.material_solicitacao", new[] { "MaterialSaida_Id" });
-            DropIndex("dbo.material_solicitacao", new[] { "Funcionario_Id" });
-            DropIndex("dbo.material_solicitacao", new[] { "Filial_Id" });
             DropIndex("dbo.malote", new[] { "Transportadora_Id" });
             DropIndex("dbo.malote", new[] { "FilialOrigem_Id" });
             DropIndex("dbo.malote", new[] { "FilialDestino_Id" });
+            DropIndex("dbo.material_solicitacao", new[] { "Produto_Id" });
+            DropIndex("dbo.material_solicitacao", new[] { "Funcionario_Id" });
+            DropIndex("dbo.material_solicitacao", new[] { "Filial_Id" });
             DropIndex("dbo.material_saida_produtos", new[] { "Produto_Id" });
             DropIndex("dbo.material_saida_produtos", new[] { "MaterialSaida_Id" });
             DropIndex("dbo.material_saida_produtos", new[] { "CentroCusto_Id" });
+            DropIndex("dbo.material_saida", new[] { "Solicitacao_Id" });
             DropIndex("dbo.material_saida", new[] { "ResponsavelRecebimento_Id" });
             DropIndex("dbo.material_saida", new[] { "FilialSaida_Id" });
             DropIndex("dbo.material_saida", new[] { "FilialEntrada_Id" });
@@ -872,8 +872,8 @@ namespace Repositorio.Migrations
             DropTable("dbo.patrimonio");
             DropTable("dbo.patrimonio_historico");
             DropTable("dbo.patrimo_grupo");
-            DropTable("dbo.material_solicitacao");
             DropTable("dbo.malote");
+            DropTable("dbo.material_solicitacao");
             DropTable("dbo.material_saida_produtos");
             DropTable("dbo.material_saida");
             DropTable("dbo.MaloteDetalhes");

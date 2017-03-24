@@ -17,6 +17,6 @@ namespace Modelo
         public string Quantidade { get; set; }
         [StringLength(1)]
         public string Situacao { get; set; }
-        public MaterialSaida MaterialSaida { get; set; }
+
     }
 }

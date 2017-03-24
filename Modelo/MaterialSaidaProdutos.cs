@@ -9,6 +9,7 @@ namespace Modelo
         public MaterialSaida MaterialSaida { get; set; }
         public Produto Produto { get; set; }
         public int Quantidade { get; set; }
-        public CentroCusto CentroCusto { get; set; }
+        public double CustoUnitario { get; set; }
+        public virtual CentroCusto CentroCusto { get; set; }
     }
 }

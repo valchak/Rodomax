@@ -276,6 +276,7 @@ namespace Aplicacao
 
             if (acao == EstoqueAcao.INSERT)
             {
+                AtualizarProduto(item);
                 Banco.EstoqueMovimentos.Add(movimento);
             }
             if (acao == EstoqueAcao.UPDATE)
@@ -299,5 +300,28 @@ namespace Aplicacao
             return movimento;
         }
 
+        private void AtualizarProduto(NotaEntradaItens item)
+        {
+            if(item.Produto.Id > 0){
+                Produto produto = Banco.Produtos.Find(item.Produto.Id);
+                produto.UltimaDataCompra = item.NotaEntrada.DataEmissao;
+                produto.UltimaNotaCompra = item.NotaEntrada.Documento;
+                produto.UltimoFornecedor = Banco.Fornecedores.Find(item.NotaEntrada.Fornecedor.Id);
+                produto.UltimoValorCompra = item.ValorUnitario;
+
+                EstoqueApp app = new EstoqueApp();
+                List<Estoque> lista = app.Get(x => x.Produto.Id == item.Produto.Id).ToList();
+                
+                int quantidade = 0;
+                foreach (var estoque in lista)
+                {
+                    quantidade = quantidade + estoque.QuantidadeNovo;
+                }
+
+                double custoTotal = item.ValorTotal + (quantidade * Banco.Produtos.Find(item.Produto.Id).CustoMedio);
+                produto.CustoMedio = custoTotal / (quantidade + item.QuantidadeEstoque);
+                Banco.Entry(produto).State = EntityState.Modified;
+            }
+        }
     }
 }

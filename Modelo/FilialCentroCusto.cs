@@ -13,7 +13,6 @@ namespace Modelo
 
         public virtual Filial Filial { get; set; }
         public virtual CentroCusto CentroCusto { get; set; }
-
-
+        
     }
 }

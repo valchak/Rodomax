@@ -12,6 +12,7 @@ namespace Modelo
         public string Nome { get; set; }
         [StringLength(1)]
         public string Situacao { get; set; }
+
         public virtual ICollection<Filial> Filiais { get; set; }
     }
 }

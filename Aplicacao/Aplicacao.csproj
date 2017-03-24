@@ -50,12 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="CentroCustoApp.cs" />
     <Compile Include="CidadeApp.cs" />
     <Compile Include="EmpresaApp.cs" />
     <Compile Include="EstoqueApp.cs" />
     <Compile Include="EstoqueMovimentoApp.cs" />
     <Compile Include="FilialApp.cs" />
+    <Compile Include="FilialCentroCusto.cs" />
     <Compile Include="FornecedorApp.cs" />
+    <Compile Include="FuncionarioApp.cs" />
+    <Compile Include="MaterialSaidaApp.cs" />
     <Compile Include="NotaEntradaApp.cs" />
     <Compile Include="NotaEntradaItemApp.cs" />
     <Compile Include="ProdutoApp.cs" />
