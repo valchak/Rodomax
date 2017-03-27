@@ -5,6 +5,7 @@ using MMLib.Extensions;
 using Aplicacao;
 using Modelo;
 using System.Linq;
+using System.Threading;
 
 namespace Rodomax
 {
@@ -22,26 +23,60 @@ namespace Rodomax
             string senha = txtLogin.Text.Trim().RemoveDiacritics();
             if (!login.Equals("") && !senha.Equals(""))
             {
-                Formatacao formatacao = new Formatacao();
-                UsuarioApp app = new UsuarioApp();
+                Thread t = new Thread(new ThreadStart(Splash));
+                t.Start();
 
-                senha = formatacao.CriptoSenha(senha);
-                IQueryable<Usuario> lista = app.Get(x => x.Login == login && x.Senha == senha && x.Situacao.Equals("A"));
-                if (lista.Count() > 0)
+                this.Opacity = 0;
+                
+                if(LogaUsuario(login, senha))
                 {
-                    instancia.userLogado = lista.First();
-
-                    MessageBox.Show("Logou");
+                    t.Abort();
+                    Principal tela = new Principal();
+                    tela.ShowDialog();
+                    tela.Dispose();
                 }
                 else
                 {
+                    t.Abort();
                     MessageBox.Show("Usuário ou senha Inválidos");
                 }
+                t.Abort();
+                this.Opacity = 100;
+
             }
             else
             {
                 MessageBox.Show("Usuário ou senha Inválidos");
             }
         }
+
+        bool LogaUsuario(string login, string senha)
+        {
+            Formatacao formatacao = new Formatacao();
+            UsuarioApp app = new UsuarioApp();
+
+            senha = formatacao.CriptoSenha(senha);
+            IQueryable<Usuario> lista = app.Get(x => x.Login == login && x.Senha == senha && x.Situacao.Equals("A"));
+
+            if (lista.Count() > 0)
+            {
+                instancia.userLogado = lista.First();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        void Splash()
+        {
+            SplashScreen.SplashForm frm = new SplashScreen.SplashForm();
+            frm.AppName = "Fazendo Login";
+            frm.ShowInTaskbar = true;
+            Application.Run(frm);
+        }
+        
     }
 }
