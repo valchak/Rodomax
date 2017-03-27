@@ -31,8 +31,8 @@ namespace Aplicacao
                 {
                     obj.Solicitacao = Banco.MateriaisSolicitacao.Find(obj.Solicitacao.Id);
                 }
-                
 
+                obj.DataEntradaEstoque = obj.DataSaidaEstoque;
                 IEnumerable<MaterialSaidaProdutos> lista = obj.MaterialSaidaProdutos;
                 obj.MaterialSaidaProdutos = null;
                 Banco.MateriaisSaida.Add(obj);
@@ -50,12 +50,94 @@ namespace Aplicacao
 
         public void Atualizar(MaterialSaida obj)
         {
-            throw new NotImplementedException();
+            if (ValidarCampos(obj))
+            {
+                IEnumerable<MaterialSaidaProdutos> lista = obj.MaterialSaidaProdutos;
+                List<MaterialSaidaProdutos> excluir = obj.listaExcluir;
+                MaterialSaida dbObj = new MaterialSaida();
+                dbObj = Banco.MateriaisSaida.Where(x => x.Id == obj.Id).First();
+                dbObj.MaterialSaidaProdutos = null;
+                dbObj.FilialEntrada = Banco.Filiais.Find(obj.FilialEntrada.Id);
+                dbObj.FilialSaida = obj.FilialSaida;
+                dbObj.DataSaidaEstoque = obj.DataSaidaEstoque;
+                dbObj.DataEntradaEstoque = obj.DataSaidaEstoque;
+                dbObj.Observacao = obj.Observacao;
+
+                if (obj.ResponsavelRecebimento != null)
+                {
+                    dbObj.ResponsavelRecebimento = Banco.Funcionarios.Find(obj.ResponsavelRecebimento.Id);
+                }
+                if (obj.Solicitacao != null)
+                {
+                    dbObj.Solicitacao = Banco.MateriaisSolicitacao.Find(obj.Solicitacao.Id);
+                }
+               
+                Banco.Entry(dbObj).State = EntityState.Modified;
+
+                foreach (var item in lista)
+                {
+                    var dbItem = new MaterialSaidaProdutos();
+
+                    if (item.Id > 0)
+                    {
+                        dbItem = Banco.MateriaisSaidaProdutos.Include(x => x.Produto)
+                                .Include(x => x.CentroCusto)
+                                .Include(x => x.Produto)
+                                .Where(x => x.Id == item.Id)
+                                .First();
+                    }
+
+                    dbItem.MaterialSaida = dbObj;
+                    dbItem.CentroCusto = Banco.CentroCustos.Find(item.CentroCusto.Id);
+                    dbItem.Produto = Banco.Produtos.Find(item.Produto.Id);
+                    dbItem.Quantidade = item.Quantidade;
+                    dbItem.CustoUnitario = dbItem.Produto.CustoMedio;
+
+                    
+                    if (item.Id > 0)
+                    {
+                        Banco.Entry(dbItem).State = EntityState.Modified;
+                        AtualizarEstoque(dbItem, EstoqueAcao.UPDATE);
+                    }
+                    else
+                    {
+                        Banco.MateriaisSaidaProdutos.Add(dbItem);
+                        AtualizarEstoque(dbItem, EstoqueAcao.INSERT);
+                    }
+
+                }
+
+
+                if (obj.listaExcluir != null)
+                {
+                    foreach (var item in obj.listaExcluir)
+                    {
+                        var dbItem = Banco.MateriaisSaidaProdutos.Include(x => x.Produto)
+                                .Include(x => x.CentroCusto)
+                                .Include(x => x.Produto)
+                                .Where(x => x.Id == item.Id)
+                                .First();
+                        AtualizarEstoque(dbItem, EstoqueAcao.DELETE);
+                        Banco.MateriaisSaidaProdutos.Remove(dbItem);
+                    }
+                }
+
+                SalvarTodos();
+
+            }
         }
 
         public void Excluir(Func<MaterialSaida, bool> predicate)
         {
-            throw new NotImplementedException();
+            IEnumerable<MaterialSaidaProdutos> lista = Get(predicate).First().MaterialSaidaProdutos;
+            foreach (var item in lista.ToList())
+            {
+                AtualizarEstoque(item, EstoqueAcao.DELETE);
+                Banco.MateriaisSaidaProdutos.Remove(Banco.MateriaisSaidaProdutos.Find(item.Id));
+            }
+            Banco.Set<MaterialSaida>().Include(x => x.MaterialSaidaProdutos).Where(predicate).ToList().ForEach(del => Banco.Set<MaterialSaida>().Remove(del));
+            
+            SalvarTodos();
         }
 
         public MaterialSaida Find(params object[] key)
@@ -102,10 +184,6 @@ namespace Aplicacao
                     throw new Exception("Quantidade inváida");
                 if (item.CentroCusto == null || item.CentroCusto.Id == 0)
                     throw new Exception("Centro de custo não informado");
-                if (item.CustoUnitario <= 0)
-                {
-                    item.CustoUnitario = Banco.Produtos.Find(item.Produto.Id).CustoMedio;
-                }
             }
 
             return true;
@@ -121,30 +199,28 @@ namespace Aplicacao
                 {
                     foreach (var mov in lista)
                     {
-                        if (mov.TipoMovimento.Equals("S"))
-                        {
-                            mov.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialSaida.Id);
-                            mov.Produto = Banco.Produtos.Find(item.Produto.Id);
-                            mov.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
-                            mov.QuantidadeNovo = item.Quantidade * -1;
-                            mov.MaterialSaida = item;
-                            mov.QuantidadeUsado = 0;
-                            mov.ValorUnitario = item.CustoUnitario;
-                            mov.ObservacaoHistorico = "Movimento de Saída";
+                        EstoqueMovimento dbMov = Banco.EstoqueMovimentos.Find(mov.Id);
 
-                        }
-                        else
+                        if (acao != EstoqueAcao.DELETE)
                         {
-                            mov.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialEntrada.Id);
-                            mov.Produto = Banco.Produtos.Find(item.Produto.Id);
-                            mov.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
-                            mov.MaterialSaida = item;
-                            mov.QuantidadeNovo = item.Quantidade;
-                            mov.QuantidadeUsado = 0;
-                            mov.ValorUnitario = item.CustoUnitario;
-                            mov.ObservacaoHistorico = "Movimento de Saída";
+                            dbMov.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialSaida.Id);
+                            dbMov.Produto = Banco.Produtos.Find(item.Produto.Id);
+                            dbMov.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
+                            dbMov.MaterialSaida = item;
+                            dbMov.QuantidadeUsado = 0;
+                            dbMov.ValorUnitario = item.CustoUnitario;
+                            dbMov.ObservacaoHistorico = "Movimento de Saída";
+
+                            if (dbMov.TipoMovimento.Equals("S"))
+                            {
+                                dbMov.QuantidadeNovo = item.Quantidade * -1;
+                            }
+                            else
+                            {
+                                dbMov.QuantidadeNovo = item.Quantidade;
+                            }
                         }
-                        AcaoMovimento(mov, acao);
+                        AcaoMovimento(dbMov, acao);
                     }
                 }
             }

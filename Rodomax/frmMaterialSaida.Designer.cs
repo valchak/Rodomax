@@ -113,6 +113,10 @@
             // 
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // btnPesquisar
             // 
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);

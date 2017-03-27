@@ -108,6 +108,7 @@ namespace Rodomax
         // Limpa campos itens da nota
         private void LimparItem()
         {
+            item = new MaterialSaidaProdutos();
             produto = null;
             txtProduto.Clear();
             txtQuantidade.Text = "1";
@@ -422,7 +423,7 @@ namespace Rodomax
                 solicitacao = saida.Solicitacao;
                 txtSolicitacao.Text = solicitacao.Id.ToString();
             }
-
+            
             txtDataSaida.Value = saida.DataSaidaEstoque;
             txtObservacao.Text = saida.Observacao;
 
@@ -446,11 +447,27 @@ namespace Rodomax
             }
 
             PopulaGrid();
+            PopulaCentroCusto();
+            LimparItem();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpaNovo();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            switch (Formatacao.MensagemExcluir())
+            {
+                case DialogResult.Yes:
+                    app.Excluir(x => x.Id == saida.Id);
+                    MessageBox.Show("Item Excuido com sucesso:");
+                    LimpaNovo();
+                    break;
+                case DialogResult.No:
+                    break;
+            }
         }
     }
 }

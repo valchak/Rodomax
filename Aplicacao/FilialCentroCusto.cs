@@ -9,11 +9,11 @@ namespace Aplicacao
     public class FilialCentroCustoApp : App<FilialCentroCusto>
     {
         public ContextoDB Banco { get; set; }
+
         public FilialCentroCustoApp()
         {
             Banco = new ContextoDB();
         }
-
 
         public void Adicionar(FilialCentroCusto obj)
         {
