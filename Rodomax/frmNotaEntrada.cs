@@ -73,7 +73,7 @@ namespace UI
                                 app.Atualizar(nota);
                                 MessageBox.Show("Nota alterada com sucesso.");
                             }
-                            LimparCabecalho();
+                            LimpaNovo();
                             break;
                         case DialogResult.No:
                             break;
