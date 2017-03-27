@@ -34,7 +34,8 @@ namespace Aplicacao
         {
             if (Validar(obj))
             {
-                Banco.Set<Produto>().Add(obj);
+                obj.ProdutoGrupo = Banco.ProdutoGrupos.Find(obj.ProdutoGrupo.Id);
+                Banco.Produtos.Add(obj);
                 SalvarTodos();
             }
            

@@ -16,5 +16,7 @@ namespace Modelo
         [StringLength(1)]
         public string Situacao { get; set; }
 
+        //public virtual UsuarioFilial ListaFiliais { get; set; }
+
     }
 }

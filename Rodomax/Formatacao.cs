@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Ferramenta
@@ -68,6 +70,23 @@ namespace Ferramenta
         public static DialogResult MensagemExcluir()
         {
             return MessageBox.Show("Deseja realmente exlcuir esse item?", "Excluir Item", MessageBoxButtons.YesNo);
+        }
+
+
+        public string CriptoSenha(string password)
+        {
+            using (SHA1Managed sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(password));
+                var sb = new StringBuilder(hash.Length * 2);
+
+                foreach (byte b in hash)
+                {
+                    sb.Append(b.ToString("X2"));
+                }
+
+                return sb.ToString();
+            }
         }
     }
 }

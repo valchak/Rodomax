@@ -7,6 +7,8 @@ namespace Ferramenta
     {
         private static Singleton instance;
 
+        public static string hash = "f12456ekliukhjmfgf51d5";
+
         private Singleton()
         {
         }

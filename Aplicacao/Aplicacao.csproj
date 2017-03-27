@@ -65,6 +65,7 @@
     <Compile Include="NotaEntradaItemApp.cs" />
     <Compile Include="ProdutoApp.cs" />
     <Compile Include="ProdutoGrupoApp.cs" />
+    <Compile Include="UsuarioApp.cs" />
     <Compile Include="_IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
