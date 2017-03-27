@@ -30,6 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterialSaida));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.gridItens = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbCentroCusto = new System.Windows.Forms.ComboBox();
+            this.btnProduto = new System.Windows.Forms.Button();
+            this.txtProduto = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnItemLimpar = new System.Windows.Forms.Button();
+            this.btnItemExcluir = new System.Windows.Forms.Button();
+            this.btnItemAdicionar = new System.Windows.Forms.Button();
+            this.btnItemEditar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigoSaida = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,32 +67,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtObservacao = new System.Windows.Forms.TextBox();
-            this.btnItemAdicionar = new System.Windows.Forms.Button();
-            this.btnItemEditar = new System.Windows.Forms.Button();
-            this.btnItemExcluir = new System.Windows.Forms.Button();
-            this.btnItemLimpar = new System.Windows.Forms.Button();
-            this.gridItens = new System.Windows.Forms.DataGridView();
-            this.btnProduto = new System.Windows.Forms.Button();
-            this.txtProduto = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbCentroCusto = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtQuantidade = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridItens)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridItens)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBotoes
@@ -105,9 +105,17 @@
             // 
             this.pnlDireita.Location = new System.Drawing.Point(429, 3);
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // btnSalvar
             // 
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // groupBox1
             // 
@@ -132,6 +140,192 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Materias";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.gridItens);
+            this.panel1.Location = new System.Drawing.Point(0, 89);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(792, 289);
+            this.panel1.TabIndex = 25;
+            // 
+            // gridItens
+            // 
+            this.gridItens.AllowUserToAddRows = false;
+            this.gridItens.AllowUserToDeleteRows = false;
+            this.gridItens.AllowUserToOrderColumns = true;
+            this.gridItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
+            this.gridItens.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridItens.Location = new System.Drawing.Point(0, 0);
+            this.gridItens.Name = "gridItens";
+            this.gridItens.ReadOnly = true;
+            this.gridItens.Size = new System.Drawing.Size(792, 289);
+            this.gridItens.TabIndex = 22;
+            this.gridItens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridItens_MouseDoubleClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Item";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 35;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Prod";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 35;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Descrição";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Centro de Custo";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Qtde";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 40;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Custo Un";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 75;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Custo Total";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 85;
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Location = new System.Drawing.Point(9, 63);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantidade.TabIndex = 9;
+            this.txtQuantidade.Text = "1";
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(10, 50);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Quantidade";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(413, 14);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Centro de Custo";
+            // 
+            // cbCentroCusto
+            // 
+            this.cbCentroCusto.DisplayMember = "value";
+            this.cbCentroCusto.FormattingEnabled = true;
+            this.cbCentroCusto.Location = new System.Drawing.Point(413, 27);
+            this.cbCentroCusto.Name = "cbCentroCusto";
+            this.cbCentroCusto.Size = new System.Drawing.Size(379, 21);
+            this.cbCentroCusto.TabIndex = 10;
+            this.cbCentroCusto.ValueMember = "key";
+            // 
+            // btnProduto
+            // 
+            this.btnProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnProduto.Image")));
+            this.btnProduto.Location = new System.Drawing.Point(315, 27);
+            this.btnProduto.Name = "btnProduto";
+            this.btnProduto.Size = new System.Drawing.Size(75, 23);
+            this.btnProduto.TabIndex = 8;
+            this.btnProduto.UseVisualStyleBackColor = true;
+            this.btnProduto.Click += new System.EventHandler(this.btnProduto_Click);
+            // 
+            // txtProduto
+            // 
+            this.txtProduto.Enabled = false;
+            this.txtProduto.Location = new System.Drawing.Point(9, 29);
+            this.txtProduto.Name = "txtProduto";
+            this.txtProduto.Size = new System.Drawing.Size(300, 20);
+            this.txtProduto.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Produto";
+            // 
+            // btnItemLimpar
+            // 
+            this.btnItemLimpar.Location = new System.Drawing.Point(718, 60);
+            this.btnItemLimpar.Name = "btnItemLimpar";
+            this.btnItemLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnItemLimpar.TabIndex = 14;
+            this.btnItemLimpar.Text = "Limpar";
+            this.btnItemLimpar.UseVisualStyleBackColor = true;
+            this.btnItemLimpar.Click += new System.EventHandler(this.btnItemLimpar_Click);
+            // 
+            // btnItemExcluir
+            // 
+            this.btnItemExcluir.Location = new System.Drawing.Point(616, 61);
+            this.btnItemExcluir.Name = "btnItemExcluir";
+            this.btnItemExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnItemExcluir.TabIndex = 13;
+            this.btnItemExcluir.Text = "Excluir";
+            this.btnItemExcluir.UseVisualStyleBackColor = true;
+            this.btnItemExcluir.Click += new System.EventHandler(this.btnItemExcluir_Click);
+            // 
+            // btnItemAdicionar
+            // 
+            this.btnItemAdicionar.Location = new System.Drawing.Point(413, 60);
+            this.btnItemAdicionar.Name = "btnItemAdicionar";
+            this.btnItemAdicionar.Size = new System.Drawing.Size(75, 23);
+            this.btnItemAdicionar.TabIndex = 11;
+            this.btnItemAdicionar.Text = "Adicionar";
+            this.btnItemAdicionar.UseVisualStyleBackColor = true;
+            this.btnItemAdicionar.Click += new System.EventHandler(this.btnItemAdicionar_Click);
+            // 
+            // btnItemEditar
+            // 
+            this.btnItemEditar.Location = new System.Drawing.Point(516, 61);
+            this.btnItemEditar.Name = "btnItemEditar";
+            this.btnItemEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnItemEditar.TabIndex = 12;
+            this.btnItemEditar.Text = "Editar";
+            this.btnItemEditar.UseVisualStyleBackColor = true;
+            this.btnItemEditar.Click += new System.EventHandler(this.btnItemEditar_Click);
             // 
             // label1
             // 
@@ -285,192 +479,6 @@
             this.txtObservacao.Size = new System.Drawing.Size(381, 51);
             this.txtObservacao.TabIndex = 7;
             // 
-            // btnItemAdicionar
-            // 
-            this.btnItemAdicionar.Location = new System.Drawing.Point(413, 60);
-            this.btnItemAdicionar.Name = "btnItemAdicionar";
-            this.btnItemAdicionar.Size = new System.Drawing.Size(75, 23);
-            this.btnItemAdicionar.TabIndex = 11;
-            this.btnItemAdicionar.Text = "Adicionar";
-            this.btnItemAdicionar.UseVisualStyleBackColor = true;
-            this.btnItemAdicionar.Click += new System.EventHandler(this.btnItemAdicionar_Click);
-            // 
-            // btnItemEditar
-            // 
-            this.btnItemEditar.Location = new System.Drawing.Point(516, 61);
-            this.btnItemEditar.Name = "btnItemEditar";
-            this.btnItemEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnItemEditar.TabIndex = 12;
-            this.btnItemEditar.Text = "Editar";
-            this.btnItemEditar.UseVisualStyleBackColor = true;
-            this.btnItemEditar.Click += new System.EventHandler(this.btnItemEditar_Click);
-            // 
-            // btnItemExcluir
-            // 
-            this.btnItemExcluir.Location = new System.Drawing.Point(616, 61);
-            this.btnItemExcluir.Name = "btnItemExcluir";
-            this.btnItemExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btnItemExcluir.TabIndex = 13;
-            this.btnItemExcluir.Text = "Excluir";
-            this.btnItemExcluir.UseVisualStyleBackColor = true;
-            this.btnItemExcluir.Click += new System.EventHandler(this.btnItemExcluir_Click);
-            // 
-            // btnItemLimpar
-            // 
-            this.btnItemLimpar.Location = new System.Drawing.Point(718, 60);
-            this.btnItemLimpar.Name = "btnItemLimpar";
-            this.btnItemLimpar.Size = new System.Drawing.Size(75, 23);
-            this.btnItemLimpar.TabIndex = 14;
-            this.btnItemLimpar.Text = "Limpar";
-            this.btnItemLimpar.UseVisualStyleBackColor = true;
-            this.btnItemLimpar.Click += new System.EventHandler(this.btnItemLimpar_Click);
-            // 
-            // gridItens
-            // 
-            this.gridItens.AllowUserToAddRows = false;
-            this.gridItens.AllowUserToDeleteRows = false;
-            this.gridItens.AllowUserToOrderColumns = true;
-            this.gridItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.gridItens.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridItens.Location = new System.Drawing.Point(0, 0);
-            this.gridItens.Name = "gridItens";
-            this.gridItens.ReadOnly = true;
-            this.gridItens.Size = new System.Drawing.Size(792, 289);
-            this.gridItens.TabIndex = 22;
-            this.gridItens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridItens_MouseDoubleClick);
-            // 
-            // btnProduto
-            // 
-            this.btnProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnProduto.Image")));
-            this.btnProduto.Location = new System.Drawing.Point(315, 27);
-            this.btnProduto.Name = "btnProduto";
-            this.btnProduto.Size = new System.Drawing.Size(75, 23);
-            this.btnProduto.TabIndex = 8;
-            this.btnProduto.UseVisualStyleBackColor = true;
-            this.btnProduto.Click += new System.EventHandler(this.btnProduto_Click);
-            // 
-            // txtProduto
-            // 
-            this.txtProduto.Enabled = false;
-            this.txtProduto.Location = new System.Drawing.Point(9, 29);
-            this.txtProduto.Name = "txtProduto";
-            this.txtProduto.Size = new System.Drawing.Size(300, 20);
-            this.txtProduto.TabIndex = 19;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 13);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Produto";
-            // 
-            // cbCentroCusto
-            // 
-            this.cbCentroCusto.DisplayMember = "value";
-            this.cbCentroCusto.FormattingEnabled = true;
-            this.cbCentroCusto.Location = new System.Drawing.Point(413, 27);
-            this.cbCentroCusto.Name = "cbCentroCusto";
-            this.cbCentroCusto.Size = new System.Drawing.Size(379, 21);
-            this.cbCentroCusto.TabIndex = 10;
-            this.cbCentroCusto.ValueMember = "key";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(413, 14);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 13);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "Centro de Custo";
-            // 
-            // txtQuantidade
-            // 
-            this.txtQuantidade.Location = new System.Drawing.Point(9, 63);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(100, 20);
-            this.txtQuantidade.TabIndex = 9;
-            this.txtQuantidade.Text = "1";
-            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 50);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Quantidade";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.gridItens);
-            this.panel1.Location = new System.Drawing.Point(0, 89);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(792, 289);
-            this.panel1.TabIndex = 25;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Item";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 35;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Prod";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 35;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Descrição";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Centro de Custo";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Qtde";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 40;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Custo Un";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 75;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Custo Total";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 85;
-            // 
             // frmMaterialSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,8 +490,8 @@
             this.pnlDireita.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridItens)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridItens)).EndInit();
             this.ResumeLayout(false);
 
         }

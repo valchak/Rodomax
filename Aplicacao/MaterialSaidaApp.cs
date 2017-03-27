@@ -3,12 +3,19 @@ using System.Linq;
 using Repositorio;
 using Modelo;
 using System.Collections.Generic;
+using System.Data.Entity;
+
 
 namespace Aplicacao
 {
     public class MaterialSaidaApp : App<MaterialSaida>
     {
         public ContextoDB Banco { get; set; }
+
+        public MaterialSaidaApp()
+        {
+            Banco = new ContextoDB();
+        }
 
         public void Adicionar(MaterialSaida obj)
         {
@@ -33,13 +40,9 @@ namespace Aplicacao
                 {
                     item.MaterialSaida = obj;
                     item.CentroCusto = Banco.CentroCustos.Find(item.CentroCusto.Id);
-                    
-                    if (item.Produto != null)
-                    {
-                        item.Produto = Banco.Produtos.Find(item.Produto.Id);
-                        AtualizarEstoque(item, EstoqueAcao.INSERT);
-                    }
+                    item.Produto = Banco.Produtos.Find(item.Produto.Id);
                     Banco.MateriaisSaidaProdutos.Add(item);
+                    AtualizarEstoque(item, EstoqueAcao.INSERT);
                 }
                 SalvarTodos();
             }
@@ -57,22 +60,27 @@ namespace Aplicacao
 
         public MaterialSaida Find(params object[] key)
         {
-            throw new NotImplementedException();
+            return Banco.Set<MaterialSaida>().Find(key);
         }
 
         public IQueryable<MaterialSaida> Get(Func<MaterialSaida, bool> predicate)
         {
-            throw new NotImplementedException();
+            return GetAll().Where(predicate).AsQueryable();
         }
 
         public IQueryable<MaterialSaida> GetAll()
         {
-            throw new NotImplementedException();
+            return Banco.Set<MaterialSaida>()
+                .Include(x => x.FilialSaida)
+                .Include(x => x.FilialEntrada)
+                .Include(x => x.ResponsavelRecebimento)
+                .Include(x => x.MaterialSaidaProdutos)
+                .Include(x => x.Solicitacao);
         }
 
         public void SalvarTodos()
         {
-            throw new NotImplementedException();
+            Banco.SaveChanges();
         }
 
 
@@ -103,51 +111,103 @@ namespace Aplicacao
             return true;
         }
 
-        private EstoqueMovimento AtualizarEstoque(NotaEntradaItens item, EstoqueAcao acao)
+        private void AtualizarEstoque(MaterialSaidaProdutos item, EstoqueAcao acao)
         {
-            EstoqueMovimento movimento = 
-                
-                new EstoqueMovimento();
-
-            if (item.EstoqueMovimento != null)
+            if(acao == EstoqueAcao.UPDATE || acao == EstoqueAcao.DELETE)
             {
-                movimento = Banco.EstoqueMovimentos.Find(item.EstoqueMovimento.Id);
+                List<EstoqueMovimento> lista = Banco.EstoqueMovimentos.Where(x => x.MaterialSaida.Id == item.Id).ToList();
+
+                if (lista.Any())
+                {
+                    foreach (var mov in lista)
+                    {
+                        if (mov.TipoMovimento.Equals("S"))
+                        {
+                            mov.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialSaida.Id);
+                            mov.Produto = Banco.Produtos.Find(item.Produto.Id);
+                            mov.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
+                            mov.QuantidadeNovo = item.Quantidade * -1;
+                            mov.MaterialSaida = item;
+                            mov.QuantidadeUsado = 0;
+                            mov.ValorUnitario = item.CustoUnitario;
+                            mov.ObservacaoHistorico = "Movimento de Saída";
+
+                        }
+                        else
+                        {
+                            mov.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialEntrada.Id);
+                            mov.Produto = Banco.Produtos.Find(item.Produto.Id);
+                            mov.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
+                            mov.MaterialSaida = item;
+                            mov.QuantidadeNovo = item.Quantidade;
+                            mov.QuantidadeUsado = 0;
+                            mov.ValorUnitario = item.CustoUnitario;
+                            mov.ObservacaoHistorico = "Movimento de Saída";
+                        }
+                        AcaoMovimento(mov, acao);
+                    }
+                }
             }
+            else
+            {
+                
+                EstoqueMovimento saida = new EstoqueMovimento();
+                if(item.MaterialSaida.FilialSaida.Id == item.MaterialSaida.Id || item.Produto.EstoqueFilial.Equals("N"))
+                {
+                    saida.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
+                    saida.MaterialSaida = item;
+                    saida.TipoMovimento = "S";
+                    saida.QuantidadeNovo = item.Quantidade*-1;
+                    saida.QuantidadeUsado = 0;
+                    saida.ValorUnitario = item.CustoUnitario;
+                    saida.ObservacaoHistorico = "Movimento de Saida";
+                    saida.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialSaida.Id);
+                    saida.Produto = Banco.Produtos.Find(item.Produto.Id);
+                    AcaoMovimento(saida, acao);
+                }
+                else
+                {
+                    saida.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
+                    saida.MaterialSaida = item;
+                    saida.TipoMovimento = "S";
+                    saida.QuantidadeNovo = item.Quantidade * -1;
+                    saida.QuantidadeUsado = 0;
+                    saida.ValorUnitario = item.CustoUnitario;
+                    saida.ObservacaoHistorico = "Movimento de Saida";
+                    saida.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialSaida.Id);
+                    saida.Produto = Banco.Produtos.Find(item.Produto.Id);
+                    AcaoMovimento(saida, acao);
 
+                    EstoqueMovimento entrada = new EstoqueMovimento();
 
-            movimento.Filial = Banco.Filiais.Find(item.Filial.Id);
-            movimento.Produto = Banco.Produtos.Find(item.Produto.Id);
-            movimento.DataMovimento = item.NotaEntrada.DataRecebimento;
-            movimento.QuantidadeNovo = item.QuantidadeEstoque;
-            movimento.QuantidadeUsado = 0;
-            movimento.ValorUnitario = item.ValorUnitarioEstoque;
-            movimento.TipoMovimento = "E";
-            movimento.ObservacaoHistorico = "Nota de Entrada";
+                    entrada.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
+                    saida.MaterialSaida = item;
+                    entrada.TipoMovimento = "E";
+                    entrada.QuantidadeNovo = item.Quantidade;
+                    entrada.QuantidadeUsado = 0;
+                    entrada.ValorUnitario = item.CustoUnitario;
+                    entrada.ObservacaoHistorico = "Movimento de Saida";
+                    entrada.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialEntrada.Id);
+                    entrada.Produto = Banco.Produtos.Find(item.Produto.Id);
+                    AcaoMovimento(entrada, acao);
+                }
 
-
+            }
+        }
+        private void AcaoMovimento(EstoqueMovimento movimento, EstoqueAcao acao)
+        {
             if (acao == EstoqueAcao.INSERT)
             {
                 Banco.EstoqueMovimentos.Add(movimento);
             }
             if (acao == EstoqueAcao.UPDATE)
             {
-                if (item.Produto == null)
-                {
-                    Banco.EstoqueMovimentos.Remove(movimento);
-                    movimento = null;
-                }
-                else
-                {
-                    Banco.Entry(movimento).State = EntityState.Modified;
-                }
-            }
+                 Banco.Entry(movimento).State = EntityState.Modified;
+             }
             if (acao == EstoqueAcao.DELETE)
             {
                 Banco.EstoqueMovimentos.Remove(movimento);
-                movimento = null;
             }
-
-            return movimento;
         }
     }    
 }   

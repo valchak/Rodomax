@@ -17,8 +17,9 @@ namespace Modelo
         [StringLength(1)]
         public string TipoMovimento { get; set; }
         public string ObservacaoHistorico { get; set; }
-        [StringLength(255)]
-        public string Documento { get; set; }
+//[StringLength(255)]
+                
+        public virtual MaterialSaidaProdutos MaterialSaida { get; set; }
 
     }
 }

@@ -85,7 +85,6 @@ namespace Rodomax
 
             filialOrigem = new Filial();
             filialDestino = new Filial();
-            solicitante = new Funcionario();
             solicitacao = new MaterialSolicitacao();
 
             listaItem = new Dictionary<int, MaterialSaidaProdutos>();
@@ -98,8 +97,11 @@ namespace Rodomax
             txtDataSaida.Value = DateTime.Now;
             txtSolicitacao.Clear();
             txtObservacao.Clear();
+            txtFuncionarioSolicitante.Clear();
 
             btnExcluir.Enabled = false;
+            btnPesquisar.Enabled = true;
+            btnNovo.Enabled = false;
 
             LimparItem();
         }
@@ -120,6 +122,7 @@ namespace Rodomax
         {
             if(filialDestino.Id > 0)
             {
+                listaCentroCustos = new Dictionary<int, CentroCusto>();
                 Dictionary<string, string> lista = new Dictionary<string, string>();
                 FilialCentroCustoApp ct = new FilialCentroCustoApp();
                 lista.Add("", "");
@@ -240,9 +243,13 @@ namespace Rodomax
                 MessageBox.Show("Data Inválida");
                 return false;
             }
-            if (saida.Solicitacao.Equals(""))
+            if (txtSolicitacao.Text.Trim().Equals(""))
             {
                 saida.Solicitacao = null;
+            }
+            else
+            {
+                solicitacao.Id = int.Parse(txtSolicitacao.Text);
             }
             if (!saida.MaterialSaidaProdutos.Any())
             {
@@ -303,6 +310,7 @@ namespace Rodomax
             {
                 item.Produto = produto;
                 item.CentroCusto = centroCusto;
+                item.CustoUnitario = produto.CustoMedio;
                 item.Quantidade = int.Parse(txtQuantidade.Text);
                 listaItem.Add(++numeroItens, item);
                 LimparItem();
@@ -315,6 +323,7 @@ namespace Rodomax
             {
                 item.Produto = produto;
                 item.CentroCusto = centroCusto;
+                item.CustoUnitario = produto.CustoMedio;
                 item.Quantidade = int.Parse(txtQuantidade.Text);
                 listaItem[numeroEditar] = item;
                 LimparItem();
@@ -369,6 +378,79 @@ namespace Rodomax
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Salvar();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            BuscaMaterialSaida();
+        }
+
+        private void BuscaMaterialSaida()
+        {
+            if (!txtCodigoSaida.Text.Trim().Equals("")){
+                List<MaterialSaida> listaitem = app.Get(x => x.Id == int.Parse(txtCodigoSaida.Text.Trim())).ToList();
+                if (listaitem.Any())
+                {
+                    saida = listaitem.First();
+                    PopulaCampos(saida);
+
+                    this.AlteraBotoes(3);
+                    this.operacao = "ALTERAR";
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma saída com esse código foi encontrada");
+                    LimpaNovo();
+                }
+            }
+        }
+
+        private void PopulaCampos(MaterialSaida saida)
+        {
+
+            filialOrigem = saida.FilialSaida;
+            txtFilialOrigem.Text = filialOrigem.Nome;
+            filialDestino = saida.FilialEntrada;
+            txtFilialDestino.Text = filialDestino.Nome;
+            if (saida.ResponsavelRecebimento != null)
+            {
+                solicitante = saida.ResponsavelRecebimento;
+                txtFuncionarioSolicitante.Text = solicitante.Nome;
+            }
+            if(saida.Solicitacao != null)
+            {
+                solicitacao = saida.Solicitacao;
+                txtSolicitacao.Text = solicitacao.Id.ToString();
+            }
+
+            txtDataSaida.Value = saida.DataSaidaEstoque;
+            txtObservacao.Text = saida.Observacao;
+
+            MaterialSaidaProdutosApp itemApp = new MaterialSaidaProdutosApp();
+
+
+            foreach (var item in saida.MaterialSaidaProdutos)
+            {
+                MaterialSaidaProdutos novo = itemApp.Get(x => x.Id == item.Id).First();
+
+                try
+                {
+                    listaItem.Add(++numeroItens, novo);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+
+            }
+
+            PopulaGrid();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpaNovo();
         }
     }
 }
