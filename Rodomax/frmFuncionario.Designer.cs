@@ -49,6 +49,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(700, 443);
             this.Name = "frmFuncionario";
+            this.Text = "Cadastro de Funcionário";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDireita.ResumeLayout(false);
             this.ResumeLayout(false);

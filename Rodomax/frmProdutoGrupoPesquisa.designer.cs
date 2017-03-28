@@ -1,16 +1,16 @@
-﻿namespace UI
+﻿namespace Rodomax
 {
     partial class frmProdutoGrupoPesquisa
     {
         /// <summary>
-        /// Required designer variable.
+        /// Variável de designer necessária.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpar os recursos que estão sendo usados.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código gerado pelo Windows Form Designer
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método necessário para suporte ao Designer - não modifique 
+        /// o conteúdo deste método com o editor de código.
         /// </summary>
         private void InitializeComponent()
         {
@@ -47,10 +47,6 @@
             // 
             this.btnSelecionarPesquisa.Click += new System.EventHandler(this.btnSelecionarPesquisa_Click);
             // 
-            // btnCriarNovo
-            // 
-            this.btnCriarNovo.Click += new System.EventHandler(this.btnCriarNovo_Click);
-            // 
             // gridPesquisa
             // 
             this.gridPesquisa.AllowUserToAddRows = false;
@@ -64,8 +60,8 @@
             this.gridPesquisa.Location = new System.Drawing.Point(0, 0);
             this.gridPesquisa.Name = "gridPesquisa";
             this.gridPesquisa.ReadOnly = true;
-            this.gridPesquisa.Size = new System.Drawing.Size(602, 307);
-            this.gridPesquisa.TabIndex = 0;
+            this.gridPesquisa.Size = new System.Drawing.Size(602, 354);
+            this.gridPesquisa.TabIndex = 1;
             this.gridPesquisa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridPesquisa_MouseDoubleClick);
             // 
             // colId
@@ -85,9 +81,9 @@
             // frmProdutoGrupoPesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(626, 388);
+            this.ClientSize = new System.Drawing.Size(626, 486);
             this.Name = "frmProdutoGrupoPesquisa";
-            this.Text = "Consulta Grupo de Produtos";
+            this.Text = "Consulta Grupo Estoque";
             this.pnlPesquisaResultado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.ResumeLayout(false);

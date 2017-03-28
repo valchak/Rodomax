@@ -41,15 +41,11 @@
             this.naoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naoNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCidade = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBuscarCidade = new System.Windows.Forms.Button();
-            this.cbEmpresa = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtComplemento = new System.Windows.Forms.TextBox();
@@ -61,6 +57,10 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCep = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.cbEmpresa = new System.Windows.Forms.ComboBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(658, 94);
+            this.pnlBotoes.Size = new System.Drawing.Size(652, 94);
             // 
             // btnNovo
             // 
@@ -101,11 +101,11 @@
             this.pnlDados.Controls.Add(this.txtId);
             this.pnlDados.Controls.Add(this.label1);
             this.pnlDados.Controls.Add(this.panel1);
-            this.pnlDados.Size = new System.Drawing.Size(658, 522);
+            this.pnlDados.Size = new System.Drawing.Size(652, 448);
             // 
             // pnlDireita
             // 
-            this.pnlDireita.Location = new System.Drawing.Point(286, 3);
+            this.pnlDireita.Location = new System.Drawing.Point(280, 3);
             // 
             // btnCancelar
             // 
@@ -136,15 +136,15 @@
             this.panel1.Controls.Add(this.gridNao);
             this.panel1.Location = new System.Drawing.Point(10, 272);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(638, 243);
+            this.panel1.Size = new System.Drawing.Size(632, 169);
             this.panel1.TabIndex = 0;
             // 
             // btnRemove1
             // 
             this.btnRemove1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove1.Location = new System.Drawing.Point(294, 148);
+            this.btnRemove1.Location = new System.Drawing.Point(294, 111);
             this.btnRemove1.Name = "btnRemove1";
-            this.btnRemove1.Size = new System.Drawing.Size(49, 23);
+            this.btnRemove1.Size = new System.Drawing.Size(43, 23);
             this.btnRemove1.TabIndex = 5;
             this.btnRemove1.Text = "<";
             this.btnRemove1.UseVisualStyleBackColor = true;
@@ -152,9 +152,9 @@
             // btnRemoveTodos
             // 
             this.btnRemoveTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveTodos.Location = new System.Drawing.Point(295, 119);
+            this.btnRemoveTodos.Location = new System.Drawing.Point(295, 82);
             this.btnRemoveTodos.Name = "btnRemoveTodos";
-            this.btnRemoveTodos.Size = new System.Drawing.Size(49, 23);
+            this.btnRemoveTodos.Size = new System.Drawing.Size(43, 23);
             this.btnRemoveTodos.TabIndex = 4;
             this.btnRemoveTodos.Text = "<<";
             this.btnRemoveTodos.UseVisualStyleBackColor = true;
@@ -162,9 +162,9 @@
             // btnAddTodos
             // 
             this.btnAddTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddTodos.Location = new System.Drawing.Point(295, 90);
+            this.btnAddTodos.Location = new System.Drawing.Point(295, 53);
             this.btnAddTodos.Name = "btnAddTodos";
-            this.btnAddTodos.Size = new System.Drawing.Size(49, 23);
+            this.btnAddTodos.Size = new System.Drawing.Size(43, 23);
             this.btnAddTodos.TabIndex = 3;
             this.btnAddTodos.Text = ">>";
             this.btnAddTodos.UseVisualStyleBackColor = true;
@@ -172,9 +172,9 @@
             // btnAddSim1
             // 
             this.btnAddSim1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddSim1.Location = new System.Drawing.Point(295, 61);
+            this.btnAddSim1.Location = new System.Drawing.Point(295, 24);
             this.btnAddSim1.Name = "btnAddSim1";
-            this.btnAddSim1.Size = new System.Drawing.Size(49, 23);
+            this.btnAddSim1.Size = new System.Drawing.Size(43, 23);
             this.btnAddSim1.TabIndex = 2;
             this.btnAddSim1.Text = ">";
             this.btnAddSim1.UseVisualStyleBackColor = true;
@@ -190,10 +190,10 @@
             this.gridSim.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.simId,
             this.simNome});
-            this.gridSim.Location = new System.Drawing.Point(350, 3);
+            this.gridSim.Location = new System.Drawing.Point(344, 3);
             this.gridSim.Name = "gridSim";
             this.gridSim.ReadOnly = true;
-            this.gridSim.Size = new System.Drawing.Size(285, 237);
+            this.gridSim.Size = new System.Drawing.Size(285, 163);
             this.gridSim.TabIndex = 1;
             // 
             // simId
@@ -224,7 +224,7 @@
             this.gridNao.Location = new System.Drawing.Point(3, 3);
             this.gridNao.Name = "gridNao";
             this.gridNao.ReadOnly = true;
-            this.gridNao.Size = new System.Drawing.Size(285, 237);
+            this.gridNao.Size = new System.Drawing.Size(285, 163);
             this.gridNao.TabIndex = 0;
             // 
             // naoId
@@ -249,21 +249,6 @@
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Código";
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(16, 22);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(100, 20);
-            this.txtId.TabIndex = 2;
-            // 
-            // txtNome
-            // 
-            this.txtNome.Location = new System.Drawing.Point(16, 66);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(282, 20);
-            this.txtNome.TabIndex = 4;
             // 
             // label2
             // 
@@ -290,14 +275,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Endereço";
             // 
-            // txtCidade
-            // 
-            this.txtCidade.Location = new System.Drawing.Point(16, 109);
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.ReadOnly = true;
-            this.txtCidade.Size = new System.Drawing.Size(282, 20);
-            this.txtCidade.TabIndex = 8;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -316,14 +293,6 @@
             this.btnBuscarCidade.TabIndex = 9;
             this.btnBuscarCidade.UseVisualStyleBackColor = true;
             this.btnBuscarCidade.Click += new System.EventHandler(this.btnBuscarCidade_Click);
-            // 
-            // cbEmpresa
-            // 
-            this.cbEmpresa.FormattingEnabled = true;
-            this.cbEmpresa.Location = new System.Drawing.Point(383, 65);
-            this.cbEmpresa.Name = "cbEmpresa";
-            this.cbEmpresa.Size = new System.Drawing.Size(211, 21);
-            this.cbEmpresa.TabIndex = 10;
             // 
             // label6
             // 
@@ -372,7 +341,7 @@
             // 
             this.txtBairro.Location = new System.Drawing.Point(383, 158);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(211, 20);
+            this.txtBairro.Size = new System.Drawing.Size(254, 20);
             this.txtBairro.TabIndex = 20;
             // 
             // label5
@@ -397,7 +366,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(18, 246);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(576, 20);
+            this.txtEmail.Size = new System.Drawing.Size(619, 20);
             this.txtEmail.TabIndex = 22;
             // 
             // txtCep
@@ -405,7 +374,7 @@
             this.txtCep.Location = new System.Drawing.Point(383, 109);
             this.txtCep.Mask = "00000-999";
             this.txtCep.Name = "txtCep";
-            this.txtCep.Size = new System.Drawing.Size(211, 20);
+            this.txtCep.Size = new System.Drawing.Size(254, 20);
             this.txtCep.TabIndex = 23;
             // 
             // txtTelefone
@@ -413,14 +382,46 @@
             this.txtTelefone.Location = new System.Drawing.Point(383, 204);
             this.txtTelefone.Mask = "(99) 0000-0000";
             this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(211, 20);
+            this.txtTelefone.Size = new System.Drawing.Size(254, 20);
             this.txtTelefone.TabIndex = 24;
+            // 
+            // cbEmpresa
+            // 
+            this.cbEmpresa.FormattingEnabled = true;
+            this.cbEmpresa.Location = new System.Drawing.Point(383, 65);
+            this.cbEmpresa.Name = "cbEmpresa";
+            this.cbEmpresa.Size = new System.Drawing.Size(254, 21);
+            this.cbEmpresa.TabIndex = 10;
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.Location = new System.Drawing.Point(16, 109);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.ReadOnly = true;
+            this.txtCidade.Size = new System.Drawing.Size(282, 20);
+            this.txtCidade.TabIndex = 8;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(16, 66);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(282, 20);
+            this.txtNome.TabIndex = 4;
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(16, 22);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 2;
             // 
             // frmFilial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(662, 615);
+            this.ClientSize = new System.Drawing.Size(656, 615);
             this.Name = "frmFilial";
+            this.Text = "Cadastro de Filial";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();
@@ -446,25 +447,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn naoId;
         private System.Windows.Forms.DataGridViewTextBoxColumn naoNome;
         private System.Windows.Forms.Button btnBuscarCidade;
-        private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbEmpresa;
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.MaskedTextBox txtCep;
+        private System.Windows.Forms.ComboBox cbEmpresa;
+        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

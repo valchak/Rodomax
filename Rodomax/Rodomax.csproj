@@ -69,6 +69,15 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
     <Reference Include="MMLib.Core, Version=1.0.5305.36249, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MMLib.Extensions.1.0.10.13\lib\MMLib.Core.dll</HintPath>
     </Reference>
@@ -102,7 +111,7 @@
     <Compile Include="frmCidadePesquisa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCidadePesquisa.designer.cs">
+    <Compile Include="frmCidadePesquisa.Designer.cs">
       <DependentUpon>frmCidadePesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEstoque.cs">
@@ -120,13 +129,13 @@
     <Compile Include="frmFilialPesquisa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFilialPesquisa.designer.cs">
+    <Compile Include="frmFilialPesquisa.Designer.cs">
       <DependentUpon>frmFilialPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFornecedorPesquisa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFornecedorPesquisa.designer.cs">
+    <Compile Include="frmFornecedorPesquisa.Designer.cs">
       <DependentUpon>frmFornecedorPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFuncionario.cs">
@@ -162,13 +171,13 @@
     <Compile Include="frmProdutoGrupoPesquisa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProdutoGrupoPesquisa.designer.cs">
+    <Compile Include="frmProdutoGrupoPesquisa.Designer.cs">
       <DependentUpon>frmProdutoGrupoPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="frmProdutoPesquisa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProdutoPesquisa.designer.cs">
+    <Compile Include="frmProdutoPesquisa.Designer.cs">
       <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
@@ -300,6 +309,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MetroFramework.txt" />
     <Content Include="Resources\Alterar.png" />
     <Content Include="Resources\Cancelar.png" />
     <Content Include="Resources\Cancelar1.png" />

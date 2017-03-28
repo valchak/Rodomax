@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -9,7 +8,7 @@ using System;
 using Ferramenta;
 using MMLib.Extensions;
 
-namespace UI
+namespace Rodomax
 {
     public partial class frmFornecedorPesquisa : UI.ModelConsulta
     {
@@ -25,18 +24,19 @@ namespace UI
 
 
 
-        private void btnFiltrar_Click(object sender, System.EventArgs e)
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
         {
             var th = new Thread(new ThreadStart(this.BuscarNoBanco));
             th.Start();
         }
 
-        private void btnSelecionarPesquisa_Click(object sender, System.EventArgs e)
+        private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
         {
             SelecionarObjeto();
         }
 
-        private void btnCriarNovo_Click(object sender, System.EventArgs e)
+        private void btnCriarNovo_Click(object sender, EventArgs e)
         {
 
         }
@@ -99,6 +99,5 @@ namespace UI
                 MessageBox.Show("Erro: " + exception.Message);
             }
         }
-
     }
 }

@@ -36,11 +36,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.Size = new System.Drawing.Size(93, 13);
-            this.label1.Text = "Nome Funcionário";
-            // 
             // btnFiltrar
             // 
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
@@ -61,6 +56,7 @@
             // 
             this.gridPesquisa.AllowUserToAddRows = false;
             this.gridPesquisa.AllowUserToDeleteRows = false;
+            this.gridPesquisa.AllowUserToOrderColumns = true;
             this.gridPesquisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPesquisa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -70,20 +66,21 @@
             this.gridPesquisa.Location = new System.Drawing.Point(0, 0);
             this.gridPesquisa.Name = "gridPesquisa";
             this.gridPesquisa.ReadOnly = true;
-            this.gridPesquisa.Size = new System.Drawing.Size(602, 307);
+            this.gridPesquisa.Size = new System.Drawing.Size(602, 354);
             this.gridPesquisa.TabIndex = 0;
             this.gridPesquisa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridPesquisa_MouseDoubleClick);
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "Cód";
+            this.Column1.HeaderText = "Cod";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 50;
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Nome Funcionário";
+            this.Column2.HeaderText = "Nome";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
@@ -92,12 +89,14 @@
             this.Column3.HeaderText = "Situação";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 80;
             // 
-            // frmFuncionarioPesquisacs
+            // frmFuncionarioPesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(626, 388);
-            this.Name = "frmFuncionarioPesquisacs";
+            this.ClientSize = new System.Drawing.Size(626, 486);
+            this.Name = "frmFuncionarioPesquisa";
+            this.Text = "Consulta Funcionário";
             this.pnlPesquisaResultado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.ResumeLayout(false);

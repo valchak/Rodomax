@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using Aplicacao;
-using Ferramenta;
 using Modelo;
+using System;
+using Ferramenta;
 using MMLib.Extensions;
+using UI;
 
-namespace UI
+namespace Rodomax
 {
     public partial class frmFilialPesquisa : UI.ModelConsulta
     {
@@ -19,13 +20,7 @@ namespace UI
             app = new FilialApp();
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            Buscar();
-        }
 
-       
         public void Buscar()
         {
             IEnumerable<Filial> lista = app.Get(x => x.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()));
@@ -45,46 +40,43 @@ namespace UI
             gridPesquisa.Refresh();
         }
 
-       
-        private void btnCriarNovo_Click(object sender, EventArgs e)
+
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            frmCidade tela = new frmCidade();
-            tela.ShowDialog();
-            tela.Dispose();
+            Buscar();
         }
 
         private void gridPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (gridPesquisa.Rows.Count > 0)
             {
-                try
-                {
-                    instancia.filial = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
-                    this.Close();
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show("Erro: "+exception.Message);
-                }
-               
+                Selecionar();
             }
-            
         }
 
-        private void gridPesquisa_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
         {
-            if (gridPesquisa.Rows.Count > 0)
-            {
-                try
-                {
-                    instancia.filial = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
-                    this.Close();
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show("Erro: " + exception.Message);
-                }
+            Selecionar();
+        }
 
+        private void btnCriarNovo_Click(object sender, EventArgs e)
+        {
+            frmFilial tela = new frmFilial();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        public void Selecionar()
+        {
+            try
+            {
+                instancia.filial = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
+                this.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Erro: " + exception.Message);
             }
         }
     }

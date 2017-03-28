@@ -48,9 +48,9 @@
             this.pnlBotoes.Controls.Add(this.pnlDireita);
             this.pnlBotoes.Controls.Add(this.btnPesquisar);
             this.pnlBotoes.Controls.Add(this.btnNovo);
-            this.pnlBotoes.Location = new System.Drawing.Point(0, 0);
+            this.pnlBotoes.Location = new System.Drawing.Point(0, 50);
             this.pnlBotoes.Name = "pnlBotoes";
-            this.pnlBotoes.Size = new System.Drawing.Size(657, 94);
+            this.pnlBotoes.Size = new System.Drawing.Size(676, 94);
             this.pnlBotoes.TabIndex = 0;
             // 
             // pnlDireita
@@ -59,7 +59,7 @@
             this.pnlDireita.Controls.Add(this.btnCancelar);
             this.pnlDireita.Controls.Add(this.btnExcluir);
             this.pnlDireita.Controls.Add(this.btnSalvar);
-            this.pnlDireita.Location = new System.Drawing.Point(285, 3);
+            this.pnlDireita.Location = new System.Drawing.Point(304, 3);
             this.pnlDireita.Name = "pnlDireita";
             this.pnlDireita.Size = new System.Drawing.Size(369, 90);
             this.pnlDireita.TabIndex = 6;
@@ -128,21 +128,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlDados.Location = new System.Drawing.Point(0, 94);
+            this.pnlDados.Location = new System.Drawing.Point(0, 144);
             this.pnlDados.Name = "pnlDados";
-            this.pnlDados.Size = new System.Drawing.Size(657, 290);
+            this.pnlDados.Size = new System.Drawing.Size(676, 365);
             this.pnlDados.TabIndex = 1;
             // 
             // ModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(661, 388);
+            this.ClientSize = new System.Drawing.Size(680, 516);
             this.Controls.Add(this.pnlDados);
             this.Controls.Add(this.pnlBotoes);
             this.Name = "ModelForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModelFrom";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDireita.ResumeLayout(false);

@@ -5,8 +5,9 @@ using Aplicacao;
 using Ferramenta;
 using Modelo;
 using MMLib.Extensions;
+using UI;
 
-namespace UI
+namespace Rodomax
 {
     public partial class frmCidadePesquisa : UI.ModelConsulta
     {
@@ -19,10 +20,9 @@ namespace UI
             app = new CidadeApp();
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
-        
+
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-           
             IEnumerable<Cidade> lista = app.Get(x => x.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()));
 
             gridPesquisa.DataSource = null;
@@ -36,16 +36,15 @@ namespace UI
                 gridPesquisa.Rows[n].Cells[0].Value = cidade.Id;
                 gridPesquisa.Rows[n].Cells[1].Value = cidade.Nome;
             }
-            
+
             gridPesquisa.Refresh();
         }
 
-        private void gridPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
         {
-            
+            Selecionar();
         }
 
-       
         private void btnCriarNovo_Click(object sender, EventArgs e)
         {
             frmCidade tela = new frmCidade();
@@ -57,34 +56,20 @@ namespace UI
         {
             if (gridPesquisa.Rows.Count > 0)
             {
-                try
-                {
-                    instancia.cidade = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
-                    this.Close();
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show("Erro: "+exception.Message);
-                }
-               
+                Selecionar();
             }
-            
         }
 
-        private void gridPesquisa_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        public void Selecionar()
         {
-            if (gridPesquisa.Rows.Count > 0)
+            try
             {
-                try
-                {
-                    instancia.cidade = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
-                    this.Close();
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show("Erro: " + exception.Message);
-                }
-
+                instancia.cidade = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
+                this.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Erro: " + exception.Message);
             }
         }
     }

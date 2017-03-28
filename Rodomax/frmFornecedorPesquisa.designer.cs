@@ -1,16 +1,16 @@
-﻿namespace UI
+﻿namespace Rodomax
 {
     partial class frmFornecedorPesquisa
     {
         /// <summary>
-        /// Required designer variable.
+        /// Variável de designer necessária.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpar os recursos que estão sendo usados.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código gerado pelo Windows Form Designer
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método necessário para suporte ao Designer - não modifique 
+        /// o conteúdo deste método com o editor de código.
         /// </summary>
         private void InitializeComponent()
         {
@@ -58,20 +58,18 @@
             this.gridPesquisa.AllowUserToAddRows = false;
             this.gridPesquisa.AllowUserToDeleteRows = false;
             this.gridPesquisa.AllowUserToOrderColumns = true;
-            this.gridPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridPesquisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPesquisa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4});
-            this.gridPesquisa.Location = new System.Drawing.Point(3, 3);
+            this.gridPesquisa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridPesquisa.Location = new System.Drawing.Point(0, 0);
             this.gridPesquisa.Name = "gridPesquisa";
             this.gridPesquisa.ReadOnly = true;
-            this.gridPesquisa.Size = new System.Drawing.Size(599, 304);
-            this.gridPesquisa.TabIndex = 0;
+            this.gridPesquisa.Size = new System.Drawing.Size(602, 354);
+            this.gridPesquisa.TabIndex = 1;
             this.gridPesquisa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridPesquisa_MouseDoubleClick);
             // 
             // Column1
@@ -104,9 +102,9 @@
             // frmFornecedorPesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(626, 388);
+            this.ClientSize = new System.Drawing.Size(626, 486);
             this.Name = "frmFornecedorPesquisa";
-            this.Text = "Pesquisa Fornecedor";
+            this.Text = "Consulta Fornecedor";
             this.pnlPesquisaResultado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.ResumeLayout(false);
@@ -115,10 +113,11 @@
         }
 
         #endregion
+
+        public System.Windows.Forms.DataGridView gridPesquisa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        public System.Windows.Forms.DataGridView gridPesquisa;
     }
 }

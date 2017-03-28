@@ -39,7 +39,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(9, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             this.txtPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisa.Location = new System.Drawing.Point(15, 26);
+            this.txtPesquisa.Location = new System.Drawing.Point(12, 69);
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(518, 20);
             this.txtPesquisa.TabIndex = 1;
@@ -57,7 +57,7 @@
             // btnFiltrar
             // 
             this.btnFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFiltrar.Location = new System.Drawing.Point(539, 24);
+            this.btnFiltrar.Location = new System.Drawing.Point(536, 67);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
             this.btnFiltrar.TabIndex = 2;
@@ -69,15 +69,15 @@
             this.pnlPesquisaResultado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlPesquisaResultado.Location = new System.Drawing.Point(12, 53);
+            this.pnlPesquisaResultado.Location = new System.Drawing.Point(12, 95);
             this.pnlPesquisaResultado.Name = "pnlPesquisaResultado";
-            this.pnlPesquisaResultado.Size = new System.Drawing.Size(602, 307);
+            this.pnlPesquisaResultado.Size = new System.Drawing.Size(602, 354);
             this.pnlPesquisaResultado.TabIndex = 3;
             // 
             // btnSelecionarPesquisa
             // 
-            this.btnSelecionarPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionarPesquisa.Location = new System.Drawing.Point(539, 362);
+            this.btnSelecionarPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelecionarPesquisa.Location = new System.Drawing.Point(539, 455);
             this.btnSelecionarPesquisa.Name = "btnSelecionarPesquisa";
             this.btnSelecionarPesquisa.Size = new System.Drawing.Size(75, 23);
             this.btnSelecionarPesquisa.TabIndex = 4;
@@ -86,7 +86,8 @@
             // 
             // btnCriarNovo
             // 
-            this.btnCriarNovo.Location = new System.Drawing.Point(12, 362);
+            this.btnCriarNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCriarNovo.Location = new System.Drawing.Point(12, 455);
             this.btnCriarNovo.Name = "btnCriarNovo";
             this.btnCriarNovo.Size = new System.Drawing.Size(75, 23);
             this.btnCriarNovo.TabIndex = 5;
@@ -97,8 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(626, 388);
+            this.ClientSize = new System.Drawing.Size(626, 486);
             this.Controls.Add(this.btnCriarNovo);
             this.Controls.Add(this.btnSelecionarPesquisa);
             this.Controls.Add(this.pnlPesquisaResultado);

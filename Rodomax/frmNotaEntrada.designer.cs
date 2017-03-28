@@ -52,6 +52,7 @@
             this.txtValorTotalDocumento = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnItemLimpar = new System.Windows.Forms.Button();
             this.btnItemAdd = new System.Windows.Forms.Button();
             this.btnItemExcluir = new System.Windows.Forms.Button();
             this.btnItemEditar = new System.Windows.Forms.Button();
@@ -82,7 +83,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtDiferencaItensNota = new System.Windows.Forms.Label();
             this.txtSomaItens = new System.Windows.Forms.Label();
-            this.btnItemLimpar = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -127,7 +127,7 @@
             this.pnlDados.Controls.Add(this.label2);
             this.pnlDados.Controls.Add(this.txtFornecedor);
             this.pnlDados.Controls.Add(this.label1);
-            this.pnlDados.Size = new System.Drawing.Size(896, 516);
+            this.pnlDados.Size = new System.Drawing.Size(896, 520);
             // 
             // pnlDireita
             // 
@@ -395,10 +395,21 @@
             this.groupBox1.Controls.Add(this.gridItens);
             this.groupBox1.Location = new System.Drawing.Point(4, 113);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(888, 367);
+            this.groupBox1.Size = new System.Drawing.Size(888, 368);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Itens da Nota";
+            // 
+            // btnItemLimpar
+            // 
+            this.btnItemLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnItemLimpar.Location = new System.Drawing.Point(791, 67);
+            this.btnItemLimpar.Name = "btnItemLimpar";
+            this.btnItemLimpar.Size = new System.Drawing.Size(86, 23);
+            this.btnItemLimpar.TabIndex = 143;
+            this.btnItemLimpar.Text = "Limpar";
+            this.btnItemLimpar.UseVisualStyleBackColor = true;
+            this.btnItemLimpar.Click += new System.EventHandler(this.btnItemLimpar_Click);
             // 
             // btnItemAdd
             // 
@@ -484,6 +495,7 @@
             this.txtItemVlUnitario.Text = "0,00";
             this.txtItemVlUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemVlUnitario.TextChanged += new System.EventHandler(this.txtItemVlUnitario_TextChanged);
+            this.txtItemVlUnitario.Enter += new System.EventHandler(this.txtItemVlUnitario_Enter);
             this.txtItemVlUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemVlUnitario_KeyPress);
             // 
             // label14
@@ -591,7 +603,7 @@
             this.gridItens.Location = new System.Drawing.Point(6, 93);
             this.gridItens.Name = "gridItens";
             this.gridItens.ReadOnly = true;
-            this.gridItens.Size = new System.Drawing.Size(876, 267);
+            this.gridItens.Size = new System.Drawing.Size(876, 269);
             this.gridItens.TabIndex = 0;
             this.gridItens.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItens_CellDoubleClick);
             this.gridItens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridItens_MouseDoubleClick);
@@ -693,22 +705,12 @@
             this.txtSomaItens.Text = "0,00";
             this.txtSomaItens.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // btnItemLimpar
-            // 
-            this.btnItemLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnItemLimpar.Location = new System.Drawing.Point(791, 67);
-            this.btnItemLimpar.Name = "btnItemLimpar";
-            this.btnItemLimpar.Size = new System.Drawing.Size(86, 23);
-            this.btnItemLimpar.TabIndex = 143;
-            this.btnItemLimpar.Text = "Limpar";
-            this.btnItemLimpar.UseVisualStyleBackColor = true;
-            this.btnItemLimpar.Click += new System.EventHandler(this.btnItemLimpar_Click);
-            // 
             // frmNotaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(900, 614);
+            this.ClientSize = new System.Drawing.Size(900, 679);
             this.Name = "frmNotaEntrada";
+            this.Text = "Nota de Entrada";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

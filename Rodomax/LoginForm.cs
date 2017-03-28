@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Rodomax
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : MetroFramework.Forms.MetroForm
     {
         Singleton instancia = Singleton.GetInstance;
         public LoginForm()
@@ -19,35 +19,7 @@ namespace Rodomax
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string login = txtLogin.Text.Trim().RemoveDiacritics().ToUpper();
-            string senha = txtLogin.Text.Trim().RemoveDiacritics();
-            if (!login.Equals("") && !senha.Equals(""))
-            {
-                Thread t = new Thread(new ThreadStart(Splash));
-                t.Start();
-
-                this.Opacity = 0;
-                
-                if(LogaUsuario(login, senha))
-                {
-                    t.Abort();
-                    Principal tela = new Principal();
-                    tela.ShowDialog();
-                    tela.Dispose();
-                }
-                else
-                {
-                    t.Abort();
-                    MessageBox.Show("Usuário ou senha Inválidos");
-                }
-                t.Abort();
-                this.Opacity = 100;
-
-            }
-            else
-            {
-                MessageBox.Show("Usuário ou senha Inválidos");
-            }
+            
         }
 
         bool LogaUsuario(string login, string senha)
@@ -77,6 +49,38 @@ namespace Rodomax
             frm.ShowInTaskbar = true;
             Application.Run(frm);
         }
-        
+
+        private void btnLogar_Click(object sender, EventArgs e)
+        {
+            string login = txtUsuario.Text.Trim().RemoveDiacritics().ToUpper();
+            string senha = txtPassword.Text.Trim().RemoveDiacritics();
+            if (!login.Equals("") && !senha.Equals(""))
+            {
+                Thread t = new Thread(new ThreadStart(Splash));
+                t.Start();
+
+                this.Opacity = 0;
+
+                if (LogaUsuario(login, senha))
+                {
+                    t.Abort();
+                    Principal tela = new Principal();
+                    tela.ShowDialog();
+                    tela.Dispose();
+                }
+                else
+                {
+                    t.Abort();
+                    MessageBox.Show("Usuário ou senha Inválidos");
+                }
+                t.Abort();
+                this.Opacity = 100;
+
+            }
+            else
+            {
+                MessageBox.Show("Usuário ou senha Inválidos");
+            }
+        }
     }
 }

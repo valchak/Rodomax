@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Ferramenta;
 using MMLib.Extensions;
-
+using Rodomax;
 
 namespace UI
 {
@@ -35,12 +35,12 @@ namespace UI
 
         private void limparCampos()
         {
-            txtNome.Clear();
+            txtId.Clear();
             txtCep.Clear();
             txtComplemento.Clear();
             txtCidade.Clear();
             txtEndereco.Clear();
-            txtId.Clear();
+            txtNome.Clear();
             txtTelefone.Clear();
             txtBairro.Clear();
             txtEmail.Clear();

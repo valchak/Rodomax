@@ -6,12 +6,13 @@ using Aplicacao;
 using Ferramenta;
 using MMLib.Extensions;
 
-namespace UI
+namespace Rodomax
 {
     public partial class frmProdutoGrupoPesquisa : UI.ModelConsulta
     {
         private ProdutoGrupoApp app;
         Singleton instancia = Singleton.GetInstance;
+
         public frmProdutoGrupoPesquisa()
         {
             InitializeComponent();
@@ -19,7 +20,7 @@ namespace UI
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void btnFiltrar_Click(object sender, System.EventArgs e)
+        private void btnFiltrar_Click(object sender, EventArgs e)
         {
             gridPesquisa.DataSource = null;
             gridPesquisa.ResetBindings();
@@ -36,12 +37,15 @@ namespace UI
             }
         }
 
-        private void btnCriarNovo_Click(object sender, System.EventArgs e)
+        private void gridPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            if (gridPesquisa.Rows.Count > 0)
+            {
+                Selecionar();
+            }
         }
 
-        private void btnSelecionarPesquisa_Click(object sender, System.EventArgs e)
+        private void Selecionar()
         {
             try
             {
@@ -54,21 +58,9 @@ namespace UI
             }
         }
 
-        private void gridPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
         {
-            if (gridPesquisa.Rows.Count > 0)
-            {
-                try
-                {
-                    instancia.produtoGrupo = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
-                    this.Close();
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show("Erro: " + exception.Message);
-                }
-
-            }
+            Selecionar();
         }
     }
 }

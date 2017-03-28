@@ -6,6 +6,7 @@ using Aplicacao;
 using Ferramenta;
 using Modelo;
 using MMLib.Extensions;
+using Rodomax;
 
 namespace UI
 {
@@ -247,6 +248,13 @@ namespace UI
         private void txtValorDocumento_TextChanged(object sender, EventArgs e)
         {
             Formatacao.MoedaCampo(ref txtValorDocumento);
+            if(!txtValorDocumento.Text.Trim().Equals("") && !txtAcresDesc.Text.Trim().Equals(""))
+            {
+                double valor = double.Parse(txtValorDocumento.Text);
+                double desc = double.Parse(txtAcresDesc.Text);
+                txtValorTotalDocumento.Text = Formatacao.DoubleToString(valor+desc);
+            }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -632,6 +640,21 @@ namespace UI
         private void btnItemLimpar_Click(object sender, EventArgs e)
         {
             LimparItem();
+        }
+
+        private void txtItemVlUnitario_Enter(object sender, EventArgs e)
+        {
+            CalculaTotal();
+        }
+
+        private void CalculaTotal()
+        {
+            if(!txtItemVlUnitario.Text.Trim().Equals("") && !txtItemQuantidade.Text.Trim().Equals(""))
+            {
+                double quant = double.Parse(txtItemQuantidade.Text);
+                double valorUn = double.Parse(txtItemVlUnitario.Text);
+                txtItemValorTotal.Text = Formatacao.DoubleToString(quant * valorUn);
+            }
         }
     }
 }

@@ -7,36 +7,24 @@ using Aplicacao;
 using Modelo;
 using Ferramenta;
 using MMLib.Extensions;
+using UI;
 
-
-namespace UI
+namespace Rodomax
 {
     public partial class frmProdutoPesquisa : UI.ModelConsulta
     {
-
         private ProdutoApp app;
         Singleton instancia = Singleton.GetInstance;
-        
-
         public frmProdutoPesquisa()
         {
             InitializeComponent();
-            app = new ProdutoApp();
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             rdAtivo.Checked = true;
         }
 
-        private void btnFiltrar_Click(object sender, System.EventArgs e)
-        {
-            var th = new Thread(new ThreadStart(this.BuscarNoBanco));
-            th.Start();
-
-        }
-
-        
         public void BuscarNoBanco()
         {
-           
+
             Produto produto = new Produto();
 
             if (rdAtivo.Checked)
@@ -53,7 +41,7 @@ namespace UI
             }
             produto.Nome = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
 
-            
+
             IEnumerable<Produto> lista = app.Get(x => x.Nome.Contains(produto.Nome) && x.Situacao.Contains(produto.Situacao));
 
 
@@ -85,7 +73,7 @@ namespace UI
                                 break;
                         }
                     }
-                        
+
                     gridPesquisa.Refresh();
                 }
                 else
@@ -93,11 +81,30 @@ namespace UI
                     MessageBox.Show("Nenhum item encontrado.");
                 }
             }));
- 
-    
+
+
         }
 
-        private void btnCriarNovo_Click(object sender, System.EventArgs e)
+        private void SelecionarObjeto()
+        {
+            try
+            {
+                instancia.produto = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
+                this.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Erro: " + exception.Message);
+            }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            var th = new Thread(new ThreadStart(this.BuscarNoBanco));
+            th.Start();
+        }
+
+        private void btnCriarNovo_Click(object sender, EventArgs e)
         {
             frmProduto tela = new frmProduto();
             tela.ShowDialog();
@@ -116,20 +123,5 @@ namespace UI
         {
             SelecionarObjeto();
         }
-
-        private void SelecionarObjeto()
-        {
-            try
-            {
-                instancia.produto = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
-                this.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show("Erro: " + exception.Message);
-            }
-        }
-
-        
     }
 }

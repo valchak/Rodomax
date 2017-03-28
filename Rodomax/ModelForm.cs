@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class ModelForm : Form
+    public partial class ModelForm : MetroFramework.Forms.MetroForm
     {
         public String operacao;
         public ModelForm()

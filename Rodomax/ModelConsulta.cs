@@ -3,7 +3,7 @@
 
 namespace UI
 {
-    public partial class ModelConsulta : Form
+    public partial class ModelConsulta : MetroFramework.Forms.MetroForm
     {
         public ModelConsulta()
         {

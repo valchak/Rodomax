@@ -69,7 +69,7 @@
             this.pnlDados.Controls.Add(this.label2);
             this.pnlDados.Controls.Add(this.label0);
             this.pnlDados.Controls.Add(this.panel1);
-            this.pnlDados.Size = new System.Drawing.Size(1009, 506);
+            this.pnlDados.Size = new System.Drawing.Size(1009, 505);
             // 
             // pnlDireita
             // 
@@ -81,9 +81,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.gridPesquisa);
-            this.panel1.Location = new System.Drawing.Point(0, 89);
+            this.panel1.Location = new System.Drawing.Point(11, 89);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1007, 415);
+            this.panel1.Size = new System.Drawing.Size(988, 409);
             this.panel1.TabIndex = 0;
             // 
             // gridPesquisa
@@ -91,19 +91,17 @@
             this.gridPesquisa.AllowUserToAddRows = false;
             this.gridPesquisa.AllowUserToDeleteRows = false;
             this.gridPesquisa.AllowUserToOrderColumns = true;
-            this.gridPesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridPesquisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPesquisa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4});
-            this.gridPesquisa.Location = new System.Drawing.Point(3, 3);
+            this.gridPesquisa.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridPesquisa.Location = new System.Drawing.Point(0, 0);
             this.gridPesquisa.Name = "gridPesquisa";
             this.gridPesquisa.ReadOnly = true;
-            this.gridPesquisa.Size = new System.Drawing.Size(1004, 412);
+            this.gridPesquisa.Size = new System.Drawing.Size(988, 409);
             this.gridPesquisa.TabIndex = 0;
             // 
             // Column1
@@ -242,8 +240,9 @@
             // frmEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1013, 604);
+            this.ClientSize = new System.Drawing.Size(1013, 662);
             this.Name = "frmEstoque";
+            this.Text = "Consulta de Estoque";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

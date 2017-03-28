@@ -11,7 +11,7 @@ using UI;
 
 namespace Rodomax
 {
-    public partial class Principal : Form
+    public partial class Principal : MetroFramework.Forms.MetroForm
     {
         public Principal()
         {

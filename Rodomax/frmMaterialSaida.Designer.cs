@@ -488,6 +488,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(805, 603);
             this.Name = "frmMaterialSaida";
+            this.Text = "Saída de Material / Estoque ";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

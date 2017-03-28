@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCidadeId = new System.Windows.Forms.TextBox();
-            this.txtCidadeNome = new System.Windows.Forms.TextBox();
+            this.txtCidadeId = new MetroFramework.Controls.MetroTextBox();
+            this.txtCidadeNome = new MetroFramework.Controls.MetroTextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -52,7 +52,7 @@
             this.pnlDados.Controls.Add(this.txtCidadeId);
             this.pnlDados.Controls.Add(this.label2);
             this.pnlDados.Controls.Add(this.label1);
-            this.pnlDados.Size = new System.Drawing.Size(676, 122);
+            this.pnlDados.Size = new System.Drawing.Size(676, 114);
             // 
             // pnlDireita
             // 
@@ -94,26 +94,24 @@
             // 
             // txtCidadeId
             // 
-            this.txtCidadeId.Location = new System.Drawing.Point(11, 21);
+            this.txtCidadeId.Location = new System.Drawing.Point(14, 20);
             this.txtCidadeId.Name = "txtCidadeId";
-            this.txtCidadeId.Size = new System.Drawing.Size(100, 20);
-            this.txtCidadeId.TabIndex = 2;
+            this.txtCidadeId.Size = new System.Drawing.Size(107, 23);
+            this.txtCidadeId.TabIndex = 4;
             // 
             // txtCidadeNome
             // 
-            this.txtCidadeNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCidadeNome.Location = new System.Drawing.Point(14, 66);
             this.txtCidadeNome.Name = "txtCidadeNome";
-            this.txtCidadeNome.Size = new System.Drawing.Size(651, 20);
-            this.txtCidadeNome.TabIndex = 3;
+            this.txtCidadeNome.Size = new System.Drawing.Size(640, 23);
+            this.txtCidadeNome.TabIndex = 5;
             // 
             // frmCidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(679, 217);
+            this.ClientSize = new System.Drawing.Size(679, 281);
             this.Name = "frmCidade";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cadastro de Cidade";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();
@@ -123,10 +121,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtCidadeNome;
-        private System.Windows.Forms.TextBox txtCidadeId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private MetroFramework.Controls.MetroTextBox txtCidadeId;
+        private MetroFramework.Controls.MetroTextBox txtCidadeNome;
     }
 }

@@ -96,7 +96,7 @@
             this.pnlDados.Controls.Add(this.label2);
             this.pnlDados.Controls.Add(this.txtId);
             this.pnlDados.Controls.Add(this.label1);
-            this.pnlDados.Size = new System.Drawing.Size(556, 426);
+            this.pnlDados.Size = new System.Drawing.Size(556, 409);
             // 
             // pnlDireita
             // 
@@ -407,7 +407,7 @@
             this.groupBox1.Controls.Add(this.txtObservacao);
             this.groupBox1.Location = new System.Drawing.Point(13, 203);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(533, 114);
+            this.groupBox1.Size = new System.Drawing.Size(533, 97);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Observação";
@@ -420,14 +420,15 @@
             this.txtObservacao.Location = new System.Drawing.Point(7, 20);
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(518, 88);
+            this.txtObservacao.Size = new System.Drawing.Size(518, 71);
             this.txtObservacao.TabIndex = 0;
             // 
             // frmProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(560, 524);
+            this.ClientSize = new System.Drawing.Size(560, 576);
             this.Name = "frmProduto";
+            this.Text = "Cadastro de Produto";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();
