@@ -20,6 +20,7 @@ namespace Rodomax
             InitializeComponent();
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             rdAtivo.Checked = true;
+            app = new ProdutoApp();
         }
 
         public void BuscarNoBanco()

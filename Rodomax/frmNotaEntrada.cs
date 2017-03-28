@@ -233,16 +233,29 @@ namespace UI
         private void txtValorTotalDocumento_TextChanged(object sender, EventArgs e)
         {
             Formatacao.MoedaCampo(ref txtValorTotalDocumento);
+            if(!txtValorDocumento.Text.Trim().Equals("") && !txtValorTotalDocumento.Text.Trim().Equals(""))
+            {
+                double valorDoc = double.Parse(txtValorDocumento.Text);
+                double valorTotal = double.Parse(txtValorTotalDocumento.Text);
+                txtAcresDesc.Text = Formatacao.DoubleToString(valorTotal - valorDoc);
+            }            
         }
 
         private void txtItemVlUnitario_TextChanged(object sender, EventArgs e)
         {
             Formatacao.MoedaCampo(ref txtItemVlUnitario);
+            if (!txtItemVlUnitario.Text.Trim().Equals("") && !txtItemQuantidade.Text.Trim().Equals(""))
+            {
+                double valor = double.Parse(txtItemVlUnitario.Text);
+                double quant = double.Parse(txtItemQuantidade.Text);
+                txtItemValorTotal.Text = Formatacao.DoubleToString(quant * valor);
+            }
         }
 
         private void txtItemValorTotal_TextChanged(object sender, EventArgs e)
         {
             Formatacao.MoedaCampo(ref txtItemValorTotal);
+            
         }
 
         private void txtValorDocumento_TextChanged(object sender, EventArgs e)
@@ -654,6 +667,16 @@ namespace UI
                 double quant = double.Parse(txtItemQuantidade.Text);
                 double valorUn = double.Parse(txtItemVlUnitario.Text);
                 txtItemValorTotal.Text = Formatacao.DoubleToString(quant * valorUn);
+            }
+        }
+
+        private void txtItemQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtItemVlUnitario.Text.Trim().Equals("") && !txtItemQuantidade.Text.Trim().Equals(""))
+            {
+                double valor = double.Parse(txtItemVlUnitario.Text);
+                double quant = double.Parse(txtItemQuantidade.Text);
+                txtItemValorTotal.Text = Formatacao.DoubleToString(quant * valor);
             }
         }
     }

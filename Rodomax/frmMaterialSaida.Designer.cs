@@ -99,7 +99,7 @@
             this.pnlDados.Controls.Add(this.txtCodigoSaida);
             this.pnlDados.Controls.Add(this.label1);
             this.pnlDados.Controls.Add(this.groupBox1);
-            this.pnlDados.Size = new System.Drawing.Size(801, 505);
+            this.pnlDados.Size = new System.Drawing.Size(801, 481);
             // 
             // pnlDireita
             // 
@@ -140,7 +140,7 @@
             this.groupBox1.Controls.Add(this.btnItemEditar);
             this.groupBox1.Location = new System.Drawing.Point(1, 120);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(795, 382);
+            this.groupBox1.Size = new System.Drawing.Size(795, 354);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Materias";
@@ -153,14 +153,13 @@
             this.panel1.Controls.Add(this.gridItens);
             this.panel1.Location = new System.Drawing.Point(0, 89);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(792, 289);
+            this.panel1.Size = new System.Drawing.Size(792, 259);
             this.panel1.TabIndex = 25;
             // 
             // gridItens
             // 
             this.gridItens.AllowUserToAddRows = false;
             this.gridItens.AllowUserToDeleteRows = false;
-            this.gridItens.AllowUserToOrderColumns = true;
             this.gridItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -174,7 +173,7 @@
             this.gridItens.Location = new System.Drawing.Point(0, 0);
             this.gridItens.Name = "gridItens";
             this.gridItens.ReadOnly = true;
-            this.gridItens.Size = new System.Drawing.Size(792, 289);
+            this.gridItens.Size = new System.Drawing.Size(792, 259);
             this.gridItens.TabIndex = 22;
             this.gridItens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridItens_MouseDoubleClick);
             // 
@@ -486,7 +485,7 @@
             // frmMaterialSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(805, 603);
+            this.ClientSize = new System.Drawing.Size(805, 648);
             this.Name = "frmMaterialSaida";
             this.Text = "Saída de Material / Estoque ";
             this.pnlBotoes.ResumeLayout(false);

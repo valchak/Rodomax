@@ -192,7 +192,7 @@
             this.btnBuscaFornecedor.Location = new System.Drawing.Point(362, 17);
             this.btnBuscaFornecedor.Name = "btnBuscaFornecedor";
             this.btnBuscaFornecedor.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscaFornecedor.TabIndex = 4;
+            this.btnBuscaFornecedor.TabIndex = 1;
             this.btnBuscaFornecedor.UseVisualStyleBackColor = true;
             this.btnBuscaFornecedor.Click += new System.EventHandler(this.btnBuscaFornecedor_Click);
             // 
@@ -515,6 +515,7 @@
             this.txtItemQuantidade.TabIndex = 11;
             this.txtItemQuantidade.Text = "1";
             this.txtItemQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtItemQuantidade.TextChanged += new System.EventHandler(this.txtItemQuantidade_TextChanged);
             this.txtItemQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemQuantidade_KeyPress);
             this.txtItemQuantidade.Leave += new System.EventHandler(this.txtItemQuantidade_Leave);
             // 
