@@ -1,9 +1,7 @@
 ﻿using Aplicacao;
 using Modelo;
 using System;
-using System.Linq;
 using System.Windows.Forms;
-using Ferramenta;
 using MMLib.Extensions;
 using Rodomax;
 
@@ -11,7 +9,7 @@ namespace UI
 {
     public partial class frmFilial : UI.ModelForm
     {
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
         private FilialApp app;
 
         private Filial filial;

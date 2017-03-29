@@ -72,13 +72,14 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(307, 23);
             this.txtUsuario.TabIndex = 7;
+            this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnLogar
             // 
             this.btnLogar.Location = new System.Drawing.Point(26, 263);
             this.btnLogar.Name = "btnLogar";
             this.btnLogar.Size = new System.Drawing.Size(308, 31);
-            this.btnLogar.TabIndex = 8;
+            this.btnLogar.TabIndex = 9;
             this.btnLogar.Text = "Logar";
             this.btnLogar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnLogar.Click += new System.EventHandler(this.btnLogar_Click);
@@ -87,8 +88,10 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(23, 224);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(307, 23);
-            this.txtPassword.TabIndex = 9;
+            this.txtPassword.TabIndex = 8;
+            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // LoginForm
             // 
@@ -104,6 +107,7 @@
             this.MinimizeBox = false;
             this.Name = "LoginForm";
             this.Text = "Autenticação";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LoginForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

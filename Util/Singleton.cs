@@ -1,7 +1,8 @@
 ﻿
 using Modelo;
+using System.Collections.Generic;
 
-namespace Ferramenta
+namespace Util
 {
     public class Singleton
     {
@@ -25,7 +26,13 @@ namespace Ferramenta
             }
         }
 
-        
+        /* Funções usadas para o secur do sistema */
+        public Usuario userLogado = null;
+        public IEnumerable<UsuarioFilial> userFiliais = null;
+        /* Funções usadas para o secur do sistema */
+
+
+
         public Cidade cidade = null;
         public Filial filial = null;
         public Fornecedor fornecedor = null;
@@ -36,12 +43,6 @@ namespace Ferramenta
         public Estoque estoque = null;
         public Funcionario funcionario = null;
         public Usuario usuario = null;
-        public Usuario userLogado = null;
-
-
-
-
-        public Formatacao formatacao = new Formatacao();
 
     }
 }

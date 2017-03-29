@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using Aplicacao;
 using Modelo;
 using System;
-using Ferramenta;
 using MMLib.Extensions;
 using UI;
 
@@ -11,30 +10,30 @@ namespace Rodomax
 {
     public partial class frmFilialPesquisa : UI.ModelConsulta
     {
-        private FilialApp app;
-        Singleton instancia = Singleton.GetInstance;
+        private UsuarioFilialApp app;
+        _Singleton instancia = _Singleton.GetInstance;
 
         public frmFilialPesquisa()
         {
             InitializeComponent();
-            app = new FilialApp();
+            app = new UsuarioFilialApp();
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         public void Buscar()
         {
-            IEnumerable<Filial> lista = app.Get(x => x.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()));
+            IEnumerable<UsuarioFilial> lista = app.Get(x => x.Filial.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()));
 
             gridPesquisa.DataSource = null;
             gridPesquisa.ResetBindings();
             gridPesquisa.Rows.Clear();
 
 
-            foreach (var cidade in lista)
+            foreach (var i in lista)
             {
                 int n = gridPesquisa.Rows.Add();
-                gridPesquisa.Rows[n].Cells[0].Value = cidade.Id;
-                gridPesquisa.Rows[n].Cells[1].Value = cidade.Nome;
+                gridPesquisa.Rows[n].Cells[0].Value = i.Filial.Id;
+                gridPesquisa.Rows[n].Cells[1].Value = i.Filial.Nome;
             }
 
             gridPesquisa.Refresh();
@@ -71,7 +70,8 @@ namespace Rodomax
         {
             try
             {
-                instancia.filial = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
+                FilialApp filialApp = new FilialApp();
+                instancia.filial = filialApp.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
                 this.Close();
             }
             catch (Exception exception)

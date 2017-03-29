@@ -1,15 +1,16 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using Modelo;
 using Repositorio;
+using System.Collections.Generic;
 
 namespace Aplicacao
 {
     public class ProdutoApp : App<Produto>
     {
         public ContextoDB Banco { get; set; }
+        _Singleton instancia = _Singleton.GetInstance;
 
         public ProdutoApp()
         {
@@ -17,7 +18,14 @@ namespace Aplicacao
         }
         public IQueryable<Produto> GetAll()
         {
-            return Banco.Set<Produto>().Include(x => x.ProdutoGrupo).Include(x => x.UltimoFornecedor);
+            var lista = (from p in Banco.Produtos join 
+                         g in Banco.ProdutosGrupoUsuario on p.ProdutoGrupo.Id equals g.ProdutoGrupo.Id
+                         where g.Usuario.Id == instancia.userLogado.Id
+                         select p);
+                
+                //Banco.Set<Produto>().Include(x => x.ProdutoGrupo).Include(x => x.UltimoFornecedor).Join(Banco.ProdutosGrupoUsuario, p => p.ProdutoGrupo.Id, g => g.ProdutoGrupo.Id,(p, g) => new { p, g });
+
+            return lista.Include(x => x.ProdutoGrupo).Include(x => x.UltimoFornecedor);
         }
 
         public IQueryable<Produto> Get(Func<Produto, bool> predicate)

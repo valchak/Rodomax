@@ -5,15 +5,13 @@ using System.Collections.Generic;
 using MMLib.Extensions;
 using System.Windows.Forms;
 using System.Linq;
-using UI;
-using Ferramenta;
 
 namespace Rodomax
 {
     public partial class frmEstoque : UI.ModelForm
     {
         EstoqueApp app;
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
 
         public frmEstoque()
         {

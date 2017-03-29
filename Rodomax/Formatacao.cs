@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Ferramenta
+namespace Rodomax
 {
     public class Formatacao
     {

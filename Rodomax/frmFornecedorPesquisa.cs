@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using Aplicacao;
 using Modelo;
 using System;
-using Ferramenta;
 using MMLib.Extensions;
 
 namespace Rodomax
@@ -13,7 +12,7 @@ namespace Rodomax
     public partial class frmFornecedorPesquisa : UI.ModelConsulta
     {
         private FornecedorApp app;
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
 
         public frmFornecedorPesquisa()
         {

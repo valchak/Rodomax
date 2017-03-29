@@ -1,5 +1,4 @@
 ﻿using Aplicacao;
-using Ferramenta;
 using MMLib.Extensions;
 using Modelo;
 using System;
@@ -13,7 +12,7 @@ namespace Rodomax
     public partial class frmFuncionarioPesquisa : UI.ModelConsulta
     {
         private FuncionarioApp app;
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
 
         public frmFuncionarioPesquisa()
         {

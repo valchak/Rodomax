@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using Aplicacao;
-using Ferramenta;
 using Modelo;
 using MMLib.Extensions;
 using Rodomax;
@@ -10,7 +9,7 @@ namespace UI
 {
     public partial class frmCidade : UI.ModelForm
     {
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
         private Cidade city;
         private CidadeApp app;
 

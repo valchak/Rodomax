@@ -4,15 +4,13 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using UI;
-using Ferramenta;
 using MMLib.Extensions;
 
 namespace Rodomax
 {
     public partial class frmMaterialSaida : UI.ModelForm
     {
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
         Filial filialOrigem;
         Filial filialDestino;
         Funcionario solicitante;

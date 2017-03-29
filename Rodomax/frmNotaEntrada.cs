@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Aplicacao;
-using Ferramenta;
 using Modelo;
 using MMLib.Extensions;
 using Rodomax;
@@ -12,7 +11,7 @@ namespace UI
 {
     public partial class frmNotaEntrada : UI.ModelForm
     {
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
         private NotaEntradaApp app;
         private NotaEntrada nota;
         private Fornecedor fornecedor;
@@ -104,10 +103,12 @@ namespace UI
 
                     this.AlteraBotoes(3);
                     this.operacao = "ALTERAR";
+                    grupoItens.Enabled = true;
                 }
                 else
                 {
                     LimparCabecalho();
+                    grupoItens.Enabled = true;
                 }
             }
 
@@ -583,6 +584,7 @@ namespace UI
             txtFornecedor.Clear();
             txtDocumento.Clear();
             txtSerie.Clear();
+            grupoItens.Enabled = false;
             LimparCabecalho();
         }
 

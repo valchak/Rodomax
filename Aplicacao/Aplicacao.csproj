@@ -64,7 +64,10 @@
     <Compile Include="NotaEntradaApp.cs" />
     <Compile Include="NotaEntradaItemApp.cs" />
     <Compile Include="ProdutoApp.cs" />
+    <Compile Include="ProdutoGrupoUsuarioApp.cs" />
     <Compile Include="ProdutoGrupoApp.cs" />
+    <Compile Include="_Singleton.cs" />
+    <Compile Include="UsuarioFilialApp.cs" />
     <Compile Include="UsuarioApp.cs" />
     <Compile Include="_IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

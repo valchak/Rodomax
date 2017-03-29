@@ -60,7 +60,7 @@ namespace Aplicacao
 
         public IQueryable<Filial> GetAll()
         {
-            return Banco.Set<Filial>().Include(x => x.Empresa).Include(x => x.Cidade).Include(x => x.FilialCentroCustos);
+            return Banco.Set<Filial>().Include(x => x.Empresa).Include(x => x.Cidade).Include(x => x.FilialCentroCustos).Include(x => x.ListaUsuarioFilial);
         }
 
         public void SalvarTodos()

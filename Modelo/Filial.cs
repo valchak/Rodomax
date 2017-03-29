@@ -26,5 +26,7 @@ namespace Modelo
         public string Telefone { get; set; }
 
         public virtual ICollection<FilialCentroCusto> FilialCentroCustos { get; set; }
+        public virtual ICollection<UsuarioFilial> ListaUsuarioFilial { get; set; }  
+
     }
 }

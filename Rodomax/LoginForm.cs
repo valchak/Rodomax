@@ -1,5 +1,4 @@
-﻿using Ferramenta;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using MMLib.Extensions;
 using Aplicacao;
@@ -11,7 +10,7 @@ namespace Rodomax
 {
     public partial class LoginForm : MetroFramework.Forms.MetroForm
     {
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
         public LoginForm()
         {
             InitializeComponent();
@@ -33,6 +32,8 @@ namespace Rodomax
             if (lista.Count() > 0)
             {
                 instancia.userLogado = lista.First();
+                UsuarioFilialApp filial = new UsuarioFilialApp();
+                instancia.userFiliais = filial.Get(x => x.Usuario.Id == instancia.userLogado.Id);
                 return true;
             }
             else
@@ -44,29 +45,31 @@ namespace Rodomax
 
         void Splash()
         {
-            SplashScreen.SplashForm frm = new SplashScreen.SplashForm();
-            frm.AppName = "Fazendo Login";
-            frm.ShowInTaskbar = true;
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+            Splash frm = new Splash();
             Application.Run(frm);
         }
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
+            this.ShowInTaskbar = true;
             string login = txtUsuario.Text.Trim().RemoveDiacritics().ToUpper();
             string senha = txtPassword.Text.Trim().RemoveDiacritics();
             if (!login.Equals("") && !senha.Equals(""))
             {
                 Thread t = new Thread(new ThreadStart(Splash));
                 t.Start();
-
-                this.Opacity = 0;
-
                 if (LogaUsuario(login, senha))
                 {
                     t.Abort();
-                    Principal tela = new Principal();
-                    tela.ShowDialog();
-                    tela.Dispose();
+                    this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
@@ -74,13 +77,18 @@ namespace Rodomax
                     MessageBox.Show("Usuário ou senha Inválidos");
                 }
                 t.Abort();
-                this.Opacity = 100;
+                
 
             }
             else
             {
                 MessageBox.Show("Usuário ou senha Inválidos");
             }
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
         }
     }
 }

@@ -149,7 +149,7 @@
             this.ClientSize = new System.Drawing.Size(626, 486);
             this.Controls.Add(this.grpSituacao);
             this.Name = "frmProdutoPesquisa";
-            this.Text = "Consulta Cidade";
+            this.Text = "Consulta de Produtos";
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtPesquisa, 0);
             this.Controls.SetChildIndex(this.btnFiltrar, 0);

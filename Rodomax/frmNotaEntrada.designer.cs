@@ -51,7 +51,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtValorTotalDocumento = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grupoItens = new System.Windows.Forms.GroupBox();
             this.btnItemLimpar = new System.Windows.Forms.Button();
             this.btnItemAdd = new System.Windows.Forms.Button();
             this.btnItemExcluir = new System.Windows.Forms.Button();
@@ -86,7 +86,7 @@
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grupoItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +104,7 @@
             this.pnlDados.Controls.Add(this.txtSomaItens);
             this.pnlDados.Controls.Add(this.label18);
             this.pnlDados.Controls.Add(this.label17);
-            this.pnlDados.Controls.Add(this.groupBox1);
+            this.pnlDados.Controls.Add(this.grupoItens);
             this.pnlDados.Controls.Add(this.txtValorTotalDocumento);
             this.pnlDados.Controls.Add(this.label10);
             this.pnlDados.Controls.Add(this.txtAcresDesc);
@@ -369,36 +369,36 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Valor Total Doc.";
             // 
-            // groupBox1
+            // grupoItens
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grupoItens.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnItemLimpar);
-            this.groupBox1.Controls.Add(this.btnItemAdd);
-            this.groupBox1.Controls.Add(this.btnItemExcluir);
-            this.groupBox1.Controls.Add(this.btnItemEditar);
-            this.groupBox1.Controls.Add(this.txtItemMultiplicador);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.txtItemValorTotal);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.txtItemVlUnitario);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.txtItemQuantidade);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.txtItemFilial);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.txtItemDescricao);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.gridItens);
-            this.groupBox1.Location = new System.Drawing.Point(4, 113);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(888, 368);
-            this.groupBox1.TabIndex = 24;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Itens da Nota";
+            this.grupoItens.Controls.Add(this.btnItemLimpar);
+            this.grupoItens.Controls.Add(this.btnItemAdd);
+            this.grupoItens.Controls.Add(this.btnItemExcluir);
+            this.grupoItens.Controls.Add(this.btnItemEditar);
+            this.grupoItens.Controls.Add(this.txtItemMultiplicador);
+            this.grupoItens.Controls.Add(this.label16);
+            this.grupoItens.Controls.Add(this.txtItemValorTotal);
+            this.grupoItens.Controls.Add(this.label15);
+            this.grupoItens.Controls.Add(this.txtItemVlUnitario);
+            this.grupoItens.Controls.Add(this.label14);
+            this.grupoItens.Controls.Add(this.txtItemQuantidade);
+            this.grupoItens.Controls.Add(this.label13);
+            this.grupoItens.Controls.Add(this.button3);
+            this.grupoItens.Controls.Add(this.txtItemFilial);
+            this.grupoItens.Controls.Add(this.label12);
+            this.grupoItens.Controls.Add(this.button2);
+            this.grupoItens.Controls.Add(this.txtItemDescricao);
+            this.grupoItens.Controls.Add(this.label11);
+            this.grupoItens.Controls.Add(this.gridItens);
+            this.grupoItens.Location = new System.Drawing.Point(4, 113);
+            this.grupoItens.Name = "grupoItens";
+            this.grupoItens.Size = new System.Drawing.Size(888, 368);
+            this.grupoItens.TabIndex = 24;
+            this.grupoItens.TabStop = false;
+            this.grupoItens.Text = "Itens da Nota";
             // 
             // btnItemLimpar
             // 
@@ -716,8 +716,8 @@
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();
             this.pnlDireita.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grupoItens.ResumeLayout(false);
+            this.grupoItens.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).EndInit();
             this.ResumeLayout(false);
 
@@ -734,7 +734,7 @@
         private System.Windows.Forms.Label txtSomaItens;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grupoItens;
         private System.Windows.Forms.Button btnItemAdd;
         private System.Windows.Forms.Button btnItemExcluir;
         private System.Windows.Forms.Button btnItemEditar;

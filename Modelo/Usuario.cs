@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Modelo
@@ -16,7 +17,6 @@ namespace Modelo
         [StringLength(1)]
         public string Situacao { get; set; }
 
-        //public virtual UsuarioFilial ListaFiliais { get; set; }
-
+        public virtual ICollection<UsuarioFilial> ListaUsuarioFilial { get; set; }
     }
 }

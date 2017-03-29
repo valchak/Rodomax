@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Aplicacao;
-using Ferramenta;
 using Modelo;
 using MMLib.Extensions;
 using UI;
@@ -12,7 +11,7 @@ namespace Rodomax
     public partial class frmCidadePesquisa : UI.ModelConsulta
     {
         private CidadeApp app;
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
 
         public frmCidadePesquisa()
         {

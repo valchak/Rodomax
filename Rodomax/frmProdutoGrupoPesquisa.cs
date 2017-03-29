@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using Modelo;
 using System;
 using Aplicacao;
-using Ferramenta;
 using MMLib.Extensions;
 
 namespace Rodomax
@@ -11,7 +10,7 @@ namespace Rodomax
     public partial class frmProdutoGrupoPesquisa : UI.ModelConsulta
     {
         private ProdutoGrupoApp app;
-        Singleton instancia = Singleton.GetInstance;
+        _Singleton instancia = _Singleton.GetInstance;
 
         public frmProdutoGrupoPesquisa()
         {
