@@ -18,12 +18,83 @@ namespace Aplicacao
 
         public void Adicionar(Usuario obj)
         {
-            throw new NotImplementedException();
+            if (ValidarCampos(obj))
+            {
+                List<Filial> lista = obj.ListaInserir;
+                if (obj.Funcionario != null)
+                {
+                    obj.Funcionario = Banco.Funcionarios.Find(obj.Funcionario.Id);
+                }
+                Banco.Usuarios.Add(obj);
+
+                foreach (var filial in lista)
+                {
+                    UsuarioFilial userfil = new UsuarioFilial();
+                    userfil.Filial = Banco.Filiais.Find(filial.Id);
+                    userfil.Usuario = obj;
+                    Banco.UsuariosFilial.Add(userfil);
+                }
+
+
+
+                SalvarTodos();
+            }
+            else
+            {
+                throw new Exception("Login já cadastrado para outro usuário");
+            }
+
         }
 
         public void Atualizar(Usuario obj)
         {
-            throw new NotImplementedException();
+            List<Filial> inserir = obj.ListaInserir;
+            List<Filial> excluir = obj.ListaExcluir;
+            Usuario dbObj = Banco.Usuarios.Find(obj.Id);
+            dbObj.Login = obj.Login;
+            dbObj.ListaUsuarioFilial = null;
+
+            if (obj.Funcionario != null)
+            {
+                dbObj.Funcionario = Banco.Funcionarios.Find(obj.Funcionario.Id);
+            }
+            else
+            {
+                dbObj.Funcionario = null;
+            }
+            if (!obj.Senha.Equals(""))
+            {
+                dbObj.Senha = obj.Senha;
+            }
+
+            Banco.Entry(dbObj).State = EntityState.Modified;
+
+            foreach (var filial in inserir)
+            {
+                UsuarioFilial userfil = Banco.UsuariosFilial.Where(x => x.Filial.Id == filial.Id && x.Usuario.Id == obj.Id).First();
+                if (userfil != null)
+                {
+                    userfil = new UsuarioFilial();
+                    userfil.Filial = Banco.Filiais.Find(filial.Id);
+                    userfil.Usuario = dbObj;
+                    Banco.UsuariosFilial.Add(userfil);
+                }
+            }
+            UsuarioFilialApp app = new UsuarioFilialApp();
+            foreach (var filial in excluir)
+            {
+                IEnumerable<UsuarioFilial> lista = app.Get(x => x.Filial.Id == filial.Id && x.Usuario.Id == obj.Id);
+                foreach(var i in lista)
+                {
+                    UsuarioFilial user = new UsuarioFilial();
+                    user.Usuario = dbObj;
+                    user.Filial = Banco.Filiais.Find(i.Filial.Id);
+                    Banco.UsuariosFilial.Remove(user);
+                }
+            }
+
+            SalvarTodos();
+
         }
 
         public void Excluir(Func<Usuario, bool> predicate)
@@ -43,13 +114,23 @@ namespace Aplicacao
 
         public IQueryable<Usuario> GetAll()
         {
-            return Banco.Set<Usuario>()
-                 .Include(x => x.Funcionario);
+            return Banco.Set<Usuario>().Include(x => x.Funcionario);
         }
 
         public void SalvarTodos()
         {
-            throw new NotImplementedException();
+            Banco.SaveChanges();
+        }
+
+        public bool ValidarCampos(Usuario obj)
+        {
+            Usuario user = Get(x => x.Login.Equals(obj.Login)).First();
+
+            if(user.Id > 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

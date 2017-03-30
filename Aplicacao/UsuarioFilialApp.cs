@@ -46,8 +46,7 @@ namespace Aplicacao
         {
             return Banco.Set<UsuarioFilial>()
                  .Include(x => x.Usuario)
-                 .Include(x => x.Filial)
-                 .Where(x => x.Usuario.Id == instancia.userLogado.Id);
+                 .Include(x => x.Filial);
         }
 
         public void SalvarTodos()

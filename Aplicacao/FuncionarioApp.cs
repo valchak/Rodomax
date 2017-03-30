@@ -17,12 +17,22 @@ namespace Aplicacao
 
         public void Adicionar(Funcionario obj)
         {
-            throw new NotImplementedException();
+            obj.Filial = Banco.Filiais.Find(obj.Filial.Id);
+            Banco.Funcionarios.Add(obj);
+            SalvarTodos();
         }
 
         public void Atualizar(Funcionario obj)
         {
-            throw new NotImplementedException();
+            Funcionario dbObj = Banco.Funcionarios.Find(obj.Id);
+            dbObj.Filial = Banco.Filiais.Find(obj.Filial.Id);
+            dbObj.CPF = obj.CPF;
+            dbObj.Nome = obj.Nome;
+            dbObj.Email = obj.Email;
+            dbObj.Situacao = obj.Situacao;
+
+            Banco.Entry(dbObj).State = EntityState.Modified;
+            SalvarTodos();
         }
 
         public void Excluir(Func<Funcionario, bool> predicate)

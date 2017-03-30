@@ -186,6 +186,18 @@
     <Compile Include="frmProdutoPesquisa.Designer.cs">
       <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsuarioPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsuarioPesquisa.Designer.cs">
+      <DependentUpon>frmUsuarioPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +271,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProdutoPesquisa.resx">
       <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsuarioPesquisa.resx">
+      <DependentUpon>frmUsuarioPesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

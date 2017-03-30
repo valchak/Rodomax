@@ -1,6 +1,6 @@
 ﻿namespace Rodomax
 {
-    partial class frmProdutoPesquisa
+    partial class frmUsuarioPesquisa
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -35,8 +35,8 @@
             this.gridPesquisa = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlPesquisaResultado.SuspendLayout();
             this.grpSituacao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).BeginInit();
@@ -49,8 +49,8 @@
             // pnlPesquisaResultado
             // 
             this.pnlPesquisaResultado.Controls.Add(this.gridPesquisa);
-            this.pnlPesquisaResultado.Location = new System.Drawing.Point(12, 136);
-            this.pnlPesquisaResultado.Size = new System.Drawing.Size(602, 313);
+            this.pnlPesquisaResultado.Location = new System.Drawing.Point(12, 127);
+            this.pnlPesquisaResultado.Size = new System.Drawing.Size(602, 322);
             // 
             // btnSelecionarPesquisa
             // 
@@ -65,10 +65,10 @@
             this.grpSituacao.Controls.Add(this.rdTodos);
             this.grpSituacao.Controls.Add(this.rdInativo);
             this.grpSituacao.Controls.Add(this.rdAtivo);
-            this.grpSituacao.Location = new System.Drawing.Point(12, 95);
+            this.grpSituacao.Location = new System.Drawing.Point(12, 90);
             this.grpSituacao.Name = "grpSituacao";
             this.grpSituacao.Size = new System.Drawing.Size(327, 31);
-            this.grpSituacao.TabIndex = 8;
+            this.grpSituacao.TabIndex = 9;
             this.grpSituacao.TabStop = false;
             this.grpSituacao.Text = "Situacao";
             // 
@@ -114,13 +114,13 @@
             this.gridPesquisa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column4,
-            this.Column3});
+            this.Column3,
+            this.Column4});
             this.gridPesquisa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridPesquisa.Location = new System.Drawing.Point(0, 0);
             this.gridPesquisa.Name = "gridPesquisa";
             this.gridPesquisa.ReadOnly = true;
-            this.gridPesquisa.Size = new System.Drawing.Size(602, 313);
+            this.gridPesquisa.Size = new System.Drawing.Size(602, 322);
             this.gridPesquisa.TabIndex = 0;
             this.gridPesquisa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridPesquisa_MouseDoubleClick);
             // 
@@ -129,35 +129,36 @@
             this.Column1.HeaderText = "Cod";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
+            this.Column1.Width = 30;
             // 
             // Column2
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Produto";
+            this.Column2.HeaderText = "Usuário";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Grupo";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.Column2.Width = 200;
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Situação";
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Funcionário";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 80;
             // 
-            // frmProdutoPesquisa
+            // Column4
+            // 
+            this.Column4.HeaderText = "Situacao";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 50;
+            // 
+            // frmUsuarioPesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(626, 486);
             this.Controls.Add(this.grpSituacao);
-            this.Name = "frmProdutoPesquisa";
-            this.Text = "Consulta de Produtos";
+            this.Name = "frmUsuarioPesquisa";
+            this.Text = "Pesquisa de Usuário";
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtPesquisa, 0);
             this.Controls.SetChildIndex(this.btnFiltrar, 0);
@@ -176,14 +177,14 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView gridPesquisa;
         private System.Windows.Forms.GroupBox grpSituacao;
         private System.Windows.Forms.RadioButton rdTodos;
         private System.Windows.Forms.RadioButton rdInativo;
         private System.Windows.Forms.RadioButton rdAtivo;
+        private System.Windows.Forms.DataGridView gridPesquisa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

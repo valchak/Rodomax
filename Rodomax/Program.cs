@@ -20,13 +20,19 @@ namespace Rodomax
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Application.Run(new frmUsuario());
+
+            /*
             LoginForm telaLogin = new LoginForm();
-           
+
 
             if (telaLogin.ShowDialog() == DialogResult.OK)
-            {   
+            {
                 Application.Run(new Principal());
             }
+
+            */
+
         }
     }
 }

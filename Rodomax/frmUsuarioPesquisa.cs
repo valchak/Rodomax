@@ -10,40 +10,66 @@ using UI;
 
 namespace Rodomax
 {
-    public partial class frmProdutoPesquisa : UI.ModelConsulta
+    public partial class frmUsuarioPesquisa : UI.ModelConsulta
     {
-        private ProdutoApp app;
         _Singleton instancia = _Singleton.GetInstance;
+        private UsuarioApp app;
 
-        public frmProdutoPesquisa()
+        public frmUsuarioPesquisa()
         {
             InitializeComponent();
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             rdAtivo.Checked = true;
-            app = new ProdutoApp();
+            app = new UsuarioApp();
         }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            var th = new Thread(new ThreadStart(this.BuscarNoBanco));
+            th.Start();
+        }
+
+        private void btnCriarNovo_Click(object sender, EventArgs e)
+        {
+            frmUsuario tela = new frmUsuario();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
+        {
+              SelecionarObjeto();
+        }
+
+        private void gridPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (gridPesquisa.Rows.Count > 0)
+            {
+                SelecionarObjeto();
+            }
+        }
+
 
         public void BuscarNoBanco()
         {
 
-            Produto produto = new Produto();
+            Usuario usuario = new Usuario();
 
             if (rdAtivo.Checked)
             {
-                produto.Situacao = "A";
+                usuario.Situacao = "A";
             }
             if (rdInativo.Checked)
             {
-                produto.Situacao = "I";
+                usuario.Situacao = "I";
             }
             if (rdTodos.Checked)
             {
-                produto.Situacao = "";
+                usuario.Situacao = "";
             }
-            produto.Nome = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
-
-
-            IEnumerable<Produto> lista = app.Get(x => x.Nome.Contains(produto.Nome) && x.Situacao.Contains(produto.Situacao));
+            usuario.Login = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
+            
+            IEnumerable<Usuario> lista = app.Get(x => (x.Login.Contains(usuario.Login)|| x.Funcionario.Nome.Contains(usuario.Login)) && x.Situacao.Contains(usuario.Situacao));
 
 
             Invoke(new Action(() =>
@@ -57,8 +83,17 @@ namespace Rodomax
                     {
                         int n = this.gridPesquisa.Rows.Add();
                         gridPesquisa.Rows[n].Cells[0].Value = p.Id;
-                        gridPesquisa.Rows[n].Cells[1].Value = p.Nome;
-                        gridPesquisa.Rows[n].Cells[2].Value = p.ProdutoGrupo.Nome;
+                        gridPesquisa.Rows[n].Cells[1].Value = p.Login;
+                        if(usuario.Funcionario != null)
+                        {
+                            if(usuario.Funcionario.Id > 0)
+                            {
+                                gridPesquisa.Rows[n].Cells[2].Value = p.Funcionario.Nome;
+                            } else
+                            {
+                                gridPesquisa.Rows[n].Cells[2].Value = "";
+                            }
+                        }
                         switch (p.Situacao)
                         {
                             case "1":
@@ -90,7 +125,7 @@ namespace Rodomax
         {
             try
             {
-                instancia.produto = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
+                instancia.usuario = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
                 this.Close();
             }
             catch (Exception exception)
@@ -99,30 +134,6 @@ namespace Rodomax
             }
         }
 
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            var th = new Thread(new ThreadStart(this.BuscarNoBanco));
-            th.Start();
-        }
-
-        private void btnCriarNovo_Click(object sender, EventArgs e)
-        {
-            frmProduto tela = new frmProduto();
-            tela.ShowDialog();
-            tela.Dispose();
-        }
-
-        private void gridPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (gridPesquisa.Rows.Count > 0)
-            {
-                SelecionarObjeto();
-            }
-        }
-
-        private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
-        {
-            SelecionarObjeto();
-        }
+        
     }
 }

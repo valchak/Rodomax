@@ -58,5 +58,26 @@ namespace Rodomax
             tela.ShowDialog();
             tela.Dispose();
         }
+
+        private void cadFilialToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmFilial tela = new frmFilial();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        private void cadFuncionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFuncionario tela = new frmFuncionario();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        private void cadUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsuario tela = new frmUsuario();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
     }
 }

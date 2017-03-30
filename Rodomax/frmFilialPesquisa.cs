@@ -22,7 +22,7 @@ namespace Rodomax
 
         public void Buscar()
         {
-            IEnumerable<UsuarioFilial> lista = app.Get(x => x.Filial.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()));
+            IEnumerable<UsuarioFilial> lista = app.Get(x => x.Filial.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()) &&x.Usuario.Id == instancia.userLogado.Id);
 
             gridPesquisa.DataSource = null;
             gridPesquisa.ResetBindings();

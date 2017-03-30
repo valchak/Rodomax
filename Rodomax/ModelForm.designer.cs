@@ -130,14 +130,14 @@
             this.pnlDados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlDados.Location = new System.Drawing.Point(0, 144);
             this.pnlDados.Name = "pnlDados";
-            this.pnlDados.Size = new System.Drawing.Size(676, 365);
+            this.pnlDados.Size = new System.Drawing.Size(676, 366);
             this.pnlDados.TabIndex = 1;
             // 
             // ModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 516);
+            this.ClientSize = new System.Drawing.Size(680, 527);
             this.Controls.Add(this.pnlDados);
             this.Controls.Add(this.pnlBotoes);
             this.Name = "ModelForm";

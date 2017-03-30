@@ -63,6 +63,7 @@ namespace Aplicacao
         public void Excluir(Func<Fornecedor, bool> predicate)
         {
             Banco.Set<Fornecedor>().Where(predicate).ToList().ForEach(del => Banco.Set<Fornecedor>().Remove(del));
+            SalvarTodos();
         }
         public void Dispose()
         {

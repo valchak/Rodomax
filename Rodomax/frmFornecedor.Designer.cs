@@ -35,7 +35,6 @@
             this.rdCNPJ = new MetroFramework.Controls.MetroRadioButton();
             this.txtRazaoSocial = new System.Windows.Forms.MaskedTextBox();
             this.txtNomeFantasia = new System.Windows.Forms.TextBox();
-            this.txtCNPJCPF = new System.Windows.Forms.TextBox();
             this.txtIE = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
@@ -57,6 +56,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtObservacao = new System.Windows.Forms.TextBox();
+            this.txtCNPJCPF = new System.Windows.Forms.MaskedTextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -73,6 +73,7 @@
             // 
             // pnlDados
             // 
+            this.pnlDados.Controls.Add(this.txtCNPJCPF);
             this.pnlDados.Controls.Add(this.label10);
             this.pnlDados.Controls.Add(this.txtObservacao);
             this.pnlDados.Controls.Add(this.label9);
@@ -94,7 +95,6 @@
             this.pnlDados.Controls.Add(this.txtEndereco);
             this.pnlDados.Controls.Add(this.txtTelefone);
             this.pnlDados.Controls.Add(this.txtIE);
-            this.pnlDados.Controls.Add(this.txtCNPJCPF);
             this.pnlDados.Controls.Add(this.txtNomeFantasia);
             this.pnlDados.Controls.Add(this.txtRazaoSocial);
             this.pnlDados.Controls.Add(this.grupoPessoa);
@@ -150,6 +150,7 @@
             this.rdCPF.TabStop = true;
             this.rdCPF.Text = "Pessoa Fisica";
             this.rdCPF.UseVisualStyleBackColor = true;
+            this.rdCPF.CheckedChanged += new System.EventHandler(this.rdCPF_CheckedChanged);
             // 
             // rdCNPJ
             // 
@@ -161,6 +162,7 @@
             this.rdCNPJ.TabStop = true;
             this.rdCNPJ.Text = "Pessoa Juridica";
             this.rdCNPJ.UseVisualStyleBackColor = true;
+            this.rdCNPJ.Click += new System.EventHandler(this.rdCNPJ_Click);
             // 
             // txtRazaoSocial
             // 
@@ -175,13 +177,6 @@
             this.txtNomeFantasia.Name = "txtNomeFantasia";
             this.txtNomeFantasia.Size = new System.Drawing.Size(273, 20);
             this.txtNomeFantasia.TabIndex = 3;
-            // 
-            // txtCNPJCPF
-            // 
-            this.txtCNPJCPF.Location = new System.Drawing.Point(315, 65);
-            this.txtCNPJCPF.Name = "txtCNPJCPF";
-            this.txtCNPJCPF.Size = new System.Drawing.Size(220, 20);
-            this.txtCNPJCPF.TabIndex = 2;
             // 
             // txtIE
             // 
@@ -358,13 +353,22 @@
             this.txtObservacao.Size = new System.Drawing.Size(513, 87);
             this.txtObservacao.TabIndex = 11;
             // 
+            // txtCNPJCPF
+            // 
+            this.txtCNPJCPF.Location = new System.Drawing.Point(318, 65);
+            this.txtCNPJCPF.Name = "txtCNPJCPF";
+            this.txtCNPJCPF.Size = new System.Drawing.Size(216, 20);
+            this.txtCNPJCPF.TabIndex = 2;
+            this.txtCNPJCPF.TextChanged += new System.EventHandler(this.txtCNPJCPF_TextChanged);
+            this.txtCNPJCPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCNPJCPF_KeyPress);
+            // 
             // frmFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 516);
             this.Name = "frmFornecedor";
-            this.Text = "Cadastro de Fornecedro";
+            this.Text = "Cadastro de Fornecedor";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();
@@ -390,7 +394,6 @@
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.TextBox txtIE;
-        private System.Windows.Forms.TextBox txtCNPJCPF;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtObservacao;
@@ -405,5 +408,6 @@
         private System.Windows.Forms.Button btnCidade;
         private System.Windows.Forms.Label ad;
         private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.MaskedTextBox txtCNPJCPF;
     }
 }

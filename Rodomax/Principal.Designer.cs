@@ -31,19 +31,23 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadCidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadFilialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadFornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaDeEntradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saídaDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadFornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadFuncionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrativoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadFilialToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administrativoToolStripMenuItem,
             this.cadastrosToolStripMenuItem,
             this.operaçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
@@ -55,10 +59,10 @@
             // cadastrosToolStripMenuItem
             // 
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadCidadeToolStripMenuItem,
             this.cadFornecedorToolStripMenuItem,
-            this.cadFilialToolStripMenuItem,
-            this.cadProdutoToolStripMenuItem});
+            this.cadFuncionárioToolStripMenuItem,
+            this.cadProdutoToolStripMenuItem,
+            this.cadCidadeToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -66,21 +70,21 @@
             // cadCidadeToolStripMenuItem
             // 
             this.cadCidadeToolStripMenuItem.Name = "cadCidadeToolStripMenuItem";
-            this.cadCidadeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.cadCidadeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.cadCidadeToolStripMenuItem.Text = "Cad. Cidade";
             this.cadCidadeToolStripMenuItem.Click += new System.EventHandler(this.cadCidadeToolStripMenuItem_Click);
             // 
-            // cadFilialToolStripMenuItem
+            // cadFornecedorToolStripMenuItem
             // 
-            this.cadFilialToolStripMenuItem.Name = "cadFilialToolStripMenuItem";
-            this.cadFilialToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.cadFilialToolStripMenuItem.Text = "Cad. Filial";
-            this.cadFilialToolStripMenuItem.Click += new System.EventHandler(this.cadFilialToolStripMenuItem_Click);
+            this.cadFornecedorToolStripMenuItem.Name = "cadFornecedorToolStripMenuItem";
+            this.cadFornecedorToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.cadFornecedorToolStripMenuItem.Text = "Cad. Fornecedor";
+            this.cadFornecedorToolStripMenuItem.Click += new System.EventHandler(this.cadFornecedorToolStripMenuItem_Click);
             // 
             // cadProdutoToolStripMenuItem
             // 
             this.cadProdutoToolStripMenuItem.Name = "cadProdutoToolStripMenuItem";
-            this.cadProdutoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.cadProdutoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.cadProdutoToolStripMenuItem.Text = "Cad. Produto";
             this.cadProdutoToolStripMenuItem.Click += new System.EventHandler(this.cadProdutoToolStripMenuItem_Click);
             // 
@@ -115,12 +119,35 @@
             this.estoqueToolStripMenuItem.Text = "Estoque";
             this.estoqueToolStripMenuItem.Click += new System.EventHandler(this.estoqueToolStripMenuItem_Click);
             // 
-            // cadFornecedorToolStripMenuItem
+            // cadFuncionárioToolStripMenuItem
             // 
-            this.cadFornecedorToolStripMenuItem.Name = "cadFornecedorToolStripMenuItem";
-            this.cadFornecedorToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.cadFornecedorToolStripMenuItem.Text = "Cad. Fornecedor";
-            this.cadFornecedorToolStripMenuItem.Click += new System.EventHandler(this.cadFornecedorToolStripMenuItem_Click);
+            this.cadFuncionárioToolStripMenuItem.Name = "cadFuncionárioToolStripMenuItem";
+            this.cadFuncionárioToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.cadFuncionárioToolStripMenuItem.Text = "Cad. Funcionário";
+            this.cadFuncionárioToolStripMenuItem.Click += new System.EventHandler(this.cadFuncionárioToolStripMenuItem_Click);
+            // 
+            // administrativoToolStripMenuItem
+            // 
+            this.administrativoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadFilialToolStripMenuItem1,
+            this.cadUsuárioToolStripMenuItem});
+            this.administrativoToolStripMenuItem.Name = "administrativoToolStripMenuItem";
+            this.administrativoToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.administrativoToolStripMenuItem.Text = "Administrativo";
+            // 
+            // cadFilialToolStripMenuItem1
+            // 
+            this.cadFilialToolStripMenuItem1.Name = "cadFilialToolStripMenuItem1";
+            this.cadFilialToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.cadFilialToolStripMenuItem1.Text = "Cad. Filial";
+            this.cadFilialToolStripMenuItem1.Click += new System.EventHandler(this.cadFilialToolStripMenuItem1_Click);
+            // 
+            // cadUsuárioToolStripMenuItem
+            // 
+            this.cadUsuárioToolStripMenuItem.Name = "cadUsuárioToolStripMenuItem";
+            this.cadUsuárioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cadUsuárioToolStripMenuItem.Text = "Cad. Usuário";
+            this.cadUsuárioToolStripMenuItem.Click += new System.EventHandler(this.cadUsuárioToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -144,13 +171,16 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadCidadeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cadFilialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadProdutoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operaçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notaDeEntradaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saídaDeEstoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadFornecedorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrativoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadFilialToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cadFuncionárioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadUsuárioToolStripMenuItem;
     }
 }
 

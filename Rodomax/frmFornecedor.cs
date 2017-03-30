@@ -2,7 +2,6 @@
 using MMLib.Extensions;
 using Modelo;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Rodomax
@@ -17,7 +16,7 @@ namespace Rodomax
         public frmFornecedor()
         {
             InitializeComponent();
-        LimparCampos();
+            LimparCampos();
         }
 
         private void LimparCampos()
@@ -41,7 +40,6 @@ namespace Rodomax
             fornecedor = new Fornecedor();
             app = new FornecedorApp();
             this.AlteraBotoes(1);
-            this.operacao = "";
         }
 
         private void Salvar()
@@ -93,7 +91,6 @@ namespace Rodomax
                 instancia.fornecedor = null;
                 txtId.Text = fornecedor.Id.ToString();
                 txtRazaoSocial.Text = fornecedor.RazaoSocial;
-                txtCNPJCPF.Text = fornecedor.CnpjCpf;
                 txtNomeFantasia.Text = fornecedor.NomeFantasia;
                 txtIE.Text = fornecedor.Ie;
                 txtEndereco.Text = fornecedor.Endereco;
@@ -104,7 +101,8 @@ namespace Rodomax
                 txtObservacao.Text = fornecedor.Observacao;
                 txtCidade.Text = fornecedor.Cidade.Nome;
                 cidade = fornecedor.Cidade;
-                if (fornecedor.CnpjCpf.Replace("/", "").Replace(".", "").Replace("-", "").Count(char.IsUpper) > 10)
+                var novo = fornecedor.CnpjCpf.Replace("-", "").Replace("/", "").Replace(".", "").Replace(",", "").ToCharArray();
+                if (novo.Length == 14)
                 {
                     rdCNPJ.Select();
                 }
@@ -112,6 +110,7 @@ namespace Rodomax
                 {
                     rdCPF.Select();
                 }
+                txtCNPJCPF.Text = fornecedor.CnpjCpf;
                 this.AlteraBotoes(3);
             }
         }
@@ -124,6 +123,11 @@ namespace Rodomax
                 return false;
             }
             if (txtCNPJCPF.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("CNPJ ou CPF Inválido");
+                return false;
+            }
+            if (!ValidarCNPJCPF())
             {
                 MessageBox.Show("CNPJ ou CPF Inválido");
                 return false;
@@ -194,6 +198,63 @@ namespace Rodomax
                 instancia.cidade = null;
                 txtCidade.Text = cidade.Nome;
             }
+        }
+
+        private void rdCNPJ_Click(object sender, EventArgs e)
+        {
+            txtCNPJCPF.Mask = "##.###.###/####-##";
+            txtIE.Enabled = true;
+            txtNomeFantasia.Enabled = true;
+        }
+
+        private void rdCPF_CheckedChanged(object sender, EventArgs e)
+        {
+            txtCNPJCPF.Mask = "###.###.###-##";
+            txtIE.Enabled = false;
+            txtNomeFantasia.Enabled = false;
+        }
+
+        private void txtCNPJCPF_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Formatacao.SoNumero(e);
+        }
+
+        private void txtCNPJCPF_TextChanged(object sender, EventArgs e)
+        {
+            ValidarCNPJCPF();
+        }
+
+        private bool ValidarCNPJCPF()
+        {
+            bool validacao = true;
+            var novo = txtCNPJCPF.Text.Trim().Replace("-", "").Replace("/", "").Replace(".", "").Replace(",", "").ToCharArray();
+            if (novo.Length == 14 || novo.Length == 11)
+            {
+                switch (novo.Length)
+                {
+                    case 14:
+                        if (!Formatacao.IsCnpj(txtCNPJCPF.Text))
+                        {
+                            MessageBox.Show("CNPJ Informado é inválido");
+                            txtCNPJCPF.Focus();
+                            validacao = false;
+                        }
+                        break;
+                    case 11:
+                        if (!Formatacao.IsCpf(txtCNPJCPF.Text))
+                        {
+                            MessageBox.Show("CPF Informado é inválido");
+                            txtCNPJCPF.Focus();
+                            validacao = false;
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                validacao =  false;
+            }
+            return validacao;
         }
     }
 }
