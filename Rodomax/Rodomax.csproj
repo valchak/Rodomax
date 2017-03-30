@@ -132,6 +132,12 @@
     <Compile Include="frmFilialPesquisa.Designer.cs">
       <DependentUpon>frmFilialPesquisa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFornecedor.Designer.cs">
+      <DependentUpon>frmFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFornecedorPesquisa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFilialPesquisa.resx">
       <DependentUpon>frmFilialPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFornecedor.resx">
+      <DependentUpon>frmFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFornecedorPesquisa.resx">
       <DependentUpon>frmFornecedorPesquisa.cs</DependentUpon>

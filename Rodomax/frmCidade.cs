@@ -19,7 +19,7 @@ namespace UI
             LimparCampos();
         }
 
-        public void LimparCampos()
+        private void LimparCampos()
         {
             txtCidadeId.Clear();
             txtCidadeNome.Clear();

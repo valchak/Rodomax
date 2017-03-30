@@ -49,7 +49,7 @@ namespace Rodomax
         public static double StringToDouble(string txt)
         {
             txt = txt.Replace(".", "").Replace(",", ".");
-            return double.Parse(txt)/100;
+            return double.Parse(txt) / 100;
         }
 
         public static string DoubleToString(double valor)
@@ -88,5 +88,6 @@ namespace Rodomax
                 return sb.ToString();
             }
         }
+
     }
 }

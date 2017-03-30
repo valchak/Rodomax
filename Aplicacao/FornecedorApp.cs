@@ -32,7 +32,23 @@ namespace Aplicacao
         }
         public void Atualizar(Fornecedor obj)
         {
-            Banco.Entry(obj).State = EntityState.Modified;
+            Fornecedor dbObj = Banco.Fornecedores.Find(obj.Id);
+            dbObj.Cidade = Banco.Cidades.Find(obj.Cidade.Id);
+                
+            dbObj.RazaoSocial = obj.RazaoSocial;
+            dbObj.CnpjCpf = obj.CnpjCpf;
+            dbObj.NomeFantasia = obj.NomeFantasia;
+            dbObj.Ie = obj.Ie;
+            dbObj.Endereco = obj.Endereco;
+            dbObj.Cep = obj.Cep;
+            dbObj.Telefone = obj.Telefone;
+            dbObj.Contato = obj.Contato;
+            dbObj.Email = obj.Email;
+            dbObj.Observacao = obj.Observacao;
+            
+
+            Banco.Entry(dbObj).State = EntityState.Modified;
+            SalvarTodos();
         }
         public void SalvarTodos()
         {
@@ -40,7 +56,9 @@ namespace Aplicacao
         }
         public void Adicionar(Fornecedor obj)
         {
+            obj.Cidade = Banco.Cidades.Find(obj.Cidade.Id);
             Banco.Set<Fornecedor>().Add(obj);
+            SalvarTodos();
         }
         public void Excluir(Func<Fornecedor, bool> predicate)
         {
@@ -51,104 +69,6 @@ namespace Aplicacao
             Banco.Dispose();
         }
 
-        /*
-        public void Adicionar(Produto obj)
-        {
-            if (obj.Nome.Equals(""))
-            {
-                throw new Exception("Nome Inválido");
-            }
-            if (obj.ProdutoGrupo == null)
-            {
-                throw new Exception("Grupo de Produto Inválido");
-            }
-            else
-            {
-                obj.ProdutoGrupo = Banco.ProdutoGrupos.Where(x => x.Id == obj.ProdutoGrupo.Id).First();
-                Banco.Produtos.Add(obj);
-                Banco.SaveChanges();
-            }
-        }
-
-        public IEnumerable<Produto> ListarTodos()
-        {
-            return Banco.Produtos
-                .Include(x => x.ProdutoGrupo)
-                .Include(x => x.UltimoFornecedor)
-                .ToList();
-        }
-
-        public IEnumerable<Produto> BuscarObjetoDB(Produto obj)
-        {
-            try
-            {
-                return Banco.Produtos
-               .Include(x => x.ProdutoGrupo)
-               .Include(x => x.UltimoFornecedor)
-               .Where(x => x.Nome.Contains(obj.Nome))
-               .Where(x => x.Situacao.Contains(obj.Situacao))
-               .ToList();
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Erro: "+e.Message);
-
-            }
-           
-        }
-       
-        public Produto BuscarPorId(int id)
-        {
-            return Banco.Produtos
-                 .Include(x => x.ProdutoGrupo)
-                 .Include(x => x.UltimoFornecedor)
-                 .Where(x => x.Id == id)
-                 .First();
-        }
-
-        public void Alterar(Produto obj)
-        {
-            if (obj.Nome.Equals(""))
-            {
-                throw new Exception("Nome Inválido");
-            }
-            if (obj.ProdutoGrupo == null)
-            {
-                throw new Exception("Grupo de Produto Inválido");
-            }
-            else
-            {
-                Produto dbObj = Banco.Produtos.Where(x => x.Id == obj.Id).First();
-                dbObj.Id = obj.Id;
-                dbObj.Nome = obj.Nome;
-                dbObj.ProdutoGrupo = Banco.ProdutoGrupos.Where(x => x.Id == obj.ProdutoGrupo.Id).First();
-                dbObj.CustoMedio = obj.CustoMedio;
-                dbObj.EstoqueFilial = obj.EstoqueFilial;
-                dbObj.EstoqueUsado = obj.EstoqueUsado;
-                dbObj.Multiplicador = obj.Multiplicador;
-                dbObj.Situacao = obj.Situacao;
-                dbObj.Observacao = obj.Observacao;
-                if (obj.UltimoFornecedor != null)
-                {
-                    dbObj.UltimoFornecedor = Banco.Fornecedores.Where(x => x.Id == obj.UltimoFornecedor.Id).First();
-                }
-                dbObj.UltimaNotaCompra = obj.UltimaNotaCompra;
-                dbObj.UltimaDataCompra = obj.UltimaDataCompra;
-                dbObj.UltimoValorCompra = obj.UltimoValorCompra;
-                Banco.SaveChanges();
-            }
-        }
-
-        public void Excluir(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SalvarTodos()
-        {
-            throw new NotImplementedException();
-        }
-
-        */
+      
     }
 }

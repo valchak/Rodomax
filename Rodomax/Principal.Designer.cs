@@ -37,6 +37,7 @@
             this.notaDeEntradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saídaDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadFornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             // 
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadCidadeToolStripMenuItem,
+            this.cadFornecedorToolStripMenuItem,
             this.cadFilialToolStripMenuItem,
             this.cadProdutoToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
@@ -64,21 +66,21 @@
             // cadCidadeToolStripMenuItem
             // 
             this.cadCidadeToolStripMenuItem.Name = "cadCidadeToolStripMenuItem";
-            this.cadCidadeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.cadCidadeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.cadCidadeToolStripMenuItem.Text = "Cad. Cidade";
             this.cadCidadeToolStripMenuItem.Click += new System.EventHandler(this.cadCidadeToolStripMenuItem_Click);
             // 
             // cadFilialToolStripMenuItem
             // 
             this.cadFilialToolStripMenuItem.Name = "cadFilialToolStripMenuItem";
-            this.cadFilialToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.cadFilialToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.cadFilialToolStripMenuItem.Text = "Cad. Filial";
             this.cadFilialToolStripMenuItem.Click += new System.EventHandler(this.cadFilialToolStripMenuItem_Click);
             // 
             // cadProdutoToolStripMenuItem
             // 
             this.cadProdutoToolStripMenuItem.Name = "cadProdutoToolStripMenuItem";
-            this.cadProdutoToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.cadProdutoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.cadProdutoToolStripMenuItem.Text = "Cad. Produto";
             this.cadProdutoToolStripMenuItem.Click += new System.EventHandler(this.cadProdutoToolStripMenuItem_Click);
             // 
@@ -113,6 +115,13 @@
             this.estoqueToolStripMenuItem.Text = "Estoque";
             this.estoqueToolStripMenuItem.Click += new System.EventHandler(this.estoqueToolStripMenuItem_Click);
             // 
+            // cadFornecedorToolStripMenuItem
+            // 
+            this.cadFornecedorToolStripMenuItem.Name = "cadFornecedorToolStripMenuItem";
+            this.cadFornecedorToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.cadFornecedorToolStripMenuItem.Text = "Cad. Fornecedor";
+            this.cadFornecedorToolStripMenuItem.Click += new System.EventHandler(this.cadFornecedorToolStripMenuItem_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,6 +150,7 @@
         private System.Windows.Forms.ToolStripMenuItem notaDeEntradaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saídaDeEstoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadFornecedorToolStripMenuItem;
     }
 }
 

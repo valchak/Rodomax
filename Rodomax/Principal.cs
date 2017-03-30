@@ -51,5 +51,12 @@ namespace Rodomax
             tela.ShowDialog();
             tela.Dispose();
         }
+
+        private void cadFornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFornecedor tela = new frmFornecedor();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
     }
 }
