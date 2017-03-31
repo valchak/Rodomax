@@ -53,7 +53,6 @@ namespace Rodomax
                 if (usuario.Id == 0)
                 {
                     app.Adicionar(usuario);
-                    app.SalvarTodos();
                     MessageBox.Show("Cadastro efetuado com sucesso: Código " + usuario.Id);
                 }
                 else
@@ -168,10 +167,14 @@ namespace Rodomax
 
         private void btnAddSim1_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(gridNao.SelectedRows[0].Cells[0].Value.ToString());
-            Filial filial = appFilial.Find(id);
-            listaSim.Add(filial.Id, filial);
-            PopularGrids();
+            if (listaNao.Any())
+            {
+                int id = Convert.ToInt32(gridNao.SelectedRows[0].Cells[0].Value.ToString());
+                Filial filial = appFilial.Find(id);
+                listaSim.Add(filial.Id, filial);
+                PopularGrids();
+            }
+                
         }
 
         private void btnAddTodos_Click(object sender, EventArgs e)
@@ -193,10 +196,14 @@ namespace Rodomax
 
         private void btnRemove1_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(gridSim.SelectedRows[0].Cells[0].Value.ToString());
-            Filial filial = appFilial.Find(id);
-            listaSim.Remove(filial.Id);
-            PopularGrids();
+            if (listaSim.Any())
+            {
+                int id = Convert.ToInt32(gridSim.SelectedRows[0].Cells[0].Value.ToString());
+                Filial filial = appFilial.Find(id);
+                listaSim.Remove(filial.Id);
+                PopularGrids();
+            }
+            
         }
 
         private void btnFuncionario_Click(object sender, EventArgs e)

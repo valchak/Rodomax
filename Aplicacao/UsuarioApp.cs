@@ -48,52 +48,64 @@ namespace Aplicacao
 
         public void Atualizar(Usuario obj)
         {
-            List<Filial> inserir = obj.ListaInserir;
-            List<Filial> excluir = obj.ListaExcluir;
-            Usuario dbObj = Banco.Usuarios.Find(obj.Id);
-            dbObj.Login = obj.Login;
-            dbObj.ListaUsuarioFilial = null;
 
-            if (obj.Funcionario != null)
+            try
             {
-                dbObj.Funcionario = Banco.Funcionarios.Find(obj.Funcionario.Id);
-            }
-            else
-            {
-                dbObj.Funcionario = null;
-            }
-            if (!obj.Senha.Equals(""))
-            {
-                dbObj.Senha = obj.Senha;
-            }
 
-            Banco.Entry(dbObj).State = EntityState.Modified;
+                Usuario dbObj = Banco.Usuarios.Find(obj.Id);
+                dbObj.Login = obj.Login;
+                dbObj.ListaUsuarioFilial = null;
 
-            foreach (var filial in inserir)
-            {
-                UsuarioFilial userfil = Banco.UsuariosFilial.Where(x => x.Filial.Id == filial.Id && x.Usuario.Id == obj.Id).First();
-                if (userfil != null)
+                if (obj.Funcionario != null)
                 {
-                    userfil = new UsuarioFilial();
-                    userfil.Filial = Banco.Filiais.Find(filial.Id);
-                    userfil.Usuario = dbObj;
-                    Banco.UsuariosFilial.Add(userfil);
+                    dbObj.Funcionario = Banco.Funcionarios.Find(obj.Funcionario.Id);
                 }
-            }
-            UsuarioFilialApp app = new UsuarioFilialApp();
-            foreach (var filial in excluir)
-            {
-                IEnumerable<UsuarioFilial> lista = app.Get(x => x.Filial.Id == filial.Id && x.Usuario.Id == obj.Id);
-                foreach(var i in lista)
+                else
                 {
-                    UsuarioFilial user = new UsuarioFilial();
-                    user.Usuario = dbObj;
-                    user.Filial = Banco.Filiais.Find(i.Filial.Id);
-                    Banco.UsuariosFilial.Remove(user);
+                    dbObj.Funcionario = null;
                 }
-            }
+                if (!obj.Senha.Equals(""))
+                {
+                    dbObj.Senha = obj.Senha;
+                }
 
-            SalvarTodos();
+                Banco.Entry(dbObj).State = EntityState.Modified;
+
+               
+
+                UsuarioFilialApp app = new UsuarioFilialApp();
+                foreach (var filial in obj.ListaInserir)
+                {
+                    IEnumerable<UsuarioFilial> lista = app.Get(x => x.Filial.Id == filial.Id && x.Usuario.Id == obj.Id);
+
+                    if (!lista.Any())
+                    {
+                        UsuarioFilial novo = new UsuarioFilial();
+                        novo.Filial = Banco.Filiais.Find(filial.Id);
+                        novo.Usuario = Banco.Usuarios.Find(obj.Id);
+                        Banco.UsuariosFilial.Add(novo);
+                    }
+                }
+               
+                foreach (var filial in obj.ListaExcluir)
+                {
+                    IEnumerable<UsuarioFilial> lista = app.Get(x => x.Filial.Id == filial.Id && x.Usuario.Id == obj.Id);
+                    foreach (var i in lista)
+                    {
+                        UsuarioFilial novo = new UsuarioFilial();
+                        novo.Filial = Banco.Filiais.Find(i.Filial.Id);
+                        novo.Usuario = Banco.Usuarios.Find(i.Usuario.Id);
+                        Banco.UsuariosFilial.Remove(novo);
+                    }
+                }
+
+                SalvarTodos();
+
+            } catch (Exception e)
+            {
+                throw new Exception("erro ao atualziar : "+e.Message+" /n" +e.InnerException);
+            }
+           
 
         }
 

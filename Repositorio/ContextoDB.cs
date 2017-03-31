@@ -47,6 +47,11 @@ namespace Repositorio
         public DbSet<TonerManutencao> TonersManutencao { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<UsuarioFilial> UsuariosFilial { get; set; }
-        
+
+
+        public DbSet<SecurForm> SecurForm { get; set; }
+        public DbSet<SecurPerfil> SecurPerfil { get; set; }
+      //  public DbSet<SecurAcesso> SecurAcesso { get; set; }
+
     }
 }

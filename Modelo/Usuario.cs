@@ -17,6 +17,8 @@ namespace Modelo
         [StringLength(1)]
         public string Situacao { get; set; }
 
+        public virtual SecurPerfil Perfil {get;set;}
+
         public virtual ICollection<UsuarioFilial> ListaUsuarioFilial { get; set; }
 
         [NotMapped]
