@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MenuAdministrativo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCadFilial = new System.Windows.Forms.ToolStripMenuItem();
@@ -184,6 +185,7 @@
             this.menuCentroDeCusto.Name = "menuCentroDeCusto";
             this.menuCentroDeCusto.Size = new System.Drawing.Size(187, 22);
             this.menuCentroDeCusto.Text = "Cad. Centro de Custo";
+            this.menuCentroDeCusto.Click += new System.EventHandler(this.menuCentroDeCusto_Click);
             // 
             // Principal
             // 
@@ -191,6 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1203, 577);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Principal";
             this.Text = "Rodomax Transportes";

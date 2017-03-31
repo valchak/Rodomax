@@ -59,6 +59,23 @@ namespace Rodomax
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
+            FazerLogin();
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FazerLogin();
+            }
+        }
+        public void FazerLogin()
+        {
             this.ShowInTaskbar = true;
             string login = txtUsuario.Text.Trim().RemoveDiacritics().ToUpper();
             string senha = txtPassword.Text.Trim().RemoveDiacritics();
@@ -75,20 +92,17 @@ namespace Rodomax
                 {
                     t.Abort();
                     MessageBox.Show("Usuário ou senha Inválidos");
+                    txtPassword.Focus();
                 }
                 t.Abort();
-                
+
 
             }
             else
             {
                 MessageBox.Show("Usuário ou senha Inválidos");
+                txtPassword.Focus();
             }
-        }
-
-        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-           
         }
     }
 }

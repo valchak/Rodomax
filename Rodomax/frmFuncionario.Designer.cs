@@ -217,6 +217,7 @@
             this.btnFilal.Size = new System.Drawing.Size(47, 23);
             this.btnFilal.TabIndex = 2;
             this.btnFilal.UseVisualStyleBackColor = true;
+            this.btnFilal.Click += new System.EventHandler(this.btnFilal_Click);
             // 
             // frmFuncionario
             // 

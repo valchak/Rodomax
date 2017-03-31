@@ -13,17 +13,20 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>\\marley\ftp\sync\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <UpdateUrl>http://192.168.0.1/ftp/sync/</UpdateUrl>
+    <WebPage>publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -59,6 +62,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>A8.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -102,6 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formatacao.cs" />
+    <Compile Include="frmCentroCusto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCentroCusto.Designer.cs">
+      <DependentUpon>frmCentroCusto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCidade.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +236,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\RelEstoqueMovimento.cs" />
     <Compile Include="Splash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +249,9 @@
     <Compile Include="frmUsuarioAlterarSenha.Designer.cs">
       <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmCentroCusto.resx">
+      <DependentUpon>frmCentroCusto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCidade.resx">
       <DependentUpon>frmCidade.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +369,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="A8.ico" />
     <Content Include="MetroFramework.txt" />
     <Content Include="Resources\Alterar.png" />
     <Content Include="Resources\Cancelar.png" />
@@ -363,6 +380,7 @@
     <Content Include="Resources\Novo.png" />
     <Content Include="Resources\Salvar1.fw.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

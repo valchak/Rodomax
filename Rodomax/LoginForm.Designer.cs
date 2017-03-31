@@ -92,6 +92,7 @@
             this.txtPassword.Size = new System.Drawing.Size(307, 23);
             this.txtPassword.TabIndex = 8;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyPress);
             // 
             // LoginForm
             // 
@@ -104,6 +105,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "LoginForm";
             this.Text = "Autenticação";

@@ -61,7 +61,9 @@ namespace Rodomax
                     case 9:
                         cadUsuario.Visible = true;
                         break;
-
+                    case 10:
+                        cadUsuario.Visible = true;
+                        break;
 
                 }
 
@@ -143,6 +145,13 @@ namespace Rodomax
         private void menuAlterarSenha_Click(object sender, EventArgs e)
         {
             frmUsuarioAlterarSenha tela = new frmUsuarioAlterarSenha();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        private void menuCentroDeCusto_Click(object sender, EventArgs e)
+        {
+            frmCentroCusto tela = new frmCentroCusto();
             tela.ShowDialog();
             tela.Dispose();
         }

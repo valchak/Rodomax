@@ -177,5 +177,20 @@ namespace Rodomax
                     break;
             }
         }
+
+        private void btnFilal_Click(object sender, EventArgs e)
+        {
+            frmFilialPesquisa tela = new frmFilialPesquisa();
+            tela.ShowDialog();
+            tela.Dispose();
+
+            if (instancia.filial != null)
+            {
+                filial = instancia.filial;
+                instancia.filial = null;
+                txtFilial.Text = filial.Nome;
+
+            }
+        }
     }
 }
