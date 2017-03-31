@@ -139,5 +139,12 @@ namespace Rodomax
             tela.ShowDialog();
             tela.Dispose();
         }
+
+        private void menuAlterarSenha_Click(object sender, EventArgs e)
+        {
+            frmUsuarioAlterarSenha tela = new frmUsuarioAlterarSenha();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
     }
 }

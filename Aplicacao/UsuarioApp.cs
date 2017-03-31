@@ -109,6 +109,25 @@ namespace Aplicacao
 
         }
 
+        public void TrocarSenha(Usuario obj)
+        {
+
+            try
+            {
+                Usuario dbObj = Banco.Usuarios.Find(obj.Id);
+                dbObj.Senha = obj.Senha;
+                Banco.Entry(dbObj).State = EntityState.Modified;
+                SalvarTodos();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("erro ao atualziar : " + e.Message + " /n" + e.InnerException);
+            }
+
+
+        }
+
+
         public void Excluir(Func<Usuario, bool> predicate)
         {
             throw new NotImplementedException();

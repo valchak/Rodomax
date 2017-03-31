@@ -230,6 +230,12 @@
     <Compile Include="Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUsuarioAlterarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsuarioAlterarSenha.Designer.cs">
+      <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmCidade.resx">
       <DependentUpon>frmCidade.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +307,9 @@
     </Compile>
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsuarioAlterarSenha.resx">
+      <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

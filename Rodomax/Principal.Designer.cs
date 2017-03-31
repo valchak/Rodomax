@@ -41,6 +41,9 @@
             this.menuNotaEntrada = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEstoqueSaida = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEstoque = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuUtil = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAlterarSenha = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCentroDeCusto = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +52,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuAdministrativo,
             this.MenuCadastros,
-            this.MenuOperacoes});
+            this.MenuOperacoes,
+            this.MenuUtil});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1163, 24);
@@ -60,7 +64,8 @@
             // 
             this.MenuAdministrativo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuCadFilial,
-            this.cadUsuario});
+            this.cadUsuario,
+            this.menuCentroDeCusto});
             this.MenuAdministrativo.Name = "MenuAdministrativo";
             this.MenuAdministrativo.Size = new System.Drawing.Size(97, 20);
             this.MenuAdministrativo.Text = "Administrativo";
@@ -69,7 +74,7 @@
             // menuCadFilial
             // 
             this.menuCadFilial.Name = "menuCadFilial";
-            this.menuCadFilial.Size = new System.Drawing.Size(152, 22);
+            this.menuCadFilial.Size = new System.Drawing.Size(187, 22);
             this.menuCadFilial.Text = "Cad. Filial";
             this.menuCadFilial.Visible = false;
             this.menuCadFilial.Click += new System.EventHandler(this.cadFilialToolStripMenuItem1_Click);
@@ -77,7 +82,7 @@
             // cadUsuario
             // 
             this.cadUsuario.Name = "cadUsuario";
-            this.cadUsuario.Size = new System.Drawing.Size(152, 22);
+            this.cadUsuario.Size = new System.Drawing.Size(187, 22);
             this.cadUsuario.Text = "Cad. Usuário";
             this.cadUsuario.Visible = false;
             this.cadUsuario.Click += new System.EventHandler(this.cadUsuárioToolStripMenuItem_Click);
@@ -159,6 +164,27 @@
             this.menuEstoque.Visible = false;
             this.menuEstoque.Click += new System.EventHandler(this.estoqueToolStripMenuItem_Click);
             // 
+            // MenuUtil
+            // 
+            this.MenuUtil.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuAlterarSenha});
+            this.MenuUtil.Name = "MenuUtil";
+            this.MenuUtil.Size = new System.Drawing.Size(37, 20);
+            this.MenuUtil.Text = "Util";
+            // 
+            // menuAlterarSenha
+            // 
+            this.menuAlterarSenha.Name = "menuAlterarSenha";
+            this.menuAlterarSenha.Size = new System.Drawing.Size(152, 22);
+            this.menuAlterarSenha.Text = "Alterar Senha";
+            this.menuAlterarSenha.Click += new System.EventHandler(this.menuAlterarSenha_Click);
+            // 
+            // menuCentroDeCusto
+            // 
+            this.menuCentroDeCusto.Name = "menuCentroDeCusto";
+            this.menuCentroDeCusto.Size = new System.Drawing.Size(187, 22);
+            this.menuCentroDeCusto.Text = "Cad. Centro de Custo";
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +217,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuCadFilial;
         private System.Windows.Forms.ToolStripMenuItem menuCadFuncionario;
         private System.Windows.Forms.ToolStripMenuItem cadUsuario;
+        private System.Windows.Forms.ToolStripMenuItem MenuUtil;
+        private System.Windows.Forms.ToolStripMenuItem menuAlterarSenha;
+        private System.Windows.Forms.ToolStripMenuItem menuCentroDeCusto;
     }
 }
 
