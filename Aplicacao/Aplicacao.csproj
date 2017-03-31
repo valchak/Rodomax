@@ -66,6 +66,7 @@
     <Compile Include="ProdutoApp.cs" />
     <Compile Include="ProdutoGrupoUsuarioApp.cs" />
     <Compile Include="ProdutoGrupoApp.cs" />
+    <Compile Include="SecurPerfilApp.cs" />
     <Compile Include="_Singleton.cs" />
     <Compile Include="UsuarioFilialApp.cs" />
     <Compile Include="UsuarioApp.cs" />

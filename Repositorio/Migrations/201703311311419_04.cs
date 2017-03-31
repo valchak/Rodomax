@@ -26,7 +26,7 @@ namespace Repositorio.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.secur_acesso",
+                "dbo.securformsecurperfils",
                 c => new
                     {
                         SecurForm_Id = c.Int(nullable: false),
@@ -46,13 +46,13 @@ namespace Repositorio.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.usuario", "Perfil_Id", "dbo.secur_perfil");
-            DropForeignKey("dbo.secur_acesso", "SecurPerfil_Id", "dbo.secur_perfil");
-            DropForeignKey("dbo.secur_acesso", "SecurForm_Id", "dbo.secur_form");
-            DropIndex("dbo.secur_acesso", new[] { "SecurPerfil_Id" });
-            DropIndex("dbo.secur_acesso", new[] { "SecurForm_Id" });
+            DropForeignKey("dbo.securformsecurperfils", "SecurPerfil_Id", "dbo.secur_perfil");
+            DropForeignKey("dbo.securformsecurperfils", "SecurForm_Id", "dbo.secur_form");
+            DropIndex("dbo.securformsecurperfils", new[] { "SecurPerfil_Id" });
+            DropIndex("dbo.securformsecurperfils", new[] { "SecurForm_Id" });
             DropIndex("dbo.usuario", new[] { "Perfil_Id" });
             DropColumn("dbo.usuario", "Perfil_Id");
-            DropTable("dbo.secur_acesso");
+            DropTable("dbo.securformsecurperfils");
             DropTable("dbo.secur_form");
             DropTable("dbo.secur_perfil");
         }

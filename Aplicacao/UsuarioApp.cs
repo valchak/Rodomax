@@ -126,7 +126,7 @@ namespace Aplicacao
 
         public IQueryable<Usuario> GetAll()
         {
-            return Banco.Set<Usuario>().Include(x => x.Funcionario);
+            return Banco.Set<Usuario>().Include(x => x.Funcionario).Include(x => x.Perfil);
         }
 
         public void SalvarTodos()
