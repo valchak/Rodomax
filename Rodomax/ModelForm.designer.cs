@@ -140,6 +140,7 @@
             this.ClientSize = new System.Drawing.Size(680, 527);
             this.Controls.Add(this.pnlDados);
             this.Controls.Add(this.pnlBotoes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModelForm";
             this.Text = "ModelFrom";
             this.pnlBotoes.ResumeLayout(false);

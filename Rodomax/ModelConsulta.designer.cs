@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelConsulta));
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
@@ -105,6 +106,7 @@
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModelConsulta";
             this.Text = "ModelConsulta";
             this.ResumeLayout(false);

@@ -90,7 +90,7 @@
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(342, 20);
             this.txtLogin.TabIndex = 0;
-            this.txtLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtSenhaAtual
             // 

@@ -47,14 +47,13 @@ namespace Rodomax
         {
             try
             {
-
+                Splash frm = new Splash();
+                Application.Run(frm);
             }
             catch
             {
 
             }
-            Splash frm = new Splash();
-            Application.Run(frm);
         }
 
         private void btnLogar_Click(object sender, EventArgs e)
