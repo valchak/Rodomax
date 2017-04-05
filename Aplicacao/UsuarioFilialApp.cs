@@ -46,7 +46,8 @@ namespace Aplicacao
         {
             return Banco.Set<UsuarioFilial>()
                  .Include(x => x.Usuario)
-                 .Include(x => x.Filial);
+                 .Include(x => x.Filial)
+                 .Include(x => x.Filial.Cidade);
         }
 
         public void SalvarTodos()

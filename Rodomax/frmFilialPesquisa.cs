@@ -70,8 +70,9 @@ namespace Rodomax
         {
             try
             {
+                int id = Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString());
                 FilialApp filialApp = new FilialApp();
-                instancia.filial = filialApp.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
+                instancia.filial = filialApp.Find(id);
                 this.Close();
             }
             catch (Exception exception)

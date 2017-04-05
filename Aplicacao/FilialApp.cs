@@ -50,7 +50,10 @@ namespace Aplicacao
 
         public Filial Find(params object[] key)
         {
-            return Banco.Set<Filial>().Find(key);
+            var result = Banco.Set<Filial>().Find(key);
+            Banco.Entry(result).Reference<Cidade>(x => x.Cidade).Load();
+            Banco.Entry(result).Reference<Empresa>(x => x.Empresa).Load();
+            return result;
         }
 
         public IQueryable<Filial> Get(Func<Filial, bool> predicate)

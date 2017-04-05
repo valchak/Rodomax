@@ -17,7 +17,7 @@ namespace Aplicacao
 
         public IQueryable<EstoqueMovimento> GetAll()
         {
-            return Banco.Set<EstoqueMovimento>().Include(x => x.Filial).Include(x => x.Produto);
+            return Banco.Set<EstoqueMovimento>().Include(x => x.Filial).Include(x => x.Produto).Include(x => x.Produto.ProdutoGrupo);
         }
 
         public IQueryable<EstoqueMovimento> Get(Func<EstoqueMovimento, bool> predicate)
