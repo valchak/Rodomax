@@ -25,6 +25,7 @@ namespace Rodomax
             txtFilial.Clear();
             txtNome.Clear();
             txtEmail.Clear();
+            txtCargoFuncao.Clear();
             rdAtivo.Select();
 
             filial = null;
@@ -41,6 +42,7 @@ namespace Rodomax
                 funcionario.Nome = txtNome.Text.Trim().RemoveDiacritics().ToUpper();
                 funcionario.Filial = filial;
                 funcionario.Email = txtEmail.Text.Trim().RemoveDiacritics();
+                funcionario.Funcao = txtCargoFuncao.Text.Trim().RemoveDiacritics().ToUpper();
                 if (rdAtivo.Checked)
                 {
                     funcionario.Situacao = "A";

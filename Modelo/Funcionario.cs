@@ -11,6 +11,8 @@ namespace Modelo
         [StringLength(255)]
         public string CPF { get; set; }
         [StringLength(255)]
+        public string Funcao { get; set; }
+        [StringLength(255)]
         public string Nome { get; set; }
         [StringLength(255)]
         public string Email { get; set; }

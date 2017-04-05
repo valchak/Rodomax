@@ -29,6 +29,7 @@ namespace Aplicacao
             dbObj.CPF = obj.CPF;
             dbObj.Nome = obj.Nome;
             dbObj.Email = obj.Email;
+            dbObj.Funcao = obj.Funcao;
             dbObj.Situacao = obj.Situacao;
 
             Banco.Entry(dbObj).State = EntityState.Modified;

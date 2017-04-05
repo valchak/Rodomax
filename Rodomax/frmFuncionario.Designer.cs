@@ -43,6 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnFilal = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCargoFuncao = new System.Windows.Forms.TextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -59,6 +61,8 @@
             // 
             // pnlDados
             // 
+            this.pnlDados.Controls.Add(this.label6);
+            this.pnlDados.Controls.Add(this.txtCargoFuncao);
             this.pnlDados.Controls.Add(this.btnFilal);
             this.pnlDados.Controls.Add(this.label5);
             this.pnlDados.Controls.Add(this.label4);
@@ -219,6 +223,22 @@
             this.btnFilal.UseVisualStyleBackColor = true;
             this.btnFilal.Click += new System.EventHandler(this.btnFilal_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 174);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Cargo/Função";
+            // 
+            // txtCargoFuncao
+            // 
+            this.txtCargoFuncao.Location = new System.Drawing.Point(21, 189);
+            this.txtCargoFuncao.Name = "txtCargoFuncao";
+            this.txtCargoFuncao.Size = new System.Drawing.Size(342, 20);
+            this.txtCargoFuncao.TabIndex = 11;
+            // 
             // frmFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,5 +271,7 @@
         private System.Windows.Forms.TextBox txtFilial;
         private System.Windows.Forms.MaskedTextBox txtCPF;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtCargoFuncao;
     }
 }

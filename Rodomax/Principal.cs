@@ -163,5 +163,12 @@ namespace Rodomax
             tela.ShowDialog();
             tela.Dispose();
         }
+
+        private void protocoloMaterialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RelProtocoloMaterial tela = new RelProtocoloMaterial();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
     }
 }

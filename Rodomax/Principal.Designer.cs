@@ -47,6 +47,7 @@
             this.menuAlterarSenha = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimentoDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.protocoloMaterialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -193,7 +194,8 @@
             // relatórioToolStripMenuItem
             // 
             this.relatórioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.movimentoDeEstoqueToolStripMenuItem});
+            this.movimentoDeEstoqueToolStripMenuItem,
+            this.protocoloMaterialToolStripMenuItem});
             this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
             this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.relatórioToolStripMenuItem.Text = "Relatório";
@@ -204,6 +206,13 @@
             this.movimentoDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.movimentoDeEstoqueToolStripMenuItem.Text = "Movimento de Estoque";
             this.movimentoDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.movimentoDeEstoqueToolStripMenuItem_Click);
+            // 
+            // protocoloMaterialToolStripMenuItem
+            // 
+            this.protocoloMaterialToolStripMenuItem.Name = "protocoloMaterialToolStripMenuItem";
+            this.protocoloMaterialToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.protocoloMaterialToolStripMenuItem.Text = "Protocolo Material";
+            this.protocoloMaterialToolStripMenuItem.Click += new System.EventHandler(this.protocoloMaterialToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -243,6 +252,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuCentroDeCusto;
         private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movimentoDeEstoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem protocoloMaterialToolStripMenuItem;
     }
 }
 
