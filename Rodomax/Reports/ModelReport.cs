@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Rodomax.Reports
 {
-    public partial class ModelForm : Form
+    public partial class ModelReport : MetroFramework.Forms.MetroForm
     {
-        public ModelForm()
+        public ModelReport()
         {
             InitializeComponent();
         }

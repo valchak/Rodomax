@@ -26,7 +26,7 @@
     <UpdateUrl>http://192.168.0.1/ftp/sync/</UpdateUrl>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>20</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -239,13 +239,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\ModelForm.cs">
+    <Compile Include="Reports\DadosEstoqueMovimento.cs" />
+    <Compile Include="Reports\ModelReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\ModelForm.Designer.cs">
-      <DependentUpon>ModelForm.cs</DependentUpon>
+    <Compile Include="Reports\ModelReport.designer.cs">
+      <DependentUpon>ModelReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RelEstoqueMovimento.cs" />
+    <Compile Include="Reports\RelEstoqueMovimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\RelEstoqueMovimento.Designer.cs">
+      <DependentUpon>RelEstoqueMovimento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Splash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,6 +336,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\ModelReport.resx">
+      <DependentUpon>ModelReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RelEstoqueMovimento.rdlc" />
+    <EmbeddedResource Include="Reports\RelEstoqueMovimento.resx">
+      <DependentUpon>RelEstoqueMovimento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
@@ -337,6 +350,7 @@
       <DependentUpon>frmUsuarioAlterarSenha.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Rodomax.Reports.DadosEstoqueMovimento.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
