@@ -45,6 +45,8 @@
             this.menuEstoque = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuUtil = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAlterarSenha = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.movimentoDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +56,8 @@
             this.MenuAdministrativo,
             this.MenuCadastros,
             this.MenuOperacoes,
-            this.MenuUtil});
+            this.MenuUtil,
+            this.relatórioToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1163, 24);
@@ -187,6 +190,21 @@
             this.menuAlterarSenha.Text = "Alterar Senha";
             this.menuAlterarSenha.Click += new System.EventHandler(this.menuAlterarSenha_Click);
             // 
+            // relatórioToolStripMenuItem
+            // 
+            this.relatórioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.movimentoDeEstoqueToolStripMenuItem});
+            this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
+            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.relatórioToolStripMenuItem.Text = "Relatório";
+            // 
+            // movimentoDeEstoqueToolStripMenuItem
+            // 
+            this.movimentoDeEstoqueToolStripMenuItem.Name = "movimentoDeEstoqueToolStripMenuItem";
+            this.movimentoDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.movimentoDeEstoqueToolStripMenuItem.Text = "Movimento de Estoque";
+            this.movimentoDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.movimentoDeEstoqueToolStripMenuItem_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +241,8 @@
         private System.Windows.Forms.ToolStripMenuItem MenuUtil;
         private System.Windows.Forms.ToolStripMenuItem menuAlterarSenha;
         private System.Windows.Forms.ToolStripMenuItem menuCentroDeCusto;
+        private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem movimentoDeEstoqueToolStripMenuItem;
     }
 }
 

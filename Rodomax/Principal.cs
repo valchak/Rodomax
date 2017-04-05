@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading;
 using UI;
 using System.Collections.Generic;
+using Rodomax.Reports;
 
 namespace Rodomax
 {
@@ -152,6 +153,13 @@ namespace Rodomax
         private void menuCentroDeCusto_Click(object sender, EventArgs e)
         {
             frmCentroCusto tela = new frmCentroCusto();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        private void movimentoDeEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RelEstoqueMovimento tela = new RelEstoqueMovimento();
             tela.ShowDialog();
             tela.Dispose();
         }
