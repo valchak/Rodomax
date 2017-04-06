@@ -5,6 +5,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using MMLib.Extensions;
+using Modelo.Reports;
+using Rodomax.Reports;
 
 namespace Rodomax
 {
@@ -55,14 +57,22 @@ namespace Rodomax
                             if (saida.Id == 0)
                             {
                                 app.Adicionar(saida);
-                                MessageBox.Show("Saida de material salvo com sucesso: Código " + saida.Id);
-
+                                
+                                if (MessageBox.Show("Saida de material salvo com sucesso: Código \n Desenha imprimir protocolo? " + saida.Id, "Imprimir Protocolo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                {
+                                    ImprimeProtocolo(saida);
+                                }
                             }
                             else
                             {
                                 app.Atualizar(saida);
-                                MessageBox.Show("Saida de material alterada com sucesso.");
+                                if(MessageBox.Show("Saida de material alterada com sucesso. \n Desenha imprimir protocolo?","Imprimir Protocolo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                                {
+                                    ImprimeProtocolo(saida);
+                                }
                             }
+
+
                             LimpaNovo();
                             break;
                         case DialogResult.No:
@@ -74,6 +84,32 @@ namespace Rodomax
                     MessageBox.Show("Erro Salvar: " + erro.Message);
                 }
             }
+        }
+
+        private void ImprimeProtocolo(MaterialSaida saida)
+        {
+            instancia.listaProtocoloMaterial = new List<DadosProtocoloMaterial>();
+            foreach (var i in saida.MaterialSaidaProdutos)
+            {
+                DadosProtocoloMaterial dados = new DadosProtocoloMaterial();
+                dados.Produto = i.Produto.Nome;
+                dados.DataEnvio = saida.DataSaidaEstoque;
+                dados.FilialOrigem = saida.FilialSaida.Nome;
+                dados.FilialDestino = saida.FilialEntrada.Nome;
+                dados.FuncionarioEnvio = instancia.userLogado.Funcionario.Nome;
+                if(saida.ResponsavelRecebimento != null)
+                {
+                    dados.FuncionarioRecebimento = saida.ResponsavelRecebimento.Nome;
+                }
+                dados.CargoFuncao = saida.ResponsavelRecebimento.Funcao;
+                dados.Quantidade = i.Quantidade;
+                instancia.listaProtocoloMaterial.Add(dados);
+            }
+
+            RelProtocoloImpressao tela = new RelProtocoloImpressao();
+            tela.ShowDialog();
+            tela.Dispose();
+            instancia.listaProtocoloMaterial = null;
         }
 
         public void LimpaNovo()
@@ -203,8 +239,10 @@ namespace Rodomax
             if (instancia.funcionario != null)
             {
                 solicitante = instancia.funcionario;
-                instancia.funcionario = null;
+                filialDestino = instancia.funcionario.Filial;
+                txtFilialDestino.Text = filialDestino.Nome;
                 txtFuncionarioSolicitante.Text = solicitante.Nome;
+                instancia.funcionario = null;
             }
         }
         private void btnProduto_Click(object sender, EventArgs e)

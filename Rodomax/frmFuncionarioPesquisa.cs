@@ -50,8 +50,7 @@ namespace Rodomax
                     x =>
                         x.Nome.Contains(funcionario.Nome) ||
                         x.CPF.Contains(funcionario.CPF));
-            Invoke(new Action(() =>
-            {
+            
 
                 if (lista.Count() > 0)
                 {
@@ -75,14 +74,13 @@ namespace Rodomax
                 {
                     MessageBox.Show("Nenhum item encontrado.");
                 }
-            }));
+          
         }
 
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            var th = new Thread(new ThreadStart(this.BuscarNoBanco));
-            th.Start();
+           BuscarNoBanco();
         }
 
         private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
@@ -100,6 +98,14 @@ namespace Rodomax
             if (gridPesquisa.Rows.Count > 0)
             {
                 SelecionarObjeto();
+            }
+        }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarNoBanco();
             }
         }
     }

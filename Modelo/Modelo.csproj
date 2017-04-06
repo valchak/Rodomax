@@ -83,6 +83,8 @@
     <Compile Include="Patrimonio.cs" />
     <Compile Include="PatrimonioGrupo.cs" />
     <Compile Include="PatrimonioHistorico.cs" />
+    <Compile Include="Reports\DadosEstoqueMovimento.cs" />
+    <Compile Include="Reports\DadosProtocoloMaterial.cs" />
     <Compile Include="SecurForm.cs" />
     <Compile Include="SecurPerfil.cs" />
     <Compile Include="SecurAcesso.cs" />

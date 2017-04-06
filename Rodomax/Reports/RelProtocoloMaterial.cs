@@ -1,4 +1,8 @@
-﻿using Repositorio;
+﻿using Aplicacao;
+using MMLib.Extensions;
+using Modelo;
+using Modelo.Reports;
+using Repositorio;
 using System;
 using System.Collections.Generic;
 
@@ -6,54 +10,73 @@ namespace Rodomax.Reports
 {
     public partial class RelProtocoloMaterial : Rodomax.Reports.ModelReport
     {
+        _Singleton instancia = _Singleton.GetInstance;
+
         public RelProtocoloMaterial()
         {
             InitializeComponent();
+            Limpar();
+        }
+        private void Limpar()
+        {
+            DateTime primeiroDia = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            DateTime ultimoDia = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+            txtDataFinal.Value = ultimoDia;
+            txtDataInicio.Value = primeiroDia;
+            txtFilial.Clear();
+            txtId.Clear();
         }
 
         private void RelProtocoloMaterial_Load(object sender, EventArgs e)
         {
-
-            this.reportViewer1.RefreshReport();
+            //this.reportViewer1.RefreshReport();
         }
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             using (var contexto = new ContextoDB())
             {
+                DateTime dataInicio = txtDataInicio.Value;
+                DateTime dataFim = txtDataFinal.Value;
+                int Id = int.Parse(txtId.Text.Trim());
+                string filial = txtFilial.Text.Trim().RemoveDiacritics().ToUpper();
 
-               // EstoqueMovimentoApp app = new EstoqueMovimentoApp();
+                MaterialSaidaApp app = new MaterialSaidaApp();
+                MaterialSaidaProdutosApp appProd = new MaterialSaidaProdutosApp();
+
+             
+                IEnumerable<MaterialSaida> listaEDB = app.Get(x => x.Id == Id
+                && x.DataSaidaEstoque.Date >= dataInicio
+                && x.DataSaidaEstoque.Date <= dataFim
+                && x.FilialEntrada.Nome.Contains(filial));
+
                 List<DadosProtocoloMaterial> lista = new List<DadosProtocoloMaterial>();
-                DadosProtocoloMaterial dados1;
-                DadosProtocoloMaterial dados2;
-
-                dados1 = new DadosProtocoloMaterial();
-
-                dados1.CargoFuncao = "cargo";
-                dados1.DataEnvio = DateTime.Now;
-                dados1.FilialDestino = "PONTA GROSSA";
-                dados1.FilialOrigem = "MATRIZ";
-                dados1.FuncionarioEnvio = "MARCIO VALCHKA";
-                dados1.FuncionarioRecebimento = "PEDRAO DA COSTA DE SOUSA SILVA";
-                dados1.Produto = "CAMISA POLO VERMELHA MODELO A1 TAMANHO G";
-                dados1.Quantidade = 3;
-
-                lista.Add(dados1);
-
-                dados2 = new DadosProtocoloMaterial();
-
-                dados2.CargoFuncao = "cargo";
-                dados2.DataEnvio = DateTime.Now;
-                dados2.FilialDestino = "CURITIBA";
-                dados2.FilialOrigem = "MATRIZ";
-                dados2.FuncionarioEnvio = "MFADFAFDASF VALCHKA";
-                dados2.FuncionarioRecebimento = "MARIA A COSTA DE SOUSA SILVA";
-                dados2.Produto = "CAMISA POLO BRANCA MODELO A1 TAMANHO P";
-                dados2.Quantidade = 2;
-                lista.Add(dados2);
 
 
+                foreach (var i in listaEDB)
+                {
+
+                    foreach(var x in i.MaterialSaidaProdutos)
+                    {
+                        DadosProtocoloMaterial dados = new DadosProtocoloMaterial();
+                        MaterialSaidaProdutos produto = appProd.Find(x.Id);
+
+                        dados.Produto = produto.Produto.Nome;
+                        dados.DataEnvio = i.DataSaidaEstoque;
+                        dados.FilialOrigem = i.FilialSaida.Nome;
+                        dados.FilialDestino = i.FilialEntrada.Nome;
+                        dados.FuncionarioEnvio = instancia.userLogado.Funcionario.Nome;
+                        if(i.ResponsavelRecebimento != null)
+                        {
+                            dados.FuncionarioRecebimento = i.ResponsavelRecebimento.Nome;
+                            dados.CargoFuncao = i.ResponsavelRecebimento.Funcao;
+                        }
+                        dados.Quantidade = x.Quantidade;
+                        lista.Add(dados);
+                    }
+                }
                 
+
                 var dadosRelatorio = lista.ToArray();
 
                 this.reportViewer1.LocalReport.DataSources.Clear();
@@ -61,6 +84,11 @@ namespace Rodomax.Reports
             }
 
             this.reportViewer1.RefreshReport();
+        }
+
+        private void btnLimparFiltro_Click(object sender, EventArgs e)
+        {
+            Limpar();
         }
     }
 }

@@ -17,9 +17,16 @@ namespace Aplicacao
 
         public void Adicionar(Funcionario obj)
         {
-            obj.Filial = Banco.Filiais.Find(obj.Filial.Id);
-            Banco.Funcionarios.Add(obj);
-            SalvarTodos();
+            if (Validar(obj))
+            {
+                obj.Filial = Banco.Filiais.Find(obj.Filial.Id);
+                Banco.Funcionarios.Add(obj);
+                SalvarTodos();
+            }
+            else
+            {
+                throw new Exception("Já existe esse funcionário cadastrado");
+            }
         }
 
         public void Atualizar(Funcionario obj)
@@ -44,7 +51,9 @@ namespace Aplicacao
 
         public Funcionario Find(params object[] key)
         {
-            return Banco.Set<Funcionario>().Find(key);
+            var result = Banco.Set<Funcionario>().Find(key);
+            Banco.Entry(result).Reference<Filial>(x => x.Filial).Load();
+            return result;
         }
 
         public IQueryable<Funcionario> Get(Func<Funcionario, bool> predicate)
@@ -60,6 +69,16 @@ namespace Aplicacao
         public void SalvarTodos()
         {
             Banco.SaveChanges();
+        }
+
+        private bool Validar(Funcionario obj)
+        {
+            bool result = true;
+            foreach (var i in Get(x => x.CPF.Equals(obj.CPF)))
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

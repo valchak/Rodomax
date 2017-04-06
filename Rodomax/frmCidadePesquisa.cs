@@ -20,7 +20,7 @@ namespace Rodomax
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void btnFiltrar_Click(object sender, EventArgs e)
+        private void BuscarBanco()
         {
             IEnumerable<Cidade> lista = app.Get(x => x.Nome.Contains(txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper()));
 
@@ -37,6 +37,11 @@ namespace Rodomax
             }
 
             gridPesquisa.Refresh();
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            BuscarBanco();
         }
 
         private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
@@ -69,6 +74,14 @@ namespace Rodomax
             catch (Exception exception)
             {
                 MessageBox.Show("Erro: " + exception.Message);
+            }
+        }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarBanco();
             }
         }
     }

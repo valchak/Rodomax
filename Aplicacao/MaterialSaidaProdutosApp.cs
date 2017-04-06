@@ -33,7 +33,10 @@ namespace Aplicacao
 
         public MaterialSaidaProdutos Find(params object[] key)
         {
-            return Banco.Set<MaterialSaidaProdutos>().Find(key);
+            var result = Banco.Set<MaterialSaidaProdutos>().Find(key);
+            Banco.Entry(result).Reference<Produto>(x => x.Produto).Load();
+            return result;
+            
         }
 
         public IQueryable<MaterialSaidaProdutos> Get(Func<MaterialSaidaProdutos, bool> predicate)

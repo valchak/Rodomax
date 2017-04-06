@@ -21,6 +21,10 @@ namespace Rodomax
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
+            BuscarNoBanco();
+        }
+        private void BuscarNoBanco()
+        {
             gridPesquisa.DataSource = null;
             gridPesquisa.ResetBindings();
             gridPesquisa.Rows.Clear();
@@ -60,6 +64,14 @@ namespace Rodomax
         private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
         {
             Selecionar();
+        }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarNoBanco();
+            }
         }
     }
 }

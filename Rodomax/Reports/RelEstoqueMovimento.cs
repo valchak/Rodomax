@@ -4,7 +4,7 @@ using Repositorio;
 using System;
 using System.Collections.Generic;
 using MMLib.Extensions;
-using System.Collections;
+using Modelo.Reports;
 
 namespace Rodomax.Reports
 {

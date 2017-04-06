@@ -47,8 +47,9 @@ namespace Rodomax
         {
             try
             {
-                Splash frm = new Splash();
-                Application.Run(frm);
+                Splash tela = new Splash();
+                tela.ShowDialog();
+                tela.Dispose();
             }
             catch
             {

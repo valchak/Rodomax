@@ -185,13 +185,24 @@ namespace Rodomax
             frmFilialPesquisa tela = new frmFilialPesquisa();
             tela.ShowDialog();
             tela.Dispose();
-
             if (instancia.filial != null)
             {
                 filial = instancia.filial;
                 instancia.filial = null;
                 txtFilial.Text = filial.Nome;
+            }
+        }
 
+        private void txtCPF_TextChanged(object sender, EventArgs e)
+        {
+            var novo = txtCPF.Text.Trim().Replace("-", "").Replace("/", "").Replace(".", "").Replace(",", "").ToCharArray();
+            if (novo.Length == 11)
+            {
+                if (!Formatacao.IsCpf(txtCPF.Text))
+                {
+                    MessageBox.Show("CPF Informado é inválido");
+                    txtCPF.Focus();
+                }
             }
         }
     }

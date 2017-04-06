@@ -35,6 +35,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).BeginInit();
             this.SuspendLayout();
             // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
+            // 
             // btnFiltrar
             // 
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);

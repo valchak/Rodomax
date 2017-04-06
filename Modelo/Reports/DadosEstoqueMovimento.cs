@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rodomax.Reports
+namespace Modelo.Reports
 {
     public class DadosEstoqueMovimento
     {

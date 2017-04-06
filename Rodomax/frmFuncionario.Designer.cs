@@ -112,6 +112,7 @@
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(176, 20);
             this.txtCPF.TabIndex = 1;
+            this.txtCPF.TextChanged += new System.EventHandler(this.txtCPF_TextChanged);
             // 
             // txtFilial
             // 

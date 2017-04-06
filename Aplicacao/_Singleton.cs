@@ -1,5 +1,5 @@
-﻿
-using Modelo;
+﻿using Modelo;
+using Modelo.Reports;
 using System.Collections.Generic;
 
 namespace Aplicacao
@@ -43,6 +43,10 @@ namespace Aplicacao
         public Estoque estoque = null;
         public Funcionario funcionario = null;
         public Usuario usuario = null;
+
+
+        /*Para relatório*/
+        public List<DadosProtocoloMaterial> listaProtocoloMaterial = null;
 
     }
 }

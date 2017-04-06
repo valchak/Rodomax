@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelEstoqueMovimento));
+            this.DadosEstoqueMovimentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
             this.txtDataFinal = new System.Windows.Forms.DateTimePicker();
@@ -42,17 +43,16 @@
             this.txtGrupo = new System.Windows.Forms.TextBox();
             this.btnGrupo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdTodos = new System.Windows.Forms.RadioButton();
-            this.rdEntrada = new System.Windows.Forms.RadioButton();
             this.rdSaida = new System.Windows.Forms.RadioButton();
+            this.rdEntrada = new System.Windows.Forms.RadioButton();
+            this.rdTodos = new System.Windows.Forms.RadioButton();
             this.txtFilial = new System.Windows.Forms.TextBox();
             this.Filfad = new System.Windows.Forms.Label();
             this.btnFilial = new System.Windows.Forms.Button();
-            this.DadosEstoqueMovimentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DadosEstoqueMovimentoBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,6 +84,10 @@
             // btnLimparFiltro
             // 
             this.btnLimparFiltro.Click += new System.EventHandler(this.btnLimparFiltro_Click);
+            // 
+            // DadosEstoqueMovimentoBindingSource
+            // 
+            this.DadosEstoqueMovimentoBindingSource.DataSource = typeof(Modelo.Reports.DadosEstoqueMovimento);
             // 
             // reportViewer1
             // 
@@ -187,16 +191,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo Movimento";
             // 
-            // rdTodos
+            // rdSaida
             // 
-            this.rdTodos.AutoSize = true;
-            this.rdTodos.Location = new System.Drawing.Point(10, 20);
-            this.rdTodos.Name = "rdTodos";
-            this.rdTodos.Size = new System.Drawing.Size(55, 17);
-            this.rdTodos.TabIndex = 0;
-            this.rdTodos.TabStop = true;
-            this.rdTodos.Text = "Todos";
-            this.rdTodos.UseVisualStyleBackColor = true;
+            this.rdSaida.AutoSize = true;
+            this.rdSaida.Location = new System.Drawing.Point(238, 19);
+            this.rdSaida.Name = "rdSaida";
+            this.rdSaida.Size = new System.Drawing.Size(54, 17);
+            this.rdSaida.TabIndex = 2;
+            this.rdSaida.TabStop = true;
+            this.rdSaida.Text = "Saída";
+            this.rdSaida.UseVisualStyleBackColor = true;
             // 
             // rdEntrada
             // 
@@ -209,16 +213,16 @@
             this.rdEntrada.Text = "Entrada";
             this.rdEntrada.UseVisualStyleBackColor = true;
             // 
-            // rdSaida
+            // rdTodos
             // 
-            this.rdSaida.AutoSize = true;
-            this.rdSaida.Location = new System.Drawing.Point(238, 19);
-            this.rdSaida.Name = "rdSaida";
-            this.rdSaida.Size = new System.Drawing.Size(54, 17);
-            this.rdSaida.TabIndex = 2;
-            this.rdSaida.TabStop = true;
-            this.rdSaida.Text = "Saída";
-            this.rdSaida.UseVisualStyleBackColor = true;
+            this.rdTodos.AutoSize = true;
+            this.rdTodos.Location = new System.Drawing.Point(10, 20);
+            this.rdTodos.Name = "rdTodos";
+            this.rdTodos.Size = new System.Drawing.Size(55, 17);
+            this.rdTodos.TabIndex = 0;
+            this.rdTodos.TabStop = true;
+            this.rdTodos.Text = "Todos";
+            this.rdTodos.UseVisualStyleBackColor = true;
             // 
             // txtFilial
             // 
@@ -246,23 +250,20 @@
             this.btnFilial.UseVisualStyleBackColor = true;
             this.btnFilial.Click += new System.EventHandler(this.btnFilial_Click);
             // 
-            // DadosEstoqueMovimentoBindingSource
-            // 
-            this.DadosEstoqueMovimentoBindingSource.DataSource = typeof(Rodomax.Reports.DadosEstoqueMovimento);
-            // 
             // RelEstoqueMovimento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1075, 493);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "RelEstoqueMovimento";
             this.Text = "Relatório de Movimento de Estoque";
             this.Load += new System.EventHandler(this.RelEstoqueMovimento_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DadosEstoqueMovimentoBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DadosEstoqueMovimentoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

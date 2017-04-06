@@ -124,5 +124,13 @@ namespace Rodomax
         {
             SelecionarObjeto();
         }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarNoBanco();
+            }
+        }
     }
 }
