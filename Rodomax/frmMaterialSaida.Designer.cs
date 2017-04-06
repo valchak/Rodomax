@@ -83,6 +83,10 @@
             // 
             this.pnlBotoes.Size = new System.Drawing.Size(801, 94);
             // 
+            // btnNovo
+            // 
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
             // pnlDados
             // 
             this.pnlDados.Controls.Add(this.txtObservacao);
@@ -384,6 +388,7 @@
             this.txtCodigoSaida.Size = new System.Drawing.Size(100, 20);
             this.txtCodigoSaida.TabIndex = 1;
             this.txtCodigoSaida.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCodigoSaida.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigoSaida_KeyDown);
             // 
             // label2
             // 

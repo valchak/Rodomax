@@ -1,5 +1,6 @@
 ﻿
 using Aplicacao;
+using System.Windows.Forms;
 
 namespace Rodomax.Reports
 {

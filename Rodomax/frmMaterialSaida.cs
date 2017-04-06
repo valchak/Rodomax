@@ -150,6 +150,7 @@ namespace Rodomax
             btnNovo.Enabled = false;
 
             txtCodigoSaida.Enabled = true;
+            this.AlteraBotoes(1);
 
             LimparItem();
         }
@@ -461,7 +462,7 @@ namespace Rodomax
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            BuscaMaterialSaida();
+            this.AlteraBotoes(2);
         }
 
         private void BuscaMaterialSaida()
@@ -558,6 +559,20 @@ namespace Rodomax
                 {
                     this.Close();
                 }
+            }
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            this.AlteraBotoes(2);
+            txtCodigoSaida.Enabled = false;
+        }
+
+        private void txtCodigoSaida_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscaMaterialSaida();
             }
         }
     }

@@ -56,6 +56,7 @@
             // 
             // pnlBotoes
             // 
+            this.pnlBotoes.Enabled = false;
             this.pnlBotoes.Size = new System.Drawing.Size(1009, 94);
             // 
             // pnlDados
@@ -241,7 +242,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 662);
-            this.KeyPreview = true;
             this.Name = "frmEstoque";
             this.Text = "Consulta de Estoque";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmEstoque_KeyDown);
