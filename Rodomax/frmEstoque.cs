@@ -104,5 +104,13 @@ namespace Rodomax
                 txtProduto.Text = instancia.produto.Nome;
             }
         }
+
+        private void frmEstoque_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

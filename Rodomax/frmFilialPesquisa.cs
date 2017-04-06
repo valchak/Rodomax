@@ -88,5 +88,13 @@ namespace Rodomax
                 Buscar();
             }
         }
+
+        private void frmFilialPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

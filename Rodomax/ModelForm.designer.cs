@@ -141,6 +141,7 @@
             this.Controls.Add(this.pnlDados);
             this.Controls.Add(this.pnlBotoes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "ModelForm";
             this.Text = "ModelFrom";
             this.pnlBotoes.ResumeLayout(false);

@@ -22,5 +22,13 @@ namespace Rodomax.Reports
                 this.reportViewer1.RefreshReport();
             }
         }
+
+        private void RelProtocoloImpressao_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+               this.Close();
+            }
+        }
     }
 }

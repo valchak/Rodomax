@@ -254,10 +254,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1075, 493);
+            this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "RelEstoqueMovimento";
             this.Text = "Relatório de Movimento de Estoque";
             this.Load += new System.EventHandler(this.RelEstoqueMovimento_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RelEstoqueMovimento_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

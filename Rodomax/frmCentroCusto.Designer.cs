@@ -49,6 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(680, 527);
+            this.KeyPreview = true;
             this.Name = "frmCentroCusto";
             this.Text = "Centro de Custos";
             this.pnlBotoes.ResumeLayout(false);

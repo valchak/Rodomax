@@ -89,8 +89,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(626, 486);
+            this.KeyPreview = true;
             this.Name = "frmFilialPesquisa";
             this.Text = "Consulta Filial";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFilialPesquisa_KeyDown);
             this.pnlPesquisaResultado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.ResumeLayout(false);

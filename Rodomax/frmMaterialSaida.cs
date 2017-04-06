@@ -547,5 +547,18 @@ namespace Rodomax
                     break;
             }
         }
+
+       
+
+        private void frmMaterialSaida_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (MessageBox.Show("Deseja realmente Sair do Formulário? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+        }
     }
 }

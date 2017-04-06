@@ -106,5 +106,13 @@ namespace Rodomax
                 BuscarNoBanco();
             }
         }
+
+        private void frmFornecedorPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

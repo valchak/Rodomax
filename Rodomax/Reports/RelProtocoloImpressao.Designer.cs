@@ -56,10 +56,12 @@
             // 
             this.ClientSize = new System.Drawing.Size(824, 456);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "RelProtocoloImpressao";
             this.Text = "Protocolo de Envio de Material";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.RelProtocoloImpressao_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RelProtocoloImpressao_KeyDown);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

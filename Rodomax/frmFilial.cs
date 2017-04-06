@@ -172,5 +172,13 @@ namespace UI
                 MessageBox.Show("Erro ao Excluir: " + erro.Message);
             }
         }
+
+        private void frmFilial_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using Modelo.Reports;
 using Repositorio;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Rodomax.Reports
 {
@@ -98,6 +99,14 @@ namespace Rodomax.Reports
         private void btnLimparFiltro_Click(object sender, EventArgs e)
         {
             Limpar();
+        }
+
+        private void RelProtocoloMaterial_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

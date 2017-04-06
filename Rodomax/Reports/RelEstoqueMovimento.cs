@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using MMLib.Extensions;
 using Modelo.Reports;
+using System.Windows.Forms;
 
 namespace Rodomax.Reports
 {
@@ -188,6 +189,15 @@ namespace Rodomax.Reports
                 txtFilial.Text = instancia.filial.Nome;
                 instancia.filial = null;
             }
+        }
+
+        private void RelEstoqueMovimento_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+
         }
     }
 }

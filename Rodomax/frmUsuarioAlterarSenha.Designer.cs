@@ -159,8 +159,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(385, 338);
+            this.KeyPreview = true;
             this.Name = "frmUsuarioAlterarSenha";
             this.Text = "Alterar Senha";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuarioAlterarSenha_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

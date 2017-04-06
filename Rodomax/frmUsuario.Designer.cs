@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuario));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtFuncionario = new System.Windows.Forms.TextBox();
             this.txtLogin = new System.Windows.Forms.TextBox();
@@ -41,17 +41,17 @@
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.btnFuncionario = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdAtivo = new MetroFramework.Controls.MetroRadioButton();
             this.rdInativo = new MetroFramework.Controls.MetroRadioButton();
+            this.rdAtivo = new MetroFramework.Controls.MetroRadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemove1 = new System.Windows.Forms.Button();
             this.btnRemoveTodos = new System.Windows.Forms.Button();
             this.btnAddTodos = new System.Windows.Forms.Button();
             this.btnAddSim1 = new System.Windows.Forms.Button();
             this.gridSim = new System.Windows.Forms.DataGridView();
-            this.gridNao = new System.Windows.Forms.DataGridView();
             this.simId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.simNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridNao = new System.Windows.Forms.DataGridView();
             this.naoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naoNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
@@ -170,17 +170,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Situação";
             // 
-            // rdAtivo
-            // 
-            this.rdAtivo.AutoSize = true;
-            this.rdAtivo.Location = new System.Drawing.Point(6, 19);
-            this.rdAtivo.Name = "rdAtivo";
-            this.rdAtivo.Size = new System.Drawing.Size(51, 15);
-            this.rdAtivo.TabIndex = 0;
-            this.rdAtivo.TabStop = true;
-            this.rdAtivo.Text = "Ativo";
-            this.rdAtivo.UseVisualStyleBackColor = true;
-            // 
             // rdInativo
             // 
             this.rdInativo.AutoSize = true;
@@ -191,6 +180,17 @@
             this.rdInativo.TabStop = true;
             this.rdInativo.Text = "Inativo";
             this.rdInativo.UseVisualStyleBackColor = true;
+            // 
+            // rdAtivo
+            // 
+            this.rdAtivo.AutoSize = true;
+            this.rdAtivo.Location = new System.Drawing.Point(6, 19);
+            this.rdAtivo.Name = "rdAtivo";
+            this.rdAtivo.Size = new System.Drawing.Size(51, 15);
+            this.rdAtivo.TabIndex = 0;
+            this.rdAtivo.TabStop = true;
+            this.rdAtivo.Text = "Ativo";
+            this.rdAtivo.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -269,6 +269,24 @@
             this.gridSim.Size = new System.Drawing.Size(280, 222);
             this.gridSim.TabIndex = 1;
             // 
+            // simId
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simId.DefaultCellStyle = dataGridViewCellStyle1;
+            this.simId.HeaderText = "Cod";
+            this.simId.Name = "simId";
+            this.simId.ReadOnly = true;
+            this.simId.Width = 30;
+            // 
+            // simNome
+            // 
+            this.simNome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simNome.DefaultCellStyle = dataGridViewCellStyle2;
+            this.simNome.HeaderText = "Filial";
+            this.simNome.Name = "simNome";
+            this.simNome.ReadOnly = true;
+            // 
             // gridNao
             // 
             this.gridNao.AllowUserToAddRows = false;
@@ -286,28 +304,10 @@
             this.gridNao.Size = new System.Drawing.Size(280, 222);
             this.gridNao.TabIndex = 0;
             // 
-            // simId
-            // 
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simId.DefaultCellStyle = dataGridViewCellStyle33;
-            this.simId.HeaderText = "Cod";
-            this.simId.Name = "simId";
-            this.simId.ReadOnly = true;
-            this.simId.Width = 30;
-            // 
-            // simNome
-            // 
-            this.simNome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simNome.DefaultCellStyle = dataGridViewCellStyle34;
-            this.simNome.HeaderText = "Filial";
-            this.simNome.Name = "simNome";
-            this.simNome.ReadOnly = true;
-            // 
             // naoId
             // 
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.naoId.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.naoId.DefaultCellStyle = dataGridViewCellStyle3;
             this.naoId.HeaderText = "Cod";
             this.naoId.Name = "naoId";
             this.naoId.ReadOnly = true;
@@ -316,8 +316,8 @@
             // naoNome
             // 
             this.naoNome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.naoNome.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.naoNome.DefaultCellStyle = dataGridViewCellStyle4;
             this.naoNome.HeaderText = "Filial";
             this.naoNome.Name = "naoNome";
             this.naoNome.ReadOnly = true;
@@ -362,8 +362,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(631, 538);
+            this.KeyPreview = true;
             this.Name = "frmUsuario";
             this.Text = "Cadastro de Usuário";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuario_KeyDown);
             this.Controls.SetChildIndex(this.pnlBotoes, 0);
             this.Controls.SetChildIndex(this.pnlDados, 0);
             this.pnlBotoes.ResumeLayout(false);

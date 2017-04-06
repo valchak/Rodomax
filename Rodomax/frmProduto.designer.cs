@@ -427,8 +427,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(560, 576);
+            this.KeyPreview = true;
             this.Name = "frmProduto";
             this.Text = "Cadastro de Produto";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProduto_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

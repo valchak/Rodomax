@@ -104,5 +104,29 @@ namespace Rodomax
                 txtPassword.Focus();
             }
         }
+
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue.Equals(27))
+            {
+                this.Close();
+            }
+        }
+
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue.Equals(27))
+            {
+                this.Close();
+            }
+        }
+
+        private void LoginForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyValue.Equals(27))
+            {
+             //   this.Close();
+            }
+        }
     }
 }

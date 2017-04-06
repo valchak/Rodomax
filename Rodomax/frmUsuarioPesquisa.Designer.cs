@@ -161,8 +161,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(626, 486);
             this.Controls.Add(this.grpSituacao);
+            this.KeyPreview = true;
             this.Name = "frmUsuarioPesquisa";
             this.Text = "Pesquisa de Usuário";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuarioPesquisa_KeyDown);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtPesquisa, 0);
             this.Controls.SetChildIndex(this.btnFiltrar, 0);

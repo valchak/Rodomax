@@ -112,6 +112,7 @@
             this.ClientSize = new System.Drawing.Size(679, 281);
             this.Name = "frmCidade";
             this.Text = "Cadastro de Cidade";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCidade_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

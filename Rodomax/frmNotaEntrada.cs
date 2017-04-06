@@ -707,5 +707,16 @@ namespace UI
                 txtItemValorTotal.Text = Formatacao.DoubleToString(quant * valor);
             }
         }
+
+        private void frmNotaEntrada_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (MessageBox.Show("Deseja realmente Sair do Formulário? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+        }
     }
 }

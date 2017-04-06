@@ -117,6 +117,14 @@ namespace UI
             }
         }
 
+        private void frmCidade_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
         /* private void abrirPesquisa()
          {
              bool i = true;
