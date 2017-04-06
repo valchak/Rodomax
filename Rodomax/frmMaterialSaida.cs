@@ -47,6 +47,8 @@ namespace Rodomax
             saida.Observacao = txtObservacao.Text.Trim().RemoveDiacritics();
             saida.MaterialSaidaProdutos = listaItem.Values.ToList();
             saida.listaExcluir = listaExcluir;
+            
+
             if (ValidaNota())
             {
                 try
@@ -137,6 +139,8 @@ namespace Rodomax
             btnPesquisar.Enabled = true;
             btnNovo.Enabled = false;
 
+            txtCodigoSaida.Enabled = true;
+
             LimparItem();
         }
         // Limpa campos itens da nota
@@ -149,6 +153,7 @@ namespace Rodomax
             btnItemEditar.Enabled = false;
             btnItemExcluir.Enabled = false;
             btnItemAdicionar.Enabled = true;
+            rdNovo.Checked = true;
             PopulaGrid();
         }
 
@@ -345,6 +350,14 @@ namespace Rodomax
         {
             if (ValidaItem())
             {
+                if (rdNovo.Checked == true)
+                {
+                    item.TipoProduto = "N";
+                }
+                else
+                {
+                    item.TipoProduto = "U";
+                }
                 item.Produto = produto;
                 item.CentroCusto = centroCusto;
                 item.CustoUnitario = produto.CustoMedio;
@@ -358,6 +371,14 @@ namespace Rodomax
         {
             if (ValidaItem())
             {
+                if (rdNovo.Checked == true)
+                {
+                    item.TipoProduto = "N";
+                }
+                else
+                {
+                    item.TipoProduto = "U";
+                }
                 item.Produto = produto;
                 item.CentroCusto = centroCusto;
                 item.CustoUnitario = produto.CustoMedio;
@@ -401,6 +422,17 @@ namespace Rodomax
                     txtProduto.Text = produto.Nome;
                     txtQuantidade.Text = item.Quantidade.ToString();
                     cbCentroCusto.SelectedValue = item.CentroCusto.Id.ToString();
+
+                    if (item.TipoProduto.Equals("N"))
+                    {
+                        rdNovo.Checked = true;
+                    }
+                    else
+                    {
+                        rdUsado.Checked = true;
+                    }
+
+
                     btnItemEditar.Enabled = true;
                     btnItemExcluir.Enabled = true;
                     btnItemAdicionar.Enabled = false;
@@ -430,7 +462,7 @@ namespace Rodomax
                 {
                     saida = listaitem.First();
                     PopulaCampos(saida);
-
+                    txtCodigoSaida.Enabled = false;
                     this.AlteraBotoes(3);
                     this.operacao = "ALTERAR";
                 }

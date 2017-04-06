@@ -62,7 +62,7 @@ namespace Aplicacao
                 dbObj.DataSaidaEstoque = obj.DataSaidaEstoque;
                 dbObj.DataEntradaEstoque = obj.DataSaidaEstoque;
                 dbObj.Observacao = obj.Observacao;
-
+                
                 if (obj.ResponsavelRecebimento != null)
                 {
                     dbObj.ResponsavelRecebimento = Banco.Funcionarios.Find(obj.ResponsavelRecebimento.Id);
@@ -92,7 +92,7 @@ namespace Aplicacao
                     dbItem.Produto = Banco.Produtos.Find(item.Produto.Id);
                     dbItem.Quantidade = item.Quantidade;
                     dbItem.CustoUnitario = dbItem.Produto.CustoMedio;
-
+                    dbItem.TipoProduto = item.TipoProduto;
                     
                     if (item.Id > 0)
                     {
@@ -208,16 +208,35 @@ namespace Aplicacao
                             dbMov.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
                             dbMov.MaterialSaida = item;
                             dbMov.QuantidadeUsado = 0;
+                            dbMov.QuantidadeNovo = 0;
                             dbMov.ValorUnitario = item.CustoUnitario;
                             dbMov.ObservacaoHistorico = "Movimento de Saída";
-
+                            
+                            // Verifica se é tipo Saída ou Entrada 
                             if (dbMov.TipoMovimento.Equals("S"))
                             {
-                                dbMov.QuantidadeNovo = item.Quantidade * -1;
+                                //Verifica se é item de estoque Novo ou Usado
+                                if (item.TipoProduto.Equals("N"))
+                                {
+                                    dbMov.QuantidadeNovo = item.Quantidade * -1;
+                                }
+                                else
+                                {
+                                    dbMov.QuantidadeUsado = item.Quantidade * -1;
+                                }
                             }
                             else
                             {
-                                dbMov.QuantidadeNovo = item.Quantidade;
+                                //Verifica se é item de estoque Novo ou Usado
+                                if (item.TipoProduto.Equals("N"))
+                                {
+                                    dbMov.QuantidadeNovo = item.Quantidade;
+                                }
+                                else
+                                {
+                                    dbMov.QuantidadeUsado = item.Quantidade;
+                                }
+                                
                             }
                         }
                         AcaoMovimento(dbMov, acao);
@@ -233,8 +252,17 @@ namespace Aplicacao
                     saida.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
                     saida.MaterialSaida = item;
                     saida.TipoMovimento = "S";
-                    saida.QuantidadeNovo = item.Quantidade*-1;
                     saida.QuantidadeUsado = 0;
+                    saida.QuantidadeNovo = 0;
+                    if (item.TipoProduto.Equals("N"))
+                    {
+                        saida.QuantidadeNovo = item.Quantidade * -1;
+                    }
+                    else
+                    {
+                        saida.QuantidadeUsado  = item.Quantidade * -1;
+                    }
+                    
                     saida.ValorUnitario = item.CustoUnitario;
                     saida.ObservacaoHistorico = "Movimento de Saida";
                     saida.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialSaida.Id);
@@ -246,8 +274,17 @@ namespace Aplicacao
                     saida.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
                     saida.MaterialSaida = item;
                     saida.TipoMovimento = "S";
-                    saida.QuantidadeNovo = item.Quantidade * -1;
+                    saida.QuantidadeNovo = 0;
                     saida.QuantidadeUsado = 0;
+
+                    if (item.TipoProduto.Equals("N"))
+                    {
+                        saida.QuantidadeNovo = item.Quantidade * -1;
+                    }
+                    else
+                    {
+                        saida.QuantidadeUsado = item.Quantidade * -1;
+                    }
                     saida.ValorUnitario = item.CustoUnitario;
                     saida.ObservacaoHistorico = "Movimento de Saida";
                     saida.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialSaida.Id);
@@ -259,8 +296,19 @@ namespace Aplicacao
                     entrada.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
                     saida.MaterialSaida = item;
                     entrada.TipoMovimento = "E";
-                    entrada.QuantidadeNovo = item.Quantidade;
+                    entrada.QuantidadeNovo = 0;
                     entrada.QuantidadeUsado = 0;
+
+                    // Verifica se o tipo do item do estqoue é Novo ou Usado
+                    if (item.TipoProduto.Equals("N"))
+                    {
+                        entrada.QuantidadeNovo = item.Quantidade;
+                    }
+                    else
+                    {
+                        entrada.QuantidadeUsado = item.Quantidade;
+                    }
+                    
                     entrada.ValorUnitario = item.CustoUnitario;
                     entrada.ObservacaoHistorico = "Movimento de Saida";
                     entrada.Filial = Banco.Filiais.Find(item.MaterialSaida.FilialEntrada.Id);

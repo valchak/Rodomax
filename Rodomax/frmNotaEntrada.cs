@@ -314,6 +314,14 @@ namespace UI
         {
             if (ValidaItem())
             {
+                if (rdNovo.Checked == true)
+                {
+                    item.TipoProduto = "N";
+                }
+                else
+                {
+                    item.TipoProduto = "U";
+                }
                 item.Produto = produto;
                 item.Filial = filial;
                 item.Descricao = txtItemDescricao.Text.RemoveDiacritics().ToUpper();
@@ -330,6 +338,14 @@ namespace UI
         {
             if (ValidaItem())
             {
+                if (rdNovo.Checked == true)
+                {
+                    item.TipoProduto = "N";
+                }
+                else
+                {
+                    item.TipoProduto = "U";
+                }
                 item.Produto = produto;
                 item.Filial = filial;
                 item.Descricao = txtItemDescricao.Text.RemoveDiacritics().ToUpper();
@@ -620,6 +636,7 @@ namespace UI
             btnItemEditar.Enabled = false;
             btnItemExcluir.Enabled = false;
             btnItemAdd.Enabled = true;
+            rdNovo.Checked = true;
             PopulaGrid();
         }
 
@@ -640,6 +657,15 @@ namespace UI
                     txtItemVlUnitario.Text = Formatacao.DoubleToString(item.ValorUnitario);
                     txtItemVlUnitario.Text = Formatacao.DoubleToString(item.ValorUnitario);
                     txtItemValorTotal.Text = Formatacao.DoubleToString(item.ValorTotal);
+
+                    if (item.TipoProduto.Equals("N"))
+                    {
+                        rdNovo.Checked = true;
+                    }
+                    else
+                    {
+                        rdUsado.Checked = true;
+                    }
 
                     btnItemEditar.Enabled = true;
                     btnItemExcluir.Enabled = true;

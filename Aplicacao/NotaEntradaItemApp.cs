@@ -41,14 +41,13 @@ namespace Aplicacao
             {
                 try
                 {
-  //                  obj.NotaEntrada = Banco.NotasEntrada.Find(obj.NotaEntrada.Id);
-//                    obj.FilialEstoque = Banco.Filiais.Find(obj.FilialEstoque.Id);
+//                  obj.NotaEntrada = Banco.NotasEntrada.Find(obj.NotaEntrada.Id);
+//                  obj.FilialEstoque = Banco.Filiais.Find(obj.FilialEstoque.Id);
 
                     if (obj.Produto != null)
                     {
                         obj.Produto = Banco.Produtos.Find(obj.Produto.Id);
                         obj.EstoqueMovimento = Banco.EstoqueMovimentos.Find(AtualizarEstoque(obj, EstoqueAcao.INSERT));
-
                     }
                     Banco.Set<NotaEntradaItens>().Add(obj);
                     SalvarTodos();
@@ -74,6 +73,7 @@ namespace Aplicacao
                     dbObj.QuantidadeEstoque = obj.QuantidadeEstoque;
                     dbObj.QuantidadeNota = obj.QuantidadeNota;
                     dbObj.Descricao = obj.Descricao;
+                    dbObj.TipoProduto = obj.TipoProduto;
                     dbObj.Multiplicador = obj.Multiplicador;
                     dbObj.ValorUnitario = obj.ValorUnitario;
                     dbObj.ValorUnitarioEstoque = obj.ValorUnitarioEstoque;
@@ -134,8 +134,17 @@ namespace Aplicacao
 //            movimento.DataMovimento = item.NotaEntrada.DataRecebimento;
 
             movimento.Produto = item.Produto;
-            movimento.QuantidadeNovo = item.QuantidadeEstoque;
             movimento.QuantidadeUsado = 0;
+            movimento.QuantidadeNovo = 0;
+
+            if (item.TipoProduto.Equals("N"))
+            {
+                movimento.QuantidadeNovo = item.QuantidadeEstoque;
+            }
+            else
+            {
+                movimento.QuantidadeUsado = item.QuantidadeEstoque;
+            }
             movimento.ValorUnitario = item.ValorUnitarioEstoque;
             movimento.TipoMovimento = "E";
             movimento.ObservacaoHistorico = "Nota de Entrada";

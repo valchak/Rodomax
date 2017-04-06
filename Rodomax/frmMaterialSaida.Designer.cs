@@ -67,12 +67,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtObservacao = new System.Windows.Forms.TextBox();
+            this.grpEstoqueUsado = new System.Windows.Forms.GroupBox();
+            this.rdUsado = new System.Windows.Forms.RadioButton();
+            this.rdNovo = new System.Windows.Forms.RadioButton();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).BeginInit();
+            this.grpEstoqueUsado.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBotoes
@@ -126,6 +130,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.grpEstoqueUsado);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.txtQuantidade);
             this.groupBox1.Controls.Add(this.label10);
@@ -482,6 +487,39 @@
             this.txtObservacao.Size = new System.Drawing.Size(381, 51);
             this.txtObservacao.TabIndex = 7;
             // 
+            // grpEstoqueUsado
+            // 
+            this.grpEstoqueUsado.Controls.Add(this.rdUsado);
+            this.grpEstoqueUsado.Controls.Add(this.rdNovo);
+            this.grpEstoqueUsado.Location = new System.Drawing.Point(177, 50);
+            this.grpEstoqueUsado.Name = "grpEstoqueUsado";
+            this.grpEstoqueUsado.Size = new System.Drawing.Size(132, 36);
+            this.grpEstoqueUsado.TabIndex = 26;
+            this.grpEstoqueUsado.TabStop = false;
+            this.grpEstoqueUsado.Text = "Tipo do Item/Produto";
+            // 
+            // rdUsado
+            // 
+            this.rdUsado.AutoSize = true;
+            this.rdUsado.Location = new System.Drawing.Point(68, 13);
+            this.rdUsado.Name = "rdUsado";
+            this.rdUsado.Size = new System.Drawing.Size(56, 17);
+            this.rdUsado.TabIndex = 13;
+            this.rdUsado.TabStop = true;
+            this.rdUsado.Text = "Usado";
+            this.rdUsado.UseVisualStyleBackColor = true;
+            // 
+            // rdNovo
+            // 
+            this.rdNovo.AutoSize = true;
+            this.rdNovo.Location = new System.Drawing.Point(6, 13);
+            this.rdNovo.Name = "rdNovo";
+            this.rdNovo.Size = new System.Drawing.Size(51, 17);
+            this.rdNovo.TabIndex = 12;
+            this.rdNovo.TabStop = true;
+            this.rdNovo.Text = "Novo";
+            this.rdNovo.UseVisualStyleBackColor = true;
+            // 
             // frmMaterialSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,6 +534,8 @@
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).EndInit();
+            this.grpEstoqueUsado.ResumeLayout(false);
+            this.grpEstoqueUsado.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -540,5 +580,8 @@
         private System.Windows.Forms.Button btnItemExcluir;
         private System.Windows.Forms.Button btnItemAdicionar;
         private System.Windows.Forms.Button btnItemEditar;
+        private System.Windows.Forms.GroupBox grpEstoqueUsado;
+        private System.Windows.Forms.RadioButton rdUsado;
+        private System.Windows.Forms.RadioButton rdNovo;
     }
 }

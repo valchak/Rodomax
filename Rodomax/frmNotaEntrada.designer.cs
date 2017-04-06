@@ -83,11 +83,15 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtDiferencaItensNota = new System.Windows.Forms.Label();
             this.txtSomaItens = new System.Windows.Forms.Label();
+            this.grpEstoqueUsado = new System.Windows.Forms.GroupBox();
+            this.rdUsado = new System.Windows.Forms.RadioButton();
+            this.rdNovo = new System.Windows.Forms.RadioButton();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
             this.grupoItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).BeginInit();
+            this.grpEstoqueUsado.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBotoes
@@ -374,6 +378,7 @@
             this.grupoItens.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grupoItens.Controls.Add(this.grpEstoqueUsado);
             this.grupoItens.Controls.Add(this.btnItemLimpar);
             this.grupoItens.Controls.Add(this.btnItemAdd);
             this.grupoItens.Controls.Add(this.btnItemExcluir);
@@ -447,7 +452,7 @@
             // txtItemMultiplicador
             // 
             this.txtItemMultiplicador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemMultiplicador.Location = new System.Drawing.Point(358, 68);
+            this.txtItemMultiplicador.Location = new System.Drawing.Point(265, 67);
             this.txtItemMultiplicador.Name = "txtItemMultiplicador";
             this.txtItemMultiplicador.Size = new System.Drawing.Size(75, 20);
             this.txtItemMultiplicador.TabIndex = 35;
@@ -460,7 +465,7 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(358, 55);
+            this.label16.Location = new System.Drawing.Point(265, 53);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(66, 13);
             this.label16.TabIndex = 34;
@@ -468,9 +473,9 @@
             // 
             // txtItemValorTotal
             // 
-            this.txtItemValorTotal.Location = new System.Drawing.Point(238, 68);
+            this.txtItemValorTotal.Location = new System.Drawing.Point(181, 67);
             this.txtItemValorTotal.Name = "txtItemValorTotal";
-            this.txtItemValorTotal.Size = new System.Drawing.Size(96, 20);
+            this.txtItemValorTotal.Size = new System.Drawing.Size(78, 20);
             this.txtItemValorTotal.TabIndex = 13;
             this.txtItemValorTotal.Text = "0,00";
             this.txtItemValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -480,7 +485,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(235, 55);
+            this.label15.Location = new System.Drawing.Point(178, 54);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(81, 13);
             this.label15.TabIndex = 32;
@@ -488,9 +493,9 @@
             // 
             // txtItemVlUnitario
             // 
-            this.txtItemVlUnitario.Location = new System.Drawing.Point(125, 67);
+            this.txtItemVlUnitario.Location = new System.Drawing.Point(104, 67);
             this.txtItemVlUnitario.Name = "txtItemVlUnitario";
-            this.txtItemVlUnitario.Size = new System.Drawing.Size(96, 20);
+            this.txtItemVlUnitario.Size = new System.Drawing.Size(70, 20);
             this.txtItemVlUnitario.TabIndex = 12;
             this.txtItemVlUnitario.Text = "0,00";
             this.txtItemVlUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -501,7 +506,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(125, 54);
+            this.label14.Location = new System.Drawing.Point(104, 54);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(70, 13);
             this.label14.TabIndex = 30;
@@ -511,7 +516,7 @@
             // 
             this.txtItemQuantidade.Location = new System.Drawing.Point(7, 67);
             this.txtItemQuantidade.Name = "txtItemQuantidade";
-            this.txtItemQuantidade.Size = new System.Drawing.Size(96, 20);
+            this.txtItemQuantidade.Size = new System.Drawing.Size(85, 20);
             this.txtItemQuantidade.TabIndex = 11;
             this.txtItemQuantidade.Text = "1";
             this.txtItemQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -706,6 +711,39 @@
             this.txtSomaItens.Text = "0,00";
             this.txtSomaItens.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // grpEstoqueUsado
+            // 
+            this.grpEstoqueUsado.Controls.Add(this.rdUsado);
+            this.grpEstoqueUsado.Controls.Add(this.rdNovo);
+            this.grpEstoqueUsado.Location = new System.Drawing.Point(352, 55);
+            this.grpEstoqueUsado.Name = "grpEstoqueUsado";
+            this.grpEstoqueUsado.Size = new System.Drawing.Size(132, 36);
+            this.grpEstoqueUsado.TabIndex = 144;
+            this.grpEstoqueUsado.TabStop = false;
+            this.grpEstoqueUsado.Text = "Tipo do Item/Produto";
+            // 
+            // rdUsado
+            // 
+            this.rdUsado.AutoSize = true;
+            this.rdUsado.Location = new System.Drawing.Point(68, 13);
+            this.rdUsado.Name = "rdUsado";
+            this.rdUsado.Size = new System.Drawing.Size(56, 17);
+            this.rdUsado.TabIndex = 13;
+            this.rdUsado.TabStop = true;
+            this.rdUsado.Text = "Usado";
+            this.rdUsado.UseVisualStyleBackColor = true;
+            // 
+            // rdNovo
+            // 
+            this.rdNovo.AutoSize = true;
+            this.rdNovo.Location = new System.Drawing.Point(6, 13);
+            this.rdNovo.Name = "rdNovo";
+            this.rdNovo.Size = new System.Drawing.Size(51, 17);
+            this.rdNovo.TabIndex = 12;
+            this.rdNovo.TabStop = true;
+            this.rdNovo.Text = "Novo";
+            this.rdNovo.UseVisualStyleBackColor = true;
+            // 
             // frmNotaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -719,6 +757,8 @@
             this.grupoItens.ResumeLayout(false);
             this.grupoItens.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).EndInit();
+            this.grpEstoqueUsado.ResumeLayout(false);
+            this.grpEstoqueUsado.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -779,5 +819,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.Button btnItemLimpar;
+        private System.Windows.Forms.GroupBox grpEstoqueUsado;
+        private System.Windows.Forms.RadioButton rdUsado;
+        private System.Windows.Forms.RadioButton rdNovo;
     }
 }

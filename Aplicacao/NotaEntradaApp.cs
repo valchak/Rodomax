@@ -112,6 +112,7 @@ namespace Aplicacao
                     dbItem.Multiplicador = item.Multiplicador;
                     dbItem.ValorUnitario = item.ValorUnitario;
                     dbItem.ValorTotal = item.ValorTotal;
+                    dbItem.TipoProduto = item.TipoProduto;
                     dbItem.QuantidadeEstoque = item.QuantidadeNota * item.Multiplicador;
                     dbItem.ValorUnitarioEstoque = item.ValorTotal / item.QuantidadeEstoque;
 
@@ -267,8 +268,18 @@ namespace Aplicacao
             movimento.Filial = Banco.Filiais.Find(item.Filial.Id);
             movimento.Produto = Banco.Produtos.Find(item.Produto.Id);
             movimento.DataMovimento = item.NotaEntrada.DataRecebimento;
-            movimento.QuantidadeNovo = item.QuantidadeEstoque;
+            movimento.QuantidadeNovo = 0;
             movimento.QuantidadeUsado = 0;
+            if (item.TipoProduto.Equals("N"))
+            {
+                movimento.QuantidadeNovo = item.QuantidadeEstoque;
+            }
+            else
+            {
+                movimento.QuantidadeUsado = item.QuantidadeEstoque;
+            }
+
+            
             movimento.ValorUnitario = item.ValorUnitarioEstoque;
             movimento.TipoMovimento = "E";
             movimento.ObservacaoHistorico = "Nota de Entrada";
@@ -302,7 +313,7 @@ namespace Aplicacao
 
         private void AtualizarProduto(NotaEntradaItens item)
         {
-            if(item.Produto.Id > 0){
+            if(item.Produto.Id > 0 && item.TipoProduto.Equals("N")){
                 Produto produto = Banco.Produtos.Find(item.Produto.Id);
                 produto.UltimaDataCompra = item.NotaEntrada.DataEmissao;
                 produto.UltimaNotaCompra = item.NotaEntrada.Documento;

@@ -14,7 +14,8 @@ namespace Modelo
         public virtual Filial Filial { get; set; }
         public virtual Produto Produto { get; set; }
         public virtual EstoqueMovimento EstoqueMovimento { get; set; }
-
+        [StringLength(1)]
+        public string TipoProduto { get; set; }
         [StringLength(255)]
         public string Descricao { get; set; }
         public int QuantidadeNota { get; set; }
