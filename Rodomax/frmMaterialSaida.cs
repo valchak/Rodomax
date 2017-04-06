@@ -58,7 +58,7 @@ namespace Rodomax
                         case DialogResult.Yes:
                             if (saida.Id == 0)
                             {
-                                app.Adicionar(saida);
+                               // app.Adicionar(saida);
                                 
                                 if (MessageBox.Show("Saida de material salvo com sucesso: Código \n Desenha imprimir protocolo? " + saida.Id, "Imprimir Protocolo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
@@ -67,7 +67,7 @@ namespace Rodomax
                             }
                             else
                             {
-                                app.Atualizar(saida);
+                             //   app.Atualizar(saida);
                                 if(MessageBox.Show("Saida de material alterada com sucesso. \n Desenha imprimir protocolo?","Imprimir Protocolo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
                                     ImprimeProtocolo(saida);
@@ -88,22 +88,32 @@ namespace Rodomax
             }
         }
 
-        private void ImprimeProtocolo(MaterialSaida saida)
+        private void ImprimeProtocolo(MaterialSaida obj)
         {
             instancia.listaProtocoloMaterial = new List<DadosProtocoloMaterial>();
-            foreach (var i in saida.MaterialSaidaProdutos)
+            foreach (var i in obj.MaterialSaidaProdutos)
             {
                 DadosProtocoloMaterial dados = new DadosProtocoloMaterial();
-                dados.Produto = i.Produto.Nome;
-                dados.DataEnvio = saida.DataSaidaEstoque;
-                dados.FilialOrigem = saida.FilialSaida.Nome;
-                dados.FilialDestino = saida.FilialEntrada.Nome;
+                dados.Id = obj.Id;
                 dados.FuncionarioEnvio = instancia.userLogado.Funcionario.Nome;
+                dados.Produto = i.Produto.Nome;
+                dados.DataEnvio = obj.DataSaidaEstoque;
+                dados.FilialOrigem = obj.FilialSaida.Nome;
+                dados.FilialDestino = obj.FilialEntrada.Nome;
+                
                 if(saida.ResponsavelRecebimento != null)
                 {
-                    dados.FuncionarioRecebimento = saida.ResponsavelRecebimento.Nome;
+                    dados.FuncionarioRecebimento = obj.ResponsavelRecebimento.Nome;
                 }
-                dados.CargoFuncao = saida.ResponsavelRecebimento.Funcao;
+                if (i.TipoProduto.Equals("N"))
+                {
+                    dados.TipoProduto = "NOVO";
+                }
+                else
+                {
+                    dados.TipoProduto = "USADO";
+                }
+                dados.CargoFuncao = obj.ResponsavelRecebimento.Funcao;
                 dados.Quantidade = i.Quantidade;
                 instancia.listaProtocoloMaterial.Add(dados);
             }

@@ -61,11 +61,20 @@ namespace Rodomax.Reports
                         DadosProtocoloMaterial dados = new DadosProtocoloMaterial();
                         MaterialSaidaProdutos produto = appProd.Find(x.Id);
 
+                        dados.Id = i.Id;
                         dados.Produto = produto.Produto.Nome;
                         dados.DataEnvio = i.DataSaidaEstoque;
                         dados.FilialOrigem = i.FilialSaida.Nome;
                         dados.FilialDestino = i.FilialEntrada.Nome;
                         dados.FuncionarioEnvio = instancia.userLogado.Funcionario.Nome;
+                        if (x.TipoProduto.Equals("N"))
+                        {
+                            dados.TipoProduto = "NOVO";
+                        }
+                        else
+                        {
+                            dados.TipoProduto = "USADO";
+                        }
                         if(i.ResponsavelRecebimento != null)
                         {
                             dados.FuncionarioRecebimento = i.ResponsavelRecebimento.Nome;

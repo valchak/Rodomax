@@ -45,6 +45,10 @@
           <DataField>FuncionarioRecebimento</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="Produto">
           <DataField>Produto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -53,11 +57,15 @@
           <DataField>Quantidade</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="TipoProduto">
+          <DataField>TipoProduto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>Rodomax.Reports</rd:DataSetName>
+        <rd:DataSetName>Modelo.Reports</rd:DataSetName>
         <rd:TableName>DadosProtocoloMaterial</rd:TableName>
-        <rd:ObjectDataSourceType>Rodomax.Reports.DadosProtocoloMaterial, Rodomax, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:ObjectDataSourceType>Modelo.Reports.DadosProtocoloMaterial, Modelo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -80,7 +88,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>12.95104cm</Width>
+                  <Width>10.45104cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.87042cm</Width>
@@ -109,9 +120,41 @@
                           <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox18">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Tipo</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -141,9 +184,9 @@
                           <rd:DefaultName>Textbox12</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -176,7 +219,35 @@
                           <rd:DefaultName>Produto</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TipoProduto">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!TipoProduto.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>TipoProduto</rd:DefaultName>
+                          <Style>
+                            <Border>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -210,7 +281,6 @@
                           <rd:DefaultName>Quantidade</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -227,6 +297,7 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
               </TablixMembers>
@@ -584,8 +655,46 @@
               <Top>0.3175cm</Top>
               <Left>6.14785cm</Left>
               <Height>0.97965cm</Height>
-              <Width>6.49521cm</Width>
+              <Width>4.93417cm</Width>
               <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Id">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Nº </Value>
+                      <Style>
+                        <FontSize>20pt</FontSize>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value>=First(Fields!Id.Value, "DadosRelatorio")</Value>
+                      <Style>
+                        <FontSize>20pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Id</rd:DefaultName>
+              <Top>0.3175cm</Top>
+              <Left>12.39286cm</Left>
+              <Height>0.97965cm</Height>
+              <Width>4.44438cm</Width>
+              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -689,7 +798,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox23</rd:DefaultName>
               <Top>0.78988cm</Top>
-              <Left>7.77495cm</Left>
+              <Left>8.26907cm</Left>
               <Height>0.6cm</Height>
               <Width>2.11194cm</Width>
               <ZIndex>2</ZIndex>
@@ -721,9 +830,9 @@
               </Paragraphs>
               <rd:DefaultName>FuncionarioRecebimento1</rd:DefaultName>
               <Top>0.78988cm</Top>
-              <Left>9.76563cm</Left>
+              <Left>10.028cm</Left>
               <Height>0.6cm</Height>
-              <Width>6.78939cm</Width>
+              <Width>6.47599cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -749,9 +858,9 @@
             </Line>
             <Line Name="Line3">
               <Top>0.78989cm</Top>
-              <Left>7.80203cm</Left>
+              <Left>8.26907cm</Left>
               <Height>0cm</Height>
-              <Width>8.75299cm</Width>
+              <Width>8.28595cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
