@@ -51,7 +51,7 @@ namespace Repositorio
 
         public DbSet<SecurForm> SecurForm { get; set; }
         public DbSet<SecurPerfil> SecurPerfil { get; set; }
-      //  public DbSet<SecurAcesso> SecurAcesso { get; set; }
-
+        //  public DbSet<SecurAcesso> SecurAcesso { get; set; }
+        
     }
 }

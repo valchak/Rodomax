@@ -10,6 +10,8 @@ namespace Aplicacao
     {
         public ContextoDB Banco { get; set; }
 
+        _Singleton instancia = _Singleton.GetInstance;
+
         public EstoqueMovimentoApp()
         {
             Banco = new ContextoDB();
@@ -17,7 +19,16 @@ namespace Aplicacao
 
         public IQueryable<EstoqueMovimento> GetAll()
         {
-            return Banco.Set<EstoqueMovimento>().Include(x => x.Filial).Include(x => x.Produto).Include(x => x.Produto.ProdutoGrupo);
+
+            var lista = (from e in Banco.EstoqueMovimentos join
+                                f in Banco.Filiais on e.Filial.Id equals f.Id join
+                                p in Banco.Produtos on e.Produto.Id equals p.Id join 
+                         g in Banco.ProdutosGrupoUsuario on p.ProdutoGrupo.Id equals g.ProdutoGrupo.Id
+                         where g.Usuario.Id == instancia.userLogado.Id
+                         select e);
+
+            return lista.Include(x => x.Filial).Include(x => x.Produto).Include(x => x.Filial).Include(x => x.Produto).Include(x => x.Produto.ProdutoGrupo);
+            
         }
 
         public IQueryable<EstoqueMovimento> Get(Func<EstoqueMovimento, bool> predicate)

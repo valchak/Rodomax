@@ -39,7 +39,12 @@ namespace Rodomax.Reports
             {
                 DateTime dataInicio = txtDataInicio.Value;
                 DateTime dataFim = txtDataFinal.Value;
-                int Id = int.Parse(txtId.Text.Trim());
+                int Id = 0;
+                if (txtId.Text.Trim().Equals(""))
+                {
+                   Id = int.Parse(txtId.Text.Trim());
+                }
+                
                 string filial = txtFilial.Text.Trim().RemoveDiacritics().ToUpper();
 
                 MaterialSaidaApp app = new MaterialSaidaApp();

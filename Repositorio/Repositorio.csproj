@@ -52,43 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContextoDB.cs" />
-    <Compile Include="Migrations\201703241351481_01.cs" />
-    <Compile Include="Migrations\201703241351481_01.Designer.cs">
-      <DependentUpon>201703241351481_01.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703241426034_02.cs" />
-    <Compile Include="Migrations\201703241426034_02.Designer.cs">
-      <DependentUpon>201703241426034_02.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703271300426_03.cs" />
-    <Compile Include="Migrations\201703271300426_03.Designer.cs">
-      <DependentUpon>201703271300426_03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703311311419_04.cs" />
-    <Compile Include="Migrations\201703311311419_04.Designer.cs">
-      <DependentUpon>201703311311419_04.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703311330021_05.cs" />
-    <Compile Include="Migrations\201703311330021_05.Designer.cs">
-      <DependentUpon>201703311330021_05.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704051921390_06.cs" />
-    <Compile Include="Migrations\201704051921390_06.Designer.cs">
-      <DependentUpon>201704051921390_06.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704061632562_07.cs" />
-    <Compile Include="Migrations\201704061632562_07.Designer.cs">
-      <DependentUpon>201704061632562_07.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704061748128_08.cs" />
-    <Compile Include="Migrations\201704061748128_08.Designer.cs">
-      <DependentUpon>201704061748128_08.cs</DependentUpon>
+    <Compile Include="Migrations\201704071653449_01.cs" />
+    <Compile Include="Migrations\201704071653449_01.Designer.cs">
+      <DependentUpon>201704071653449_01.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -98,29 +69,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703241351481_01.resx">
-      <DependentUpon>201703241351481_01.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703241426034_02.resx">
-      <DependentUpon>201703241426034_02.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703271300426_03.resx">
-      <DependentUpon>201703271300426_03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703311311419_04.resx">
-      <DependentUpon>201703311311419_04.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703311330021_05.resx">
-      <DependentUpon>201703311330021_05.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704051921390_06.resx">
-      <DependentUpon>201704051921390_06.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704061632562_07.resx">
-      <DependentUpon>201704061632562_07.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704061748128_08.resx">
-      <DependentUpon>201704061748128_08.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704071653449_01.resx">
+      <DependentUpon>201704071653449_01.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -35,12 +35,15 @@ namespace Rodomax
         {
            
             Func<Estoque, bool> predicate;
-            predicate = x => x.Filial.Nome.Contains(txtFilial.Text.Trim().RemoveDiacritics().ToUpper()) && x.Produto.Nome.Contains(txtProduto.Text.Trim().RemoveDiacritics().ToUpper());
+            predicate = x => x.Filial.Nome.Contains(txtFilial.Text.Trim().RemoveDiacritics().ToUpper())
+//            && x.Produto.ProdutoGrupo.UsuariosGrupo.ToList().Find(a => a.Usuario.Id == instancia.userLogado.Id).Usuario.Id == instancia.userLogado.Id
+            && x.Produto.Nome.Contains(txtProduto.Text.Trim().RemoveDiacritics().ToUpper());
+           
             if (rdNovo.Checked)
             {
                 predicate =  x => x.Filial.Nome.Contains(txtFilial.Text.Trim().RemoveDiacritics().ToUpper()) 
                 && x.Produto.Nome.Contains(txtProduto.Text.Trim().RemoveDiacritics().ToUpper())
-                && x.QuantidadeNovo > 0;
+                && x.QuantidadeNovo > 0; 
             }
             if (rdUsado.Checked)
             {

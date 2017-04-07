@@ -8,6 +8,8 @@ namespace Aplicacao
 {
     public class EstoqueApp : App<Estoque>
     {
+        _Singleton instancia = _Singleton.GetInstance;
+
         public ContextoDB Banco { get; set; }
 
         public EstoqueApp()
@@ -42,7 +44,14 @@ namespace Aplicacao
 
         public IQueryable<Estoque> GetAll()
         {
-            return Banco.Set<Estoque>().Include(x => x.Filial).Include(x => x.Produto);
+            var lista = (from e in Banco.Estoques join
+                           f in Banco.Filiais on e.Filial.Id equals f.Id join
+                           p in Banco.Produtos on e.Produto.Id equals p.Id join
+                           g in Banco.ProdutosGrupoUsuario on p.ProdutoGrupo.Id equals g.ProdutoGrupo.Id
+                         where g.Usuario.Id == instancia.userLogado.Id
+                         select e);
+            
+            return lista.Include(x => x.Filial).Include(x => x.Produto);
         }
 
         public void SalvarTodos()

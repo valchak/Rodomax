@@ -8,7 +8,6 @@ namespace Aplicacao
     {
         private static _Singleton instance;
 
-        public static string hash = "f12456ekliukhjmfgf51d5";
 
         private _Singleton()
         {
@@ -47,6 +46,6 @@ namespace Aplicacao
 
         /*Para relatório*/
         public List<DadosProtocoloMaterial> listaProtocoloMaterial = null;
-
+        
     }
 }
