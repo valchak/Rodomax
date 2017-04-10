@@ -4,6 +4,8 @@ using System;
 using System.Windows.Forms;
 using MMLib.Extensions;
 using Rodomax;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace UI
 {
@@ -11,15 +13,21 @@ namespace UI
     {
         _Singleton instancia = _Singleton.GetInstance;
         private FilialApp app;
+        private FilialCentroCustoApp appFilialCentroCusto;
+        private CentroCustoApp appCentroCusto;
 
         private Filial filial;
         private Cidade cidade;
+        private IDictionary<int, CentroCusto> listaNao;
+        private IDictionary<int, CentroCusto> listaSim;
        
         public frmFilial()
         {
             InitializeComponent();
-            populaEmpresa();
             limparCampos();
+            gridSim.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gridNao.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
         private void populaEmpresa()
         {
@@ -33,6 +41,9 @@ namespace UI
 
         private void limparCampos()
         {
+            appCentroCusto = new CentroCustoApp();
+            appFilialCentroCusto = new FilialCentroCustoApp();
+
             txtId.Clear();
             txtCep.Clear();
             txtComplemento.Clear();
@@ -42,15 +53,72 @@ namespace UI
             txtTelefone.Clear();
             txtBairro.Clear();
             txtEmail.Clear();
-
+            
             cidade = null;
-            cbEmpresa.SelectedIndex = 0;
             this.AlteraBotoes(1);
             this.operacao = "";
 
+            listaNao = new Dictionary<int, CentroCusto>();
+            listaSim = new Dictionary<int, CentroCusto>();
+
             filial = new Filial();
             app = new FilialApp();
+            populaEmpresa();
+            cbEmpresa.SelectedIndex = 0;
+            PopularGrids();
 
+        }
+
+        private void PopularGrids()
+        {
+            
+            IEnumerable<CentroCusto> lista = appCentroCusto.GetAll();
+
+            if (lista.Any())
+            {
+                listaNao = new Dictionary<int, CentroCusto>();
+
+                foreach (var i in lista)
+                {
+                    bool adiciona = true;
+                    foreach (var sim in listaSim)
+                    {
+                        if (i.Id == sim.Value.Id)
+                        {
+                            adiciona = false;
+                        }
+                    }
+                    if (adiciona)
+                    {
+                        listaNao.Add(i.Id, i);
+                    }
+
+                }
+            }
+
+            gridNao.DataSource = null;
+            gridNao.ResetBindings();
+            gridNao.Rows.Clear();
+
+            foreach (var item in listaNao)
+            {
+                int n = this.gridNao.Rows.Add();
+                gridNao.Rows[n].Cells[0].Value = item.Key;
+                gridNao.Rows[n].Cells[1].Value = item.Value.Nome;
+            }
+            gridNao.Refresh();
+
+            gridSim.DataSource = null;
+            gridSim.ResetBindings();
+            gridSim.Rows.Clear();
+
+            foreach (var item in listaSim)
+            {
+                int n = this.gridSim.Rows.Add();
+                gridSim.Rows[n].Cells[0].Value = item.Key;
+                gridSim.Rows[n].Cells[1].Value = item.Value.Nome;
+            }
+            gridSim.Refresh();
         }
 
 
@@ -100,7 +168,14 @@ namespace UI
                 
                 this.AlteraBotoes(3);
                 this.operacao = "ALTERAR";
-                
+
+                IEnumerable<FilialCentroCusto> lista = appFilialCentroCusto.Get(x => x.Filial.Id == filial.Id);
+                foreach (var i in lista)
+                {
+                    listaSim.Add(i.CentroCusto.Id, i.CentroCusto);
+                }
+                PopularGrids();
+
 
             }
         }
@@ -119,6 +194,10 @@ namespace UI
                 filial.Email = txtEmail.Text.Trim().RemoveDiacritics();
                 filial.Telefone = txtTelefone.Text.Trim();
                 filial.FilialCentroCustos = null;
+
+                filial.ListaInserir = listaSim.Values.ToList();
+                filial.ListaExcluir = listaNao.Values.ToList();
+
                 if (cbEmpresa.Text.Equals("RODOMAX"))
                 {
                     filial.Empresa = empApp.Find(1);
@@ -178,6 +257,45 @@ namespace UI
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
+            }
+        }
+
+        private void btnAddSim1_Click(object sender, EventArgs e)
+        {
+            if (listaNao.Any())
+            {
+                int id = Convert.ToInt32(gridNao.SelectedRows[0].Cells[0].Value.ToString());
+                CentroCusto i = appCentroCusto.Find(id);
+                listaSim.Add(i.Id, i);
+                PopularGrids();
+            }
+        }
+
+        private void btnAddTodos_Click(object sender, EventArgs e)
+        {
+            IDictionary<int, CentroCusto> nova = listaNao;
+            listaNao = new Dictionary<int, CentroCusto>();
+            foreach (var item in nova)
+            {
+                listaSim.Add(item);
+            }
+            PopularGrids();
+        }
+
+        private void btnRemoveTodos_Click(object sender, EventArgs e)
+        {
+            listaSim = new Dictionary<int, CentroCusto>();
+            PopularGrids();
+        }
+
+        private void btnRemove1_Click(object sender, EventArgs e)
+        {
+            if (listaSim.Any())
+            {
+                int id = Convert.ToInt32(gridSim.SelectedRows[0].Cells[0].Value.ToString());
+                CentroCusto i = appCentroCusto.Find(id);
+                listaSim.Remove(i.Id);
+                PopularGrids();
             }
         }
     }

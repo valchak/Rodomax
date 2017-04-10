@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using Modelo;
 using Repositorio;
+using System.Collections.Generic;
 
 namespace Aplicacao
 {
@@ -17,10 +18,20 @@ namespace Aplicacao
 
         public void Adicionar(Filial obj)
         {
+            List<CentroCusto> lista = obj.ListaInserir;
             obj.Empresa = Banco.Empresas.Find(obj.Empresa.Id);
             obj.Cidade = Banco.Cidades.Find(obj.Cidade.Id);
             
             Banco.Set<Filial>().Add(obj);
+
+            foreach (var x in lista)
+            {
+                FilialCentroCusto novo = new FilialCentroCusto();
+                novo.CentroCusto = Banco.CentroCustos.Find(x.Id);
+                novo.Filial = obj;
+                Banco.FilialCentroCustos.Add(novo);
+            }
+
             SalvarTodos();
         }
 
@@ -39,6 +50,32 @@ namespace Aplicacao
             dbObj.Telefone = obj.Telefone;
 
             Banco.Entry(dbObj).State = EntityState.Modified;
+
+
+            FilialCentroCustoApp app = new FilialCentroCustoApp();
+            foreach (var i in obj.ListaInserir)
+            {
+                IEnumerable<FilialCentroCusto> lista = app.Get(x => x.CentroCusto.Id == i.Id && x.Filial.Id == obj.Id);
+
+                if (!lista.Any())
+                {
+                    FilialCentroCusto novo = new FilialCentroCusto();
+                    novo.Filial = Banco.Filiais.Find(obj.Id);
+                    novo.CentroCusto = Banco.CentroCustos.Find(i.Id);
+                    Banco.FilialCentroCustos.Add(novo);
+                }
+            }
+
+            foreach (var i in obj.ListaExcluir)
+            {
+                IEnumerable<FilialCentroCusto> lista = app.Get(x => x.CentroCusto.Id == i.Id && x.Filial.Id == obj.Id);
+                foreach (var x in lista)
+                {
+                    FilialCentroCusto novo = Banco.FilialCentroCustos.Where(y => y.CentroCusto.Id == x.CentroCusto.Id && y.Filial.Id == x.Filial.Id).First();
+                    Banco.FilialCentroCustos.Remove(novo);
+                }
+            }
+
             SalvarTodos();
         }
 

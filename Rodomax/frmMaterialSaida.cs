@@ -165,6 +165,7 @@ namespace Rodomax
             btnItemExcluir.Enabled = false;
             btnItemAdicionar.Enabled = true;
             rdNovo.Checked = true;
+            rdUsado.Enabled = true;
             PopulaGrid();
         }
 
@@ -272,6 +273,12 @@ namespace Rodomax
                 produto = instancia.produto;
                 instancia.produto = null;
                 txtProduto.Text = produto.Nome;
+
+                if (produto.EstoqueUsado.Equals("N"))
+                {
+                    rdUsado.Enabled = false;
+                    rdNovo.Checked = true;
+                }
             }
         }
 

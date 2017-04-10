@@ -100,7 +100,7 @@ namespace UI
                 {
                     produto.Situacao = "A";
                 }
-                if (this.operacao.Equals("NOVO"))
+                if (produto.Id == 0)
                 {
                     app.Adicionar(produto);
                     MessageBox.Show("Cadastro efetuado com sucesso: Código " + produto.Id);
@@ -178,27 +178,27 @@ namespace UI
                 txtObservacao.Text = produto.Observacao;
                 if (produto.EstoqueFilial.Equals("S"))
                 {
-                    rdEstoqueFilialSim.Enabled = true;
+                    rdEstoqueFilialSim.Checked = true;
                 }
                 else
                 {
-                    rdEstoqueFilialNao.Enabled = true;
+                    rdEstoqueFilialNao.Checked = true;
                 }
                 if (produto.EstoqueUsado.Equals("S"))
                 {
-                    rdUsadoSim.Enabled = true;
+                    rdUsadoSim.Checked = true;
                 }
                 else
                 {
                     rdUsadoNao.Enabled = true;
                 }
-                if (produto.Situacao.Equals("S"))
+                if (produto.Situacao.Equals("A"))
                 {
-                    rdSituacaoAtivo.Enabled = true;
+                    rdSituacaoAtivo.Checked = true;
                 }
                 else
                 {
-                    rdSituacaoInativo.Enabled = true;
+                    rdSituacaoInativo.Checked = true;
                 }
                 // Ultima compra
                 if (ultimoFornecedor != null)

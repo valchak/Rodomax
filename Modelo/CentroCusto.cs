@@ -14,5 +14,10 @@ namespace Modelo
         public string Situacao { get; set; }
 
         public virtual ICollection<Filial> Filiais { get; set; }
+
+        [NotMapped]
+        public List<Filial> ListaExcluir { get; set; }
+        [NotMapped]
+        public List<Filial> ListaInserir { get; set; }
     }
 }

@@ -54,8 +54,8 @@ namespace Aplicacao
             if (Validar(obj))
             {
                 Produto dbObj = new Produto();
-                dbObj = Find(obj.Id);
-                dbObj.ProdutoGrupo = Banco.ProdutoGrupos.Where(x => x.Id == obj.ProdutoGrupo.Id).First();
+                dbObj = Banco.Produtos.Find(obj.Id);
+                dbObj.ProdutoGrupo = Banco.ProdutoGrupos.Find(obj.ProdutoGrupo.Id);
                 dbObj.Nome = obj.Nome;
                 dbObj.CustoMedio = obj.CustoMedio;
                 dbObj.Multiplicador = obj.Multiplicador;

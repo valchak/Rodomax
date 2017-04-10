@@ -293,6 +293,12 @@ namespace UI
                 instancia.produto = null;
                 txtItemDescricao.Text = produto.Nome;
                 txtItemMultiplicador.Text = produto.Multiplicador.ToString();
+
+                if (produto.EstoqueUsado.Equals("N"))
+                {
+                    rdUsado.Enabled = false;
+                    rdNovo.Checked = true;
+                }
             }
         }
 
@@ -637,6 +643,7 @@ namespace UI
             btnItemExcluir.Enabled = false;
             btnItemAdd.Enabled = true;
             rdNovo.Checked = true;
+            rdUsado.Enabled = true;
             PopulaGrid();
         }
 

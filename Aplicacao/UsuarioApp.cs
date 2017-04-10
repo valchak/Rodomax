@@ -92,9 +92,7 @@ namespace Aplicacao
                     IEnumerable<UsuarioFilial> lista = app.Get(x => x.Filial.Id == filial.Id && x.Usuario.Id == obj.Id);
                     foreach (var i in lista)
                     {
-                        UsuarioFilial novo = new UsuarioFilial();
-                        novo.Filial = Banco.Filiais.Find(i.Filial.Id);
-                        novo.Usuario = Banco.Usuarios.Find(i.Usuario.Id);
+                        UsuarioFilial novo = Banco.UsuariosFilial.Where(y => y.Usuario.Id == i.Usuario.Id && y.Filial.Id == i.Filial.Id).First();
                         Banco.UsuariosFilial.Remove(novo);
                     }
                 }

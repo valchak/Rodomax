@@ -148,6 +148,7 @@
             this.btnRemove1.TabIndex = 5;
             this.btnRemove1.Text = "<";
             this.btnRemove1.UseVisualStyleBackColor = true;
+            this.btnRemove1.Click += new System.EventHandler(this.btnRemove1_Click);
             // 
             // btnRemoveTodos
             // 
@@ -158,6 +159,7 @@
             this.btnRemoveTodos.TabIndex = 4;
             this.btnRemoveTodos.Text = "<<";
             this.btnRemoveTodos.UseVisualStyleBackColor = true;
+            this.btnRemoveTodos.Click += new System.EventHandler(this.btnRemoveTodos_Click);
             // 
             // btnAddTodos
             // 
@@ -168,6 +170,7 @@
             this.btnAddTodos.TabIndex = 3;
             this.btnAddTodos.Text = ">>";
             this.btnAddTodos.UseVisualStyleBackColor = true;
+            this.btnAddTodos.Click += new System.EventHandler(this.btnAddTodos_Click);
             // 
             // btnAddSim1
             // 
@@ -178,6 +181,7 @@
             this.btnAddSim1.TabIndex = 2;
             this.btnAddSim1.Text = ">";
             this.btnAddSim1.UseVisualStyleBackColor = true;
+            this.btnAddSim1.Click += new System.EventHandler(this.btnAddSim1_Click);
             // 
             // gridSim
             // 
@@ -420,7 +424,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(656, 615);
-            this.KeyPreview = true;
             this.Name = "frmFilial";
             this.Text = "Cadastro de Filial";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFilial_KeyDown);
