@@ -22,6 +22,13 @@ namespace Rodomax
 
         private void ValidaAcesso()
         {
+            UsuarioApp userApp = new UsuarioApp();
+            IEnumerable<Usuario> listaUser = userApp.GetAll();
+            if (listaUser.Count() < 4)
+            {
+                this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            }
+
             SecurPerfilApp app = new SecurPerfilApp();
             SecurPerfil perfil = app.Get(x => x.Id == instancia.userLogado.Perfil.Id).First();
 

@@ -247,7 +247,7 @@ namespace Aplicacao
             {
                 
                 EstoqueMovimento saida = new EstoqueMovimento();
-                if(item.MaterialSaida.FilialSaida.Id == item.MaterialSaida.Id || item.Produto.EstoqueFilial.Equals("N"))
+                if(item.MaterialSaida.FilialSaida.Id == item.MaterialSaida.FilialEntrada.Id || item.Produto.EstoqueFilial.Equals("N"))
                 {
                     saida.DataMovimento = item.MaterialSaida.DataSaidaEstoque;
                     saida.MaterialSaida = item;

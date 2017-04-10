@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNotaEntrada));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFornecedor = new System.Windows.Forms.TextBox();
             this.txtOdemCompra = new System.Windows.Forms.TextBox();
@@ -74,6 +79,10 @@
             this.txtItemDescricao = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.gridItens = new System.Windows.Forms.DataGridView();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtDiferencaItensNota = new System.Windows.Forms.Label();
+            this.txtSomaItens = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,10 +91,6 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtDiferencaItensNota = new System.Windows.Forms.Label();
-            this.txtSomaItens = new System.Windows.Forms.Label();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -647,61 +652,6 @@
             this.gridItens.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItens_CellDoubleClick);
             this.gridItens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridItens_MouseDoubleClick);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Item";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Prod";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 50;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Descrição";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Qtde N.F.";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Vl Unit";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 75;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Qtde Est";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 75;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Vl Un. Est";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 80;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Vl Total";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
             // label17
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -744,11 +694,85 @@
             this.txtSomaItens.Text = "0,00";
             this.txtSomaItens.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Item";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Prod";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 50;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Descrição";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column4.HeaderText = "Qtde N.F.";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column5.HeaderText = "Vl Unit";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 75;
+            // 
+            // Column6
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column6.HeaderText = "Qtde Est";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 75;
+            // 
+            // Column7
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column7.HeaderText = "Vl Un. Est";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 80;
+            // 
+            // Column8
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column8.HeaderText = "Vl Total";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
             // frmNotaEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(900, 679);
-            this.KeyPreview = true;
             this.Name = "frmNotaEntrada";
             this.Text = "Nota de Entrada";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmNotaEntrada_KeyDown);
@@ -812,6 +836,10 @@
         private System.Windows.Forms.Button btnContasPagar;
         private System.Windows.Forms.ComboBox cbFinanceiro;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnItemLimpar;
+        private System.Windows.Forms.GroupBox grpEstoqueUsado;
+        private System.Windows.Forms.RadioButton rdUsado;
+        private System.Windows.Forms.RadioButton rdNovo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -820,9 +848,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.Button btnItemLimpar;
-        private System.Windows.Forms.GroupBox grpEstoqueUsado;
-        private System.Windows.Forms.RadioButton rdUsado;
-        private System.Windows.Forms.RadioButton rdNovo;
     }
 }

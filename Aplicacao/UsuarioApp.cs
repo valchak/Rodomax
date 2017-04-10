@@ -155,13 +155,16 @@ namespace Aplicacao
 
         public bool ValidarCampos(Usuario obj)
         {
-            Usuario user = Get(x => x.Login.Equals(obj.Login)).First();
+            IEnumerable<Usuario> ListaUser = Get(x => x.Login.Equals(obj.Login));
 
-            if(user.Id > 0)
+            bool result = true;
+
+            foreach (var i in ListaUser)
             {
-                return false;
+                result = false;
             }
-            return true;
+            
+            return result;
         }
     }
 }

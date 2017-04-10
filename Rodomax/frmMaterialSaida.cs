@@ -58,7 +58,7 @@ namespace Rodomax
                         case DialogResult.Yes:
                             if (saida.Id == 0)
                             {
-                               // app.Adicionar(saida);
+                                app.Adicionar(saida);
                                 
                                 if (MessageBox.Show("Saida de material salvo com sucesso: Código \n Desenha imprimir protocolo? " + saida.Id, "Imprimir Protocolo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
@@ -67,7 +67,7 @@ namespace Rodomax
                             }
                             else
                             {
-                             //   app.Atualizar(saida);
+                                app.Atualizar(saida);
                                 if(MessageBox.Show("Saida de material alterada com sucesso. \n Desenha imprimir protocolo?","Imprimir Protocolo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
                                     ImprimeProtocolo(saida);
