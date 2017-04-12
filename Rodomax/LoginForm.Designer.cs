@@ -35,6 +35,7 @@
             this.txtUsuario = new MetroFramework.Controls.MetroTextBox();
             this.btnLogar = new MetroFramework.Controls.MetroTile();
             this.txtPassword = new MetroFramework.Controls.MetroTextBox();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,11 +96,22 @@
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyPress);
             // 
+            // progressBar
+            // 
+            this.progressBar.BackColor = System.Drawing.Color.White;
+            this.progressBar.ForeColor = System.Drawing.Color.Blue;
+            this.progressBar.Location = new System.Drawing.Point(-2, 5);
+            this.progressBar.MarqueeAnimationSpeed = 50;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(367, 2);
+            this.progressBar.TabIndex = 10;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(362, 318);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnLogar);
             this.Controls.Add(this.txtUsuario);
@@ -127,5 +139,6 @@
         private MetroFramework.Controls.MetroTextBox txtUsuario;
         private MetroFramework.Controls.MetroTile btnLogar;
         private MetroFramework.Controls.MetroTextBox txtPassword;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }

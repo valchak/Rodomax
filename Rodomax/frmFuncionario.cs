@@ -82,6 +82,8 @@ namespace Rodomax
                 txtId.Text = funcionario.Id.ToString();
                 txtCPF.Text = funcionario.CPF;
                 txtNome.Text = funcionario.Nome;
+                txtEmail.Text = funcionario.Email;
+                txtCargoFuncao.Text = funcionario.Funcao;
                 filial = funcionario.Filial;
                 txtFilial.Text = filial.Nome;
                 if (funcionario.Situacao.Equals("A"))

@@ -24,9 +24,9 @@ namespace Rodomax
         {
             UsuarioApp userApp = new UsuarioApp();
             IEnumerable<Usuario> listaUser = userApp.GetAll();
-            if (listaUser.Count() < 4)
+            if (listaUser.Count() < 1)
             {
-                this.Theme = MetroFramework.MetroThemeStyle.Dark;
+                  this.Theme = MetroFramework.MetroThemeStyle.Dark;
             }
 
             SecurPerfilApp app = new SecurPerfilApp();

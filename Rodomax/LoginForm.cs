@@ -5,6 +5,7 @@ using Aplicacao;
 using Modelo;
 using System.Linq;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Rodomax
 {
@@ -14,6 +15,16 @@ namespace Rodomax
         public LoginForm()
         {
             InitializeComponent();
+            Limpar();
+        }
+        private void Limpar()
+        {
+            UsuarioApp userApp = new UsuarioApp();
+            IEnumerable<Usuario> listaUser = userApp.GetAll();
+            if (listaUser.Count() < 4)
+            {
+                this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -60,19 +71,7 @@ namespace Rodomax
             
         }
 
-        void Splash()
-        {
-            try
-            {
-                Splash tela = new Splash();
-                tela.ShowDialog();
-                tela.Dispose();
-            }
-            catch
-            {
-
-            }
-        }
+        
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
@@ -98,20 +97,20 @@ namespace Rodomax
             string senha = txtPassword.Text.Trim().RemoveDiacritics();
             if (!login.Equals("") && !senha.Equals(""))
             {
-                Thread t = new Thread(new ThreadStart(Splash));
-                t.Start();
+                
+                this.progressBar.Style = ProgressBarStyle.Marquee;
                 if (LogaUsuario(login, senha))
                 {
-                    t.Abort();
+                    this.progressBar.Style = ProgressBarStyle.Blocks;
                     this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    t.Abort();
+                    this.progressBar.Style = ProgressBarStyle.Blocks;
                     MessageBox.Show("Usuário ou senha Inválidos");
                     txtPassword.Focus();
                 }
-                t.Abort();
+                this.progressBar.Style = ProgressBarStyle.Blocks;
             }
             else
             {
@@ -141,6 +140,23 @@ namespace Rodomax
             if (e.KeyValue.Equals(27))
             {
              //   this.Close();
+            }
+        }
+
+
+        void Splash()
+        {
+            try
+            {
+                Splash tela = new Splash();
+                tela.ShowDialog();
+                tela.Dispose();
+            }
+            catch
+            {
+                //Thread t = new Thread(new ThreadStart(Splash));
+                //t.Start();
+                //t.Abort();
             }
         }
     }

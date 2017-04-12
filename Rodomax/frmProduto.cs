@@ -71,8 +71,7 @@ namespace UI
             try
             {
                 produto.Nome = txtNome.Text.RemoveDiacritics().ToUpper();
-                string custo = txtCustoMedio.Text.Replace(".", "").Trim();
-                produto.CustoMedio = double.Parse(custo.Replace(",", "."));
+                produto.CustoMedio = Formatacao.StringToDouble(txtCustoMedio.Text);
                 produto.ProdutoGrupo = grupo;
                 produto.Multiplicador = int.Parse(txtMultiplicador.Text);
                 produto.Observacao = txtObservacao.Text.RemoveDiacritics();

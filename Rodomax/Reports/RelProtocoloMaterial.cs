@@ -40,7 +40,7 @@ namespace Rodomax.Reports
                 DateTime dataInicio = txtDataInicio.Value;
                 DateTime dataFim = txtDataFinal.Value;
                 int Id = 0;
-                if (txtId.Text.Trim().Equals(""))
+                if (!txtId.Text.Trim().Equals(""))
                 {
                    Id = int.Parse(txtId.Text.Trim());
                 }
