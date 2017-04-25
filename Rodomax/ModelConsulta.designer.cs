@@ -107,8 +107,10 @@
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "ModelConsulta";
             this.Text = "ModelConsulta";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModelConsulta_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

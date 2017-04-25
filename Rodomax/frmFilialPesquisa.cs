@@ -80,21 +80,6 @@ namespace Rodomax
                 MessageBox.Show("Erro: " + exception.Message);
             }
         }
-
-        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Buscar();
-            }
-        }
-
-        private void frmFilialPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
+        
     }
 }

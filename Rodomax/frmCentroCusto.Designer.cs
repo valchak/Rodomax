@@ -249,7 +249,6 @@
             this.ClientSize = new System.Drawing.Size(652, 527);
             this.Name = "frmCentroCusto";
             this.Text = "Centro de Custos";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCentroCusto_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

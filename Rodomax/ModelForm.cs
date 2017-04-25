@@ -1,14 +1,30 @@
 ﻿using System;
 using System.Windows.Forms;
 
+using Aplicacao;
 namespace UI
 {
     public partial class ModelForm : MetroFramework.Forms.MetroForm
     {
+        _Singleton instancia = _Singleton.GetInstance;
+        SairTela fecha;
         public String operacao;
         public ModelForm()
         {
             InitializeComponent();
+            FechaTela("S");
+        }
+
+        public void FechaTela(string tipo)
+        {
+            if(tipo.Equals("N"))
+            {
+               fecha = SairTela.NAO;
+            }
+            else
+            {
+                fecha = SairTela.SIM;
+            }
         }
 
         public void AlteraBotoes(int op)
@@ -69,5 +85,22 @@ namespace UI
         {
 
         }
+
+        public void ModelForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if(fecha == SairTela.SIM)
+                {
+                    this.Close();
+                }
+                
+            }
+        }
+    }
+    enum SairTela
+    {
+        SIM,
+        NAO
     }
 }

@@ -297,13 +297,5 @@ namespace Rodomax
                     break;
             }
         }
-
-        private void frmUsuario_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
     }
 }

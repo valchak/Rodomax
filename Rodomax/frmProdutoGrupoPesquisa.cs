@@ -65,21 +65,6 @@ namespace Rodomax
         {
             Selecionar();
         }
-
-        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BuscarNoBanco();
-            }
-        }
-
-        private void frmProdutoGrupoPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
+        
     }
 }

@@ -39,6 +39,8 @@ namespace Aplicacao
         public Produto produto = null;
         public ProdutoGrupo produtoGrupo = null;
         public ProdutoGrupoUsuario produtoGrupoUsuario = null;
+        public PatrimonioGrupo patrimonioGrupo = null;
+        public Patrimonio patrimonio = null;
         public Estoque estoque = null;
         public Funcionario funcionario = null;
         public Usuario usuario = null;
@@ -47,5 +49,8 @@ namespace Aplicacao
         /*Para relatório*/
         public List<DadosProtocoloMaterial> listaProtocoloMaterial = null;
         
+
+
     }
+    
 }

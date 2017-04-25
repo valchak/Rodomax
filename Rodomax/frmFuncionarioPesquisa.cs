@@ -50,37 +50,37 @@ namespace Rodomax
                     x =>
                         x.Nome.Contains(funcionario.Nome) ||
                         x.CPF.Contains(funcionario.CPF));
-            
 
-                if (lista.Count() > 0)
+
+            if (lista.Count() > 0)
+            {
+                foreach (var p in lista)
                 {
-                    foreach (var p in lista)
+                    int n = this.gridPesquisa.Rows.Add();
+                    gridPesquisa.Rows[n].Cells[0].Value = p.Id;
+                    gridPesquisa.Rows[n].Cells[1].Value = p.Nome;
+                    if (p.Situacao.Equals("A"))
                     {
-                        int n = this.gridPesquisa.Rows.Add();
-                        gridPesquisa.Rows[n].Cells[0].Value = p.Id;
-                        gridPesquisa.Rows[n].Cells[1].Value = p.Nome;
-                        if (p.Situacao.Equals("A"))
-                        {
-                            gridPesquisa.Rows[n].Cells[2].Value = "Ativo";
-                        }
-                        else
-                        {
-                            gridPesquisa.Rows[n].Cells[2].Value = "Inativo";
-                        }
-                        gridPesquisa.Refresh();
+                        gridPesquisa.Rows[n].Cells[2].Value = "Ativo";
                     }
+                    else
+                    {
+                        gridPesquisa.Rows[n].Cells[2].Value = "Inativo";
+                    }
+                    gridPesquisa.Refresh();
                 }
-                else
-                {
-                    MessageBox.Show("Nenhum item encontrado.");
-                }
-          
+            }
+            else
+            {
+                MessageBox.Show("Nenhum item encontrado.");
+            }
+
         }
 
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-           BuscarNoBanco();
+            BuscarNoBanco();
         }
 
         private void btnSelecionarPesquisa_Click(object sender, EventArgs e)
@@ -100,21 +100,6 @@ namespace Rodomax
                 SelecionarObjeto();
             }
         }
-
-        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BuscarNoBanco();
-            }
-        }
-
-        private void frmFuncionarioPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
+        
     }
 }

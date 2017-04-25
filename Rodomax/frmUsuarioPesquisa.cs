@@ -133,21 +133,6 @@ namespace Rodomax
                 MessageBox.Show("Erro: " + exception.Message);
             }
         }
-
-        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BuscarNoBanco();
-            }
-        }
-
-        private void frmUsuarioPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
+        
     }
 }

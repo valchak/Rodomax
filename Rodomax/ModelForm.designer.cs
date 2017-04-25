@@ -144,6 +144,7 @@
             this.KeyPreview = true;
             this.Name = "ModelForm";
             this.Text = "ModelFrom";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ModelForm_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDireita.ResumeLayout(false);
             this.ResumeLayout(false);

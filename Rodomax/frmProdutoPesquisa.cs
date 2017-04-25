@@ -41,11 +41,9 @@ namespace Rodomax
                 produto.Situacao = "";
             }
             produto.Nome = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
-
-
+            
             IEnumerable<Produto> lista = app.Get(x => x.Nome.Contains(produto.Nome) && x.Situacao.Contains(produto.Situacao));
-
-
+            
             Invoke(new Action(() =>
             {
                 gridPesquisa.DataSource = null;
@@ -124,21 +122,6 @@ namespace Rodomax
         {
             SelecionarObjeto();
         }
-
-        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BuscarNoBanco();
-            }
-        }
-
-        private void frmProdutoPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
+        
     }
 }

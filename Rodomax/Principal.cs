@@ -72,6 +72,9 @@ namespace Rodomax
                     case 10:
                         cadUsuario.Visible = true;
                         break;
+                    case 11:
+                        menuCadPatrimonio.Visible = true;
+                        break;
 
                 }
 
@@ -174,6 +177,20 @@ namespace Rodomax
         private void protocoloMaterialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RelProtocoloMaterial tela = new RelProtocoloMaterial();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        private void cadPatrimônioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPatrimonio tela = new frmPatrimonio();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        private void cadGrupoPatrimônioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPatrimonioGrupo tela = new frmPatrimonioGrupo();
             tela.ShowDialog();
             tela.Dispose();
         }

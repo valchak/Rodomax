@@ -367,10 +367,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 516);
-            this.KeyPreview = true;
             this.Name = "frmFornecedor";
             this.Text = "Cadastro de Fornecedor";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFornecedor_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

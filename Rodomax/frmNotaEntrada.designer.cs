@@ -79,10 +79,6 @@
             this.txtItemDescricao = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.gridItens = new System.Windows.Forms.DataGridView();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtDiferencaItensNota = new System.Windows.Forms.Label();
-            this.txtSomaItens = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,6 +87,10 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtDiferencaItensNota = new System.Windows.Forms.Label();
+            this.txtSomaItens = new System.Windows.Forms.Label();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -157,6 +157,7 @@
             // btnPesquisar
             // 
             this.btnPesquisar.Enabled = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // label1
             // 
@@ -652,48 +653,6 @@
             this.gridItens.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridItens_CellDoubleClick);
             this.gridItens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridItens_MouseDoubleClick);
             // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(687, 484);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(60, 13);
-            this.label17.TabIndex = 25;
-            this.label17.Text = "Total Itens:";
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(687, 498);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(82, 13);
-            this.label18.TabIndex = 26;
-            this.label18.Text = "Diferença Nota:";
-            // 
-            // txtDiferencaItensNota
-            // 
-            this.txtDiferencaItensNota.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDiferencaItensNota.AutoSize = true;
-            this.txtDiferencaItensNota.Location = new System.Drawing.Point(787, 498);
-            this.txtDiferencaItensNota.Name = "txtDiferencaItensNota";
-            this.txtDiferencaItensNota.Size = new System.Drawing.Size(28, 13);
-            this.txtDiferencaItensNota.TabIndex = 28;
-            this.txtDiferencaItensNota.Text = "0,00";
-            this.txtDiferencaItensNota.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // txtSomaItens
-            // 
-            this.txtSomaItens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSomaItens.AutoSize = true;
-            this.txtSomaItens.Location = new System.Drawing.Point(787, 484);
-            this.txtSomaItens.Name = "txtSomaItens";
-            this.txtSomaItens.Size = new System.Drawing.Size(28, 13);
-            this.txtSomaItens.TabIndex = 27;
-            this.txtSomaItens.Text = "0,00";
-            this.txtSomaItens.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "Item";
@@ -768,6 +727,48 @@
             this.Column8.HeaderText = "Vl Total";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(687, 484);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(60, 13);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Total Itens:";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(687, 498);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(82, 13);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "Diferença Nota:";
+            // 
+            // txtDiferencaItensNota
+            // 
+            this.txtDiferencaItensNota.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDiferencaItensNota.AutoSize = true;
+            this.txtDiferencaItensNota.Location = new System.Drawing.Point(787, 498);
+            this.txtDiferencaItensNota.Name = "txtDiferencaItensNota";
+            this.txtDiferencaItensNota.Size = new System.Drawing.Size(28, 13);
+            this.txtDiferencaItensNota.TabIndex = 28;
+            this.txtDiferencaItensNota.Text = "0,00";
+            this.txtDiferencaItensNota.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtSomaItens
+            // 
+            this.txtSomaItens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSomaItens.AutoSize = true;
+            this.txtSomaItens.Location = new System.Drawing.Point(787, 484);
+            this.txtSomaItens.Name = "txtSomaItens";
+            this.txtSomaItens.Size = new System.Drawing.Size(28, 13);
+            this.txtSomaItens.TabIndex = 27;
+            this.txtSomaItens.Text = "0,00";
+            this.txtSomaItens.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // frmNotaEntrada
             // 

@@ -9,6 +9,13 @@ namespace UI
         {
             InitializeComponent();
         }
-        
+
+        private void ModelConsulta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

@@ -36,10 +36,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
-            // 
             // btnFiltrar
             // 
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
@@ -99,10 +95,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(626, 486);
-            this.KeyPreview = true;
             this.Name = "frmFuncionarioPesquisa";
             this.Text = "Consulta Funcionário";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionarioPesquisa_KeyDown);
             this.pnlPesquisaResultado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.ResumeLayout(false);

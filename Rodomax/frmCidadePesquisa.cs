@@ -76,21 +76,6 @@ namespace Rodomax
                 MessageBox.Show("Erro: " + exception.Message);
             }
         }
-
-        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BuscarBanco();
-            }
-        }
-
-        private void frmCidadePesquisa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
+ 
     }
 }

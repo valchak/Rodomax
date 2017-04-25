@@ -104,13 +104,6 @@ namespace Rodomax
                 txtLogin.Text = instancia.userLogado.Login;
             }
         }
-
-        private void frmUsuarioAlterarSenha_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
+        
     }
 }

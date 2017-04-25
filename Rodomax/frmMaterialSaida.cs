@@ -33,6 +33,7 @@ namespace Rodomax
         public frmMaterialSaida()
         {
             InitializeComponent();
+            this.FechaTela("N");
             gridItens.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             LimpaNovo();
         }

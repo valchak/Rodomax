@@ -26,7 +26,7 @@
     <InstallUrl>\\marley\ftp\sync\</InstallUrl>
     <UpdateUrl>http://192.168.0.1/ftp/sync/</UpdateUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>20</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -204,6 +204,24 @@
     <Compile Include="frmNotaEntrada.designer.cs">
       <DependentUpon>frmNotaEntrada.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPatrimonio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatrimonio.Designer.cs">
+      <DependentUpon>frmPatrimonio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatrimonioGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatrimonioGrupo.Designer.cs">
+      <DependentUpon>frmPatrimonioGrupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatrimonioGrupoPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatrimonioGrupoPesquisa.Designer.cs">
+      <DependentUpon>frmPatrimonioGrupoPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +354,15 @@
     <EmbeddedResource Include="frmNotaEntrada.resx">
       <DependentUpon>frmNotaEntrada.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPatrimonio.resx">
+      <DependentUpon>frmPatrimonio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPatrimonioGrupo.resx">
+      <DependentUpon>frmPatrimonioGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPatrimonioGrupoPesquisa.resx">
+      <DependentUpon>frmPatrimonioGrupoPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
     </EmbeddedResource>
@@ -371,6 +398,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reports\ModelReport.resx">
       <DependentUpon>ModelReport.cs</DependentUpon>

@@ -1,6 +1,6 @@
-﻿namespace UI
+﻿namespace Rodomax
 {
-    partial class frmCidade
+    partial class frmPatrimonioGrupo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCidadeId = new MetroFramework.Controls.MetroTextBox();
-            this.txtCidadeNome = new MetroFramework.Controls.MetroTextBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -39,8 +39,7 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlBotoes.Size = new System.Drawing.Size(676, 91);
+            this.pnlBotoes.Size = new System.Drawing.Size(555, 94);
             // 
             // btnNovo
             // 
@@ -48,15 +47,15 @@
             // 
             // pnlDados
             // 
-            this.pnlDados.Controls.Add(this.txtCidadeNome);
-            this.pnlDados.Controls.Add(this.txtCidadeId);
             this.pnlDados.Controls.Add(this.label2);
             this.pnlDados.Controls.Add(this.label1);
-            this.pnlDados.Size = new System.Drawing.Size(676, 114);
+            this.pnlDados.Controls.Add(this.txtNome);
+            this.pnlDados.Controls.Add(this.txtId);
+            this.pnlDados.Size = new System.Drawing.Size(555, 122);
             // 
             // pnlDireita
             // 
-            this.pnlDireita.Location = new System.Drawing.Point(301, 3);
+            this.pnlDireita.Location = new System.Drawing.Point(183, 3);
             // 
             // btnCancelar
             // 
@@ -68,50 +67,51 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.btnExcluir.Visible = false;
             // 
             // btnPesquisar
             // 
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(24, 38);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 20);
+            this.txtId.TabIndex = 0;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(24, 82);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(510, 20);
+            this.txtNome.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 4);
+            this.label1.Location = new System.Drawing.Point(24, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 2;
             this.label1.Text = "Código";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 49);
+            this.label2.Location = new System.Drawing.Point(24, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nome da Cidade";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Nome";
             // 
-            // txtCidadeId
-            // 
-            this.txtCidadeId.Location = new System.Drawing.Point(14, 20);
-            this.txtCidadeId.Name = "txtCidadeId";
-            this.txtCidadeId.Size = new System.Drawing.Size(107, 23);
-            this.txtCidadeId.TabIndex = 4;
-            // 
-            // txtCidadeNome
-            // 
-            this.txtCidadeNome.Location = new System.Drawing.Point(14, 66);
-            this.txtCidadeNome.Name = "txtCidadeNome";
-            this.txtCidadeNome.Size = new System.Drawing.Size(640, 23);
-            this.txtCidadeNome.TabIndex = 5;
-            // 
-            // frmCidade
+            // frmPatrimonioGrupo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(679, 281);
-            this.Name = "frmCidade";
-            this.Text = "Cadastro de Cidade";
+            this.ClientSize = new System.Drawing.Size(559, 283);
+            this.Name = "frmPatrimonioGrupo";
+            this.Text = "Cadastro de Grupo de Patrimônio";
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();
@@ -121,9 +121,10 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private MetroFramework.Controls.MetroTextBox txtCidadeId;
-        private MetroFramework.Controls.MetroTextBox txtCidadeNome;
+        private System.Windows.Forms.TextBox txtNome;
     }
 }

@@ -29,6 +29,7 @@ namespace UI
         public frmNotaEntrada()
         {
             InitializeComponent();
+            this.FechaTela("N");
             app = new NotaEntradaApp();
             gridItens.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             LimpaNovo();
@@ -394,17 +395,7 @@ namespace UI
 
         private void SelecionarObjeto()
         {
-            try
-            {
-                item = listaItem[Convert.ToInt32(gridItens.SelectedRows[0].Cells[0].Value.ToString())];
-                produto = item.Produto;
-                filial = item.Filial;
-                txtItemQuantidade.Text = item.QuantidadeNota.ToString();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show("Erro: " + exception.Message);
-            }
+             
         }
 
         private void txtItemMultiplicador_KeyPress(object sender, KeyPressEventArgs e)
@@ -717,6 +708,7 @@ namespace UI
 
         private void frmNotaEntrada_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Escape)
             {
                 if (MessageBox.Show("Deseja realmente Sair do Formulário? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -724,6 +716,12 @@ namespace UI
                     this.Close();
                 }
             }
+           
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

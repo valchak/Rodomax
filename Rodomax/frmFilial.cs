@@ -254,10 +254,7 @@ namespace UI
 
         private void frmFilial_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+
         }
 
         private void btnAddSim1_Click(object sender, EventArgs e)

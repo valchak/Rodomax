@@ -362,10 +362,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(631, 538);
-            this.KeyPreview = true;
             this.Name = "frmUsuario";
             this.Text = "Cadastro de Usuário";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuario_KeyDown);
             this.Controls.SetChildIndex(this.pnlBotoes, 0);
             this.Controls.SetChildIndex(this.pnlDados, 0);
             this.pnlBotoes.ResumeLayout(false);

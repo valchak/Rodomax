@@ -244,10 +244,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(557, 410);
-            this.KeyPreview = true;
             this.Name = "frmFuncionario";
             this.Text = "Cadastro de Funcionário";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionario_KeyDown);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();

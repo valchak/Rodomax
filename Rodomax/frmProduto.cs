@@ -229,13 +229,6 @@ namespace UI
         {
             Formatacao.SoNumero(e);
         }
-
-        private void frmProduto_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
+        
     }
 }
