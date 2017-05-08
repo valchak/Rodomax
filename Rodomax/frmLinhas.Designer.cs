@@ -28,42 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLinhaCobranca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnFilialContrato = new System.Windows.Forms.Button();
+            this.txtFilialCobranca = new System.Windows.Forms.TextBox();
+            this.btnFornecedor = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtFornecedor = new System.Windows.Forms.TextBox();
+            this.txtCnpjCobranca = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.rdContratoAtivo = new System.Windows.Forms.RadioButton();
+            this.rdContratoInativo = new System.Windows.Forms.RadioButton();
+            this.cbDiaCobranca = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtObservacao = new System.Windows.Forms.TextBox();
+            this.txtLinha = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtFilialLinha = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.btnFilialLinha = new System.Windows.Forms.Button();
+            this.txtFuncionario = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnFuncionario = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.rdLinhaAtiva = new System.Windows.Forms.RadioButton();
+            this.rdLinhaBloqueada = new System.Windows.Forms.RadioButton();
+            this.rdLinhaCancelada = new System.Windows.Forms.RadioButton();
+            this.btnLimparLinha = new System.Windows.Forms.Button();
+            this.btnAddLinha = new System.Windows.Forms.Button();
+            this.btnExcluirLinha = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
@@ -84,7 +84,7 @@
             // 
             this.pnlDados.Controls.Add(this.tabControl1);
             this.pnlDados.Controls.Add(this.label1);
-            this.pnlDados.Controls.Add(this.textBox1);
+            this.pnlDados.Controls.Add(this.txtLinhaCobranca);
             this.pnlDados.Size = new System.Drawing.Size(487, 414);
             // 
             // pnlDireita
@@ -104,14 +104,14 @@
             // 
             this.btnExcluir.Location = new System.Drawing.Point(3, 2);
             // 
-            // textBox1
+            // txtLinhaCobranca
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtLinhaCobranca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(3, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(476, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtLinhaCobranca.Location = new System.Drawing.Point(3, 21);
+            this.txtLinhaCobranca.Name = "txtLinhaCobranca";
+            this.txtLinhaCobranca.Size = new System.Drawing.Size(476, 20);
+            this.txtLinhaCobranca.TabIndex = 0;
             // 
             // label1
             // 
@@ -137,20 +137,20 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.textBox4);
+            this.tabPage1.Controls.Add(this.txtObservacao);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.cbDiaCobranca);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.maskedTextBox1);
+            this.tabPage1.Controls.Add(this.txtCnpjCobranca);
             this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.btnFilialContrato);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.txtFilialCobranca);
+            this.tabPage1.Controls.Add(this.btnFornecedor);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.txtFornecedor);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -167,34 +167,35 @@
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 7;
             // 
-            // button2
+            // btnFilialContrato
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.button2.Location = new System.Drawing.Point(423, 53);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(41, 23);
-            this.button2.TabIndex = 5;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnFilialContrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFilialContrato.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFilialContrato.Location = new System.Drawing.Point(423, 53);
+            this.btnFilialContrato.Name = "btnFilialContrato";
+            this.btnFilialContrato.Size = new System.Drawing.Size(41, 23);
+            this.btnFilialContrato.TabIndex = 5;
+            this.btnFilialContrato.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // txtFilialCobranca
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtFilialCobranca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(6, 55);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(410, 20);
-            this.textBox3.TabIndex = 3;
+            this.txtFilialCobranca.Enabled = false;
+            this.txtFilialCobranca.Location = new System.Drawing.Point(6, 55);
+            this.txtFilialCobranca.Name = "txtFilialCobranca";
+            this.txtFilialCobranca.Size = new System.Drawing.Size(410, 20);
+            this.txtFilialCobranca.TabIndex = 3;
             // 
-            // button1
+            // btnFornecedor
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.button1.Location = new System.Drawing.Point(423, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 23);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFornecedor.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFornecedor.Location = new System.Drawing.Point(423, 14);
+            this.btnFornecedor.Name = "btnFornecedor";
+            this.btnFornecedor.Size = new System.Drawing.Size(41, 23);
+            this.btnFornecedor.TabIndex = 2;
+            this.btnFornecedor.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -205,22 +206,23 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Fornecedor";
             // 
-            // textBox2
+            // txtFornecedor
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(5, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(412, 20);
-            this.textBox2.TabIndex = 0;
+            this.txtFornecedor.Enabled = false;
+            this.txtFornecedor.Location = new System.Drawing.Point(5, 17);
+            this.txtFornecedor.Name = "txtFornecedor";
+            this.txtFornecedor.Size = new System.Drawing.Size(412, 20);
+            this.txtFornecedor.TabIndex = 0;
             // 
-            // maskedTextBox1
+            // txtCnpjCobranca
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(7, 97);
-            this.maskedTextBox1.Mask = "##.###.###/####-##";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(139, 20);
-            this.maskedTextBox1.TabIndex = 9;
+            this.txtCnpjCobranca.Location = new System.Drawing.Point(7, 97);
+            this.txtCnpjCobranca.Mask = "##.###.###/####-##";
+            this.txtCnpjCobranca.Name = "txtCnpjCobranca";
+            this.txtCnpjCobranca.Size = new System.Drawing.Size(139, 20);
+            this.txtCnpjCobranca.TabIndex = 9;
             // 
             // label3
             // 
@@ -243,8 +245,8 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.rdContratoInativo);
+            this.groupBox1.Controls.Add(this.rdContratoAtivo);
             this.groupBox1.Location = new System.Drawing.Point(331, 83);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(133, 43);
@@ -252,32 +254,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Situação";
             // 
-            // radioButton1
+            // rdContratoAtivo
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(49, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Ativo";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdContratoAtivo.AutoSize = true;
+            this.rdContratoAtivo.Checked = true;
+            this.rdContratoAtivo.Location = new System.Drawing.Point(7, 20);
+            this.rdContratoAtivo.Name = "rdContratoAtivo";
+            this.rdContratoAtivo.Size = new System.Drawing.Size(49, 17);
+            this.rdContratoAtivo.TabIndex = 0;
+            this.rdContratoAtivo.TabStop = true;
+            this.rdContratoAtivo.Text = "Ativo";
+            this.rdContratoAtivo.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdContratoInativo
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(62, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(57, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Inativo";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdContratoInativo.AutoSize = true;
+            this.rdContratoInativo.Location = new System.Drawing.Point(62, 19);
+            this.rdContratoInativo.Name = "rdContratoInativo";
+            this.rdContratoInativo.Size = new System.Drawing.Size(57, 17);
+            this.rdContratoInativo.TabIndex = 1;
+            this.rdContratoInativo.TabStop = true;
+            this.rdContratoInativo.Text = "Inativo";
+            this.rdContratoInativo.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cbDiaCobranca
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbDiaCobranca.FormattingEnabled = true;
+            this.cbDiaCobranca.Items.AddRange(new object[] {
             "01",
             "02",
             "03",
@@ -309,10 +312,10 @@
             "29",
             "30",
             "31"});
-            this.comboBox1.Location = new System.Drawing.Point(198, 99);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(56, 21);
-            this.comboBox1.TabIndex = 12;
+            this.cbDiaCobranca.Location = new System.Drawing.Point(198, 99);
+            this.cbDiaCobranca.Name = "cbDiaCobranca";
+            this.cbDiaCobranca.Size = new System.Drawing.Size(56, 21);
+            this.cbDiaCobranca.TabIndex = 12;
             // 
             // label6
             // 
@@ -332,40 +335,41 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Observação";
             // 
-            // textBox4
+            // txtObservacao
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtObservacao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(7, 141);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(457, 192);
-            this.textBox4.TabIndex = 15;
+            this.txtObservacao.Location = new System.Drawing.Point(7, 141);
+            this.txtObservacao.Multiline = true;
+            this.txtObservacao.Name = "txtObservacao";
+            this.txtObservacao.Size = new System.Drawing.Size(457, 192);
+            this.txtObservacao.TabIndex = 15;
             // 
-            // textBox5
+            // txtLinha
             // 
-            this.textBox5.Location = new System.Drawing.Point(3, 18);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(127, 20);
-            this.textBox5.TabIndex = 0;
+            this.txtLinha.Location = new System.Drawing.Point(3, 18);
+            this.txtLinha.Name = "txtLinha";
+            this.txtLinha.Size = new System.Drawing.Size(127, 20);
+            this.txtLinha.TabIndex = 0;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(2, 4);
+            this.label8.Location = new System.Drawing.Point(1, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(33, 13);
             this.label8.TabIndex = 1;
             this.label8.Text = "Linha";
             // 
-            // textBox6
+            // txtFilialLinha
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtFilialLinha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(3, 55);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(418, 20);
-            this.textBox6.TabIndex = 3;
+            this.txtFilialLinha.Enabled = false;
+            this.txtFilialLinha.Location = new System.Drawing.Point(3, 55);
+            this.txtFilialLinha.Name = "txtFilialLinha";
+            this.txtFilialLinha.Size = new System.Drawing.Size(418, 20);
+            this.txtFilialLinha.TabIndex = 3;
             // 
             // label9
             // 
@@ -376,24 +380,25 @@
             this.label9.TabIndex = 4;
             this.label9.Text = "Filial";
             // 
-            // button3
+            // btnFilialLinha
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.button3.Location = new System.Drawing.Point(427, 53);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(41, 23);
-            this.button3.TabIndex = 5;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnFilialLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFilialLinha.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFilialLinha.Location = new System.Drawing.Point(427, 54);
+            this.btnFilialLinha.Name = "btnFilialLinha";
+            this.btnFilialLinha.Size = new System.Drawing.Size(41, 23);
+            this.btnFilialLinha.TabIndex = 5;
+            this.btnFilialLinha.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // txtFuncionario
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(3, 94);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(418, 20);
-            this.textBox7.TabIndex = 6;
+            this.txtFuncionario.Enabled = false;
+            this.txtFuncionario.Location = new System.Drawing.Point(3, 94);
+            this.txtFuncionario.Name = "txtFuncionario";
+            this.txtFuncionario.Size = new System.Drawing.Size(418, 20);
+            this.txtFuncionario.TabIndex = 6;
             // 
             // label10
             // 
@@ -404,31 +409,31 @@
             this.label10.TabIndex = 7;
             this.label10.Text = "Funcionário";
             // 
-            // button4
+            // btnFuncionario
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.button4.Location = new System.Drawing.Point(427, 91);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(41, 23);
-            this.button4.TabIndex = 8;
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFuncionario.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFuncionario.Location = new System.Drawing.Point(427, 92);
+            this.btnFuncionario.Name = "btnFuncionario";
+            this.btnFuncionario.Size = new System.Drawing.Size(41, 23);
+            this.btnFuncionario.TabIndex = 8;
+            this.btnFuncionario.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.grid);
-            this.tabPage2.Controls.Add(this.button7);
-            this.tabPage2.Controls.Add(this.button6);
-            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.btnExcluirLinha);
+            this.tabPage2.Controls.Add(this.btnAddLinha);
+            this.tabPage2.Controls.Add(this.btnLimparLinha);
             this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.btnFuncionario);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.textBox7);
-            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.txtFuncionario);
+            this.tabPage2.Controls.Add(this.btnFilialLinha);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.txtFilialLinha);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.textBox5);
+            this.tabPage2.Controls.Add(this.txtLinha);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -439,9 +444,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Controls.Add(this.radioButton3);
+            this.groupBox2.Controls.Add(this.rdLinhaCancelada);
+            this.groupBox2.Controls.Add(this.rdLinhaBloqueada);
+            this.groupBox2.Controls.Add(this.rdLinhaAtiva);
             this.groupBox2.Location = new System.Drawing.Point(3, 117);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(212, 34);
@@ -449,76 +454,76 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Situação";
             // 
-            // radioButton3
+            // rdLinhaAtiva
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(2, 11);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(49, 17);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Ativo";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rdLinhaAtiva.AutoSize = true;
+            this.rdLinhaAtiva.Checked = true;
+            this.rdLinhaAtiva.Location = new System.Drawing.Point(2, 11);
+            this.rdLinhaAtiva.Name = "rdLinhaAtiva";
+            this.rdLinhaAtiva.Size = new System.Drawing.Size(49, 17);
+            this.rdLinhaAtiva.TabIndex = 0;
+            this.rdLinhaAtiva.TabStop = true;
+            this.rdLinhaAtiva.Text = "Ativo";
+            this.rdLinhaAtiva.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rdLinhaBloqueada
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(54, 11);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(76, 17);
-            this.radioButton4.TabIndex = 1;
-            this.radioButton4.Text = "Bloqueado";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rdLinhaBloqueada.AutoSize = true;
+            this.rdLinhaBloqueada.Location = new System.Drawing.Point(54, 11);
+            this.rdLinhaBloqueada.Name = "rdLinhaBloqueada";
+            this.rdLinhaBloqueada.Size = new System.Drawing.Size(76, 17);
+            this.rdLinhaBloqueada.TabIndex = 1;
+            this.rdLinhaBloqueada.Text = "Bloqueado";
+            this.rdLinhaBloqueada.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rdLinhaCancelada
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(136, 11);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(76, 17);
-            this.radioButton5.TabIndex = 2;
-            this.radioButton5.Text = "Cancelado";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rdLinhaCancelada.AutoSize = true;
+            this.rdLinhaCancelada.Location = new System.Drawing.Point(136, 11);
+            this.rdLinhaCancelada.Name = "rdLinhaCancelada";
+            this.rdLinhaCancelada.Size = new System.Drawing.Size(76, 17);
+            this.rdLinhaCancelada.TabIndex = 2;
+            this.rdLinhaCancelada.Text = "Cancelado";
+            this.rdLinhaCancelada.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnLimparLinha
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(393, 125);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "Limpar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnLimparLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimparLinha.Location = new System.Drawing.Point(393, 125);
+            this.btnLimparLinha.Name = "btnLimparLinha";
+            this.btnLimparLinha.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparLinha.TabIndex = 10;
+            this.btnLimparLinha.Text = "Limpar";
+            this.btnLimparLinha.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnAddLinha
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(230, 125);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Adicionar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnAddLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddLinha.Location = new System.Drawing.Point(230, 125);
+            this.btnAddLinha.Name = "btnAddLinha";
+            this.btnAddLinha.Size = new System.Drawing.Size(75, 23);
+            this.btnAddLinha.TabIndex = 11;
+            this.btnAddLinha.Text = "Adicionar";
+            this.btnAddLinha.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnExcluirLinha
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(311, 125);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "Excluir";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnExcluirLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirLinha.Location = new System.Drawing.Point(311, 125);
+            this.btnExcluirLinha.Name = "btnExcluirLinha";
+            this.btnExcluirLinha.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluirLinha.TabIndex = 12;
+            this.btnExcluirLinha.Text = "Excluir";
+            this.btnExcluirLinha.UseVisualStyleBackColor = true;
             // 
             // grid
             // 
             this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(0, 154);
+            this.grid.Location = new System.Drawing.Point(3, 154);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(471, 184);
+            this.grid.Size = new System.Drawing.Size(465, 184);
             this.grid.TabIndex = 13;
             // 
             // frmLinhas
@@ -550,39 +555,39 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtFornecedor;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLinhaCobranca;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btnFilialContrato;
+        private System.Windows.Forms.TextBox txtFilialCobranca;
+        private System.Windows.Forms.Button btnFornecedor;
+        private System.Windows.Forms.TextBox txtObservacao;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbDiaCobranca;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdContratoInativo;
+        private System.Windows.Forms.RadioButton rdContratoAtivo;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtCnpjCobranca;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnFuncionario;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtFuncionario;
+        private System.Windows.Forms.Button btnFilialLinha;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtFilialLinha;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtLinha;
         private System.Windows.Forms.DataGridView grid;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnExcluirLinha;
+        private System.Windows.Forms.Button btnAddLinha;
+        private System.Windows.Forms.Button btnLimparLinha;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rdLinhaCancelada;
+        private System.Windows.Forms.RadioButton rdLinhaBloqueada;
+        private System.Windows.Forms.RadioButton rdLinhaAtiva;
     }
 }
