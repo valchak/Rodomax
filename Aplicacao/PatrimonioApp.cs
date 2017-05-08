@@ -37,29 +37,38 @@ namespace Aplicacao
 
         public void Adicionar(Patrimonio obj)
         {
-            if (ValidarCampos(obj))
+            if (JaExiste(obj))
             {
-
-                obj.Filial = Banco.Filiais.Find(obj.Filial.Id);
-                obj.CentroCusto = Banco.CentroCustos.Find(obj.CentroCusto.Id);
-                obj.PatrimonioGrupo = Banco.PatrimonioGrupos.Find(obj.PatrimonioGrupo.Id);
-                if (obj.Funcionario != null)
+                if (ValidarCampos(obj))
                 {
-                    obj.Funcionario = Banco.Funcionarios.Find(obj.Funcionario.Id);
+
+                    obj.Filial = Banco.Filiais.Find(obj.Filial.Id);
+                    obj.CentroCusto = Banco.CentroCustos.Find(obj.CentroCusto.Id);
+                    obj.PatrimonioGrupo = Banco.PatrimonioGrupos.Find(obj.PatrimonioGrupo.Id);
+                    if (obj.Funcionario != null)
+                    {
+                        obj.Funcionario = Banco.Funcionarios.Find(obj.Funcionario.Id);
+                    }
+
+                    Banco.Patrimonios.Add(obj);
+                    PatrimonioHistorico h = new PatrimonioHistorico();
+
+                    h.Patrimonio = obj;
+                    h.Data = DateTime.Now;
+                    h.Valor = obj.ValorAquisicao;
+                    h.Historico = GeraHistorico(obj, EstoqueAcao.INSERT);
+
+                    Banco.PatrimonioHistoricos.Add(h);
+
+                    SalvarTodos();
                 }
 
-                Banco.Patrimonios.Add(obj);
-                PatrimonioHistorico h = new PatrimonioHistorico();
-
-                h.Patrimonio = obj;
-                h.Data = DateTime.Now;
-                h.Valor = obj.ValorAquisicao;
-                h.Historico = GeraHistorico(obj, EstoqueAcao.INSERT);
-
-                Banco.PatrimonioHistoricos.Add(h);
-                
-                SalvarTodos();
             }
+            else
+            {
+                throw new Exception("Número de patrimônio já cadastrado");
+            }
+            
         }
 
         public void Atualizar(Patrimonio obj)
@@ -227,6 +236,20 @@ namespace Aplicacao
         public void Excluir(Func<Patrimonio, bool> predicate)
         {
             throw new NotImplementedException();
+        }
+
+        public bool JaExiste(Patrimonio obj)
+        {
+            IEnumerable<Patrimonio> ListaUser = Get(x => x.PatrimonioNumero.Equals(obj.PatrimonioNumero));
+
+            bool result = true;
+
+            foreach (var i in ListaUser)
+            {
+                result = false;
+            }
+
+            return result;
         }
     }
 }

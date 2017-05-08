@@ -97,6 +97,7 @@
             this.ClientSize = new System.Drawing.Size(626, 486);
             this.Name = "frmFuncionarioPesquisa";
             this.Text = "Consulta Funcionário";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmFuncionarioPesquisa_KeyDown);
             this.pnlPesquisaResultado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.ResumeLayout(false);

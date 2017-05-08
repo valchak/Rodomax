@@ -35,8 +35,6 @@ namespace Aplicacao
                     Banco.UsuariosFilial.Add(userfil);
                 }
 
-
-
                 SalvarTodos();
             }
             else

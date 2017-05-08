@@ -39,6 +39,9 @@
             this.menuCadFuncionario = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCadProduto = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCadCidade = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCadPatrimonio = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadPatrimônioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadGrupoPatrimônioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuOperacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNotaEntrada = new System.Windows.Forms.ToolStripMenuItem();
             this.menuEstoqueSaida = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,9 +51,7 @@
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimentoDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.protocoloMaterialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCadPatrimonio = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadPatrimônioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadGrupoPatrimônioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCadLinhas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,6 +110,7 @@
             this.menuCadFuncionario,
             this.menuCadProduto,
             this.menuCadCidade,
+            this.menuCadLinhas,
             this.menuCadPatrimonio});
             this.MenuCadastros.Name = "MenuCadastros";
             this.MenuCadastros.Size = new System.Drawing.Size(71, 20);
@@ -117,7 +119,7 @@
             // menuCadFornecedor
             // 
             this.menuCadFornecedor.Name = "menuCadFornecedor";
-            this.menuCadFornecedor.Size = new System.Drawing.Size(164, 22);
+            this.menuCadFornecedor.Size = new System.Drawing.Size(197, 22);
             this.menuCadFornecedor.Text = "Cad. Fornecedor";
             this.menuCadFornecedor.Visible = false;
             this.menuCadFornecedor.Click += new System.EventHandler(this.cadFornecedorToolStripMenuItem_Click);
@@ -125,7 +127,7 @@
             // menuCadFuncionario
             // 
             this.menuCadFuncionario.Name = "menuCadFuncionario";
-            this.menuCadFuncionario.Size = new System.Drawing.Size(164, 22);
+            this.menuCadFuncionario.Size = new System.Drawing.Size(197, 22);
             this.menuCadFuncionario.Text = "Cad. Funcionário";
             this.menuCadFuncionario.Visible = false;
             this.menuCadFuncionario.Click += new System.EventHandler(this.cadFuncionárioToolStripMenuItem_Click);
@@ -133,7 +135,7 @@
             // menuCadProduto
             // 
             this.menuCadProduto.Name = "menuCadProduto";
-            this.menuCadProduto.Size = new System.Drawing.Size(164, 22);
+            this.menuCadProduto.Size = new System.Drawing.Size(197, 22);
             this.menuCadProduto.Text = "Cad. Produto";
             this.menuCadProduto.Visible = false;
             this.menuCadProduto.Click += new System.EventHandler(this.cadProdutoToolStripMenuItem_Click);
@@ -141,10 +143,34 @@
             // menuCadCidade
             // 
             this.menuCadCidade.Name = "menuCadCidade";
-            this.menuCadCidade.Size = new System.Drawing.Size(164, 22);
+            this.menuCadCidade.Size = new System.Drawing.Size(197, 22);
             this.menuCadCidade.Text = "Cad. Cidade";
             this.menuCadCidade.Visible = false;
             this.menuCadCidade.Click += new System.EventHandler(this.cadCidadeToolStripMenuItem_Click);
+            // 
+            // menuCadPatrimonio
+            // 
+            this.menuCadPatrimonio.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadPatrimônioToolStripMenuItem,
+            this.cadGrupoPatrimônioToolStripMenuItem});
+            this.menuCadPatrimonio.Name = "menuCadPatrimonio";
+            this.menuCadPatrimonio.Size = new System.Drawing.Size(197, 22);
+            this.menuCadPatrimonio.Text = "Patrimônio";
+            this.menuCadPatrimonio.Visible = false;
+            // 
+            // cadPatrimônioToolStripMenuItem
+            // 
+            this.cadPatrimônioToolStripMenuItem.Name = "cadPatrimônioToolStripMenuItem";
+            this.cadPatrimônioToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.cadPatrimônioToolStripMenuItem.Text = "Cad. Patrimônio";
+            this.cadPatrimônioToolStripMenuItem.Click += new System.EventHandler(this.cadPatrimônioToolStripMenuItem_Click);
+            // 
+            // cadGrupoPatrimônioToolStripMenuItem
+            // 
+            this.cadGrupoPatrimônioToolStripMenuItem.Name = "cadGrupoPatrimônioToolStripMenuItem";
+            this.cadGrupoPatrimônioToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.cadGrupoPatrimônioToolStripMenuItem.Text = "Cad. Grupo Patrimônio";
+            this.cadGrupoPatrimônioToolStripMenuItem.Click += new System.EventHandler(this.cadGrupoPatrimônioToolStripMenuItem_Click);
             // 
             // MenuOperacoes
             // 
@@ -218,29 +244,13 @@
             this.protocoloMaterialToolStripMenuItem.Text = "Protocolo Material";
             this.protocoloMaterialToolStripMenuItem.Click += new System.EventHandler(this.protocoloMaterialToolStripMenuItem_Click);
             // 
-            // menuCadPatrimonio
+            // menuCadLinhas
             // 
-            this.menuCadPatrimonio.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadPatrimônioToolStripMenuItem,
-            this.cadGrupoPatrimônioToolStripMenuItem});
-            this.menuCadPatrimonio.Name = "menuCadPatrimonio";
-            this.menuCadPatrimonio.Size = new System.Drawing.Size(164, 22);
-            this.menuCadPatrimonio.Text = "Patrimônio";
-            this.menuCadPatrimonio.Visible = false;
-            // 
-            // cadPatrimônioToolStripMenuItem
-            // 
-            this.cadPatrimônioToolStripMenuItem.Name = "cadPatrimônioToolStripMenuItem";
-            this.cadPatrimônioToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.cadPatrimônioToolStripMenuItem.Text = "Cad. Patrimônio";
-            this.cadPatrimônioToolStripMenuItem.Click += new System.EventHandler(this.cadPatrimônioToolStripMenuItem_Click);
-            // 
-            // cadGrupoPatrimônioToolStripMenuItem
-            // 
-            this.cadGrupoPatrimônioToolStripMenuItem.Name = "cadGrupoPatrimônioToolStripMenuItem";
-            this.cadGrupoPatrimônioToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.cadGrupoPatrimônioToolStripMenuItem.Text = "Cad. Grupo Patrimônio";
-            this.cadGrupoPatrimônioToolStripMenuItem.Click += new System.EventHandler(this.cadGrupoPatrimônioToolStripMenuItem_Click);
+            this.menuCadLinhas.Name = "menuCadLinhas";
+            this.menuCadLinhas.Size = new System.Drawing.Size(197, 22);
+            this.menuCadLinhas.Text = "Cad. Linhas Telefônicas";
+            this.menuCadLinhas.Visible = false;
+            this.menuCadLinhas.Click += new System.EventHandler(this.cadLinhasTelefônicasToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -284,6 +294,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuCadPatrimonio;
         private System.Windows.Forms.ToolStripMenuItem cadPatrimônioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadGrupoPatrimônioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuCadLinhas;
     }
 }
 

@@ -192,6 +192,12 @@
     <Compile Include="frmFuncionarioPesquisa.Designer.cs">
       <DependentUpon>frmFuncionarioPesquisa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLinhas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinhas.Designer.cs">
+      <DependentUpon>frmLinhas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMaterialSaida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFuncionarioPesquisa.resx">
       <DependentUpon>frmFuncionarioPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinhas.resx">
+      <DependentUpon>frmLinhas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMaterialSaida.resx">
       <DependentUpon>frmMaterialSaida.cs</DependentUpon>

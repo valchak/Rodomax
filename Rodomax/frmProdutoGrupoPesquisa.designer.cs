@@ -84,6 +84,7 @@
             this.ClientSize = new System.Drawing.Size(626, 486);
             this.Name = "frmProdutoGrupoPesquisa";
             this.Text = "Consulta Grupo Estoque";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProdutoGrupoPesquisa_KeyDown);
             this.pnlPesquisaResultado.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).EndInit();
             this.ResumeLayout(false);

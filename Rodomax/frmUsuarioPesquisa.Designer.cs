@@ -159,6 +159,7 @@
             this.Controls.Add(this.grpSituacao);
             this.Name = "frmUsuarioPesquisa";
             this.Text = "Pesquisa de Usuário";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUsuarioPesquisa_KeyDown);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtPesquisa, 0);
             this.Controls.SetChildIndex(this.btnFiltrar, 0);
