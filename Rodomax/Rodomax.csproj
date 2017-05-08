@@ -192,6 +192,12 @@
     <Compile Include="frmFuncionarioPesquisa.Designer.cs">
       <DependentUpon>frmFuncionarioPesquisa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLinhaPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinhaPesquisa.Designer.cs">
+      <DependentUpon>frmLinhaPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLinhas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +263,12 @@
     </Compile>
     <Compile Include="frmUsuarioPesquisa.Designer.cs">
       <DependentUpon>frmUsuarioPesquisa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinhaCobrancaPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinhaCobrancaPesquisa.Designer.cs">
+      <DependentUpon>frmLinhaCobrancaPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -354,6 +366,9 @@
     <EmbeddedResource Include="frmFuncionarioPesquisa.resx">
       <DependentUpon>frmFuncionarioPesquisa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLinhaPesquisa.resx">
+      <DependentUpon>frmLinhaPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLinhas.resx">
       <DependentUpon>frmLinhas.cs</DependentUpon>
     </EmbeddedResource>
@@ -386,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsuarioPesquisa.resx">
       <DependentUpon>frmUsuarioPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinhaCobrancaPesquisa.resx">
+      <DependentUpon>frmLinhaCobrancaPesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

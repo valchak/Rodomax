@@ -3,39 +3,29 @@ using MMLib.Extensions;
 using Modelo;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
 namespace Rodomax
 {
-    public partial class frmCentroCustoPesquisa : UI.ModelConsulta
+    public partial class frmLinhaCobrancaPesquisa : UI.ModelConsulta
     {
-        private CentroCustoApp app;
+        private TelefoneApp app;
         _Singleton instancia = _Singleton.GetInstance;
 
-        public frmCentroCustoPesquisa()
+        public frmLinhaCobrancaPesquisa()
         {
             InitializeComponent();
             gridPesquisa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            app = new CentroCustoApp();
+            app = new TelefoneApp();
         }
-
 
         public void BuscarNoBanco()
         {
-
-            CentroCusto centroCusto = new CentroCusto();
-
-            centroCusto.Nome = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
-
-
-            IEnumerable<CentroCusto> lista = app.Get(x => x.Nome.Contains(centroCusto.Nome));
-
+            TelefoneCobranca obj = new TelefoneCobranca();
+            obj.LinhaCobranca = txtPesquisa.Text.Trim().RemoveDiacritics().ToUpper();
+            IEnumerable<TelefoneCobranca> lista = app.Get(x => x.LinhaCobranca.Contains(obj.LinhaCobranca));
 
             Invoke(new Action(() =>
             {
@@ -48,7 +38,9 @@ namespace Rodomax
                     {
                         int n = this.gridPesquisa.Rows.Add();
                         gridPesquisa.Rows[n].Cells[0].Value = p.Id;
-                        gridPesquisa.Rows[n].Cells[1].Value = p.Nome;
+                        gridPesquisa.Rows[n].Cells[1].Value = p.LinhaCobranca;
+                        gridPesquisa.Rows[n].Cells[2].Value = p.Fornecedor.RazaoSocial;
+                        
                         switch (p.Situacao)
                         {
                             case "1":
@@ -72,15 +64,13 @@ namespace Rodomax
                     MessageBox.Show("Nenhum item encontrado.");
                 }
             }));
-
-
         }
 
         private void SelecionarObjeto()
         {
             try
             {
-                instancia.centroCusto = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
+                instancia.TelefoneCobranca = app.Find(Convert.ToInt32(gridPesquisa.SelectedRows[0].Cells[0].Value.ToString()));
                 this.Close();
             }
             catch (Exception exception)
@@ -88,7 +78,7 @@ namespace Rodomax
                 MessageBox.Show("Erro: " + exception.Message);
             }
         }
-
+        
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
@@ -98,7 +88,7 @@ namespace Rodomax
 
         private void btnCriarNovo_Click(object sender, EventArgs e)
         {
-            frmCentroCusto tela = new frmCentroCusto();
+            frmLinhas tela = new frmLinhas();
             tela.ShowDialog();
             tela.Dispose();
         }
@@ -116,12 +106,6 @@ namespace Rodomax
             }
         }
 
-        private void txtPesquisa_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char) Keys.Enter)
-            {
-                BuscarNoBanco();
-            }
-        }
+
     }
 }

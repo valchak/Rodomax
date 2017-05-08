@@ -45,6 +45,9 @@ namespace Aplicacao
         public Funcionario funcionario = null;
         public Usuario usuario = null;
 
+        public TelefoneCobranca TelefoneCobranca = null;
+        public TelefoneLinha TelefoneLinha = null;
+
 
         /*Para relatório*/
         public List<DadosProtocoloMaterial> listaProtocoloMaterial = null;

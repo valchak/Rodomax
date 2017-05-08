@@ -20,7 +20,12 @@ namespace Modelo
         [StringLength(1)]
         public string Situacao { get; set; }
 
+        public string Observacao { get; set; }
+
+
         public virtual ICollection<TelefoneLinha> LinhasTelefone { get; set; }
 
+        [NotMapped]
+        public List<TelefoneLinha> listaExcluir { get; set; }
     }
 }

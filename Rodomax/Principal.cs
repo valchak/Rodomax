@@ -200,9 +200,9 @@ namespace Rodomax
 
         private void cadLinhasTelefônicasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // frmLinhas tela = new frmLinhas();
-           // tela.ShowDialog();
-           // tela.Dispose();
+            frmLinhas tela = new frmLinhas();
+            tela.ShowDialog();
+            tela.Dispose();
         }
     }
 }

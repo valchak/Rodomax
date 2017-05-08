@@ -48,7 +48,7 @@ namespace Rodomax
             {
                 fornecedor.RazaoSocial = txtRazaoSocial.Text.Trim().RemoveDiacritics().ToUpper();
                 fornecedor.NomeFantasia=  txtNomeFantasia.Text.Trim().RemoveDiacritics().ToUpper();
-                fornecedor.CnpjCpf =  txtCNPJCPF.Text.Trim().RemoveDiacritics();
+                fornecedor.CnpjCpf =  txtCNPJCPF.Text.Trim().RemoveDiacritics().Replace(",", ".");
                 fornecedor.Ie = txtIE.Text.Trim().RemoveDiacritics();
                 fornecedor.Endereco = txtEndereco.Text.Trim().RemoveDiacritics().ToUpper();
                 fornecedor.Cep = txtCEP.Text.Trim().RemoveDiacritics();

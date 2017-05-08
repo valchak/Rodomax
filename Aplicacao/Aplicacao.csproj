@@ -61,6 +61,7 @@
     <Compile Include="FuncionarioApp.cs" />
     <Compile Include="MaterialSaidaApp.cs" />
     <Compile Include="MaterialSaidaProdutosApp.cs" />
+    <Compile Include="TelefoneLinhasApp.cs" />
     <Compile Include="TelefoneApp.cs" />
     <Compile Include="PatrimonioApp.cs" />
     <Compile Include="NotaEntradaApp.cs" />

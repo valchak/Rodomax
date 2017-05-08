@@ -43,24 +43,58 @@ namespace Aplicacao
 
                     obj.FilialFatura = Banco.Filiais.Find(obj.FilialFatura.Id);
                     obj.Fornecedor = Banco.Fornecedores.Find(obj.Fornecedor.Id);
-                    
-                    foreach(var i in obj.LinhasTelefone)
-                    {
-                        if (!JaExisteLinha(obj,i))
-                        {
-                            throw new Exception("Linha Telefonica: "+i.Linha+" Já está cadastrada em outro contrato");
-                        }
-                    }
-
+                    List<TelefoneLinha> lista = obj.LinhasTelefone.ToList();
+                    obj.LinhasTelefone = null;
                     Banco.TelefoneCobrancas.Add(obj);
 
-                    SalvarTodos();
+                    bool salvar = true;
+
+                    foreach (var i in lista)
+                    {
+                        if (!JaExisteLinha(obj, i))
+                        {
+                            TelefoneLinha dbItem = new TelefoneLinha();
+                            dbItem =  Banco.TelefoneLinhas.Where(x => x.Linha.Equals(i.Linha)).First();
+                            dbItem.TelefoneCobranca = obj;
+                            if (i.Filial != null)
+                            {
+                                dbItem.Filial = Banco.Filiais.Find(i.Filial.Id);
+                            }
+                            if (i.Funcionario != null)
+                            {
+                                dbItem.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
+                            }
+                            dbItem.Situacao = i.Situacao;
+                            Banco.Entry(dbItem).State = EntityState.Modified;
+
+                        }
+                        else
+                        {
+                            TelefoneLinha item = i;
+                            item.TelefoneCobranca = obj;
+                            if (i.Filial != null)
+                            {
+                                item.Filial = Banco.Filiais.Find(i.Filial.Id);
+                            }
+                            if (i.Funcionario != null)
+                            {
+                                item.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
+                            }
+                            Banco.TelefoneLinhas.Add(item);
+                        }
+                        
+                    }
+                    
+                    if (salvar)
+                    {
+                        SalvarTodos();
+                    }
                 }
 
             }
             else
             {
-                throw new Exception("Número de patrimônio já cadastrado");
+                throw new Exception("Numero da linha não pode ser salvo");
             }
             
         }
@@ -69,19 +103,87 @@ namespace Aplicacao
         {
             if (ValidarCampos(obj))
             {
-                obj.FilialFatura = Banco.Filiais.Find(obj.FilialFatura.Id);
-                obj.Fornecedor = Banco.Fornecedores.Find(obj.Fornecedor.Id);
+                
+                TelefoneCobranca dbObj = Banco.TelefoneCobrancas.Find(obj.Id);
+                dbObj.FilialFatura = Banco.Filiais.Find(obj.FilialFatura.Id);
+                dbObj.Fornecedor = Banco.Fornecedores.Find(obj.Fornecedor.Id);
 
-                foreach (var i in obj.LinhasTelefone)
+                List<TelefoneLinha> lista = obj.LinhasTelefone.ToList();
+                obj.LinhasTelefone = null;
+
+                Banco.Entry(dbObj).State = EntityState.Modified;
+
+                bool salvar = true;
+                    
+                foreach (var i in lista)
                 {
-                    if (!JaExisteLinha(obj, i))
+
+                    TelefoneLinha dbItem = i;
+                    if(i.Id > 0 )
                     {
-                        throw new Exception("Linha Telefonica: " + i.Linha + " Já está cadastrada em outro contrato");
+                        dbItem = Banco.TelefoneLinhas.Include(x => x.Filial)
+                            .Include(x => x.Funcionario)
+                            .Where(x => x.Id == i.Id)
+                            .First();
+
+                        dbItem.TelefoneCobranca = dbObj;
+                        if (i.Filial != null)
+                        {
+                            dbItem.Filial = Banco.Filiais.Find(i.Filial.Id);
+                        }
+                        if (i.Funcionario != null)
+                        {
+                            dbItem.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
+                        }
+                        Banco.Entry(dbItem).State = EntityState.Modified;
+                    } else
+                    {
+                        if (!JaExisteLinha(obj, i))
+                        {
+                            dbItem = Banco.TelefoneLinhas
+                           .Where(x => x.Linha.Equals(i.Linha))
+                           .First();
+
+                            dbItem.TelefoneCobranca = dbObj;
+                            if (i.Filial != null)
+                            {
+                                dbItem.Filial = Banco.Filiais.Find(i.Filial.Id);
+                            }
+                            if (i.Funcionario != null)
+                            {
+                                dbItem.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
+                            }
+                            dbItem.Situacao = i.Situacao;
+
+                            Banco.Entry(dbItem).State = EntityState.Modified;
+
+                        } else
+                        {
+                            dbItem.TelefoneCobranca = dbObj;
+                            if (i.Filial != null)
+                            {
+                                dbItem.Filial = Banco.Filiais.Find(i.Filial.Id);
+                            }
+                            if (i.Funcionario != null)
+                            {
+                                dbItem.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
+                            }
+                            Banco.TelefoneLinhas.Add(dbItem);
+                        }
                     }
                 }
-
-              //  Banco.TelefoneCobrancas.Add(obj);
-                SalvarTodos();
+                if (obj.listaExcluir != null)
+                {
+                    foreach (var item in obj.listaExcluir)
+                    {
+                        var dbItem = Banco.TelefoneLinhas.Where(x => x.Id == item.Id).First();
+                        dbItem.TelefoneCobranca = null;
+                        dbItem.Filial = null;
+                        dbItem.Funcionario = null;
+                        Banco.Entry(dbItem).State = EntityState.Modified;
+                    }
+                }
+            SalvarTodos();
             }
 
         }
@@ -141,7 +243,7 @@ namespace Aplicacao
 
             foreach (var i in lista)
             {
-                if(Tel.Id != i.TelefoneCobranca.Id)
+                if(linha.Linha.Equals(i.Linha))
                 {
                     result = false;
                 }

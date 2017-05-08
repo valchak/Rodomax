@@ -38,7 +38,7 @@ namespace Rodomax
         {
             try
             {
-                funcionario.CPF = txtCPF.Text;
+                funcionario.CPF = txtCPF.Text.Replace(",", ".");
                 funcionario.Nome = txtNome.Text.Trim().RemoveDiacritics().ToUpper();
                 funcionario.Filial = filial;
                 funcionario.Email = txtEmail.Text.Trim().RemoveDiacritics();
