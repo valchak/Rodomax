@@ -108,5 +108,13 @@ namespace Rodomax
                 BuscarNoBanco();
             }
         }
+
+        private void txtPesquisa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BuscarNoBanco();
+            }
+        }
     }
 }

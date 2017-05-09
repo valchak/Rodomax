@@ -14,7 +14,7 @@ namespace Rodomax
         TelefoneLinha linha;
         private TelefoneCobranca Obj;
 
-        private int numeroItens = 0;
+        private int numeroItens = 1;
         private int numeroEditar = 0;
 
         private IDictionary<int, TelefoneLinha> listaItem;
@@ -33,7 +33,9 @@ namespace Rodomax
             Obj.Cnpj = txtCnpjCobranca.Text.Trim().RemoveDiacritics().ToUpper().Replace(",",".");
             Obj.DiaVencimento = int.Parse(cbDiaCobranca.Text);
             Obj.listaExcluir = listaExcluir;
-            
+            Obj.Observacao = txtObservacao.Text.Trim().RemoveDiacritics();
+            Obj.LinhasTelefone = listaItem.Values;
+
             if (rdContratoAtivo.Checked)
             {
                 Obj.Situacao = "A";
@@ -138,6 +140,7 @@ namespace Rodomax
             tab.Enabled = false;
             this.AlteraBotoes(1);
             btnNovo.Enabled = true;
+            numeroItens = 1;
             LimparLinhas();
         }
 
@@ -150,6 +153,7 @@ namespace Rodomax
             txtFuncionario.Clear();
             btnExcluirLinha.Enabled = false;
             btnAddLinha.Text = "Adicionar";
+            numeroEditar = 0;
             AtualizaGrid();
         }
 
@@ -159,53 +163,52 @@ namespace Rodomax
             grid.ResetBindings();
             grid.Rows.Clear();
 
-            if (Obj.LinhasTelefone != null)
+            
+            if (listaItem.Count > 0)
             {
-                if (Obj.LinhasTelefone.Count > 0)
+                TelefoneLinhasApp linhaApp = new TelefoneLinhasApp();
+
+                foreach (var i in listaItem.Values)
                 {
-                    TelefoneLinhasApp linhaApp = new TelefoneLinhasApp();
+                    int n = this.grid.Rows.Add();
 
-                    foreach (var i in Obj.LinhasTelefone)
+                    IEnumerable<TelefoneLinha> lista = linhaApp.Get(x => x.Id == i.Id);
+                    foreach (var y in lista)
                     {
-                        int n = this.grid.Rows.Add();
-
-                        IEnumerable<TelefoneLinha> lista = linhaApp.Get(x => x.Id == i.Id);
-                        foreach (var y in lista)
-                        {
-                            i.Filial = y.Filial;
-                            i.Funcionario = i.Funcionario;
-                        }
-
-                        grid.Rows[n].Cells[0].Value = i.Id;
-                        grid.Rows[n].Cells[1].Value = i.Linha;
-
-                        if (i.Filial != null)
-                        {
-                            grid.Rows[n].Cells[2].Value = i.Filial.Nome;
-                        }
-                        if(i.Funcionario != null)
-                        {
-                            grid.Rows[n].Cells[3].Value = i.Funcionario.Nome;
-                        }
-                        
-                        switch (i.Situacao)
-                        {
-                            case "1":
-                            case "A":
-                                this.grid.Rows[n].Cells[4].Value = "Ativo";
-                                break;
-                            case "2":
-                            case "I":
-                                this.grid.Rows[n].Cells[4].Value = "Inativo";
-                                break;
-                            default:
-                                this.grid.Rows[n].Cells[4].Value = "";
-                                break;
-                        }
+                        i.Filial = y.Filial;
+                        i.Funcionario = app.getFuncionario(y);
                     }
-                    grid.Refresh();
+
+                    grid.Rows[n].Cells[0].Value = i.Id;
+                    grid.Rows[n].Cells[1].Value = i.Linha;
+
+                    if (i.Filial != null)
+                    {
+                        grid.Rows[n].Cells[2].Value = i.Filial.Nome;
+                    }
+                    if(i.Funcionario != null)
+                    {
+                        grid.Rows[n].Cells[3].Value = i.Funcionario.Nome;
+                    }
+                        
+                    switch (i.Situacao)
+                    {
+                        case "1":
+                        case "A":
+                            this.grid.Rows[n].Cells[4].Value = "Ativo";
+                            break;
+                        case "2":
+                        case "I":
+                            this.grid.Rows[n].Cells[4].Value = "Inativo";
+                            break;
+                        default:
+                            this.grid.Rows[n].Cells[4].Value = "";
+                            break;
+                    }
                 }
+                grid.Refresh();
             }
+            
         }
 
         private void btnPesquisar_Click(object sender, System.EventArgs e)
@@ -216,13 +219,14 @@ namespace Rodomax
 
             if (instancia.TelefoneCobranca != null)
             {
+                Limpar();
                 tab.Enabled = true;
                 Obj = instancia.TelefoneCobranca;
                 txtLinhaCobranca.Text = Obj.LinhaCobranca;
                 txtFornecedor.Text = Obj.Fornecedor.RazaoSocial;
                 txtFilialCobranca.Text = Obj.FilialFatura.Nome;
                 txtCnpjCobranca.Text = Obj.Cnpj;
-                cbDiaCobranca.SelectedText = Obj.DiaVencimento.ToString();
+                cbDiaCobranca.Text = Obj.DiaVencimento.ToString();
                 if (Obj.Situacao.Equals("A"))
                 {
                     rdContratoAtivo.Checked = true;
@@ -232,17 +236,16 @@ namespace Rodomax
                     rdContratoInativo.Checked = true;
                 }
                 txtObservacao.Text = Obj.Observacao;
-
+                foreach (var i in Obj.LinhasTelefone)
+                {
+                    listaItem.Add(numeroItens++, i);
+                }
+                Obj.LinhasTelefone = null;
                 this.AlteraBotoes(3);
+
                 
                 instancia.TelefoneCobranca = null;
 
-                /*   foreach (var i in Obj.LinhasTelefone)
-                   {
-                       listaLinhas.Add(i.Id, i);
-                   }
-                   PopularGrids();
-                */
                 AtualizaGrid();
             }
         }
@@ -281,13 +284,13 @@ namespace Rodomax
                 {
                     linha.Situacao = "C";
                 }
-                if (linha.Id == 0) {
-                    Obj.LinhasTelefone.Add(linha);
+                if (numeroEditar == 0) {
+                    listaItem.Add(numeroItens++, linha);
                 }
                 else
                 {
-                    Obj.LinhasTelefone.Remove(linha);
-                    Obj.LinhasTelefone.Add(linha);
+                    listaItem.Remove(numeroEditar);
+                    listaItem.Add(numeroEditar, linha);
                 }
 
                 LimparLinhas();
@@ -302,13 +305,7 @@ namespace Rodomax
                 {
                     numeroEditar = Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value.ToString());
 
-                    foreach(var i in Obj.LinhasTelefone)
-                    {
-                        if(i.Id == numeroEditar)
-                        {
-                            linha = i;
-                        }
-                    }
+                    linha = listaItem[numeroEditar];
                     
                     txtLinha.Text = linha.Linha;
                     txtFilialLinha.Text = linha.Filial.Nome;

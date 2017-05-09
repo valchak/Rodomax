@@ -51,6 +51,11 @@ namespace Aplicacao
 
                     foreach (var i in lista)
                     {
+                        if(i.Id >= 1000)
+                        {
+                            i.Id = 0;
+                        }
+
                         if (!JaExisteLinha(obj, i))
                         {
                             TelefoneLinha dbItem = new TelefoneLinha();
@@ -107,18 +112,22 @@ namespace Aplicacao
                 TelefoneCobranca dbObj = Banco.TelefoneCobrancas.Find(obj.Id);
                 dbObj.FilialFatura = Banco.Filiais.Find(obj.FilialFatura.Id);
                 dbObj.Fornecedor = Banco.Fornecedores.Find(obj.Fornecedor.Id);
+                dbObj.LinhaCobranca = obj.LinhaCobranca;
+                dbObj.DiaVencimento = obj.DiaVencimento;
+                dbObj.Cnpj = obj.Cnpj.Replace(",",".");
+                dbObj.Observacao = obj.Observacao;
+                dbObj.Situacao = obj.Situacao;
 
                 List<TelefoneLinha> lista = obj.LinhasTelefone.ToList();
                 obj.LinhasTelefone = null;
 
                 Banco.Entry(dbObj).State = EntityState.Modified;
-
-                bool salvar = true;
                     
                 foreach (var i in lista)
                 {
 
                     TelefoneLinha dbItem = i;
+                    
                     if(i.Id > 0 )
                     {
                         dbItem = Banco.TelefoneLinhas.Include(x => x.Filial)
@@ -183,7 +192,7 @@ namespace Aplicacao
                         Banco.Entry(dbItem).State = EntityState.Modified;
                     }
                 }
-            SalvarTodos();
+                SalvarTodos();
             }
 
         }
@@ -251,5 +260,30 @@ namespace Aplicacao
 
             return result;
         }
+
+
+        public Funcionario getFuncionario(TelefoneLinha linha)
+        {
+            if(linha.Id > 0)
+            {
+                var lista = (from p in Banco.Funcionarios
+                             join g in Banco.TelefoneLinhas on p.Id equals g.Funcionario.Id
+                             where g.Id == linha.Id
+                             select p);
+                if (lista.Any())
+                {
+                    return lista.First();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }
