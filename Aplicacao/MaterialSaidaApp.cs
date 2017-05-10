@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Linq;
-using Repositorio;
-using Modelo;
-using System.Collections.Generic;
 using System.Data.Entity;
-
+using System.Linq;
+using Modelo;
+using Repositorio;
+using System.Collections.Generic;
 
 namespace Aplicacao
 {
     public class MaterialSaidaApp : App<MaterialSaida>
     {
         public ContextoDB Banco { get; set; }
+        _Singleton instancia = _Singleton.GetInstance;
 
         public MaterialSaidaApp()
         {
@@ -54,8 +54,7 @@ namespace Aplicacao
             {
                 IEnumerable<MaterialSaidaProdutos> lista = obj.MaterialSaidaProdutos;
                 List<MaterialSaidaProdutos> excluir = obj.listaExcluir;
-                MaterialSaida dbObj = new MaterialSaida();
-                dbObj = Banco.MateriaisSaida.Where(x => x.Id == obj.Id).First();
+                MaterialSaida dbObj = Banco.MateriaisSaida.Where(x => x.Id == obj.Id).First();
                 dbObj.MaterialSaidaProdutos = null;
                 dbObj.FilialEntrada = Banco.Filiais.Find(obj.FilialEntrada.Id);
                 dbObj.FilialSaida = obj.FilialSaida;
@@ -165,6 +164,23 @@ namespace Aplicacao
             Banco.SaveChanges();
         }
 
+
+        public IQueryable<MaterialSaida> GetConsulta(Func<MaterialSaida, bool> predicate)
+        {
+            var lista = (from s in Banco.MateriaisSaida
+                         join d in Banco.MateriaisSaidaProdutos on s.Id equals d.MaterialSaida.Id
+                         join p in Banco.Produtos on d.Produto.Id equals p.Id
+                         join g in Banco.ProdutosGrupoUsuario on p.ProdutoGrupo.Id equals g.ProdutoGrupo.Id
+                         where g.Usuario.Id == instancia.userLogado.Id
+                         select s);
+
+             return lista.Include(x => x.FilialSaida)
+                .Include(x => x.FilialEntrada)
+                .Include(x => x.ResponsavelRecebimento)
+                .Include(x => x.MaterialSaidaProdutos)
+                .Include(x => x.Solicitacao)
+                .Where(predicate).AsQueryable();
+        }
 
         public bool ValidarCampos(MaterialSaida obj)
         {

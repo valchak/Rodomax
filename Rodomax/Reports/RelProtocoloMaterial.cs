@@ -18,6 +18,7 @@ namespace Rodomax.Reports
             InitializeComponent();
             Limpar();
         }
+
         private void Limpar()
         {
             DateTime primeiroDia = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);

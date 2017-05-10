@@ -44,6 +44,7 @@ namespace Aplicacao
         public Estoque estoque = null;
         public Funcionario funcionario = null;
         public Usuario usuario = null;
+        public MaterialSaida materialSaida = null;
 
         public TelefoneCobranca TelefoneCobranca = null;
         public TelefoneLinha TelefoneLinha = null;

@@ -150,6 +150,12 @@
     <Compile Include="frmCidadePesquisa.Designer.cs">
       <DependentUpon>frmCidadePesquisa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDespesa.Designer.cs">
+      <DependentUpon>frmDespesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +282,12 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMaterialSaidaPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaterialSaidaPesquisa.Designer.cs">
+      <DependentUpon>frmMaterialSaidaPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +357,9 @@
     <EmbeddedResource Include="frmCidadePesquisa.resx">
       <DependentUpon>frmCidadePesquisa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDespesa.resx">
+      <DependentUpon>frmDespesa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEstoque.resx">
       <DependentUpon>frmEstoque.cs</DependentUpon>
     </EmbeddedResource>
@@ -407,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaterialSaidaPesquisa.resx">
+      <DependentUpon>frmMaterialSaidaPesquisa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelConsulta.resx">
       <DependentUpon>ModelConsulta.cs</DependentUpon>

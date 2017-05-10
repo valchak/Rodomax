@@ -470,7 +470,21 @@ namespace Rodomax
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            this.AlteraBotoes(2);
+            frmMaterialSaidaPesquisa tela = new frmMaterialSaidaPesquisa();
+            tela.ShowDialog();
+            tela.Dispose();
+
+            if(instancia.materialSaida != null)
+            {
+                saida = instancia.materialSaida;
+                PopulaCampos(saida);
+                txtCodigoSaida.Enabled = false;
+                this.AlteraBotoes(3);
+                this.operacao = "ALTERAR";
+                instancia.materialSaida =  null;
+            }
+            
+            //this.AlteraBotoes(2);
         }
 
         private void BuscaMaterialSaida()
@@ -480,6 +494,7 @@ namespace Rodomax
                 if (listaitem.Any())
                 {
                     saida = listaitem.First();
+                    txtCodigoSaida.Text = saida.Id.ToString();
                     PopulaCampos(saida);
                     txtCodigoSaida.Enabled = false;
                     this.AlteraBotoes(3);
@@ -580,7 +595,7 @@ namespace Rodomax
         {
             if (e.KeyCode == Keys.Enter)
             {
-                BuscaMaterialSaida();
+               // BuscaMaterialSaida();
             }
         }
     }

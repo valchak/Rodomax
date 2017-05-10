@@ -23,5 +23,8 @@ namespace Modelo
         public double ValorTotal { get; set; }
 
         public virtual ICollection<DespesaDetalhes> DespesaDetalhes { get; set; }
+
+        [NotMapped]
+        public List<DespesaDetalhes> listaExcluir { get; set; }
     }
 }

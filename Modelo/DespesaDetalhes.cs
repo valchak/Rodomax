@@ -18,6 +18,5 @@ namespace Modelo
         [StringLength(1)]
         public string Rateio { get; set; }
         public string Observacao { get; set; }
-
     }
 }

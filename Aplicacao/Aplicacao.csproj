@@ -52,6 +52,7 @@
     <Compile Include="App.cs" />
     <Compile Include="CentroCustoApp.cs" />
     <Compile Include="CidadeApp.cs" />
+    <Compile Include="DespesaApp.cs" />
     <Compile Include="EmpresaApp.cs" />
     <Compile Include="EstoqueApp.cs" />
     <Compile Include="EstoqueMovimentoApp.cs" />
