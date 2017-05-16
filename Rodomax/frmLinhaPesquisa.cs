@@ -14,5 +14,10 @@ namespace Rodomax
         {
             InitializeComponent();
         }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

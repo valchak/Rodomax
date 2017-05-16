@@ -36,9 +36,7 @@ namespace Rodomax
 
         public void BuscarNoBanco()
         {
-            gridPesquisa.DataSource = null;
-            gridPesquisa.ResetBindings();
-            gridPesquisa.Rows.Clear();
+           
 
             Funcionario funcionario = new Funcionario();
             IEnumerable<Funcionario> lista;
@@ -52,35 +50,44 @@ namespace Rodomax
                         x.CPF.Contains(funcionario.CPF));
 
 
-            if (lista.Count() > 0)
+            Invoke(new Action(() =>
             {
-                foreach (var p in lista)
+                gridPesquisa.DataSource = null;
+                gridPesquisa.ResetBindings();
+                gridPesquisa.Rows.Clear();
+
+                if (lista.Count() > 0)
                 {
-                    int n = this.gridPesquisa.Rows.Add();
-                    gridPesquisa.Rows[n].Cells[0].Value = p.Id;
-                    gridPesquisa.Rows[n].Cells[1].Value = p.Nome;
-                    if (p.Situacao.Equals("A"))
+                    foreach (var p in lista)
                     {
-                        gridPesquisa.Rows[n].Cells[2].Value = "Ativo";
+                        int n = this.gridPesquisa.Rows.Add();
+                        gridPesquisa.Rows[n].Cells[0].Value = p.Id;
+                        gridPesquisa.Rows[n].Cells[1].Value = p.Nome;
+                        if (p.Situacao.Equals("A"))
+                        {
+                            gridPesquisa.Rows[n].Cells[2].Value = "Ativo";
+                        }
+                        else
+                        {
+                            gridPesquisa.Rows[n].Cells[2].Value = "Inativo";
+                        }
+                        gridPesquisa.Refresh();
                     }
-                    else
-                    {
-                        gridPesquisa.Rows[n].Cells[2].Value = "Inativo";
-                    }
-                    gridPesquisa.Refresh();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Nenhum item encontrado.");
-            }
+                else
+                {
+                    MessageBox.Show("Nenhum item encontrado.");
+                }
+
+            }));
 
         }
 
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            BuscarNoBanco();
+            var th = new Thread(new ThreadStart(this.BuscarNoBanco));
+            th.Start();
         }
 
         private void btnSelecionarPesquisa_Click(object sender, EventArgs e)

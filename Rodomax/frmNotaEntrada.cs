@@ -395,7 +395,17 @@ namespace UI
 
         private void SelecionarObjeto()
         {
-             
+            try
+            {
+                item = listaItem[Convert.ToInt32(gridItens.SelectedRows[0].Cells[0].Value.ToString())];
+                produto = item.Produto;
+                filial = item.Filial;
+                txtItemQuantidade.Text = item.QuantidadeNota.ToString();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Erro: " + exception.Message);
+            }
         }
 
         private void txtItemMultiplicador_KeyPress(object sender, KeyPressEventArgs e)

@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtLinhaCobranca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab = new System.Windows.Forms.TabControl();
@@ -54,6 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtFornecedor = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtObservacaoLinha = new System.Windows.Forms.TextBox();
             this.btnResumo = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +78,7 @@
             this.txtFilialLinha = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtLinha = new System.Windows.Forms.TextBox();
+            this.btnFiltrarLinha = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -89,7 +92,7 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(487, 94);
+            this.pnlBotoes.Size = new System.Drawing.Size(579, 94);
             // 
             // btnNovo
             // 
@@ -100,11 +103,11 @@
             this.pnlDados.Controls.Add(this.tab);
             this.pnlDados.Controls.Add(this.label1);
             this.pnlDados.Controls.Add(this.txtLinhaCobranca);
-            this.pnlDados.Size = new System.Drawing.Size(487, 414);
+            this.pnlDados.Size = new System.Drawing.Size(579, 488);
             // 
             // pnlDireita
             // 
-            this.pnlDireita.Location = new System.Drawing.Point(210, 3);
+            this.pnlDireita.Location = new System.Drawing.Point(302, 3);
             this.pnlDireita.Size = new System.Drawing.Size(274, 90);
             // 
             // btnCancelar
@@ -132,7 +135,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLinhaCobranca.Location = new System.Drawing.Point(3, 21);
             this.txtLinhaCobranca.Name = "txtLinhaCobranca";
-            this.txtLinhaCobranca.Size = new System.Drawing.Size(476, 20);
+            this.txtLinhaCobranca.Size = new System.Drawing.Size(568, 20);
             this.txtLinhaCobranca.TabIndex = 0;
             // 
             // label1
@@ -155,7 +158,7 @@
             this.tab.Location = new System.Drawing.Point(3, 47);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(479, 365);
+            this.tab.Size = new System.Drawing.Size(571, 439);
             this.tab.TabIndex = 2;
             // 
             // tabPage1
@@ -177,19 +180,20 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(471, 339);
+            this.tabPage1.Size = new System.Drawing.Size(563, 413);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dados do Contrato";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // txtObservacao
             // 
-            this.txtObservacao.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtObservacao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtObservacao.Location = new System.Drawing.Point(7, 141);
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(457, 192);
+            this.txtObservacao.Size = new System.Drawing.Size(549, 266);
             this.txtObservacao.TabIndex = 15;
             // 
             // label7
@@ -255,7 +259,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.rdContratoInativo);
             this.groupBox1.Controls.Add(this.rdContratoAtivo);
-            this.groupBox1.Location = new System.Drawing.Point(331, 83);
+            this.groupBox1.Location = new System.Drawing.Point(423, 83);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(133, 43);
             this.groupBox1.TabIndex = 11;
@@ -313,7 +317,7 @@
             // 
             this.btnFilialContrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFilialContrato.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.btnFilialContrato.Location = new System.Drawing.Point(423, 53);
+            this.btnFilialContrato.Location = new System.Drawing.Point(515, 53);
             this.btnFilialContrato.Name = "btnFilialContrato";
             this.btnFilialContrato.Size = new System.Drawing.Size(41, 23);
             this.btnFilialContrato.TabIndex = 5;
@@ -336,14 +340,14 @@
             this.txtFilialCobranca.Enabled = false;
             this.txtFilialCobranca.Location = new System.Drawing.Point(6, 55);
             this.txtFilialCobranca.Name = "txtFilialCobranca";
-            this.txtFilialCobranca.Size = new System.Drawing.Size(410, 20);
+            this.txtFilialCobranca.Size = new System.Drawing.Size(502, 20);
             this.txtFilialCobranca.TabIndex = 3;
             // 
             // btnFornecedor
             // 
             this.btnFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFornecedor.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.btnFornecedor.Location = new System.Drawing.Point(423, 14);
+            this.btnFornecedor.Location = new System.Drawing.Point(515, 14);
             this.btnFornecedor.Name = "btnFornecedor";
             this.btnFornecedor.Size = new System.Drawing.Size(41, 23);
             this.btnFornecedor.TabIndex = 2;
@@ -366,11 +370,14 @@
             this.txtFornecedor.Enabled = false;
             this.txtFornecedor.Location = new System.Drawing.Point(5, 17);
             this.txtFornecedor.Name = "txtFornecedor";
-            this.txtFornecedor.Size = new System.Drawing.Size(412, 20);
+            this.txtFornecedor.Size = new System.Drawing.Size(504, 20);
             this.txtFornecedor.TabIndex = 0;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnFiltrarLinha);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.txtObservacaoLinha);
             this.tabPage2.Controls.Add(this.btnResumo);
             this.tabPage2.Controls.Add(this.grid);
             this.tabPage2.Controls.Add(this.btnExcluirLinha);
@@ -388,15 +395,34 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(471, 339);
+            this.tabPage2.Size = new System.Drawing.Size(563, 413);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Linhas do Contrato";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1, 119);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Observação";
+            // 
+            // txtObservacaoLinha
+            // 
+            this.txtObservacaoLinha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObservacaoLinha.Location = new System.Drawing.Point(4, 135);
+            this.txtObservacaoLinha.Name = "txtObservacaoLinha";
+            this.txtObservacaoLinha.Size = new System.Drawing.Size(553, 20);
+            this.txtObservacaoLinha.TabIndex = 15;
+            // 
             // btnResumo
             // 
+            this.btnResumo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnResumo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnResumo.Location = new System.Drawing.Point(311, 15);
+            this.btnResumo.Location = new System.Drawing.Point(403, 15);
             this.btnResumo.Name = "btnResumo";
             this.btnResumo.Size = new System.Drawing.Size(157, 23);
             this.btnResumo.TabIndex = 14;
@@ -407,7 +433,8 @@
             // 
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
-            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -416,17 +443,17 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.grid.Location = new System.Drawing.Point(3, 154);
+            this.grid.Location = new System.Drawing.Point(3, 195);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
-            this.grid.Size = new System.Drawing.Size(465, 184);
+            this.grid.Size = new System.Drawing.Size(557, 217);
             this.grid.TabIndex = 13;
             this.grid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseDoubleClick);
             // 
             // Column1
             // 
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column1.HeaderText = "Cod";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -434,8 +461,8 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column2.HeaderText = "Linha";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -444,8 +471,8 @@
             // Column3
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column3.HeaderText = "Filial";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -453,16 +480,16 @@
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column4.HeaderText = "Func";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column5.HeaderText = "Situacao";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -471,7 +498,7 @@
             // btnExcluirLinha
             // 
             this.btnExcluirLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirLinha.Location = new System.Drawing.Point(311, 125);
+            this.btnExcluirLinha.Location = new System.Drawing.Point(400, 166);
             this.btnExcluirLinha.Name = "btnExcluirLinha";
             this.btnExcluirLinha.Size = new System.Drawing.Size(75, 23);
             this.btnExcluirLinha.TabIndex = 12;
@@ -482,7 +509,7 @@
             // btnAddLinha
             // 
             this.btnAddLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddLinha.Location = new System.Drawing.Point(230, 125);
+            this.btnAddLinha.Location = new System.Drawing.Point(319, 166);
             this.btnAddLinha.Name = "btnAddLinha";
             this.btnAddLinha.Size = new System.Drawing.Size(75, 23);
             this.btnAddLinha.TabIndex = 11;
@@ -493,7 +520,7 @@
             // btnLimparLinha
             // 
             this.btnLimparLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimparLinha.Location = new System.Drawing.Point(393, 125);
+            this.btnLimparLinha.Location = new System.Drawing.Point(482, 166);
             this.btnLimparLinha.Name = "btnLimparLinha";
             this.btnLimparLinha.Size = new System.Drawing.Size(75, 23);
             this.btnLimparLinha.TabIndex = 10;
@@ -506,7 +533,7 @@
             this.groupBox2.Controls.Add(this.rdLinhaCancelada);
             this.groupBox2.Controls.Add(this.rdLinhaBloqueada);
             this.groupBox2.Controls.Add(this.rdLinhaAtiva);
-            this.groupBox2.Location = new System.Drawing.Point(3, 117);
+            this.groupBox2.Location = new System.Drawing.Point(0, 158);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(212, 34);
             this.groupBox2.TabIndex = 9;
@@ -549,7 +576,7 @@
             // 
             this.btnFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFuncionario.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.btnFuncionario.Location = new System.Drawing.Point(427, 92);
+            this.btnFuncionario.Location = new System.Drawing.Point(519, 92);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(41, 23);
             this.btnFuncionario.TabIndex = 8;
@@ -572,14 +599,14 @@
             this.txtFuncionario.Enabled = false;
             this.txtFuncionario.Location = new System.Drawing.Point(3, 94);
             this.txtFuncionario.Name = "txtFuncionario";
-            this.txtFuncionario.Size = new System.Drawing.Size(418, 20);
+            this.txtFuncionario.Size = new System.Drawing.Size(510, 20);
             this.txtFuncionario.TabIndex = 6;
             // 
             // btnFilialLinha
             // 
             this.btnFilialLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFilialLinha.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.btnFilialLinha.Location = new System.Drawing.Point(427, 54);
+            this.btnFilialLinha.Location = new System.Drawing.Point(519, 54);
             this.btnFilialLinha.Name = "btnFilialLinha";
             this.btnFilialLinha.Size = new System.Drawing.Size(41, 23);
             this.btnFilialLinha.TabIndex = 5;
@@ -602,7 +629,7 @@
             this.txtFilialLinha.Enabled = false;
             this.txtFilialLinha.Location = new System.Drawing.Point(3, 55);
             this.txtFilialLinha.Name = "txtFilialLinha";
-            this.txtFilialLinha.Size = new System.Drawing.Size(418, 20);
+            this.txtFilialLinha.Size = new System.Drawing.Size(510, 20);
             this.txtFilialLinha.TabIndex = 3;
             // 
             // label8
@@ -621,10 +648,20 @@
             this.txtLinha.Size = new System.Drawing.Size(127, 20);
             this.txtLinha.TabIndex = 0;
             // 
+            // btnFiltrarLinha
+            // 
+            this.btnFiltrarLinha.Location = new System.Drawing.Point(136, 17);
+            this.btnFiltrarLinha.Name = "btnFiltrarLinha";
+            this.btnFiltrarLinha.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrarLinha.TabIndex = 17;
+            this.btnFiltrarLinha.Text = "Filtrar";
+            this.btnFiltrarLinha.UseVisualStyleBackColor = true;
+            this.btnFiltrarLinha.Click += new System.EventHandler(this.btnFiltrarLinha_Click);
+            // 
             // frmLinhas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(491, 575);
+            this.ClientSize = new System.Drawing.Size(583, 649);
             this.Name = "frmLinhas";
             this.Text = "Linhas Telefônicas";
             this.pnlBotoes.ResumeLayout(false);
@@ -685,10 +722,13 @@
         private System.Windows.Forms.RadioButton rdLinhaBloqueada;
         private System.Windows.Forms.RadioButton rdLinhaAtiva;
         private System.Windows.Forms.Button btnResumo;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtObservacaoLinha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Button btnFiltrarLinha;
     }
 }

@@ -14,10 +14,11 @@ namespace Rodomax
         TelefoneLinha linha;
         private TelefoneCobranca Obj;
 
-        private int numeroItens = 1;
+        private int sequencia = 1;
         private int numeroEditar = 0;
 
         private IDictionary<int, TelefoneLinha> listaItem;
+        private IDictionary<int, TelefoneLinha> listaFiltrar;
         private List<TelefoneLinha> listaExcluir;
         
         public frmLinhas()
@@ -140,7 +141,7 @@ namespace Rodomax
             tab.Enabled = false;
             this.AlteraBotoes(1);
             btnNovo.Enabled = true;
-            numeroItens = 1;
+            sequencia = 1;
             LimparLinhas();
         }
 
@@ -151,10 +152,12 @@ namespace Rodomax
             rdContratoAtivo.Checked = true;
             txtFilialLinha.Clear();
             txtFuncionario.Clear();
+            txtObservacaoLinha.Clear();
             btnExcluirLinha.Enabled = false;
             btnAddLinha.Text = "Adicionar";
             numeroEditar = 0;
             AtualizaGrid();
+            
         }
 
         private void AtualizaGrid()
@@ -163,23 +166,25 @@ namespace Rodomax
             grid.ResetBindings();
             grid.Rows.Clear();
 
-            
-            if (listaItem.Count > 0)
-            {
-                TelefoneLinhasApp linhaApp = new TelefoneLinhasApp();
+            IDictionary<int, TelefoneLinha> lista = new Dictionary<int, TelefoneLinha>();
 
-                foreach (var i in listaItem.Values)
+            if(listaFiltrar != null)
+            {
+                lista = listaFiltrar;
+            } else
+            {
+                lista = listaItem;
+            }
+
+            
+            if (lista.Count > 0)
+            {
+                
+
+                foreach (var i in lista.Values)
                 {
                     int n = this.grid.Rows.Add();
-
-                    IEnumerable<TelefoneLinha> lista = linhaApp.Get(x => x.Id == i.Id);
-                    foreach (var y in lista)
-                    {
-                        i.Filial = y.Filial;
-                        i.Funcionario = app.getFuncionario(y);
-                    }
-
-                    grid.Rows[n].Cells[0].Value = i.Id;
+                    grid.Rows[n].Cells[0].Value = i.sequencia;
                     grid.Rows[n].Cells[1].Value = i.Linha;
 
                     if (i.Filial != null)
@@ -198,8 +203,12 @@ namespace Rodomax
                             this.grid.Rows[n].Cells[4].Value = "Ativo";
                             break;
                         case "2":
-                        case "I":
-                            this.grid.Rows[n].Cells[4].Value = "Inativo";
+                        case "B":
+                            this.grid.Rows[n].Cells[4].Value = "Bloquada";
+                            break;
+                        case "3":
+                        case "C":
+                            this.grid.Rows[n].Cells[4].Value = "Cancelada";
                             break;
                         default:
                             this.grid.Rows[n].Cells[4].Value = "";
@@ -208,7 +217,7 @@ namespace Rodomax
                 }
                 grid.Refresh();
             }
-            
+            listaFiltrar = null;
         }
 
         private void btnPesquisar_Click(object sender, System.EventArgs e)
@@ -236,9 +245,14 @@ namespace Rodomax
                     rdContratoInativo.Checked = true;
                 }
                 txtObservacao.Text = Obj.Observacao;
+
                 foreach (var i in Obj.LinhasTelefone)
                 {
-                    listaItem.Add(numeroItens++, i);
+                    i.sequencia = sequencia;
+                    i.Filial = app.getFilial(i);
+                    i.Funcionario = app.getFuncionario(i);
+                    
+                    listaItem.Add(sequencia++, i);
                 }
                 Obj.LinhasTelefone = null;
                 this.AlteraBotoes(3);
@@ -272,6 +286,11 @@ namespace Rodomax
             if (ValidarLinha())
             {
                 linha.Linha = txtLinha.Text.Trim().RemoveDiacritics().ToUpper();
+                linha.Observacao = txtObservacaoLinha.Text.Trim().RemoveDiacritics().ToUpper();
+                if (txtFilialLinha.Text.Equals(""))
+                {
+                    linha.Filial = null;
+                }
                 if (rdLinhaAtiva.Checked)
                 {
                     linha.Situacao = "A";
@@ -285,7 +304,8 @@ namespace Rodomax
                     linha.Situacao = "C";
                 }
                 if (numeroEditar == 0) {
-                    listaItem.Add(numeroItens++, linha);
+                    linha.sequencia = sequencia;
+                    listaItem.Add(sequencia++, linha);
                 }
                 else
                 {
@@ -309,6 +329,11 @@ namespace Rodomax
                     
                     txtLinha.Text = linha.Linha;
                     txtFilialLinha.Text = linha.Filial.Nome;
+                    txtObservacaoLinha.Text = linha.Observacao;
+                    if(linha.Funcionario!= null)
+                    {
+                        txtFuncionario.Text = linha.Funcionario.Nome;
+                    }
 
                     if (linha.Situacao.Equals("A"))
                     {
@@ -344,7 +369,7 @@ namespace Rodomax
             switch (Formatacao.MensagemExcluir())
             {
                 case DialogResult.Yes:
-                    Obj.LinhasTelefone.Remove(linha);
+                    listaItem.Remove(linha.sequencia);
                     if (linha.Id > 0)
                     {
                         listaExcluir.Add(linha);
@@ -409,7 +434,34 @@ namespace Rodomax
                 txtFuncionario.Text = linha.Funcionario.Nome;
                 instancia.funcionario = null;
             }
+            else
+            {
+                if(linha.sequencia > 0)
+                {
+                    linha.Funcionario = null;
+                    txtFuncionario.Clear();
+                   
+                }
+            }
         }
 
+        private void btnFiltrarLinha_Click(object sender, EventArgs e)
+        {
+            if (!txtLinha.Text.Equals(""))
+            {
+                listaFiltrar = new Dictionary<int, TelefoneLinha>();
+                foreach (var i in listaItem.Values)
+                {
+                    if (i.Linha.Contains(txtLinha.Text.Trim()))
+                    {
+                        listaFiltrar.Add(i.sequencia, i);
+                    }
+                }
+                AtualizaGrid();
+            } else
+            {
+                MessageBox.Show("Campo Linha está vazio para filtrar");
+            }
+        }
     }
 }

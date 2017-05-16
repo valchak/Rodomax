@@ -30,6 +30,10 @@
         {
             this.SuspendLayout();
             // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
             // frmLinhaPesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

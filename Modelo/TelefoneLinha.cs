@@ -16,5 +16,8 @@ namespace Modelo
         public string Situacao { get; set; }
         public string Observacao { get; set; }
 
+        [NotMapped]
+        public int sequencia { get; set; }
+
     }
 }

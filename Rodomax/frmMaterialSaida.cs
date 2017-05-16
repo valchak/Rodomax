@@ -476,12 +476,9 @@ namespace Rodomax
 
             if(instancia.materialSaida != null)
             {
-                saida = instancia.materialSaida;
-                PopulaCampos(saida);
-                txtCodigoSaida.Enabled = false;
-                this.AlteraBotoes(3);
-                this.operacao = "ALTERAR";
-                instancia.materialSaida =  null;
+                txtCodigoSaida.Text = instancia.materialSaida.Id.ToString();
+                instancia.materialSaida = null;
+                BuscaMaterialSaida();
             }
             
             //this.AlteraBotoes(2);
@@ -571,9 +568,7 @@ namespace Rodomax
                     break;
             }
         }
-
-       
-
+        
         private void frmMaterialSaida_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

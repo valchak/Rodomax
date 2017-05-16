@@ -70,6 +70,7 @@ namespace Aplicacao
                                 dbItem.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
                             }
                             dbItem.Situacao = i.Situacao;
+                            dbItem.Observacao = i.Observacao;
                             Banco.Entry(dbItem).State = EntityState.Modified;
 
                         }
@@ -136,6 +137,8 @@ namespace Aplicacao
                             .First();
 
                         dbItem.TelefoneCobranca = dbObj;
+                        dbItem.Observacao = i.Observacao;
+                        dbItem.Situacao = i.Situacao;
                         if (i.Filial != null)
                         {
                             dbItem.Filial = Banco.Filiais.Find(i.Filial.Id);
@@ -143,6 +146,10 @@ namespace Aplicacao
                         if (i.Funcionario != null)
                         {
                             dbItem.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
+                        }
+                        else
+                        {
+                            dbItem.Funcionario = null;
                         }
                         Banco.Entry(dbItem).State = EntityState.Modified;
                     } else
@@ -162,6 +169,11 @@ namespace Aplicacao
                             {
                                 dbItem.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
                             }
+                            else
+                            {
+                                dbItem.Funcionario = null;
+                            }
+                            dbItem.Observacao = i.Observacao;
                             dbItem.Situacao = i.Situacao;
 
                             Banco.Entry(dbItem).State = EntityState.Modified;
@@ -177,6 +189,8 @@ namespace Aplicacao
                             {
                                 dbItem.Funcionario = Banco.Funcionarios.Find(i.Funcionario.Id);
                             }
+                            dbItem.Observacao = i.Observacao;
+                            dbItem.Situacao = i.Situacao;
                             Banco.TelefoneLinhas.Add(dbItem);
                         }
                     }
@@ -268,6 +282,29 @@ namespace Aplicacao
             {
                 var lista = (from p in Banco.Funcionarios
                              join g in Banco.TelefoneLinhas on p.Id equals g.Funcionario.Id
+                             where g.Id == linha.Id
+                             select p);
+                if (lista.Any())
+                {
+                    return lista.First();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public Filial getFilial(TelefoneLinha linha)
+        {
+            if (linha.Id > 0)
+            {
+                var lista = (from p in Banco.Filiais
+                             join g in Banco.TelefoneLinhas on p.Id equals g.Filial.Id
                              where g.Id == linha.Id
                              select p);
                 if (lista.Any())
