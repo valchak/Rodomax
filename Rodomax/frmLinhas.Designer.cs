@@ -54,6 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtFornecedor = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnFiltrarLinha = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtObservacaoLinha = new System.Windows.Forms.TextBox();
             this.btnResumo = new System.Windows.Forms.Button();
@@ -78,7 +79,6 @@
             this.txtFilialLinha = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtLinha = new System.Windows.Forms.TextBox();
-            this.btnFiltrarLinha = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -316,7 +316,7 @@
             // btnFilialContrato
             // 
             this.btnFilialContrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFilialContrato.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFilialContrato.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilialContrato.Location = new System.Drawing.Point(515, 53);
             this.btnFilialContrato.Name = "btnFilialContrato";
             this.btnFilialContrato.Size = new System.Drawing.Size(41, 23);
@@ -346,7 +346,7 @@
             // btnFornecedor
             // 
             this.btnFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFornecedor.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFornecedor.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFornecedor.Location = new System.Drawing.Point(515, 14);
             this.btnFornecedor.Name = "btnFornecedor";
             this.btnFornecedor.Size = new System.Drawing.Size(41, 23);
@@ -399,6 +399,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Linhas do Contrato";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnFiltrarLinha
+            // 
+            this.btnFiltrarLinha.Location = new System.Drawing.Point(136, 17);
+            this.btnFiltrarLinha.Name = "btnFiltrarLinha";
+            this.btnFiltrarLinha.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrarLinha.TabIndex = 17;
+            this.btnFiltrarLinha.Text = "Filtrar";
+            this.btnFiltrarLinha.UseVisualStyleBackColor = true;
+            this.btnFiltrarLinha.Click += new System.EventHandler(this.btnFiltrarLinha_Click);
             // 
             // label11
             // 
@@ -498,9 +508,11 @@
             // btnExcluirLinha
             // 
             this.btnExcluirLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirLinha.Location = new System.Drawing.Point(400, 166);
+            this.btnExcluirLinha.BackgroundImage = global::Rodomax.Properties.Resources._16_delete;
+            this.btnExcluirLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnExcluirLinha.Location = new System.Drawing.Point(378, 166);
             this.btnExcluirLinha.Name = "btnExcluirLinha";
-            this.btnExcluirLinha.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluirLinha.Size = new System.Drawing.Size(88, 23);
             this.btnExcluirLinha.TabIndex = 12;
             this.btnExcluirLinha.Text = "Excluir";
             this.btnExcluirLinha.UseVisualStyleBackColor = true;
@@ -509,9 +521,11 @@
             // btnAddLinha
             // 
             this.btnAddLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddLinha.Location = new System.Drawing.Point(319, 166);
+            this.btnAddLinha.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
+            this.btnAddLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddLinha.Location = new System.Drawing.Point(274, 166);
             this.btnAddLinha.Name = "btnAddLinha";
-            this.btnAddLinha.Size = new System.Drawing.Size(75, 23);
+            this.btnAddLinha.Size = new System.Drawing.Size(98, 23);
             this.btnAddLinha.TabIndex = 11;
             this.btnAddLinha.Text = "Adicionar";
             this.btnAddLinha.UseVisualStyleBackColor = true;
@@ -520,9 +534,11 @@
             // btnLimparLinha
             // 
             this.btnLimparLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimparLinha.Location = new System.Drawing.Point(482, 166);
+            this.btnLimparLinha.BackgroundImage = global::Rodomax.Properties.Resources._16_arrow_left;
+            this.btnLimparLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLimparLinha.Location = new System.Drawing.Point(472, 166);
             this.btnLimparLinha.Name = "btnLimparLinha";
-            this.btnLimparLinha.Size = new System.Drawing.Size(75, 23);
+            this.btnLimparLinha.Size = new System.Drawing.Size(85, 23);
             this.btnLimparLinha.TabIndex = 10;
             this.btnLimparLinha.Text = "Limpar";
             this.btnLimparLinha.UseVisualStyleBackColor = true;
@@ -575,7 +591,7 @@
             // btnFuncionario
             // 
             this.btnFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFuncionario.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFuncionario.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFuncionario.Location = new System.Drawing.Point(519, 92);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(41, 23);
@@ -605,7 +621,7 @@
             // btnFilialLinha
             // 
             this.btnFilialLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFilialLinha.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFilialLinha.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilialLinha.Location = new System.Drawing.Point(519, 54);
             this.btnFilialLinha.Name = "btnFilialLinha";
             this.btnFilialLinha.Size = new System.Drawing.Size(41, 23);
@@ -647,16 +663,6 @@
             this.txtLinha.Name = "txtLinha";
             this.txtLinha.Size = new System.Drawing.Size(127, 20);
             this.txtLinha.TabIndex = 0;
-            // 
-            // btnFiltrarLinha
-            // 
-            this.btnFiltrarLinha.Location = new System.Drawing.Point(136, 17);
-            this.btnFiltrarLinha.Name = "btnFiltrarLinha";
-            this.btnFiltrarLinha.Size = new System.Drawing.Size(75, 23);
-            this.btnFiltrarLinha.TabIndex = 17;
-            this.btnFiltrarLinha.Text = "Filtrar";
-            this.btnFiltrarLinha.UseVisualStyleBackColor = true;
-            this.btnFiltrarLinha.Click += new System.EventHandler(this.btnFiltrarLinha_Click);
             // 
             // frmLinhas
             // 

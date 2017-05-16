@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFilial));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRemove1 = new System.Windows.Forms.Button();
             this.btnRemoveTodos = new System.Windows.Forms.Button();
@@ -290,7 +289,7 @@
             // 
             // btnBuscarCidade
             // 
-            this.btnBuscarCidade.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarCidade.Image")));
+            this.btnBuscarCidade.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnBuscarCidade.Location = new System.Drawing.Point(304, 109);
             this.btnBuscarCidade.Name = "btnBuscarCidade";
             this.btnBuscarCidade.Size = new System.Drawing.Size(49, 23);

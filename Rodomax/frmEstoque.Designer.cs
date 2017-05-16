@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEstoque));
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridPesquisa = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -230,7 +229,7 @@
             // 
             // btnFilial
             // 
-            this.btnFilial.Image = ((System.Drawing.Image)(resources.GetObject("btnFilial.Image")));
+            this.btnFilial.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilial.Location = new System.Drawing.Point(317, 23);
             this.btnFilial.Name = "btnFilial";
             this.btnFilial.Size = new System.Drawing.Size(52, 23);
@@ -240,7 +239,7 @@
             // 
             // btnProduto
             // 
-            this.btnProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnProduto.Image")));
+            this.btnProduto.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnProduto.Location = new System.Drawing.Point(698, 24);
             this.btnProduto.Name = "btnProduto";
             this.btnProduto.Size = new System.Drawing.Size(52, 23);

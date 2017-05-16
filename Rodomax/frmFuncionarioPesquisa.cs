@@ -97,7 +97,9 @@ namespace Rodomax
 
         private void btnCriarNovo_Click(object sender, EventArgs e)
         {
-
+            frmFuncionario tela = new frmFuncionario();
+            tela.ShowDialog();
+            tela.Dispose();
         }
 
         private void gridPesquisa_MouseDoubleClick(object sender, MouseEventArgs e)

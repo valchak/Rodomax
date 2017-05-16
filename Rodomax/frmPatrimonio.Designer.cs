@@ -166,11 +166,11 @@
             // 
             // btnRenoverFunc
             // 
+            this.btnRenoverFunc.Image = global::Rodomax.Properties.Resources._16_delete;
             this.btnRenoverFunc.Location = new System.Drawing.Point(497, 180);
             this.btnRenoverFunc.Name = "btnRenoverFunc";
             this.btnRenoverFunc.Size = new System.Drawing.Size(34, 23);
             this.btnRenoverFunc.TabIndex = 16;
-            this.btnRenoverFunc.Text = "( - )";
             this.btnRenoverFunc.UseVisualStyleBackColor = true;
             this.btnRenoverFunc.Click += new System.EventHandler(this.btnRenoverFunc_Click);
             // 
@@ -193,7 +193,7 @@
             // 
             // btnGrupo
             // 
-            this.btnGrupo.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnGrupo.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnGrupo.Location = new System.Drawing.Point(499, 58);
             this.btnGrupo.Name = "btnGrupo";
             this.btnGrupo.Size = new System.Drawing.Size(34, 23);
@@ -220,7 +220,7 @@
             // 
             // btnFuncionario
             // 
-            this.btnFuncionario.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFuncionario.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFuncionario.Location = new System.Drawing.Point(457, 180);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(34, 23);
@@ -247,7 +247,7 @@
             // 
             // btnFilial
             // 
-            this.btnFilial.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFilial.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilial.Location = new System.Drawing.Point(497, 19);
             this.btnFilial.Name = "btnFilial";
             this.btnFilial.Size = new System.Drawing.Size(34, 23);
@@ -274,7 +274,7 @@
             // 
             // btnCentroCusto
             // 
-            this.btnCentroCusto.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnCentroCusto.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnCentroCusto.Location = new System.Drawing.Point(499, 139);
             this.btnCentroCusto.Name = "btnCentroCusto";
             this.btnCentroCusto.Size = new System.Drawing.Size(34, 23);

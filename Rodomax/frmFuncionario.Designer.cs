@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFuncionario));
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.txtFilial = new System.Windows.Forms.TextBox();
@@ -216,7 +215,7 @@
             // 
             // btnFilal
             // 
-            this.btnFilal.Image = ((System.Drawing.Image)(resources.GetObject("btnFilal.Image")));
+            this.btnFilal.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilal.Location = new System.Drawing.Point(497, 71);
             this.btnFilal.Name = "btnFilal";
             this.btnFilal.Size = new System.Drawing.Size(47, 23);

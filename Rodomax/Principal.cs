@@ -78,7 +78,9 @@ namespace Rodomax
                     case 12:
                         menuCadLinhas.Visible = true;
                         break;
-
+                    case 13:
+                        menuDespesa.Visible = true;
+                        break;
                 }
 
             }
@@ -201,6 +203,13 @@ namespace Rodomax
         private void cadLinhasTelefônicasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmLinhas tela = new frmLinhas();
+            tela.ShowDialog();
+            tela.Dispose();
+        }
+
+        private void despesasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDespesa tela = new frmDespesa();
             tela.ShowDialog();
             tela.Dispose();
         }

@@ -39,6 +39,7 @@
             this.menuCadFuncionario = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCadProduto = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCadCidade = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCadLinhas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCadPatrimonio = new System.Windows.Forms.ToolStripMenuItem();
             this.cadPatrimônioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadGrupoPatrimônioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +52,7 @@
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimentoDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.protocoloMaterialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCadLinhas = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDespesa = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,6 +149,14 @@
             this.menuCadCidade.Visible = false;
             this.menuCadCidade.Click += new System.EventHandler(this.cadCidadeToolStripMenuItem_Click);
             // 
+            // menuCadLinhas
+            // 
+            this.menuCadLinhas.Name = "menuCadLinhas";
+            this.menuCadLinhas.Size = new System.Drawing.Size(197, 22);
+            this.menuCadLinhas.Text = "Cad. Linhas Telefônicas";
+            this.menuCadLinhas.Visible = false;
+            this.menuCadLinhas.Click += new System.EventHandler(this.cadLinhasTelefônicasToolStripMenuItem_Click);
+            // 
             // menuCadPatrimonio
             // 
             this.menuCadPatrimonio.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -177,7 +186,8 @@
             this.MenuOperacoes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuNotaEntrada,
             this.menuEstoqueSaida,
-            this.menuEstoque});
+            this.menuEstoque,
+            this.menuDespesa});
             this.MenuOperacoes.Name = "MenuOperacoes";
             this.MenuOperacoes.Size = new System.Drawing.Size(75, 20);
             this.MenuOperacoes.Text = "Operações";
@@ -217,7 +227,7 @@
             // menuAlterarSenha
             // 
             this.menuAlterarSenha.Name = "menuAlterarSenha";
-            this.menuAlterarSenha.Size = new System.Drawing.Size(144, 22);
+            this.menuAlterarSenha.Size = new System.Drawing.Size(152, 22);
             this.menuAlterarSenha.Text = "Alterar Senha";
             this.menuAlterarSenha.Click += new System.EventHandler(this.menuAlterarSenha_Click);
             // 
@@ -244,13 +254,13 @@
             this.protocoloMaterialToolStripMenuItem.Text = "Protocolo Material";
             this.protocoloMaterialToolStripMenuItem.Click += new System.EventHandler(this.protocoloMaterialToolStripMenuItem_Click);
             // 
-            // menuCadLinhas
+            // menuDespesa
             // 
-            this.menuCadLinhas.Name = "menuCadLinhas";
-            this.menuCadLinhas.Size = new System.Drawing.Size(197, 22);
-            this.menuCadLinhas.Text = "Cad. Linhas Telefônicas";
-            this.menuCadLinhas.Visible = false;
-            this.menuCadLinhas.Click += new System.EventHandler(this.cadLinhasTelefônicasToolStripMenuItem_Click);
+            this.menuDespesa.Name = "menuDespesa";
+            this.menuDespesa.Size = new System.Drawing.Size(163, 22);
+            this.menuDespesa.Text = "Despesas";
+            this.menuDespesa.Visible = false;
+            this.menuDespesa.Click += new System.EventHandler(this.despesasToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -295,6 +305,7 @@
         private System.Windows.Forms.ToolStripMenuItem cadPatrimônioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadGrupoPatrimônioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuCadLinhas;
+        private System.Windows.Forms.ToolStripMenuItem menuDespesa;
     }
 }
 

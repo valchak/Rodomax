@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFornecedor));
             this.txtId = new System.Windows.Forms.TextBox();
             this.grupoPessoa = new System.Windows.Forms.GroupBox();
             this.rdCPF = new MetroFramework.Controls.MetroRadioButton();
@@ -262,7 +261,7 @@
             // 
             // btnCidade
             // 
-            this.btnCidade.Image = ((System.Drawing.Image)(resources.GetObject("btnCidade.Image")));
+            this.btnCidade.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnCidade.Location = new System.Drawing.Point(262, 181);
             this.btnCidade.Name = "btnCidade";
             this.btnCidade.Size = new System.Drawing.Size(33, 23);

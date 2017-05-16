@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterialSaida));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,6 +37,13 @@
             this.rdNovo = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridItens = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -66,13 +72,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtObservacao = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -222,6 +221,67 @@
             this.gridItens.TabIndex = 22;
             this.gridItens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridItens_MouseDoubleClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Item";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 35;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Prod";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 35;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "Descrição";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Centro de Custo";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column5.HeaderText = "Qtde";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 40;
+            // 
+            // Column6
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column6.HeaderText = "Custo Un";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 75;
+            // 
+            // Column7
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column7.HeaderText = "Custo Total";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 85;
+            // 
             // txtQuantidade
             // 
             this.txtQuantidade.Location = new System.Drawing.Point(9, 63);
@@ -261,7 +321,7 @@
             // 
             // btnProduto
             // 
-            this.btnProduto.Image = ((System.Drawing.Image)(resources.GetObject("btnProduto.Image")));
+            this.btnProduto.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnProduto.Location = new System.Drawing.Point(315, 27);
             this.btnProduto.Name = "btnProduto";
             this.btnProduto.Size = new System.Drawing.Size(75, 23);
@@ -288,9 +348,11 @@
             // 
             // btnItemLimpar
             // 
-            this.btnItemLimpar.Location = new System.Drawing.Point(718, 60);
+            this.btnItemLimpar.BackgroundImage = global::Rodomax.Properties.Resources._16_arrow_left;
+            this.btnItemLimpar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnItemLimpar.Location = new System.Drawing.Point(707, 60);
             this.btnItemLimpar.Name = "btnItemLimpar";
-            this.btnItemLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnItemLimpar.Size = new System.Drawing.Size(86, 23);
             this.btnItemLimpar.TabIndex = 14;
             this.btnItemLimpar.Text = "Limpar";
             this.btnItemLimpar.UseVisualStyleBackColor = true;
@@ -298,9 +360,11 @@
             // 
             // btnItemExcluir
             // 
+            this.btnItemExcluir.BackgroundImage = global::Rodomax.Properties.Resources._16_delete;
+            this.btnItemExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnItemExcluir.Location = new System.Drawing.Point(616, 61);
             this.btnItemExcluir.Name = "btnItemExcluir";
-            this.btnItemExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnItemExcluir.Size = new System.Drawing.Size(85, 23);
             this.btnItemExcluir.TabIndex = 13;
             this.btnItemExcluir.Text = "Excluir";
             this.btnItemExcluir.UseVisualStyleBackColor = true;
@@ -308,9 +372,11 @@
             // 
             // btnItemAdicionar
             // 
+            this.btnItemAdicionar.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
+            this.btnItemAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnItemAdicionar.Location = new System.Drawing.Point(413, 60);
             this.btnItemAdicionar.Name = "btnItemAdicionar";
-            this.btnItemAdicionar.Size = new System.Drawing.Size(75, 23);
+            this.btnItemAdicionar.Size = new System.Drawing.Size(97, 23);
             this.btnItemAdicionar.TabIndex = 11;
             this.btnItemAdicionar.Text = "Adicionar";
             this.btnItemAdicionar.UseVisualStyleBackColor = true;
@@ -318,9 +384,11 @@
             // 
             // btnItemEditar
             // 
+            this.btnItemEditar.BackgroundImage = global::Rodomax.Properties.Resources._16_edit;
+            this.btnItemEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnItemEditar.Location = new System.Drawing.Point(516, 61);
             this.btnItemEditar.Name = "btnItemEditar";
-            this.btnItemEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnItemEditar.Size = new System.Drawing.Size(94, 23);
             this.btnItemEditar.TabIndex = 12;
             this.btnItemEditar.Text = "Editar";
             this.btnItemEditar.UseVisualStyleBackColor = true;
@@ -417,7 +485,7 @@
             // 
             // btnFilialOrigem
             // 
-            this.btnFilialOrigem.Image = ((System.Drawing.Image)(resources.GetObject("btnFilialOrigem.Image")));
+            this.btnFilialOrigem.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilialOrigem.Location = new System.Drawing.Point(316, 55);
             this.btnFilialOrigem.Name = "btnFilialOrigem";
             this.btnFilialOrigem.Size = new System.Drawing.Size(75, 23);
@@ -427,7 +495,7 @@
             // 
             // btnFilialDestino
             // 
-            this.btnFilialDestino.Image = ((System.Drawing.Image)(resources.GetObject("btnFilialDestino.Image")));
+            this.btnFilialDestino.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilialDestino.Location = new System.Drawing.Point(316, 91);
             this.btnFilialDestino.Name = "btnFilialDestino";
             this.btnFilialDestino.Size = new System.Drawing.Size(75, 23);
@@ -437,7 +505,7 @@
             // 
             // btnFuncionario
             // 
-            this.btnFuncionario.Image = ((System.Drawing.Image)(resources.GetObject("btnFuncionario.Image")));
+            this.btnFuncionario.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFuncionario.Location = new System.Drawing.Point(720, 17);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(75, 23);
@@ -478,67 +546,6 @@
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.Size = new System.Drawing.Size(381, 51);
             this.txtObservacao.TabIndex = 7;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Item";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 35;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Prod";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 35;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Descrição";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Centro de Custo";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column5.HeaderText = "Qtde";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 40;
-            // 
-            // Column6
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column6.HeaderText = "Custo Un";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 75;
-            // 
-            // Column7
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column7.HeaderText = "Custo Total";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 85;
             // 
             // frmMaterialSaida
             // 

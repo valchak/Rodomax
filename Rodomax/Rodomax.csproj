@@ -26,7 +26,7 @@
     <InstallUrl>\\marley\ftp\sync\</InstallUrl>
     <UpdateUrl>http://192.168.0.1/ftp/sync/</UpdateUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>26</ApplicationRevision>
+    <ApplicationRevision>27</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -511,6 +511,11 @@
   <ItemGroup>
     <Content Include="A8.ico" />
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\16_add.png" />
+    <None Include="Resources\16_procurar.png" />
+    <None Include="Resources\16_delete.png" />
+    <None Include="Resources\16_arrow_left.png" />
+    <None Include="Resources\16_edit.png" />
     <Content Include="Resources\Alterar.png" />
     <Content Include="Resources\Cancelar.png" />
     <Content Include="Resources\Cancelar1.png" />

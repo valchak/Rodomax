@@ -39,15 +39,15 @@
             this.btnFuncionario = new System.Windows.Forms.Button();
             this.btnFilalDestino = new System.Windows.Forms.Button();
             this.gridPesquisa = new System.Windows.Forms.DataGridView();
-            this.btnFilialOrigem = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFilialOrigem = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.pnlPesquisaResultado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPesquisa)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +150,7 @@
             // 
             // btnFuncionario
             // 
-            this.btnFuncionario.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFuncionario.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFuncionario.Location = new System.Drawing.Point(413, 107);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(41, 23);
@@ -160,7 +160,7 @@
             // 
             // btnFilalDestino
             // 
-            this.btnFilalDestino.Image = global::Rodomax.Properties.Resources.localizar2;
+            this.btnFilalDestino.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilalDestino.Location = new System.Drawing.Point(852, 67);
             this.btnFilalDestino.Name = "btnFilalDestino";
             this.btnFilalDestino.Size = new System.Drawing.Size(41, 23);
@@ -187,44 +187,6 @@
             this.gridPesquisa.Size = new System.Drawing.Size(881, 534);
             this.gridPesquisa.TabIndex = 0;
             this.gridPesquisa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
-            // 
-            // btnFilialOrigem
-            // 
-            this.btnFilialOrigem.Image = global::Rodomax.Properties.Resources.localizar2;
-            this.btnFilialOrigem.Location = new System.Drawing.Point(413, 67);
-            this.btnFilialOrigem.Name = "btnFilialOrigem";
-            this.btnFilialOrigem.Size = new System.Drawing.Size(41, 23);
-            this.btnFilialOrigem.TabIndex = 19;
-            this.btnFilialOrigem.UseVisualStyleBackColor = true;
-            this.btnFilialOrigem.Click += new System.EventHandler(this.btnFilialOrigem_Click_1);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(479, 95);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Data Inicial";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(622, 96);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Data Final";
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(737, 108);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpar.TabIndex = 22;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // Column1
             // 
@@ -263,6 +225,44 @@
             this.Column5.HeaderText = "Funcionário";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            // 
+            // btnFilialOrigem
+            // 
+            this.btnFilialOrigem.Image = global::Rodomax.Properties.Resources._16_procurar;
+            this.btnFilialOrigem.Location = new System.Drawing.Point(413, 67);
+            this.btnFilialOrigem.Name = "btnFilialOrigem";
+            this.btnFilialOrigem.Size = new System.Drawing.Size(41, 23);
+            this.btnFilialOrigem.TabIndex = 19;
+            this.btnFilialOrigem.UseVisualStyleBackColor = true;
+            this.btnFilialOrigem.Click += new System.EventHandler(this.btnFilialOrigem_Click_1);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(479, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Data Inicial";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(622, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Data Final";
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(737, 108);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpar.TabIndex = 22;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // frmMaterialSaidaPesquisa
             // 

@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNotaEntrada));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFornecedor = new System.Windows.Forms.TextBox();
             this.txtOdemCompra = new System.Windows.Forms.TextBox();
@@ -197,7 +196,7 @@
             // 
             // btnBuscaFornecedor
             // 
-            this.btnBuscaFornecedor.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscaFornecedor.Image")));
+            this.btnBuscaFornecedor.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.btnBuscaFornecedor.Location = new System.Drawing.Point(362, 17);
             this.btnBuscaFornecedor.Name = "btnBuscaFornecedor";
             this.btnBuscaFornecedor.Size = new System.Drawing.Size(75, 23);
@@ -446,6 +445,8 @@
             // btnItemLimpar
             // 
             this.btnItemLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnItemLimpar.BackgroundImage = global::Rodomax.Properties.Resources._16_arrow_left;
+            this.btnItemLimpar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnItemLimpar.Location = new System.Drawing.Point(791, 67);
             this.btnItemLimpar.Name = "btnItemLimpar";
             this.btnItemLimpar.Size = new System.Drawing.Size(86, 23);
@@ -457,9 +458,11 @@
             // btnItemAdd
             // 
             this.btnItemAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnItemAdd.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
+            this.btnItemAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnItemAdd.Location = new System.Drawing.Point(499, 68);
             this.btnItemAdd.Name = "btnItemAdd";
-            this.btnItemAdd.Size = new System.Drawing.Size(86, 23);
+            this.btnItemAdd.Size = new System.Drawing.Size(95, 23);
             this.btnItemAdd.TabIndex = 16;
             this.btnItemAdd.Text = "Adicionar";
             this.btnItemAdd.UseVisualStyleBackColor = true;
@@ -468,9 +471,11 @@
             // btnItemExcluir
             // 
             this.btnItemExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnItemExcluir.Location = new System.Drawing.Point(699, 67);
+            this.btnItemExcluir.BackgroundImage = global::Rodomax.Properties.Resources._16_delete;
+            this.btnItemExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnItemExcluir.Location = new System.Drawing.Point(692, 67);
             this.btnItemExcluir.Name = "btnItemExcluir";
-            this.btnItemExcluir.Size = new System.Drawing.Size(76, 23);
+            this.btnItemExcluir.Size = new System.Drawing.Size(93, 23);
             this.btnItemExcluir.TabIndex = 18;
             this.btnItemExcluir.Text = "Excluir";
             this.btnItemExcluir.UseVisualStyleBackColor = true;
@@ -479,6 +484,8 @@
             // btnItemEditar
             // 
             this.btnItemEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnItemEditar.BackgroundImage = global::Rodomax.Properties.Resources._16_edit;
+            this.btnItemEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnItemEditar.Location = new System.Drawing.Point(600, 68);
             this.btnItemEditar.Name = "btnItemEditar";
             this.btnItemEditar.Size = new System.Drawing.Size(86, 23);
@@ -574,7 +581,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.button3.Location = new System.Drawing.Point(791, 26);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 23);
@@ -603,7 +610,7 @@
             // 
             // button2
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Image = global::Rodomax.Properties.Resources._16_procurar;
             this.button2.Location = new System.Drawing.Point(358, 28);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -675,10 +682,10 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column4.HeaderText = "Qtde N.F.";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -686,10 +693,10 @@
             // 
             // Column5
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column5.HeaderText = "Vl Unit";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -697,10 +704,10 @@
             // 
             // Column6
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column6.HeaderText = "Qtde Est";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -708,10 +715,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column7.HeaderText = "Vl Un. Est";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -719,10 +726,10 @@
             // 
             // Column8
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column8.HeaderText = "Vl Total";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;

@@ -39,6 +39,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(626, 486);
             this.Name = "frmLinhaPesquisa";
+            this.Text = "Pesquisar Linha";
             this.ResumeLayout(false);
             this.PerformLayout();
 
