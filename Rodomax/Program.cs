@@ -20,9 +20,9 @@ namespace Rodomax
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Application.Run(new frmUsuario());
+            Application.Run(new frmDespesa());
 
-            
+            /*
             LoginForm telaLogin = new LoginForm();
 
 
@@ -31,7 +31,7 @@ namespace Rodomax
                 Application.Run(new Principal());
             }
             
-
+            */
         }
     }
 }

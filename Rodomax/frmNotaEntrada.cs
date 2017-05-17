@@ -269,7 +269,6 @@ namespace UI
                 double desc = double.Parse(txtAcresDesc.Text);
                 txtValorTotalDocumento.Text = Formatacao.DoubleToString(valor+desc);
             }
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

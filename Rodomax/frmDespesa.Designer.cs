@@ -79,7 +79,6 @@
             this.txtFuncionario = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnFuncionario = new System.Windows.Forms.Button();
-            this.btnAddFilial = new System.Windows.Forms.Button();
             this.txtFilial = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtItemRateiro = new System.Windows.Forms.TextBox();
@@ -89,6 +88,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtReferencia = new System.Windows.Forms.MaskedTextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.txtDiferenca = new System.Windows.Forms.Label();
+            this.txtDiferencaValor = new System.Windows.Forms.Label();
+            this.btnFilial = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -102,6 +104,11 @@
             // 
             // pnlDados
             // 
+            this.pnlDados.Controls.Add(this.btnFilial);
+            this.pnlDados.Controls.Add(this.cbLinhasTelefone);
+            this.pnlDados.Controls.Add(this.btnAddLinha);
+            this.pnlDados.Controls.Add(this.txtDiferencaValor);
+            this.pnlDados.Controls.Add(this.txtDiferenca);
             this.pnlDados.Controls.Add(this.label17);
             this.pnlDados.Controls.Add(this.txtReferencia);
             this.pnlDados.Controls.Add(this.txtObservacao);
@@ -109,7 +116,6 @@
             this.pnlDados.Controls.Add(this.ckRateio);
             this.pnlDados.Controls.Add(this.txtItemRateiro);
             this.pnlDados.Controls.Add(this.label18);
-            this.pnlDados.Controls.Add(this.btnAddFilial);
             this.pnlDados.Controls.Add(this.txtFilial);
             this.pnlDados.Controls.Add(this.label16);
             this.pnlDados.Controls.Add(this.btnFuncionario);
@@ -122,9 +128,7 @@
             this.pnlDados.Controls.Add(this.label14);
             this.pnlDados.Controls.Add(this.txtItemValorDespesa);
             this.pnlDados.Controls.Add(this.txtItemValorFinal);
-            this.pnlDados.Controls.Add(this.btnAddLinha);
             this.pnlDados.Controls.Add(this.label12);
-            this.pnlDados.Controls.Add(this.cbLinhasTelefone);
             this.pnlDados.Controls.Add(this.btnAddTipoDespesa);
             this.pnlDados.Controls.Add(this.label11);
             this.pnlDados.Controls.Add(this.cbTipoDespesa);
@@ -155,6 +159,18 @@
             // pnlDireita
             // 
             this.pnlDireita.Location = new System.Drawing.Point(564, 3);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // label1
             // 
@@ -197,6 +213,7 @@
             this.txtDataInicial.Name = "txtDataInicial";
             this.txtDataInicial.Size = new System.Drawing.Size(98, 20);
             this.txtDataInicial.TabIndex = 4;
+            this.txtDataInicial.Leave += new System.EventHandler(this.txtDataInicial_Leave);
             // 
             // txtDataEmissao
             // 
@@ -215,6 +232,9 @@
             this.txtValorTotal.Size = new System.Drawing.Size(100, 20);
             this.txtValorTotal.TabIndex = 8;
             this.txtValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValorTotal.TextChanged += new System.EventHandler(this.txtValorTotal_TextChanged);
+            this.txtValorTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorTotal_KeyPress);
+            this.txtValorTotal.Leave += new System.EventHandler(this.txtValorTotal_Leave);
             // 
             // txtValorTitulo
             // 
@@ -224,6 +244,9 @@
             this.txtValorTitulo.Size = new System.Drawing.Size(100, 20);
             this.txtValorTitulo.TabIndex = 9;
             this.txtValorTitulo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValorTitulo.TextChanged += new System.EventHandler(this.txtValorTitulo_TextChanged);
+            this.txtValorTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorTitulo_KeyPress);
+            this.txtValorTitulo.Leave += new System.EventHandler(this.txtValorTitulo_Leave);
             // 
             // btnFornecedor
             // 
@@ -234,6 +257,7 @@
             this.btnFornecedor.Size = new System.Drawing.Size(39, 23);
             this.btnFornecedor.TabIndex = 10;
             this.btnFornecedor.UseVisualStyleBackColor = true;
+            this.btnFornecedor.Click += new System.EventHandler(this.btnFornecedor_Click);
             // 
             // txtLinhaContrato
             // 
@@ -254,6 +278,7 @@
             this.btnLinhaContrato.Size = new System.Drawing.Size(39, 23);
             this.btnLinhaContrato.TabIndex = 12;
             this.btnLinhaContrato.UseVisualStyleBackColor = true;
+            this.btnLinhaContrato.Click += new System.EventHandler(this.btnLinhaContrato_Click);
             // 
             // label3
             // 
@@ -391,6 +416,7 @@
             this.grid.ReadOnly = true;
             this.grid.Size = new System.Drawing.Size(917, 254);
             this.grid.TabIndex = 0;
+            this.grid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseDoubleClick);
             // 
             // Column1
             // 
@@ -462,11 +488,13 @@
             // 
             // cbTipoDespesa
             // 
+            this.cbTipoDespesa.DisplayMember = "value";
             this.cbTipoDespesa.FormattingEnabled = true;
             this.cbTipoDespesa.Location = new System.Drawing.Point(6, 105);
             this.cbTipoDespesa.Name = "cbTipoDespesa";
             this.cbTipoDespesa.Size = new System.Drawing.Size(315, 21);
             this.cbTipoDespesa.TabIndex = 25;
+            this.cbTipoDespesa.ValueMember = "key";
             // 
             // label11
             // 
@@ -486,21 +514,25 @@
             this.btnAddTipoDespesa.Size = new System.Drawing.Size(39, 23);
             this.btnAddTipoDespesa.TabIndex = 27;
             this.btnAddTipoDespesa.UseVisualStyleBackColor = true;
+            this.btnAddTipoDespesa.Click += new System.EventHandler(this.btnAddTipoDespesa_Click);
             // 
             // btnAddLinha
             // 
+            this.btnAddLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddLinha.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
             this.btnAddLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddLinha.Location = new System.Drawing.Point(328, 142);
+            this.btnAddLinha.Location = new System.Drawing.Point(626, 103);
             this.btnAddLinha.Name = "btnAddLinha";
             this.btnAddLinha.Size = new System.Drawing.Size(39, 23);
             this.btnAddLinha.TabIndex = 30;
             this.btnAddLinha.UseVisualStyleBackColor = true;
+            this.btnAddLinha.Click += new System.EventHandler(this.btnAddLinha_Click);
             // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(5, 128);
+            this.label12.Location = new System.Drawing.Point(385, 91);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(96, 13);
             this.label12.TabIndex = 29;
@@ -508,11 +540,19 @@
             // 
             // cbLinhasTelefone
             // 
+            this.cbLinhasTelefone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbLinhasTelefone.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbLinhasTelefone.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbLinhasTelefone.DisplayMember = "value";
             this.cbLinhasTelefone.FormattingEnabled = true;
-            this.cbLinhasTelefone.Location = new System.Drawing.Point(7, 142);
+            this.cbLinhasTelefone.Location = new System.Drawing.Point(388, 105);
             this.cbLinhasTelefone.Name = "cbLinhasTelefone";
-            this.cbLinhasTelefone.Size = new System.Drawing.Size(315, 21);
+            this.cbLinhasTelefone.Size = new System.Drawing.Size(232, 21);
             this.cbLinhasTelefone.TabIndex = 28;
+            this.cbLinhasTelefone.ValueMember = "key";
+            this.cbLinhasTelefone.SelectedIndexChanged += new System.EventHandler(this.cbLinhasTelefone_SelectedIndexChanged);
+            this.cbLinhasTelefone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbLinhasTelefone_KeyPress);
+            this.cbLinhasTelefone.Leave += new System.EventHandler(this.cbLinhasTelefone_Leave);
             // 
             // label13
             // 
@@ -543,6 +583,8 @@
             this.txtItemValorDespesa.Size = new System.Drawing.Size(100, 20);
             this.txtItemValorDespesa.TabIndex = 32;
             this.txtItemValorDespesa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtItemValorDespesa.TextChanged += new System.EventHandler(this.txtItemValorDespesa_TextChanged);
+            this.txtItemValorDespesa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemValorDespesa_KeyPress);
             // 
             // txtItemValorFinal
             // 
@@ -552,6 +594,8 @@
             this.txtItemValorFinal.Size = new System.Drawing.Size(100, 20);
             this.txtItemValorFinal.TabIndex = 31;
             this.txtItemValorFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtItemValorFinal.TextChanged += new System.EventHandler(this.txtItemValorFinal_TextChanged);
+            this.txtItemValorFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemValorFinal_KeyPress);
             // 
             // btnAddItem
             // 
@@ -564,6 +608,7 @@
             this.btnAddItem.TabIndex = 35;
             this.btnAddItem.Text = "Adicionar";
             this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnExcluirItem
             // 
@@ -576,6 +621,7 @@
             this.btnExcluirItem.TabIndex = 36;
             this.btnExcluirItem.Text = "Excluir";
             this.btnExcluirItem.UseVisualStyleBackColor = true;
+            this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
             // 
             // btnLimparItem
             // 
@@ -588,21 +634,20 @@
             this.btnLimparItem.TabIndex = 37;
             this.btnLimparItem.Text = "Limpar";
             this.btnLimparItem.UseVisualStyleBackColor = true;
+            this.btnLimparItem.Click += new System.EventHandler(this.btnLimparItem_Click);
             // 
             // txtFuncionario
             // 
-            this.txtFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFuncionario.Enabled = false;
-            this.txtFuncionario.Location = new System.Drawing.Point(388, 108);
+            this.txtFuncionario.Location = new System.Drawing.Point(7, 141);
             this.txtFuncionario.Name = "txtFuncionario";
-            this.txtFuncionario.Size = new System.Drawing.Size(232, 20);
+            this.txtFuncionario.Size = new System.Drawing.Size(314, 20);
             this.txtFuncionario.TabIndex = 39;
             // 
             // label15
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(385, 95);
+            this.label15.Location = new System.Drawing.Point(4, 128);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(62, 13);
             this.label15.TabIndex = 38;
@@ -610,25 +655,14 @@
             // 
             // btnFuncionario
             // 
-            this.btnFuncionario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFuncionario.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFuncionario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFuncionario.Location = new System.Drawing.Point(626, 108);
+            this.btnFuncionario.Location = new System.Drawing.Point(327, 139);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(39, 23);
             this.btnFuncionario.TabIndex = 40;
             this.btnFuncionario.UseVisualStyleBackColor = true;
-            // 
-            // btnAddFilial
-            // 
-            this.btnAddFilial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddFilial.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
-            this.btnAddFilial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddFilial.Location = new System.Drawing.Point(626, 143);
-            this.btnAddFilial.Name = "btnAddFilial";
-            this.btnAddFilial.Size = new System.Drawing.Size(39, 23);
-            this.btnAddFilial.TabIndex = 43;
-            this.btnAddFilial.UseVisualStyleBackColor = true;
+            this.btnFuncionario.Click += new System.EventHandler(this.btnFuncionario_Click);
             // 
             // txtFilial
             // 
@@ -656,6 +690,7 @@
             this.txtItemRateiro.Name = "txtItemRateiro";
             this.txtItemRateiro.Size = new System.Drawing.Size(100, 20);
             this.txtItemRateiro.TabIndex = 47;
+            this.txtItemRateiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemRateiro_KeyPress);
             // 
             // label18
             // 
@@ -677,6 +712,7 @@
             this.ckRateio.TabIndex = 48;
             this.ckRateio.Text = "Rateio Igual";
             this.ckRateio.UseVisualStyleBackColor = true;
+            this.ckRateio.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ckRateio_MouseClick);
             // 
             // txtObservacao
             // 
@@ -703,6 +739,7 @@
             this.txtReferencia.Name = "txtReferencia";
             this.txtReferencia.Size = new System.Drawing.Size(100, 20);
             this.txtReferencia.TabIndex = 51;
+            this.txtReferencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReferencia_KeyPress);
             // 
             // label17
             // 
@@ -713,6 +750,37 @@
             this.label17.Size = new System.Drawing.Size(50, 12);
             this.label17.TabIndex = 52;
             this.label17.Text = "(Mes/Ano)";
+            // 
+            // txtDiferenca
+            // 
+            this.txtDiferenca.AutoSize = true;
+            this.txtDiferenca.Location = new System.Drawing.Point(626, 5);
+            this.txtDiferenca.Name = "txtDiferenca";
+            this.txtDiferenca.Size = new System.Drawing.Size(53, 13);
+            this.txtDiferenca.TabIndex = 53;
+            this.txtDiferenca.Text = "Diferença";
+            // 
+            // txtDiferencaValor
+            // 
+            this.txtDiferencaValor.AutoSize = true;
+            this.txtDiferencaValor.Location = new System.Drawing.Point(637, 19);
+            this.txtDiferencaValor.Name = "txtDiferencaValor";
+            this.txtDiferencaValor.Size = new System.Drawing.Size(28, 13);
+            this.txtDiferencaValor.TabIndex = 54;
+            this.txtDiferencaValor.Text = "0,00";
+            this.txtDiferencaValor.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnFilial
+            // 
+            this.btnFilial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFilial.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
+            this.btnFilial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnFilial.Location = new System.Drawing.Point(626, 141);
+            this.btnFilial.Name = "btnFilial";
+            this.btnFilial.Size = new System.Drawing.Size(39, 23);
+            this.btnFilial.TabIndex = 55;
+            this.btnFilial.UseVisualStyleBackColor = true;
+            this.btnFilial.Click += new System.EventHandler(this.btnFilial_Click);
             // 
             // frmDespesa
             // 
@@ -773,7 +841,6 @@
         private System.Windows.Forms.CheckBox ckRateio;
         private System.Windows.Forms.TextBox txtItemRateiro;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button btnAddFilial;
         private System.Windows.Forms.TextBox txtFilial;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnFuncionario;
@@ -790,5 +857,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.MaskedTextBox txtReferencia;
+        private System.Windows.Forms.Label txtDiferencaValor;
+        private System.Windows.Forms.Label txtDiferenca;
+        private System.Windows.Forms.Button btnFilial;
     }
 }

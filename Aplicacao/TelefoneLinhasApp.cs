@@ -44,7 +44,7 @@ namespace Aplicacao
         public IQueryable<TelefoneLinha> GetAll()
         {
             Banco.TelefoneLinhas.Load();
-            return Banco.Set<TelefoneLinha>().Include(x => x.Filial).Include(x => x.Funcionario);
+            return Banco.Set<TelefoneLinha>().Include(x => x.TelefoneCobranca).Include(x => x.Filial).Include(x => x.Funcionario);
         }
 
         public void SalvarTodos()
