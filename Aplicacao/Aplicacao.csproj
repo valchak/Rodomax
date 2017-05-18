@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="CentroCustoApp.cs" />
+    <Compile Include="DespesaItensApp.cs" />
     <Compile Include="DespesaTipoApp.cs" />
     <Compile Include="CidadeApp.cs" />
     <Compile Include="DespesaApp.cs" />

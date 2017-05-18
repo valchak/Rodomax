@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFornecedor = new System.Windows.Forms.TextBox();
@@ -74,16 +74,13 @@
             this.txtItemValorDespesa = new System.Windows.Forms.TextBox();
             this.txtItemValorFinal = new System.Windows.Forms.TextBox();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.btnExcluirItem = new System.Windows.Forms.Button();
+            this.btnItemExcluir = new System.Windows.Forms.Button();
             this.btnLimparItem = new System.Windows.Forms.Button();
             this.txtFuncionario = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnFuncionario = new System.Windows.Forms.Button();
             this.txtFilial = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtItemRateiro = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.ckRateio = new System.Windows.Forms.CheckBox();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtReferencia = new System.Windows.Forms.MaskedTextBox();
@@ -91,43 +88,58 @@
             this.txtDiferenca = new System.Windows.Forms.Label();
             this.txtDiferencaValor = new System.Windows.Forms.Label();
             this.btnFilial = new System.Windows.Forms.Button();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdRateioProporcional = new System.Windows.Forms.RadioButton();
+            this.rdRateioIgual = new System.Windows.Forms.RadioButton();
+            this.rdRateioNao = new System.Windows.Forms.RadioButton();
+            this.lbDespesa = new System.Windows.Forms.Label();
+            this.lbDiferenca = new System.Windows.Forms.Label();
+            this.lbTotal = new System.Windows.Forms.Label();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(936, 94);
+            this.pnlBotoes.Size = new System.Drawing.Size(1109, 94);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(100, 3);
+            this.btnNovo.Visible = false;
             // 
             // pnlDados
             // 
+            this.pnlDados.Controls.Add(this.groupBox2);
+            this.pnlDados.Controls.Add(this.label20);
+            this.pnlDados.Controls.Add(this.txtQuantidade);
             this.pnlDados.Controls.Add(this.btnFilial);
+            this.pnlDados.Controls.Add(this.txtItemValorFinal);
+            this.pnlDados.Controls.Add(this.txtItemValorDespesa);
             this.pnlDados.Controls.Add(this.cbLinhasTelefone);
+            this.pnlDados.Controls.Add(this.label14);
             this.pnlDados.Controls.Add(this.btnAddLinha);
+            this.pnlDados.Controls.Add(this.label13);
             this.pnlDados.Controls.Add(this.txtDiferencaValor);
             this.pnlDados.Controls.Add(this.txtDiferenca);
             this.pnlDados.Controls.Add(this.label17);
             this.pnlDados.Controls.Add(this.txtReferencia);
             this.pnlDados.Controls.Add(this.txtObservacao);
             this.pnlDados.Controls.Add(this.label19);
-            this.pnlDados.Controls.Add(this.ckRateio);
-            this.pnlDados.Controls.Add(this.txtItemRateiro);
-            this.pnlDados.Controls.Add(this.label18);
             this.pnlDados.Controls.Add(this.txtFilial);
             this.pnlDados.Controls.Add(this.label16);
             this.pnlDados.Controls.Add(this.btnFuncionario);
             this.pnlDados.Controls.Add(this.txtFuncionario);
             this.pnlDados.Controls.Add(this.label15);
             this.pnlDados.Controls.Add(this.btnLimparItem);
-            this.pnlDados.Controls.Add(this.btnExcluirItem);
+            this.pnlDados.Controls.Add(this.btnItemExcluir);
             this.pnlDados.Controls.Add(this.btnAddItem);
-            this.pnlDados.Controls.Add(this.label13);
-            this.pnlDados.Controls.Add(this.label14);
-            this.pnlDados.Controls.Add(this.txtItemValorDespesa);
-            this.pnlDados.Controls.Add(this.txtItemValorFinal);
             this.pnlDados.Controls.Add(this.label12);
             this.pnlDados.Controls.Add(this.btnAddTipoDespesa);
             this.pnlDados.Controls.Add(this.label11);
@@ -154,11 +166,11 @@
             this.pnlDados.Controls.Add(this.txtFornecedor);
             this.pnlDados.Controls.Add(this.label2);
             this.pnlDados.Controls.Add(this.label1);
-            this.pnlDados.Size = new System.Drawing.Size(936, 486);
+            this.pnlDados.Size = new System.Drawing.Size(1109, 431);
             // 
             // pnlDireita
             // 
-            this.pnlDireita.Location = new System.Drawing.Point(564, 3);
+            this.pnlDireita.Location = new System.Drawing.Point(737, 3);
             // 
             // btnCancelar
             // 
@@ -171,6 +183,10 @@
             // btnExcluir
             // 
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(9, 3);
             // 
             // label1
             // 
@@ -195,21 +211,22 @@
             this.txtFornecedor.Enabled = false;
             this.txtFornecedor.Location = new System.Drawing.Point(6, 18);
             this.txtFornecedor.Name = "txtFornecedor";
-            this.txtFornecedor.Size = new System.Drawing.Size(315, 20);
+            this.txtFornecedor.Size = new System.Drawing.Size(375, 20);
             this.txtFornecedor.TabIndex = 2;
             // 
             // txtDocumento
             // 
             this.txtDocumento.Location = new System.Drawing.Point(6, 58);
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(251, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(311, 20);
             this.txtDocumento.TabIndex = 3;
+            this.txtDocumento.Leave += new System.EventHandler(this.txtDocumento_Leave);
             // 
             // txtDataInicial
             // 
             this.txtDataInicial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataInicial.Location = new System.Drawing.Point(710, 18);
+            this.txtDataInicial.Location = new System.Drawing.Point(883, 18);
             this.txtDataInicial.Name = "txtDataInicial";
             this.txtDataInicial.Size = new System.Drawing.Size(98, 20);
             this.txtDataInicial.TabIndex = 4;
@@ -219,7 +236,7 @@
             // 
             this.txtDataEmissao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataEmissao.Location = new System.Drawing.Point(710, 59);
+            this.txtDataEmissao.Location = new System.Drawing.Point(883, 59);
             this.txtDataEmissao.Name = "txtDataEmissao";
             this.txtDataEmissao.Size = new System.Drawing.Size(98, 20);
             this.txtDataEmissao.TabIndex = 6;
@@ -227,7 +244,7 @@
             // txtValorTotal
             // 
             this.txtValorTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorTotal.Location = new System.Drawing.Point(520, 18);
+            this.txtValorTotal.Location = new System.Drawing.Point(570, 18);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(100, 20);
             this.txtValorTotal.TabIndex = 8;
@@ -239,7 +256,7 @@
             // txtValorTitulo
             // 
             this.txtValorTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorTitulo.Location = new System.Drawing.Point(388, 18);
+            this.txtValorTitulo.Location = new System.Drawing.Point(438, 18);
             this.txtValorTitulo.Name = "txtValorTitulo";
             this.txtValorTitulo.Size = new System.Drawing.Size(100, 20);
             this.txtValorTitulo.TabIndex = 9;
@@ -252,7 +269,7 @@
             // 
             this.btnFornecedor.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFornecedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFornecedor.Location = new System.Drawing.Point(327, 16);
+            this.btnFornecedor.Location = new System.Drawing.Point(387, 14);
             this.btnFornecedor.Name = "btnFornecedor";
             this.btnFornecedor.Size = new System.Drawing.Size(39, 23);
             this.btnFornecedor.TabIndex = 10;
@@ -263,9 +280,9 @@
             // 
             this.txtLinhaContrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLinhaContrato.Enabled = false;
-            this.txtLinhaContrato.Location = new System.Drawing.Point(388, 58);
+            this.txtLinhaContrato.Location = new System.Drawing.Point(437, 59);
             this.txtLinhaContrato.Name = "txtLinhaContrato";
-            this.txtLinhaContrato.Size = new System.Drawing.Size(232, 20);
+            this.txtLinhaContrato.Size = new System.Drawing.Size(356, 20);
             this.txtLinhaContrato.TabIndex = 11;
             // 
             // btnLinhaContrato
@@ -273,7 +290,7 @@
             this.btnLinhaContrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLinhaContrato.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
             this.btnLinhaContrato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnLinhaContrato.Location = new System.Drawing.Point(626, 57);
+            this.btnLinhaContrato.Location = new System.Drawing.Point(799, 57);
             this.btnLinhaContrato.Name = "btnLinhaContrato";
             this.btnLinhaContrato.Size = new System.Drawing.Size(39, 23);
             this.btnLinhaContrato.TabIndex = 12;
@@ -284,7 +301,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(428, 5);
+            this.label3.Location = new System.Drawing.Point(478, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 13;
@@ -295,7 +312,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(562, 5);
+            this.label4.Location = new System.Drawing.Point(612, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 14;
@@ -305,7 +322,7 @@
             // 
             this.txtDataVencimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataVencimento.Location = new System.Drawing.Point(828, 59);
+            this.txtDataVencimento.Location = new System.Drawing.Point(1001, 59);
             this.txtDataVencimento.Name = "txtDataVencimento";
             this.txtDataVencimento.Size = new System.Drawing.Size(98, 20);
             this.txtDataVencimento.TabIndex = 16;
@@ -314,7 +331,7 @@
             // 
             this.txtDataFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataFinal.Location = new System.Drawing.Point(828, 19);
+            this.txtDataFinal.Location = new System.Drawing.Point(1001, 19);
             this.txtDataFinal.Name = "txtDataFinal";
             this.txtDataFinal.Size = new System.Drawing.Size(98, 20);
             this.txtDataFinal.TabIndex = 15;
@@ -322,7 +339,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(263, 45);
+            this.label5.Location = new System.Drawing.Point(323, 44);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 18;
@@ -332,7 +349,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(707, 5);
+            this.label6.Location = new System.Drawing.Point(880, 5);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 13);
             this.label6.TabIndex = 19;
@@ -343,7 +360,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(825, 5);
+            this.label7.Location = new System.Drawing.Point(998, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 13);
             this.label7.TabIndex = 20;
@@ -354,7 +371,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(825, 45);
+            this.label8.Location = new System.Drawing.Point(998, 45);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 13);
             this.label8.TabIndex = 22;
@@ -365,7 +382,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(707, 45);
+            this.label9.Location = new System.Drawing.Point(880, 45);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 13);
             this.label9.TabIndex = 21;
@@ -376,7 +393,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(385, 45);
+            this.label10.Location = new System.Drawing.Point(434, 45);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 13);
             this.label10.TabIndex = 23;
@@ -390,7 +407,7 @@
             this.groupBox1.Controls.Add(this.grid);
             this.groupBox1.Location = new System.Drawing.Point(3, 206);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(923, 273);
+            this.groupBox1.Size = new System.Drawing.Size(1096, 218);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Itens da despesa";
@@ -414,7 +431,7 @@
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
-            this.grid.Size = new System.Drawing.Size(917, 254);
+            this.grid.Size = new System.Drawing.Size(1090, 199);
             this.grid.TabIndex = 0;
             this.grid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseDoubleClick);
             // 
@@ -455,10 +472,10 @@
             // 
             // Column6
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column6.HeaderText = "Vl. Despesa";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -466,10 +483,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column7.HeaderText = "Diferença";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -477,10 +494,10 @@
             // 
             // Column8
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column8.HeaderText = "Vl. Total";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -492,7 +509,7 @@
             this.cbTipoDespesa.FormattingEnabled = true;
             this.cbTipoDespesa.Location = new System.Drawing.Point(6, 105);
             this.cbTipoDespesa.Name = "cbTipoDespesa";
-            this.cbTipoDespesa.Size = new System.Drawing.Size(315, 21);
+            this.cbTipoDespesa.Size = new System.Drawing.Size(375, 21);
             this.cbTipoDespesa.TabIndex = 25;
             this.cbTipoDespesa.ValueMember = "key";
             // 
@@ -509,7 +526,7 @@
             // 
             this.btnAddTipoDespesa.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
             this.btnAddTipoDespesa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddTipoDespesa.Location = new System.Drawing.Point(327, 105);
+            this.btnAddTipoDespesa.Location = new System.Drawing.Point(387, 103);
             this.btnAddTipoDespesa.Name = "btnAddTipoDespesa";
             this.btnAddTipoDespesa.Size = new System.Drawing.Size(39, 23);
             this.btnAddTipoDespesa.TabIndex = 27;
@@ -521,7 +538,7 @@
             this.btnAddLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddLinha.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
             this.btnAddLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddLinha.Location = new System.Drawing.Point(626, 103);
+            this.btnAddLinha.Location = new System.Drawing.Point(799, 103);
             this.btnAddLinha.Name = "btnAddLinha";
             this.btnAddLinha.Size = new System.Drawing.Size(39, 23);
             this.btnAddLinha.TabIndex = 30;
@@ -532,7 +549,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(385, 91);
+            this.label12.Location = new System.Drawing.Point(435, 91);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(96, 13);
             this.label12.TabIndex = 29;
@@ -545,9 +562,9 @@
             this.cbLinhasTelefone.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbLinhasTelefone.DisplayMember = "value";
             this.cbLinhasTelefone.FormattingEnabled = true;
-            this.cbLinhasTelefone.Location = new System.Drawing.Point(388, 105);
+            this.cbLinhasTelefone.Location = new System.Drawing.Point(438, 105);
             this.cbLinhasTelefone.Name = "cbLinhasTelefone";
-            this.cbLinhasTelefone.Size = new System.Drawing.Size(232, 21);
+            this.cbLinhasTelefone.Size = new System.Drawing.Size(355, 21);
             this.cbLinhasTelefone.TabIndex = 28;
             this.cbLinhasTelefone.ValueMember = "key";
             this.cbLinhasTelefone.SelectedIndexChanged += new System.EventHandler(this.cbLinhasTelefone_SelectedIndexChanged);
@@ -558,7 +575,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(828, 95);
+            this.label13.Location = new System.Drawing.Point(1043, 127);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 13);
             this.label13.TabIndex = 34;
@@ -568,19 +585,19 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(707, 95);
+            this.label14.Location = new System.Drawing.Point(932, 127);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 13);
+            this.label14.Size = new System.Drawing.Size(70, 13);
             this.label14.TabIndex = 33;
-            this.label14.Text = "Valor Despesa";
+            this.label14.Text = "Valor Unitario";
             this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtItemValorDespesa
             // 
             this.txtItemValorDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemValorDespesa.Location = new System.Drawing.Point(710, 108);
+            this.txtItemValorDespesa.Location = new System.Drawing.Point(924, 141);
             this.txtItemValorDespesa.Name = "txtItemValorDespesa";
-            this.txtItemValorDespesa.Size = new System.Drawing.Size(100, 20);
+            this.txtItemValorDespesa.Size = new System.Drawing.Size(78, 20);
             this.txtItemValorDespesa.TabIndex = 32;
             this.txtItemValorDespesa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemValorDespesa.TextChanged += new System.EventHandler(this.txtItemValorDespesa_TextChanged);
@@ -589,9 +606,9 @@
             // txtItemValorFinal
             // 
             this.txtItemValorFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemValorFinal.Location = new System.Drawing.Point(828, 108);
+            this.txtItemValorFinal.Location = new System.Drawing.Point(1013, 141);
             this.txtItemValorFinal.Name = "txtItemValorFinal";
-            this.txtItemValorFinal.Size = new System.Drawing.Size(100, 20);
+            this.txtItemValorFinal.Size = new System.Drawing.Size(86, 20);
             this.txtItemValorFinal.TabIndex = 31;
             this.txtItemValorFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtItemValorFinal.TextChanged += new System.EventHandler(this.txtItemValorFinal_TextChanged);
@@ -602,7 +619,7 @@
             this.btnAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddItem.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
             this.btnAddItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddItem.Location = new System.Drawing.Point(626, 177);
+            this.btnAddItem.Location = new System.Drawing.Point(799, 177);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(95, 23);
             this.btnAddItem.TabIndex = 35;
@@ -610,25 +627,25 @@
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
-            // btnExcluirItem
+            // btnItemExcluir
             // 
-            this.btnExcluirItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirItem.BackgroundImage = global::Rodomax.Properties.Resources._16_delete;
-            this.btnExcluirItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnExcluirItem.Location = new System.Drawing.Point(730, 177);
-            this.btnExcluirItem.Name = "btnExcluirItem";
-            this.btnExcluirItem.Size = new System.Drawing.Size(95, 23);
-            this.btnExcluirItem.TabIndex = 36;
-            this.btnExcluirItem.Text = "Excluir";
-            this.btnExcluirItem.UseVisualStyleBackColor = true;
-            this.btnExcluirItem.Click += new System.EventHandler(this.btnExcluirItem_Click);
+            this.btnItemExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnItemExcluir.BackgroundImage = global::Rodomax.Properties.Resources._16_delete;
+            this.btnItemExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnItemExcluir.Location = new System.Drawing.Point(903, 177);
+            this.btnItemExcluir.Name = "btnItemExcluir";
+            this.btnItemExcluir.Size = new System.Drawing.Size(95, 23);
+            this.btnItemExcluir.TabIndex = 36;
+            this.btnItemExcluir.Text = "Excluir";
+            this.btnItemExcluir.UseVisualStyleBackColor = true;
+            this.btnItemExcluir.Click += new System.EventHandler(this.btnExcluirItem_Click);
             // 
             // btnLimparItem
             // 
             this.btnLimparItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLimparItem.BackgroundImage = global::Rodomax.Properties.Resources._16_arrow_left;
             this.btnLimparItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnLimparItem.Location = new System.Drawing.Point(831, 177);
+            this.btnLimparItem.Location = new System.Drawing.Point(1004, 177);
             this.btnLimparItem.Name = "btnLimparItem";
             this.btnLimparItem.Size = new System.Drawing.Size(95, 23);
             this.btnLimparItem.TabIndex = 37;
@@ -641,7 +658,7 @@
             this.txtFuncionario.Enabled = false;
             this.txtFuncionario.Location = new System.Drawing.Point(7, 141);
             this.txtFuncionario.Name = "txtFuncionario";
-            this.txtFuncionario.Size = new System.Drawing.Size(314, 20);
+            this.txtFuncionario.Size = new System.Drawing.Size(374, 20);
             this.txtFuncionario.TabIndex = 39;
             // 
             // label15
@@ -657,7 +674,7 @@
             // 
             this.btnFuncionario.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFuncionario.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFuncionario.Location = new System.Drawing.Point(327, 139);
+            this.btnFuncionario.Location = new System.Drawing.Point(387, 140);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Size = new System.Drawing.Size(39, 23);
             this.btnFuncionario.TabIndex = 40;
@@ -668,51 +685,20 @@
             // 
             this.txtFilial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilial.Enabled = false;
-            this.txtFilial.Location = new System.Drawing.Point(388, 143);
+            this.txtFilial.Location = new System.Drawing.Point(438, 143);
             this.txtFilial.Name = "txtFilial";
-            this.txtFilial.Size = new System.Drawing.Size(232, 20);
+            this.txtFilial.Size = new System.Drawing.Size(356, 20);
             this.txtFilial.TabIndex = 42;
             // 
             // label16
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(385, 130);
+            this.label16.Location = new System.Drawing.Point(435, 129);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(27, 13);
             this.label16.TabIndex = 41;
             this.label16.Text = "Filial";
-            // 
-            // txtItemRateiro
-            // 
-            this.txtItemRateiro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemRateiro.Location = new System.Drawing.Point(710, 146);
-            this.txtItemRateiro.Name = "txtItemRateiro";
-            this.txtItemRateiro.Size = new System.Drawing.Size(100, 20);
-            this.txtItemRateiro.TabIndex = 47;
-            this.txtItemRateiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtItemRateiro_KeyPress);
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(707, 133);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 13);
-            this.label18.TabIndex = 46;
-            this.label18.Text = "Indice Rateio";
-            // 
-            // ckRateio
-            // 
-            this.ckRateio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ckRateio.AutoSize = true;
-            this.ckRateio.Location = new System.Drawing.Point(828, 148);
-            this.ckRateio.Name = "ckRateio";
-            this.ckRateio.Size = new System.Drawing.Size(83, 17);
-            this.ckRateio.TabIndex = 48;
-            this.ckRateio.Text = "Rateio Igual";
-            this.ckRateio.UseVisualStyleBackColor = true;
-            this.ckRateio.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ckRateio_MouseClick);
             // 
             // txtObservacao
             // 
@@ -720,7 +706,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtObservacao.Location = new System.Drawing.Point(8, 179);
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(612, 20);
+            this.txtObservacao.Size = new System.Drawing.Size(785, 20);
             this.txtObservacao.TabIndex = 50;
             // 
             // label19
@@ -734,7 +720,7 @@
             // 
             // txtReferencia
             // 
-            this.txtReferencia.Location = new System.Drawing.Point(266, 59);
+            this.txtReferencia.Location = new System.Drawing.Point(326, 58);
             this.txtReferencia.Mask = "##/####";
             this.txtReferencia.Name = "txtReferencia";
             this.txtReferencia.Size = new System.Drawing.Size(100, 20);
@@ -745,7 +731,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(320, 45);
+            this.label17.Location = new System.Drawing.Point(380, 44);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(50, 12);
             this.label17.TabIndex = 52;
@@ -753,8 +739,9 @@
             // 
             // txtDiferenca
             // 
+            this.txtDiferenca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiferenca.AutoSize = true;
-            this.txtDiferenca.Location = new System.Drawing.Point(626, 5);
+            this.txtDiferenca.Location = new System.Drawing.Point(695, 5);
             this.txtDiferenca.Name = "txtDiferenca";
             this.txtDiferenca.Size = new System.Drawing.Size(53, 13);
             this.txtDiferenca.TabIndex = 53;
@@ -762,8 +749,9 @@
             // 
             // txtDiferencaValor
             // 
+            this.txtDiferencaValor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiferencaValor.AutoSize = true;
-            this.txtDiferencaValor.Location = new System.Drawing.Point(637, 19);
+            this.txtDiferencaValor.Location = new System.Drawing.Point(706, 19);
             this.txtDiferencaValor.Name = "txtDiferencaValor";
             this.txtDiferencaValor.Size = new System.Drawing.Size(28, 13);
             this.txtDiferencaValor.TabIndex = 54;
@@ -775,26 +763,139 @@
             this.btnFilial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFilial.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFilial.Location = new System.Drawing.Point(626, 141);
+            this.btnFilial.Location = new System.Drawing.Point(799, 141);
             this.btnFilial.Name = "btnFilial";
             this.btnFilial.Size = new System.Drawing.Size(39, 23);
             this.btnFilial.TabIndex = 55;
             this.btnFilial.UseVisualStyleBackColor = true;
             this.btnFilial.Click += new System.EventHandler(this.btnFilial_Click);
             // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQuantidade.Location = new System.Drawing.Point(869, 141);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(46, 20);
+            this.txtQuantidade.TabIndex = 56;
+            this.txtQuantidade.Text = "1";
+            this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(866, 127);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(30, 13);
+            this.label20.TabIndex = 57;
+            this.label20.Text = "Qtde";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.rdRateioProporcional);
+            this.groupBox2.Controls.Add(this.rdRateioIgual);
+            this.groupBox2.Controls.Add(this.rdRateioNao);
+            this.groupBox2.Location = new System.Drawing.Point(861, 88);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(240, 38);
+            this.groupBox2.TabIndex = 58;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Rateio";
+            // 
+            // rdRateioProporcional
+            // 
+            this.rdRateioProporcional.AutoSize = true;
+            this.rdRateioProporcional.Location = new System.Drawing.Point(150, 15);
+            this.rdRateioProporcional.Name = "rdRateioProporcional";
+            this.rdRateioProporcional.Size = new System.Drawing.Size(84, 17);
+            this.rdRateioProporcional.TabIndex = 2;
+            this.rdRateioProporcional.Text = "Proporcional";
+            this.rdRateioProporcional.UseVisualStyleBackColor = true;
+            this.rdRateioProporcional.Click += new System.EventHandler(this.rdRateioProporcional_Click);
+            this.rdRateioProporcional.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rdRateioProporcional_MouseClick);
+            // 
+            // rdRateioIgual
+            // 
+            this.rdRateioIgual.AutoSize = true;
+            this.rdRateioIgual.Location = new System.Drawing.Point(84, 15);
+            this.rdRateioIgual.Name = "rdRateioIgual";
+            this.rdRateioIgual.Size = new System.Drawing.Size(48, 17);
+            this.rdRateioIgual.TabIndex = 1;
+            this.rdRateioIgual.Text = "Igual";
+            this.rdRateioIgual.UseVisualStyleBackColor = true;
+            this.rdRateioIgual.Click += new System.EventHandler(this.rdRateioIgual_Click);
+            this.rdRateioIgual.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rdRateioIgual_MouseClick);
+            // 
+            // rdRateioNao
+            // 
+            this.rdRateioNao.AutoSize = true;
+            this.rdRateioNao.Checked = true;
+            this.rdRateioNao.Location = new System.Drawing.Point(10, 15);
+            this.rdRateioNao.Name = "rdRateioNao";
+            this.rdRateioNao.Size = new System.Drawing.Size(45, 17);
+            this.rdRateioNao.TabIndex = 0;
+            this.rdRateioNao.TabStop = true;
+            this.rdRateioNao.Text = "Não";
+            this.rdRateioNao.UseVisualStyleBackColor = true;
+            this.rdRateioNao.Click += new System.EventHandler(this.radioButton1_Click);
+            this.rdRateioNao.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rdRateioNao_MouseClick);
+            // 
+            // lbDespesa
+            // 
+            this.lbDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDespesa.AutoSize = true;
+            this.lbDespesa.Location = new System.Drawing.Point(902, 578);
+            this.lbDespesa.Name = "lbDespesa";
+            this.lbDespesa.Size = new System.Drawing.Size(28, 13);
+            this.lbDespesa.TabIndex = 2;
+            this.lbDespesa.Text = "0,00";
+            // 
+            // lbDiferenca
+            // 
+            this.lbDiferenca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDiferenca.AutoSize = true;
+            this.lbDiferenca.Location = new System.Drawing.Point(984, 578);
+            this.lbDiferenca.Name = "lbDiferenca";
+            this.lbDiferenca.Size = new System.Drawing.Size(28, 13);
+            this.lbDiferenca.TabIndex = 3;
+            this.lbDiferenca.Text = "0,00";
+            // 
+            // lbTotal
+            // 
+            this.lbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Location = new System.Drawing.Point(1069, 578);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(28, 13);
+            this.lbTotal.TabIndex = 4;
+            this.lbTotal.Text = "0,00";
+            // 
             // frmDespesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(940, 647);
+            this.ClientSize = new System.Drawing.Size(1113, 592);
+            this.Controls.Add(this.lbTotal);
+            this.Controls.Add(this.lbDiferenca);
+            this.Controls.Add(this.lbDespesa);
             this.Name = "frmDespesa";
             this.Text = "Lançamento de Despesas";
+            this.Controls.SetChildIndex(this.pnlBotoes, 0);
+            this.Controls.SetChildIndex(this.pnlDados, 0);
+            this.Controls.SetChildIndex(this.lbDespesa, 0);
+            this.Controls.SetChildIndex(this.lbDiferenca, 0);
+            this.Controls.SetChildIndex(this.lbTotal, 0);
             this.pnlBotoes.ResumeLayout(false);
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();
             this.pnlDireita.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -827,7 +928,7 @@
         private System.Windows.Forms.Button btnFornecedor;
         private System.Windows.Forms.TextBox txtValorTitulo;
         private System.Windows.Forms.Button btnLimparItem;
-        private System.Windows.Forms.Button btnExcluirItem;
+        private System.Windows.Forms.Button btnItemExcluir;
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
@@ -838,9 +939,6 @@
         private System.Windows.Forms.ComboBox cbLinhasTelefone;
         private System.Windows.Forms.TextBox txtObservacao;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.CheckBox ckRateio;
-        private System.Windows.Forms.TextBox txtItemRateiro;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txtFilial;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnFuncionario;
@@ -860,5 +958,14 @@
         private System.Windows.Forms.Label txtDiferencaValor;
         private System.Windows.Forms.Label txtDiferenca;
         private System.Windows.Forms.Button btnFilial;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtQuantidade;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rdRateioProporcional;
+        private System.Windows.Forms.RadioButton rdRateioIgual;
+        private System.Windows.Forms.RadioButton rdRateioNao;
+        private System.Windows.Forms.Label lbDespesa;
+        private System.Windows.Forms.Label lbDiferenca;
+        private System.Windows.Forms.Label lbTotal;
     }
 }

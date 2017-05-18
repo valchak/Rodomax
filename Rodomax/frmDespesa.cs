@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Aplicacao;
 using Modelo;
 using System.Windows.Forms;
+using MMLib.Extensions;
+using System.Linq;
 
 namespace Rodomax
 {
@@ -12,9 +14,11 @@ namespace Rodomax
 
 
         private DespesaApp app;
+        private Despesa despesa;
         private Dictionary<int, DespesaTipo> listaDepesaTipo;
         private Dictionary<int, TelefoneLinha> listaLinhas;
         private Dictionary<int, DespesaDetalhes> listaItens;
+        private List<DespesaDetalhes> listaExcliur;
         private DespesaDetalhes item;
         private Funcionario funcionario;
         private Filial filial;
@@ -23,19 +27,25 @@ namespace Rodomax
         private string filtro = "";
         private int sequencia = 0;
         private int editar = 0;
+        private double lbValorDespesa = 0;
+        private double lbValorDiferenca = 0;
+        private double lbValorTotal = 0;
 
         public frmDespesa()
         {
             InitializeComponent();
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             Limpar();
         }
 
         private void Limpar() {
             sequencia = 1;
             app = new DespesaApp();
+            despesa = new Despesa();
             listaDepesaTipo = new Dictionary<int, DespesaTipo>();
             listaLinhas = new Dictionary<int, TelefoneLinha>();
             listaItens = new Dictionary<int, DespesaDetalhes>();
+            listaExcliur = new List<DespesaDetalhes>();
             linha = new TelefoneLinha();
 
             DateTime hoje = DateTime.Now;
@@ -76,6 +86,7 @@ namespace Rodomax
             LimparItem();
             CalculaDiferenca();
             CarregarDespesas();
+            CarregarLinhas();
 
         }
         private void LimparItem()
@@ -84,10 +95,11 @@ namespace Rodomax
             item = new DespesaDetalhes();
             txtItemValorFinal.Text = "0,00";
             txtItemValorDespesa.Text = "0,00";
+            txtQuantidade.Text = "1";
             txtFuncionario.Clear();
             txtObservacao.Clear();
             funcionario = null;
-            if (!txtLinhaContrato.Text.Equals(""))
+            if(telefone != null)
             {
                 cbLinhasTelefone.SelectedIndex = 0;
             }
@@ -101,8 +113,9 @@ namespace Rodomax
             {
                 btnLinhaContrato.Enabled = true;
             }
+            
             filtro = "";
-            CarregarLinhas();
+            AtualizarGrid();
         }
         private void CarregarDespesas()
         {
@@ -151,11 +164,8 @@ namespace Rodomax
                     }
                     if (linha.Funcionario != null)
                     {
-                        if (funcionario == null)
-                        {
-                            funcionario = linha.Funcionario;
-                            txtFuncionario.Text = funcionario.Nome;
-                        }
+                        funcionario = linha.Funcionario;
+                        txtFuncionario.Text = funcionario.Nome;
                     }
                     else
                     {
@@ -168,6 +178,26 @@ namespace Rodomax
         }
         private void CarregarLinhas()
         {
+            listaLinhas = new Dictionary<int, TelefoneLinha>();
+            
+            if(telefone != null)
+            {
+                TelefoneLinhasApp linhaApp = new TelefoneLinhasApp();
+                IEnumerable<TelefoneLinha> listax = linhaApp.Get(x => x.TelefoneCobranca.Id == telefone.Id && x.Situacao.Equals("A"));
+
+                foreach (var i in listax)
+                {
+                    listaLinhas.Add(i.Id, i);
+                }
+                cbLinhasTelefone.Enabled = true;
+                btnAddLinha.Enabled = true;
+            }
+            else
+            {
+                cbLinhasTelefone.Enabled = false;
+                btnAddLinha.Enabled = false;
+            }
+
             Dictionary<string, string> lista = new Dictionary<string, string>();
             lista.Add("", "");
 
@@ -177,14 +207,56 @@ namespace Rodomax
             }
             cbLinhasTelefone.DataSource = new BindingSource(lista, null);
         }
+        private void AtualizarGrid()
+        {
+            grid.DataSource = null;
+            grid.ResetBindings();
+            grid.Rows.Clear();
+            lbValorDespesa = 0;
+            lbValorDiferenca = 0;
+            lbValorTotal = 0;
+            foreach (var i in listaItens)
+            {
+                int n = this.grid.Rows.Add();
+                grid.Rows[n].Cells[0].Value = i.Key;
+                grid.Rows[n].Cells[1].Value = i.Value.Filial.Nome;
+                grid.Rows[n].Cells[2].Value = i.Value.DespesaTipo.Descircao;
+                if (i.Value.TelefoneLinha != null)
+                {
+                    grid.Rows[n].Cells[3].Value = i.Value.TelefoneLinha.Linha;
+                }
+                if(i.Value.Funcionario != null)
+                {
+                    grid.Rows[n].Cells[4].Value = i.Value.Funcionario.Nome;
+                }
+                grid.Rows[n].Cells[5].Value = i.Value.ValorUnitario;
+                grid.Rows[n].Cells[6].Value = i.Value.ValorTotal-i.Value.ValorUnitario;
+                grid.Rows[n].Cells[7].Value = i.Value.ValorTotal;
+                lbValorDespesa = lbValorDespesa + i.Value.ValorUnitario;
+                lbValorDiferenca = lbValorDiferenca + (i.Value.ValorTotal - i.Value.ValorUnitario);
+                lbValorTotal = lbValorTotal + i.Value.ValorTotal;
+            }
+            grid.Refresh();
+            lbDespesa.Text = Formatacao.DoubleToString(lbValorDespesa);
+            lbDiferenca.Text = Formatacao.DoubleToString(lbValorDiferenca);
+            lbTotal.Text = Formatacao.DoubleToString(lbValorTotal);
+        }
+
+        private bool Validar()
+        {
+            return true;
+        }
 
         private bool ValidaItem()
         {
-            if(cbTipoDespesa.SelectedIndex < 1)
+            if (rdRateioNao.Checked)
             {
-                MessageBox.Show("Selecionar tipo da despesa");
-                cbTipoDespesa.Focus();
-                return false;
+                if (Formatacao.StringToDouble(txtItemValorFinal.Text) == 0)
+                {
+                    MessageBox.Show("Valor do item da despesa está errado.");
+                    txtItemValorFinal.Focus();
+                    return false;
+                }
             }
             if(filial == null)
             {
@@ -192,18 +264,170 @@ namespace Rodomax
                 btnFilial.Focus();
                 return false;
             }
-            if (Formatacao.StringToDouble(txtItemValorFinal.Text) == 0)
+            
+            if (cbTipoDespesa.SelectedIndex < 1)
             {
-                MessageBox.Show("Valor do item da despesa está errado.");
-                txtItemValorFinal.Focus();
+                MessageBox.Show("Selecionar tipo da despesa");
+                cbTipoDespesa.Focus();
                 return false;
             }
 
             return true;
         }
+        private void BuscarDespesa()
+        {
+            if (despesa.Fornecedor != null && !txtDocumento.Text.Equals(""))
+            {
+
+                IEnumerable<Despesa> lista = app.Get(x => x.Fornecedor.Id == despesa.Fornecedor.Id && x.Documento == txtDocumento.Text.Trim().RemoveDiacritics().ToUpper());
+
+                if (lista.Any())
+                {
+                    despesa = lista.First();
+                    listaItens = new Dictionary<int, DespesaDetalhes>();
+                    if (despesa.TelefoneCobranca != null)
+                    {
+                        txtLinhaContrato.Text = despesa.TelefoneCobranca.LinhaCobranca;
+                        telefone = despesa.TelefoneCobranca;
+                        CarregarLinhas();
+                    }
+                    txtValorTitulo.Text = Formatacao.DoubleToString(despesa.ValorTitulo);
+                    txtValorTotal.Text = Formatacao.DoubleToString(despesa.ValorTotal);
+
+                    txtDataEmissao.Value = despesa.DataEmissao;
+                    txtDataVencimento.Value = despesa.DataVencimento;
+                    txtDataInicial.Value = despesa.DataInicio;
+                    txtDataFinal.Value = despesa.DataFim;
+                    DespesaItensApp itemApp = new DespesaItensApp();
+                    foreach (var i in despesa.DespesaDetalhes)
+                    {
+                        DespesaDetalhes novo = itemApp.Get(x => x.Id == i.Id).First();
+
+                        try
+                        {
+                            listaItens.Add(sequencia++, novo);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e);
+                            throw;
+                        }
+
+                    }
+                    CalculaDiferenca();
+                    AtualizarGrid();
+                }
+                else
+                {
+                    Limpar();
+                    CalculaDiferenca();
+                }
+            }
+        }
+
+        private void CalcularRateio()
+        {
+            if (rdRateioIgual.Checked)
+            {
+                double valor = double.Parse(txtValorTotal.Text) / listaItens.Count;
+                foreach (var i in listaItens.Values)
+                {
+                    i.Rateio = "I";
+                    i.ValorUnitario = valor;
+                    i.ValorTotal = valor;
+                }
+            }
+            if (rdRateioProporcional.Checked)
+            {
+                int qtdeTotal = 0;
+                foreach (var i in listaItens.Values)
+                {
+                    qtdeTotal = qtdeTotal + i.Quantidade;
+                }
+                double valorTitulo = double.Parse(txtValorTitulo.Text);
+                double valorTotal = double.Parse(txtValorTotal.Text);
+                foreach (var i in listaItens.Values)
+                {
+                    i.Rateio = "P";
+                    i.ValorUnitario = (valorTitulo / qtdeTotal) * i.Quantidade;
+                    i.ValorTotal = (valorTotal / qtdeTotal) * i.Quantidade;
+                }
+            }
+        }
+
+        private void Rateio()
+        {
+            if (rdRateioNao.Checked)
+            {
+                txtQuantidade.Enabled = true;
+                txtItemValorDespesa.Enabled = true;
+                txtItemValorFinal.Enabled = true;
+            }
+            if (rdRateioIgual.Checked)
+            {
+                txtQuantidade.Enabled = false;
+                txtItemValorDespesa.Enabled = false;
+                txtItemValorFinal.Enabled = false;
+                txtQuantidade.Text = "1";
+                txtItemValorDespesa.Text = "0,00";
+                txtItemValorFinal.Text = "0,00";
+            }
+            if (rdRateioProporcional.Checked)
+            {
+                txtQuantidade.Enabled = true;
+                txtItemValorDespesa.Enabled = false;
+                txtItemValorFinal.Enabled = false;
+                txtQuantidade.Text = "1";
+                txtItemValorDespesa.Text = "0,00";
+                txtItemValorFinal.Text = "0,00";
+            }
+        }
+
+        
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            despesa.DataEmissao = txtDataEmissao.Value;
+            despesa.DataVencimento = txtDataVencimento.Value;
+            despesa.DataInicio = txtDataInicial.Value;
+            despesa.DataFim = txtDataFinal.Value;
+            despesa.Documento = txtDocumento.Text.Trim().RemoveDiacritics().ToUpper();
+            despesa.ValorTitulo = Formatacao.StringToDouble(txtValorTitulo.Text);
+            despesa.ValorTotal = Formatacao.StringToDouble(txtValorTotal.Text);
+            despesa.TelefoneCobranca = telefone;
+            despesa.DespesaDetalhes = listaItens.Values;
+            despesa.listaExcluir = listaExcliur;
+
+            if (Validar())
+            {
+                try
+                {
+                    switch (Formatacao.MensagemInserir())
+                    {
+                        case DialogResult.Yes:
+                            if (despesa.Id == 0)
+                            {
+                                app.Adicionar(despesa);
+                                MessageBox.Show("Despesa salva com sucesso: Código " + despesa.Id);
+
+                            }
+                            else
+                            {
+                                app.Atualizar(despesa);
+                                MessageBox.Show("Despesa alterada com sucesso.");
+                            }
+                            Limpar();
+                            break;
+                        case DialogResult.No:
+                            break;
+                    }
+                    
+                } catch (Exception erro)
+                {
+                    MessageBox.Show("Erro Salvar: " + erro.Message);
+                }
+                    
+            }
 
         }
 
@@ -221,13 +445,64 @@ namespace Rodomax
         {
             if (ValidaItem())
             {
+                item.DespesaTipo = listaDepesaTipo[int.Parse(cbTipoDespesa.SelectedValue.ToString())];
+                item.Filial = filial;
+                item.Funcionario = funcionario;
+                item.Observacao = txtObservacao.Text.Trim().RemoveDiacritics().ToUpper();
+                if (rdRateioNao.Checked)
+                {
+                    item.Rateio = "N";
+                    item.Quantidade = int.Parse(txtQuantidade.Text);
+                    item.ValorUnitario = Formatacao.StringToDouble(txtItemValorDespesa.Text);
+                    item.ValorTotal = Formatacao.StringToDouble(txtItemValorFinal.Text);
+                }
 
+                if(telefone != null)
+                {
+                    item.TelefoneLinha = listaLinhas[int.Parse(cbLinhasTelefone.SelectedValue.ToString())];
+                }
+                if (editar == 0)
+                {
+                    listaItens.Add(sequencia++, item);
+                }
+                else
+                {
+                    listaItens.Remove(editar);
+                    listaItens.Add(editar, item);
+                }
+                if (!rdRateioNao.Checked)
+                {
+                    if(telefone != null)
+                    {
+                        if (MessageBox.Show("Deseja fazer um rateio para todas as contas de telefone? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            foreach (var i in listaLinhas.Values)
+                            {
+                                DespesaDetalhes x = new DespesaDetalhes();
+                                x.DespesaTipo = item.DespesaTipo;
+                                x.Filial = i.Filial;
+                                x.TelefoneLinha = i;
+                                x.Funcionario = i.Funcionario;
+                                x.Rateio = "I";
+                                listaItens.Add(sequencia++, x);
+                            }
+                        }
+                    }
+
+                    CalcularRateio();
+                }
+                LimparItem();
             }
         }
 
         private void btnExcluirItem_Click(object sender, EventArgs e)
         {
-
+            if(item.Id > 0)
+            {
+                listaExcliur.Add(item);
+            }
+            listaItens.Remove(editar);
+            LimparItem();
         }
 
         private void btnLimparItem_Click(object sender, EventArgs e)
@@ -237,7 +512,21 @@ namespace Rodomax
 
         private void btnFornecedor_Click(object sender, EventArgs e)
         {
-
+            frmFornecedorPesquisa tela = new frmFornecedorPesquisa();
+            tela.ShowDialog();
+            tela.Dispose();
+            if(instancia.fornecedor != null)
+            {
+                despesa.Fornecedor = instancia.fornecedor;
+                txtFornecedor.Text = despesa.Fornecedor.RazaoSocial;
+                instancia.fornecedor = null;
+                BuscarDespesa();
+            }
+            else
+            {
+                txtFornecedor.Clear();
+                despesa.Fornecedor = null;
+            }
         }
 
         private void btnLinhaContrato_Click(object sender, EventArgs e)
@@ -251,17 +540,9 @@ namespace Rodomax
                 telefone = instancia.TelefoneCobranca;
                 instancia.TelefoneCobranca = null;
                 txtLinhaContrato.Text = telefone.LinhaCobranca;
-                TelefoneLinhasApp linhaApp = new TelefoneLinhasApp();
-                IEnumerable<TelefoneLinha> lista = linhaApp.Get(x => x.TelefoneCobranca.Id == telefone.Id && x.Situacao.Equals("A"));
-
-                foreach (var i in lista)
-                {
-                    listaLinhas.Add(i.Id, i);
-                }
                 cbLinhasTelefone.Enabled = true;
                 btnAddLinha.Enabled = true;
                 CarregarLinhas();
-
             }
             else
             {
@@ -336,28 +617,59 @@ namespace Rodomax
                 txtFuncionario.Clear();
             }
         }
-
-        private void btnAddFilial_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void grid_CellMouseDoubleClick(object sender, System.Windows.Forms.DataGridViewCellMouseEventArgs e)
         {
+            if (grid.Rows.Count > 0)
+            {
+                try
+                {
+                    editar = Convert.ToInt32(grid.SelectedRows[0].Cells[0].Value.ToString());
+                    item = listaItens[editar];
+                    filial = item.Filial;
+                    txtFilial.Text = filial.Nome;
+                    txtObservacao.Text = item.Observacao;
+                    rdRateioNao.Checked = true;
+                    txtQuantidade.Text = item.Quantidade.ToString();
+                    txtItemValorDespesa.Text = Formatacao.DoubleToString(item.ValorUnitario);
+                    txtItemValorFinal.Text = Formatacao.DoubleToString(item.ValorTotal);
 
+                    if (item.Rateio.Equals("P"))
+                    {
+                        rdRateioProporcional.Checked = true;
+                    }
+                    if(item.Rateio.Equals("I"))
+                    {
+                        rdRateioIgual.Checked = true;
+                    }
+                    txtQuantidade.Text = item.Quantidade.ToString();
+                    txtValorTitulo.Text = Formatacao.DoubleToString(item.ValorUnitario);
+                    txtValorTotal.Text = Formatacao.DoubleToString(item.ValorTotal);
+                    cbTipoDespesa.SelectedValue = item.DespesaTipo.Id.ToString();
+
+                    if(item.TelefoneLinha != null)
+                    {
+                        cbLinhasTelefone.SelectedValue = item.TelefoneLinha.Id.ToString();
+                    }
+                    if(item.Funcionario != null)
+                    {
+                        funcionario = item.Funcionario;
+                        txtFuncionario.Text = funcionario.Nome;
+                    }
+                    btnAddItem.Text = "Alterar";
+                    btnItemExcluir.Enabled = true;
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Erro: " + exception.Message);
+                }
+                Rateio();
+            }
         }
 
         private void ckRateio_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            if (ckRateio.Checked)
-            {
-                txtItemRateiro.Clear();
-                txtItemRateiro.Enabled = false;
-            }
-            else
-            {
-                txtItemRateiro.Enabled = true;
-            }
+            
         }
 
         private void txtDataInicial_Leave(object sender, EventArgs e)
@@ -413,18 +725,13 @@ namespace Rodomax
         {
             Formatacao.SoNumero(e);
         }
-
-        private void txtItemRateiro_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            Formatacao.SoNumero(e);
-        }
-
+        
         private void txtItemValorDespesa_TextChanged(object sender, EventArgs e)
         {
             Formatacao.MoedaCampo(ref txtItemValorDespesa);
             if (!txtValorTitulo.Text.Trim().Equals(""))
             {
-                txtItemValorFinal.Text = Formatacao.DoubleToString(double.Parse(txtItemValorDespesa.Text));
+                txtItemValorFinal.Text = Formatacao.DoubleToString(double.Parse(txtItemValorDespesa.Text)*int.Parse(txtQuantidade.Text));
             }
         }
 
@@ -449,37 +756,13 @@ namespace Rodomax
 
         private void cbLinhasTelefone_Leave(object sender, EventArgs e)
         {
-            CarregaDadosLinha();
-            CarregarLinhas();
-        }
-
-        private void Buscar()
-        {
-            /*
-            numeroEditar = Convert.ToInt32(gridItens.SelectedRows[0].Cells[0].Value.ToString());
-            item = listaItem[numeroEditar];
-            produto = item.Produto;
-            txtProduto.Text = produto.Nome;
-            txtQuantidade.Text = item.Quantidade.ToString();
-            cbCentroCusto.SelectedValue = item.CentroCusto.Id.ToString();
-
-            if (item.TipoProduto.Equals("N"))
+            filtro = "";
+            if (cbLinhasTelefone.Text.Equals(""))
             {
-                rdNovo.Checked = true;
+                CarregarLinhas();
             }
-            else
-            {
-                rdUsado.Checked = true;
-            }
-
-
-            btnItemEditar.Enabled = true;
-            btnItemExcluir.Enabled = true;
-            btnItemAdicionar.Enabled = false;
-            */
         }
-
-      
+        
         private void cbLinhasTelefone_KeyPress(object sender, KeyPressEventArgs e)
         {
             filtro = filtro + e.KeyChar.ToString();
@@ -495,12 +778,69 @@ namespace Rodomax
                 }
             }
             cbLinhasTelefone.DataSource = new BindingSource(lista, null);
-        }
 
+            if (!cbLinhasTelefone.Text.Equals(""))
+            {
+                CarregarLinhas();
+                filtro = "";
+            }
+        }
         
         private void cbLinhasTelefone_SelectedIndexChanged(object sender, EventArgs e)
         {
             CarregaDadosLinha();
+        }
+
+        private void txtDocumento_Leave(object sender, EventArgs e)
+        {
+            BuscarDespesa();
+        }
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Formatacao.SoNumero(e);
+            if (txtQuantidade.Text.Equals(""))
+            {
+                txtQuantidade.Text = "1";
+            }
+        }
+
+        private void txtQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtValorTitulo.Text.Trim().Equals(""))
+            {
+                txtItemValorFinal.Text = Formatacao.DoubleToString(double.Parse(txtItemValorDespesa.Text) * int.Parse(txtQuantidade.Text));
+            }
+        }
+
+        private void radioButton1_Click(object sender, EventArgs e)
+        {
+            Rateio();
+        }
+
+        private void rdRateioIgual_Click(object sender, EventArgs e)
+        {
+            Rateio();
+        }
+
+        private void rdRateioProporcional_Click(object sender, EventArgs e)
+        {
+            Rateio();
+        }
+
+        private void rdRateioNao_MouseClick(object sender, MouseEventArgs e)
+        {
+            Rateio();
+        }
+
+        private void rdRateioIgual_MouseClick(object sender, MouseEventArgs e)
+        {
+            Rateio();
+        }
+
+        private void rdRateioProporcional_MouseClick(object sender, MouseEventArgs e)
+        {
+            Rateio();
         }
     }
 }

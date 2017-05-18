@@ -156,6 +156,7 @@
             // btnPesquisar
             // 
             this.btnPesquisar.Enabled = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // label1
             // 
