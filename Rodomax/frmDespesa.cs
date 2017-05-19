@@ -30,6 +30,7 @@ namespace Rodomax
         private double lbValorDespesa = 0;
         private double lbValorDiferenca = 0;
         private double lbValorTotal = 0;
+        private string tipo = "U";
 
         public frmDespesa()
         {
@@ -85,7 +86,6 @@ namespace Rodomax
             btnAddLinha.Enabled = false;
             LimparItem();
             CalculaDiferenca();
-            CarregarDespesas();
             CarregarLinhas();
 
         }
@@ -121,8 +121,11 @@ namespace Rodomax
         {
             DespesaTipoApp despesaTipoApp = new DespesaTipoApp();
             Dictionary<string, string> lista = new Dictionary<string, string>();
+            listaDepesaTipo = new Dictionary<int, DespesaTipo>();
             lista.Add("", "");
-            foreach (var i in despesaTipoApp.GetAll())
+            IEnumerable<DespesaTipo> tipo = despesaTipoApp.Get(x => x.Fornecedor.Id == despesa.Fornecedor.Id && x.Situacao.Equals("A"));
+
+            foreach (var i in tipo)
             {   listaDepesaTipo.Add(i.Id, i);
                 lista.Add(i.Id.ToString(), i.Descircao);
             }
@@ -496,6 +499,11 @@ namespace Rodomax
                 item.Funcionario = funcionario;
                 item.Observacao = txtObservacao.Text.Trim().RemoveDiacritics().ToUpper();
                 item.Quantidade = int.Parse(txtQuantidade.Text);
+                item.OutraOperadora = "N";
+                if (ckOutraOperadora.Checked)
+                {
+                    item.OutraOperadora = "S";
+                }
                 if (rdRateioNao.Checked)
                 {
                     item.Rateio = "N";
@@ -506,15 +514,6 @@ namespace Rodomax
                 if(telefone != null)
                 {
                     item.TelefoneLinha = linha;
-                }
-                if (editar == 0)
-                {
-                    listaItens.Add(sequencia++, item);
-                }
-                else
-                {
-                    listaItens.Remove(editar);
-                    listaItens.Add(editar, item);
                 }
                 if (!rdRateioNao.Checked)
                 {
@@ -528,6 +527,8 @@ namespace Rodomax
                                 {
                                     DespesaDetalhes x = new DespesaDetalhes();
                                     x.DespesaTipo = item.DespesaTipo;
+                                    x.Observacao = item.Observacao;
+                                    x.OutraOperadora = item.OutraOperadora;
                                     x.Filial = i.Filial;
                                     x.TelefoneLinha = i;
                                     x.Funcionario = i.Funcionario;
@@ -538,7 +539,19 @@ namespace Rodomax
                         }
                         CalcularRateio();
                     }
-                    
+
+                }
+                else
+                {
+                    if (editar == 0)
+                    {
+                        listaItens.Add(sequencia++, item);
+                    }
+                    else
+                    {
+                        listaItens.Remove(editar);
+                        listaItens.Add(editar, item);
+                    }
                 }
                 LimparItem();
             }
@@ -569,6 +582,7 @@ namespace Rodomax
                 despesa.Fornecedor = instancia.fornecedor;
                 txtFornecedor.Text = despesa.Fornecedor.RazaoSocial;
                 instancia.fornecedor = null;
+                CarregarDespesas();
                 BuscarDespesa();
             }
             else
@@ -765,25 +779,39 @@ namespace Rodomax
         private void txtItemValorDespesa_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             Formatacao.SoNumero(e);
+            tipo = "U";
         }
 
         private void txtItemValorFinal_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             Formatacao.SoNumero(e);
+            tipo = "F";
         }
         
         private void txtItemValorDespesa_TextChanged(object sender, EventArgs e)
         {
             Formatacao.MoedaCampo(ref txtItemValorDespesa);
-            if (!txtValorTitulo.Text.Trim().Equals(""))
+            if (tipo.Equals("U"))
             {
-                txtItemValorFinal.Text = Formatacao.DoubleToString(double.Parse(txtItemValorDespesa.Text)*int.Parse(txtQuantidade.Text));
+                if (!txtValorTitulo.Text.Trim().Equals(""))
+                {
+                    txtItemValorFinal.Text = Formatacao.DoubleToString(double.Parse(txtItemValorDespesa.Text) * int.Parse(txtQuantidade.Text));
+                }
             }
+            
         }
 
         private void txtItemValorFinal_TextChanged(object sender, EventArgs e)
         {
             Formatacao.MoedaCampo(ref txtItemValorFinal);
+            if (tipo.Equals("F"))
+            {
+                if (Formatacao.StringToDouble(txtItemValorDespesa.Text) != Formatacao.StringToDouble(txtItemValorFinal.Text))
+                {
+                    txtItemValorDespesa.Text = Formatacao.DoubleToString(double.Parse(txtItemValorFinal.Text) / int.Parse(txtQuantidade.Text));
+                }
+            }
+            
         }
 
         private void btnFilial_Click(object sender, EventArgs e)
@@ -887,6 +915,11 @@ namespace Rodomax
         private void rdRateioProporcional_MouseClick(object sender, MouseEventArgs e)
         {
             Rateio();
+        }
+
+        private void ckOutraOperadora_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

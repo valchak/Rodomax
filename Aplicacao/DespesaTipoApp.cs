@@ -18,7 +18,7 @@ namespace Aplicacao
 
         public IQueryable<DespesaTipo> GetAll()
         {
-            return Banco.Set<DespesaTipo>();
+            return Banco.Set<DespesaTipo>().Include(x => x.Fornecedor);
         }
         public IQueryable<DespesaTipo> Get(Func<DespesaTipo, bool> predicate)
         {

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFornecedor = new System.Windows.Forms.TextBox();
@@ -97,6 +97,7 @@
             this.lbDespesa = new System.Windows.Forms.Label();
             this.lbDiferenca = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
+            this.ckOutraOperadora = new System.Windows.Forms.CheckBox();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -116,6 +117,7 @@
             // 
             // pnlDados
             // 
+            this.pnlDados.Controls.Add(this.ckOutraOperadora);
             this.pnlDados.Controls.Add(this.groupBox2);
             this.pnlDados.Controls.Add(this.label20);
             this.pnlDados.Controls.Add(this.txtQuantidade);
@@ -473,10 +475,10 @@
             // 
             // Column6
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column6.HeaderText = "Vl. Despesa";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -484,10 +486,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column7.HeaderText = "Diferença";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -495,10 +497,10 @@
             // 
             // Column8
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column8.HeaderText = "Vl. Total";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -840,7 +842,7 @@
             this.rdRateioNao.TabStop = true;
             this.rdRateioNao.Text = "Não";
             this.rdRateioNao.UseVisualStyleBackColor = true;
-            this.rdRateioNao.Click += new System.EventHandler(this.radioButton1_Click);
+            this.rdRateioNao.Click += new System.EventHandler(this.rdRateioIgual_Click);
             this.rdRateioNao.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rdRateioNao_MouseClick);
             // 
             // lbDespesa
@@ -872,6 +874,17 @@
             this.lbTotal.Size = new System.Drawing.Size(28, 13);
             this.lbTotal.TabIndex = 4;
             this.lbTotal.Text = "0,00";
+            // 
+            // ckOutraOperadora
+            // 
+            this.ckOutraOperadora.AutoSize = true;
+            this.ckOutraOperadora.Location = new System.Drawing.Point(243, 88);
+            this.ckOutraOperadora.Name = "ckOutraOperadora";
+            this.ckOutraOperadora.Size = new System.Drawing.Size(138, 17);
+            this.ckOutraOperadora.TabIndex = 59;
+            this.ckOutraOperadora.Text = "Uso de outra operadora";
+            this.ckOutraOperadora.UseVisualStyleBackColor = true;
+            this.ckOutraOperadora.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ckOutraOperadora_MouseClick);
             // 
             // frmDespesa
             // 
@@ -968,5 +981,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.CheckBox ckOutraOperadora;
     }
 }
