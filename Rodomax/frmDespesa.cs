@@ -203,7 +203,15 @@ namespace Rodomax
 
             foreach (var i in listaLinhas.Values)
             {
-                lista.Add(i.Id.ToString(), i.Linha);
+                string fun = "";
+                if(i.Funcionario != null)
+                {
+                    fun = i.Funcionario.Nome;
+                } else
+                {
+                    fun = i.Observacao;
+                }
+                lista.Add(i.Id.ToString(), i.Linha+" - "+fun);
             }
             cbLinhasTelefone.DataSource = new BindingSource(lista, null);
         }
@@ -244,6 +252,41 @@ namespace Rodomax
 
         private bool Validar()
         {
+            if (listaItens.Count == 0)
+            {
+                MessageBox.Show("Não existe itens na despesa, favor adicionar pelo menos um item");
+                return false;
+            }
+            if (despesa.Fornecedor == null)
+            {
+                MessageBox.Show("Não foi informado o fornecedor");
+                return false;
+            }
+            if (txtDocumento.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Documento informado é inválido");
+                return false;
+            }
+            if (Formatacao.StringToDouble(txtValorTitulo.Text) <= 0)
+            {
+                MessageBox.Show("Valor do título inválido");
+                return false;
+            }
+            if (Formatacao.StringToDouble(txtValorTotal.Text) <= 0)
+            {
+                MessageBox.Show("Valor total do título inválido");
+                return false;
+            }
+            if (Formatacao.StringToDouble(txtValorTotal.Text) != lbValorTotal)
+            {
+                switch (MessageBox.Show("Valor total dos itens não confere com o da nota, deseja salvar mesmo assim?", "Confirmação", MessageBoxButtons.YesNo))
+                {
+                    case DialogResult.Yes:
+                        return true;
+                    case DialogResult.No:
+                        return false;
+                }
+            }
             return true;
         }
 
@@ -316,10 +359,11 @@ namespace Rodomax
                     }
                     CalculaDiferenca();
                     AtualizarGrid();
+                    LimparItem();
                 }
                 else
                 {
-                    Limpar();
+                    LimparItem();
                     CalculaDiferenca();
                 }
             }
@@ -329,12 +373,14 @@ namespace Rodomax
         {
             if (rdRateioIgual.Checked)
             {
-                double valor = double.Parse(txtValorTotal.Text) / listaItens.Count;
+                double valorTitulo = double.Parse(txtValorTitulo.Text) / listaItens.Count;
+                double valorTotal = double.Parse(txtValorTotal.Text) / listaItens.Count;
                 foreach (var i in listaItens.Values)
                 {
                     i.Rateio = "I";
-                    i.ValorUnitario = valor;
-                    i.ValorTotal = valor;
+                    i.Quantidade = 1;
+                    i.ValorUnitario = valorTitulo;
+                    i.ValorTotal = valorTotal;
                 }
             }
             if (rdRateioProporcional.Checked)
@@ -449,17 +495,17 @@ namespace Rodomax
                 item.Filial = filial;
                 item.Funcionario = funcionario;
                 item.Observacao = txtObservacao.Text.Trim().RemoveDiacritics().ToUpper();
+                item.Quantidade = int.Parse(txtQuantidade.Text);
                 if (rdRateioNao.Checked)
                 {
                     item.Rateio = "N";
-                    item.Quantidade = int.Parse(txtQuantidade.Text);
                     item.ValorUnitario = Formatacao.StringToDouble(txtItemValorDespesa.Text);
                     item.ValorTotal = Formatacao.StringToDouble(txtItemValorFinal.Text);
                 }
 
                 if(telefone != null)
                 {
-                    item.TelefoneLinha = listaLinhas[int.Parse(cbLinhasTelefone.SelectedValue.ToString())];
+                    item.TelefoneLinha = linha;
                 }
                 if (editar == 0)
                 {
@@ -472,24 +518,27 @@ namespace Rodomax
                 }
                 if (!rdRateioNao.Checked)
                 {
-                    if(telefone != null)
+                    if (telefone != null)
                     {
-                        if (MessageBox.Show("Deseja fazer um rateio para todas as contas de telefone? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (rdRateioIgual.Checked)
                         {
-                            foreach (var i in listaLinhas.Values)
+                            if (MessageBox.Show("Deseja fazer um rateio para todas as contas de telefone? ", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
-                                DespesaDetalhes x = new DespesaDetalhes();
-                                x.DespesaTipo = item.DespesaTipo;
-                                x.Filial = i.Filial;
-                                x.TelefoneLinha = i;
-                                x.Funcionario = i.Funcionario;
-                                x.Rateio = "I";
-                                listaItens.Add(sequencia++, x);
+                                foreach (var i in listaLinhas.Values)
+                                {
+                                    DespesaDetalhes x = new DespesaDetalhes();
+                                    x.DespesaTipo = item.DespesaTipo;
+                                    x.Filial = i.Filial;
+                                    x.TelefoneLinha = i;
+                                    x.Funcionario = i.Funcionario;
+                                    x.Rateio = "I";
+                                    listaItens.Add(sequencia++, x);
+                                }
                             }
                         }
+                        CalcularRateio();
                     }
-
-                    CalcularRateio();
+                    
                 }
                 LimparItem();
             }
@@ -642,9 +691,6 @@ namespace Rodomax
                     {
                         rdRateioIgual.Checked = true;
                     }
-                    txtQuantidade.Text = item.Quantidade.ToString();
-                    txtValorTitulo.Text = Formatacao.DoubleToString(item.ValorUnitario);
-                    txtValorTotal.Text = Formatacao.DoubleToString(item.ValorTotal);
                     cbTipoDespesa.SelectedValue = item.DespesaTipo.Id.ToString();
 
                     if(item.TelefoneLinha != null)

@@ -107,7 +107,7 @@
             // 
             // pnlBotoes
             // 
-            this.pnlBotoes.Size = new System.Drawing.Size(1109, 94);
+            this.pnlBotoes.Size = new System.Drawing.Size(1106, 94);
             // 
             // btnNovo
             // 
@@ -166,11 +166,11 @@
             this.pnlDados.Controls.Add(this.txtFornecedor);
             this.pnlDados.Controls.Add(this.label2);
             this.pnlDados.Controls.Add(this.label1);
-            this.pnlDados.Size = new System.Drawing.Size(1109, 431);
+            this.pnlDados.Size = new System.Drawing.Size(1106, 510);
             // 
             // pnlDireita
             // 
-            this.pnlDireita.Location = new System.Drawing.Point(737, 3);
+            this.pnlDireita.Location = new System.Drawing.Point(734, 3);
             // 
             // btnCancelar
             // 
@@ -186,6 +186,7 @@
             // 
             // btnPesquisar
             // 
+            this.btnPesquisar.Enabled = false;
             this.btnPesquisar.Location = new System.Drawing.Point(9, 3);
             // 
             // label1
@@ -226,7 +227,7 @@
             // 
             this.txtDataInicial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataInicial.Location = new System.Drawing.Point(883, 18);
+            this.txtDataInicial.Location = new System.Drawing.Point(880, 18);
             this.txtDataInicial.Name = "txtDataInicial";
             this.txtDataInicial.Size = new System.Drawing.Size(98, 20);
             this.txtDataInicial.TabIndex = 4;
@@ -236,7 +237,7 @@
             // 
             this.txtDataEmissao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataEmissao.Location = new System.Drawing.Point(883, 59);
+            this.txtDataEmissao.Location = new System.Drawing.Point(880, 59);
             this.txtDataEmissao.Name = "txtDataEmissao";
             this.txtDataEmissao.Size = new System.Drawing.Size(98, 20);
             this.txtDataEmissao.TabIndex = 6;
@@ -244,7 +245,7 @@
             // txtValorTotal
             // 
             this.txtValorTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorTotal.Location = new System.Drawing.Point(570, 18);
+            this.txtValorTotal.Location = new System.Drawing.Point(567, 18);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(100, 20);
             this.txtValorTotal.TabIndex = 8;
@@ -256,7 +257,7 @@
             // txtValorTitulo
             // 
             this.txtValorTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorTitulo.Location = new System.Drawing.Point(438, 18);
+            this.txtValorTitulo.Location = new System.Drawing.Point(435, 18);
             this.txtValorTitulo.Name = "txtValorTitulo";
             this.txtValorTitulo.Size = new System.Drawing.Size(100, 20);
             this.txtValorTitulo.TabIndex = 9;
@@ -280,7 +281,7 @@
             // 
             this.txtLinhaContrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLinhaContrato.Enabled = false;
-            this.txtLinhaContrato.Location = new System.Drawing.Point(437, 59);
+            this.txtLinhaContrato.Location = new System.Drawing.Point(434, 59);
             this.txtLinhaContrato.Name = "txtLinhaContrato";
             this.txtLinhaContrato.Size = new System.Drawing.Size(356, 20);
             this.txtLinhaContrato.TabIndex = 11;
@@ -290,7 +291,7 @@
             this.btnLinhaContrato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLinhaContrato.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
             this.btnLinhaContrato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnLinhaContrato.Location = new System.Drawing.Point(799, 57);
+            this.btnLinhaContrato.Location = new System.Drawing.Point(796, 57);
             this.btnLinhaContrato.Name = "btnLinhaContrato";
             this.btnLinhaContrato.Size = new System.Drawing.Size(39, 23);
             this.btnLinhaContrato.TabIndex = 12;
@@ -301,7 +302,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(478, 5);
+            this.label3.Location = new System.Drawing.Point(475, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 13;
@@ -312,7 +313,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(612, 5);
+            this.label4.Location = new System.Drawing.Point(609, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 14;
@@ -322,7 +323,7 @@
             // 
             this.txtDataVencimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataVencimento.Location = new System.Drawing.Point(1001, 59);
+            this.txtDataVencimento.Location = new System.Drawing.Point(998, 59);
             this.txtDataVencimento.Name = "txtDataVencimento";
             this.txtDataVencimento.Size = new System.Drawing.Size(98, 20);
             this.txtDataVencimento.TabIndex = 16;
@@ -331,7 +332,7 @@
             // 
             this.txtDataFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataFinal.Location = new System.Drawing.Point(1001, 19);
+            this.txtDataFinal.Location = new System.Drawing.Point(998, 19);
             this.txtDataFinal.Name = "txtDataFinal";
             this.txtDataFinal.Size = new System.Drawing.Size(98, 20);
             this.txtDataFinal.TabIndex = 15;
@@ -349,7 +350,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(880, 5);
+            this.label6.Location = new System.Drawing.Point(877, 5);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 13);
             this.label6.TabIndex = 19;
@@ -360,7 +361,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(998, 5);
+            this.label7.Location = new System.Drawing.Point(995, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 13);
             this.label7.TabIndex = 20;
@@ -371,7 +372,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(998, 45);
+            this.label8.Location = new System.Drawing.Point(995, 45);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 13);
             this.label8.TabIndex = 22;
@@ -382,7 +383,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(880, 45);
+            this.label9.Location = new System.Drawing.Point(877, 45);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 13);
             this.label9.TabIndex = 21;
@@ -393,7 +394,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(434, 45);
+            this.label10.Location = new System.Drawing.Point(431, 45);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 13);
             this.label10.TabIndex = 23;
@@ -407,7 +408,7 @@
             this.groupBox1.Controls.Add(this.grid);
             this.groupBox1.Location = new System.Drawing.Point(3, 206);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1096, 218);
+            this.groupBox1.Size = new System.Drawing.Size(1093, 297);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Itens da despesa";
@@ -431,7 +432,7 @@
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
-            this.grid.Size = new System.Drawing.Size(1090, 199);
+            this.grid.Size = new System.Drawing.Size(1087, 278);
             this.grid.TabIndex = 0;
             this.grid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseDoubleClick);
             // 
@@ -461,7 +462,7 @@
             this.Column4.HeaderText = "Telefône";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            this.Column4.Width = 80;
+            this.Column4.Width = 120;
             // 
             // Column5
             // 
@@ -538,7 +539,7 @@
             this.btnAddLinha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddLinha.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
             this.btnAddLinha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAddLinha.Location = new System.Drawing.Point(799, 103);
+            this.btnAddLinha.Location = new System.Drawing.Point(796, 103);
             this.btnAddLinha.Name = "btnAddLinha";
             this.btnAddLinha.Size = new System.Drawing.Size(39, 23);
             this.btnAddLinha.TabIndex = 30;
@@ -549,7 +550,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(435, 91);
+            this.label12.Location = new System.Drawing.Point(432, 91);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(96, 13);
             this.label12.TabIndex = 29;
@@ -562,7 +563,7 @@
             this.cbLinhasTelefone.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbLinhasTelefone.DisplayMember = "value";
             this.cbLinhasTelefone.FormattingEnabled = true;
-            this.cbLinhasTelefone.Location = new System.Drawing.Point(438, 105);
+            this.cbLinhasTelefone.Location = new System.Drawing.Point(435, 105);
             this.cbLinhasTelefone.Name = "cbLinhasTelefone";
             this.cbLinhasTelefone.Size = new System.Drawing.Size(355, 21);
             this.cbLinhasTelefone.TabIndex = 28;
@@ -575,7 +576,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1043, 127);
+            this.label13.Location = new System.Drawing.Point(1040, 127);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 13);
             this.label13.TabIndex = 34;
@@ -585,7 +586,7 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(932, 127);
+            this.label14.Location = new System.Drawing.Point(929, 127);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(70, 13);
             this.label14.TabIndex = 33;
@@ -595,7 +596,7 @@
             // txtItemValorDespesa
             // 
             this.txtItemValorDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemValorDespesa.Location = new System.Drawing.Point(924, 141);
+            this.txtItemValorDespesa.Location = new System.Drawing.Point(921, 141);
             this.txtItemValorDespesa.Name = "txtItemValorDespesa";
             this.txtItemValorDespesa.Size = new System.Drawing.Size(78, 20);
             this.txtItemValorDespesa.TabIndex = 32;
@@ -606,7 +607,7 @@
             // txtItemValorFinal
             // 
             this.txtItemValorFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItemValorFinal.Location = new System.Drawing.Point(1013, 141);
+            this.txtItemValorFinal.Location = new System.Drawing.Point(1010, 141);
             this.txtItemValorFinal.Name = "txtItemValorFinal";
             this.txtItemValorFinal.Size = new System.Drawing.Size(86, 20);
             this.txtItemValorFinal.TabIndex = 31;
@@ -619,7 +620,7 @@
             this.btnAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddItem.BackgroundImage = global::Rodomax.Properties.Resources._16_add;
             this.btnAddItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddItem.Location = new System.Drawing.Point(799, 177);
+            this.btnAddItem.Location = new System.Drawing.Point(796, 177);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(95, 23);
             this.btnAddItem.TabIndex = 35;
@@ -632,7 +633,7 @@
             this.btnItemExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnItemExcluir.BackgroundImage = global::Rodomax.Properties.Resources._16_delete;
             this.btnItemExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnItemExcluir.Location = new System.Drawing.Point(903, 177);
+            this.btnItemExcluir.Location = new System.Drawing.Point(900, 177);
             this.btnItemExcluir.Name = "btnItemExcluir";
             this.btnItemExcluir.Size = new System.Drawing.Size(95, 23);
             this.btnItemExcluir.TabIndex = 36;
@@ -645,7 +646,7 @@
             this.btnLimparItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLimparItem.BackgroundImage = global::Rodomax.Properties.Resources._16_arrow_left;
             this.btnLimparItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnLimparItem.Location = new System.Drawing.Point(1004, 177);
+            this.btnLimparItem.Location = new System.Drawing.Point(1001, 177);
             this.btnLimparItem.Name = "btnLimparItem";
             this.btnLimparItem.Size = new System.Drawing.Size(95, 23);
             this.btnLimparItem.TabIndex = 37;
@@ -685,7 +686,7 @@
             // 
             this.txtFilial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilial.Enabled = false;
-            this.txtFilial.Location = new System.Drawing.Point(438, 143);
+            this.txtFilial.Location = new System.Drawing.Point(435, 143);
             this.txtFilial.Name = "txtFilial";
             this.txtFilial.Size = new System.Drawing.Size(356, 20);
             this.txtFilial.TabIndex = 42;
@@ -694,7 +695,7 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(435, 129);
+            this.label16.Location = new System.Drawing.Point(432, 129);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(27, 13);
             this.label16.TabIndex = 41;
@@ -706,7 +707,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtObservacao.Location = new System.Drawing.Point(8, 179);
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(785, 20);
+            this.txtObservacao.Size = new System.Drawing.Size(782, 20);
             this.txtObservacao.TabIndex = 50;
             // 
             // label19
@@ -741,7 +742,7 @@
             // 
             this.txtDiferenca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiferenca.AutoSize = true;
-            this.txtDiferenca.Location = new System.Drawing.Point(695, 5);
+            this.txtDiferenca.Location = new System.Drawing.Point(692, 5);
             this.txtDiferenca.Name = "txtDiferenca";
             this.txtDiferenca.Size = new System.Drawing.Size(53, 13);
             this.txtDiferenca.TabIndex = 53;
@@ -751,7 +752,7 @@
             // 
             this.txtDiferencaValor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiferencaValor.AutoSize = true;
-            this.txtDiferencaValor.Location = new System.Drawing.Point(706, 19);
+            this.txtDiferencaValor.Location = new System.Drawing.Point(703, 19);
             this.txtDiferencaValor.Name = "txtDiferencaValor";
             this.txtDiferencaValor.Size = new System.Drawing.Size(28, 13);
             this.txtDiferencaValor.TabIndex = 54;
@@ -763,7 +764,7 @@
             this.btnFilial.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFilial.BackgroundImage = global::Rodomax.Properties.Resources._16_procurar;
             this.btnFilial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnFilial.Location = new System.Drawing.Point(799, 141);
+            this.btnFilial.Location = new System.Drawing.Point(796, 141);
             this.btnFilial.Name = "btnFilial";
             this.btnFilial.Size = new System.Drawing.Size(39, 23);
             this.btnFilial.TabIndex = 55;
@@ -773,7 +774,7 @@
             // txtQuantidade
             // 
             this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuantidade.Location = new System.Drawing.Point(869, 141);
+            this.txtQuantidade.Location = new System.Drawing.Point(866, 141);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(46, 20);
             this.txtQuantidade.TabIndex = 56;
@@ -785,7 +786,7 @@
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(866, 127);
+            this.label20.Location = new System.Drawing.Point(863, 127);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(30, 13);
             this.label20.TabIndex = 57;
@@ -797,7 +798,7 @@
             this.groupBox2.Controls.Add(this.rdRateioProporcional);
             this.groupBox2.Controls.Add(this.rdRateioIgual);
             this.groupBox2.Controls.Add(this.rdRateioNao);
-            this.groupBox2.Location = new System.Drawing.Point(861, 88);
+            this.groupBox2.Location = new System.Drawing.Point(858, 88);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(240, 38);
             this.groupBox2.TabIndex = 58;
@@ -846,7 +847,7 @@
             // 
             this.lbDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDespesa.AutoSize = true;
-            this.lbDespesa.Location = new System.Drawing.Point(902, 578);
+            this.lbDespesa.Location = new System.Drawing.Point(899, 657);
             this.lbDespesa.Name = "lbDespesa";
             this.lbDespesa.Size = new System.Drawing.Size(28, 13);
             this.lbDespesa.TabIndex = 2;
@@ -856,7 +857,7 @@
             // 
             this.lbDiferenca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDiferenca.AutoSize = true;
-            this.lbDiferenca.Location = new System.Drawing.Point(984, 578);
+            this.lbDiferenca.Location = new System.Drawing.Point(981, 657);
             this.lbDiferenca.Name = "lbDiferenca";
             this.lbDiferenca.Size = new System.Drawing.Size(28, 13);
             this.lbDiferenca.TabIndex = 3;
@@ -866,7 +867,7 @@
             // 
             this.lbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTotal.AutoSize = true;
-            this.lbTotal.Location = new System.Drawing.Point(1069, 578);
+            this.lbTotal.Location = new System.Drawing.Point(1066, 657);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(28, 13);
             this.lbTotal.TabIndex = 4;
@@ -875,7 +876,7 @@
             // frmDespesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1113, 592);
+            this.ClientSize = new System.Drawing.Size(1110, 671);
             this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.lbDiferenca);
             this.Controls.Add(this.lbDespesa);
@@ -945,14 +946,6 @@
         private System.Windows.Forms.TextBox txtFuncionario;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView grid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.MaskedTextBox txtReferencia;
         private System.Windows.Forms.Label txtDiferencaValor;
@@ -967,5 +960,13 @@
         private System.Windows.Forms.Label lbDespesa;
         private System.Windows.Forms.Label lbDiferenca;
         private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
 }
