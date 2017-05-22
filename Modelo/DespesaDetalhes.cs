@@ -12,7 +12,7 @@ namespace Modelo
         public Filial Filial { get; set; }
         public TelefoneLinha TelefoneLinha { get; set; }
         public Funcionario Funcionario { get; set; }
-        public int Quantidade { get; set; }
+        public double Quantidade { get; set; }
         public double ValorUnitario { get; set; }
         public double ValorTotal { get; set; }
         [StringLength(1)]

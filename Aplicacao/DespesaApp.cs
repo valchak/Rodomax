@@ -85,6 +85,12 @@ namespace Aplicacao
                 dbItem.Despesa = dbObj;
                 dbItem.Filial = Banco.Filiais.Find(item.Filial.Id);
                 dbItem.DespesaTipo = Banco.DespesasTipo.Find(item.DespesaTipo.Id);
+                dbItem.ValorUnitario = item.ValorUnitario;
+                dbItem.ValorTotal = item.ValorTotal;
+                dbItem.Observacao = item.Observacao;
+                dbItem.Rateio = item.Rateio;
+                dbItem.OutraOperadora = item.OutraOperadora;
+                dbItem.Quantidade = item.Quantidade;
                 
 
                 if (item.Funcionario != null)

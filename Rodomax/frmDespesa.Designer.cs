@@ -98,6 +98,7 @@
             this.lbDiferenca = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
             this.ckOutraOperadora = new System.Windows.Forms.CheckBox();
+            this.btnResumo = new System.Windows.Forms.Button();
             this.pnlBotoes.SuspendLayout();
             this.pnlDados.SuspendLayout();
             this.pnlDireita.SuspendLayout();
@@ -117,6 +118,7 @@
             // 
             // pnlDados
             // 
+            this.pnlDados.Controls.Add(this.btnResumo);
             this.pnlDados.Controls.Add(this.ckOutraOperadora);
             this.pnlDados.Controls.Add(this.groupBox2);
             this.pnlDados.Controls.Add(this.label20);
@@ -168,7 +170,7 @@
             this.pnlDados.Controls.Add(this.txtFornecedor);
             this.pnlDados.Controls.Add(this.label2);
             this.pnlDados.Controls.Add(this.label1);
-            this.pnlDados.Size = new System.Drawing.Size(1106, 510);
+            this.pnlDados.Size = new System.Drawing.Size(1106, 519);
             // 
             // pnlDireita
             // 
@@ -410,7 +412,7 @@
             this.groupBox1.Controls.Add(this.grid);
             this.groupBox1.Location = new System.Drawing.Point(3, 206);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1093, 297);
+            this.groupBox1.Size = new System.Drawing.Size(1093, 306);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Itens da despesa";
@@ -434,7 +436,7 @@
             this.grid.Location = new System.Drawing.Point(3, 16);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
-            this.grid.Size = new System.Drawing.Size(1087, 278);
+            this.grid.Size = new System.Drawing.Size(1087, 287);
             this.grid.TabIndex = 0;
             this.grid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_CellMouseDoubleClick);
             // 
@@ -479,7 +481,7 @@
             dataGridViewCellStyle4.Format = "N2";
             dataGridViewCellStyle4.NullValue = null;
             this.Column6.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column6.HeaderText = "Vl. Despesa";
+            this.Column6.HeaderText = "Quantidade";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Width = 90;
@@ -490,7 +492,7 @@
             dataGridViewCellStyle5.Format = "N2";
             dataGridViewCellStyle5.NullValue = null;
             this.Column7.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column7.HeaderText = "Diferença";
+            this.Column7.HeaderText = "Vl. Dif";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Width = 80;
@@ -709,7 +711,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtObservacao.Location = new System.Drawing.Point(8, 179);
             this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(782, 20);
+            this.txtObservacao.Size = new System.Drawing.Size(680, 20);
             this.txtObservacao.TabIndex = 50;
             // 
             // label19
@@ -780,7 +782,8 @@
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(46, 20);
             this.txtQuantidade.TabIndex = 56;
-            this.txtQuantidade.Text = "1";
+            this.txtQuantidade.Text = "1,00";
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
             this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             // 
@@ -849,7 +852,7 @@
             // 
             this.lbDespesa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDespesa.AutoSize = true;
-            this.lbDespesa.Location = new System.Drawing.Point(899, 657);
+            this.lbDespesa.Location = new System.Drawing.Point(899, 666);
             this.lbDespesa.Name = "lbDespesa";
             this.lbDespesa.Size = new System.Drawing.Size(28, 13);
             this.lbDespesa.TabIndex = 2;
@@ -859,7 +862,7 @@
             // 
             this.lbDiferenca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbDiferenca.AutoSize = true;
-            this.lbDiferenca.Location = new System.Drawing.Point(981, 657);
+            this.lbDiferenca.Location = new System.Drawing.Point(981, 666);
             this.lbDiferenca.Name = "lbDiferenca";
             this.lbDiferenca.Size = new System.Drawing.Size(28, 13);
             this.lbDiferenca.TabIndex = 3;
@@ -869,7 +872,7 @@
             // 
             this.lbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTotal.AutoSize = true;
-            this.lbTotal.Location = new System.Drawing.Point(1066, 657);
+            this.lbTotal.Location = new System.Drawing.Point(1066, 666);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(28, 13);
             this.lbTotal.TabIndex = 4;
@@ -886,10 +889,22 @@
             this.ckOutraOperadora.UseVisualStyleBackColor = true;
             this.ckOutraOperadora.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ckOutraOperadora_MouseClick);
             // 
+            // btnResumo
+            // 
+            this.btnResumo.Image = global::Rodomax.Properties.Resources._16_edit;
+            this.btnResumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResumo.Location = new System.Drawing.Point(694, 176);
+            this.btnResumo.Name = "btnResumo";
+            this.btnResumo.Size = new System.Drawing.Size(96, 24);
+            this.btnResumo.TabIndex = 5;
+            this.btnResumo.Text = "Resumo";
+            this.btnResumo.UseVisualStyleBackColor = true;
+            this.btnResumo.Click += new System.EventHandler(this.btnResumo_Click);
+            // 
             // frmDespesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(1110, 671);
+            this.ClientSize = new System.Drawing.Size(1110, 680);
             this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.lbDiferenca);
             this.Controls.Add(this.lbDespesa);
@@ -973,6 +988,7 @@
         private System.Windows.Forms.Label lbDespesa;
         private System.Windows.Forms.Label lbDiferenca;
         private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.CheckBox ckOutraOperadora;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -981,6 +997,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.CheckBox ckOutraOperadora;
+        private System.Windows.Forms.Button btnResumo;
     }
 }
